@@ -7,26 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B375E82D2746A6C200E05B54 /* eIONApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375E82C2746A6C200E05B54 /* eIONApp.swift */; };
-		B375E82F2746A6C200E05B54 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375E82E2746A6C200E05B54 /* ContentView.swift */; };
-		B375E8312746A6C300E05B54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B375E8302746A6C300E05B54 /* Assets.xcassets */; };
-		B375E8342746A6C300E05B54 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B375E8332746A6C300E05B54 /* Preview Assets.xcassets */; };
-		B375E8362746A6C300E05B54 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B375E8352746A6C300E05B54 /* Persistence.swift */; };
-		B375E8392746A6C300E05B54 /* eION.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B375E8372746A6C300E05B54 /* eION.xcdatamodeld */; };
+		B3C1BF342746D5DA006BD338 /* eIONApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C1BF332746D5DA006BD338 /* eIONApp.swift */; };
+		B3C1BF362746D5DA006BD338 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C1BF352746D5DA006BD338 /* ContentView.swift */; };
+		B3C1BF382746D5DB006BD338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C1BF372746D5DB006BD338 /* Assets.xcassets */; };
+		B3C1BF3B2746D5DB006BD338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */; };
+		B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3C1BF412746D61D006BD338 /* GestioneION.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		B375E8292746A6C200E05B54 /* eION.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eION.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B375E82C2746A6C200E05B54 /* eIONApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONApp.swift; sourceTree = "<group>"; };
-		B375E82E2746A6C200E05B54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B375E8302746A6C300E05B54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		B375E8332746A6C300E05B54 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		B375E8352746A6C300E05B54 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		B375E8382746A6C300E05B54 /* eION.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = eION.xcdatamodel; sourceTree = "<group>"; };
+		B3C1BF302746D5DA006BD338 /* eION.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eION.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3C1BF332746D5DA006BD338 /* eIONApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONApp.swift; sourceTree = "<group>"; };
+		B3C1BF352746D5DA006BD338 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B3C1BF372746D5DB006BD338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		B3C1BF422746D61D006BD338 /* GestioneION.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GestioneION.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		B375E8262746A6C200E05B54 /* Frameworks */ = {
+		B3C1BF2D2746D5DA006BD338 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -36,53 +34,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B375E8202746A6C200E05B54 = {
+		B3C1BF272746D5DA006BD338 = {
 			isa = PBXGroup;
 			children = (
-				B375E82B2746A6C200E05B54 /* eION */,
-				B375E82A2746A6C200E05B54 /* Products */,
+				B3C1BF412746D61D006BD338 /* GestioneION.xcdatamodeld */,
+				B3C1BF462746D74E006BD338 /* Extensiones */,
+				B3C1BF452746D732006BD338 /* VistaModelo */,
+				B3C1BF442746D72A006BD338 /* Modelo */,
+				B3C1BF322746D5DA006BD338 /* eION */,
+				B3C1BF312746D5DA006BD338 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		B375E82A2746A6C200E05B54 /* Products */ = {
+		B3C1BF312746D5DA006BD338 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B375E8292746A6C200E05B54 /* eION.app */,
+				B3C1BF302746D5DA006BD338 /* eION.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B375E82B2746A6C200E05B54 /* eION */ = {
+		B3C1BF322746D5DA006BD338 /* eION */ = {
 			isa = PBXGroup;
 			children = (
-				B375E82C2746A6C200E05B54 /* eIONApp.swift */,
-				B375E82E2746A6C200E05B54 /* ContentView.swift */,
-				B375E8302746A6C300E05B54 /* Assets.xcassets */,
-				B375E8352746A6C300E05B54 /* Persistence.swift */,
-				B375E8372746A6C300E05B54 /* eION.xcdatamodeld */,
-				B375E8322746A6C300E05B54 /* Preview Content */,
+				B3C1BF332746D5DA006BD338 /* eIONApp.swift */,
+				B3C1BF352746D5DA006BD338 /* ContentView.swift */,
+				B3C1BF372746D5DB006BD338 /* Assets.xcassets */,
+				B3C1BF392746D5DB006BD338 /* Preview Content */,
 			);
 			path = eION;
 			sourceTree = "<group>";
 		};
-		B375E8322746A6C300E05B54 /* Preview Content */ = {
+		B3C1BF392746D5DB006BD338 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				B375E8332746A6C300E05B54 /* Preview Assets.xcassets */,
+				B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B3C1BF442746D72A006BD338 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modelo;
+			sourceTree = "<group>";
+		};
+		B3C1BF452746D732006BD338 /* VistaModelo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VistaModelo;
+			sourceTree = "<group>";
+		};
+		B3C1BF462746D74E006BD338 /* Extensiones */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensiones;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B375E8282746A6C200E05B54 /* eION */ = {
+		B3C1BF2F2746D5DA006BD338 /* eION */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B375E83C2746A6C300E05B54 /* Build configuration list for PBXNativeTarget "eION" */;
+			buildConfigurationList = B3C1BF3E2746D5DB006BD338 /* Build configuration list for PBXNativeTarget "eION" */;
 			buildPhases = (
-				B375E8252746A6C200E05B54 /* Sources */,
-				B375E8262746A6C200E05B54 /* Frameworks */,
-				B375E8272746A6C200E05B54 /* Resources */,
+				B3C1BF2C2746D5DA006BD338 /* Sources */,
+				B3C1BF2D2746D5DA006BD338 /* Frameworks */,
+				B3C1BF2E2746D5DA006BD338 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -90,25 +111,25 @@
 			);
 			name = eION;
 			productName = eION;
-			productReference = B375E8292746A6C200E05B54 /* eION.app */;
+			productReference = B3C1BF302746D5DA006BD338 /* eION.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		B375E8212746A6C200E05B54 /* Project object */ = {
+		B3C1BF282746D5DA006BD338 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
-					B375E8282746A6C200E05B54 = {
+					B3C1BF2F2746D5DA006BD338 = {
 						CreatedOnToolsVersion = 13.1;
 					};
 				};
 			};
-			buildConfigurationList = B375E8242746A6C200E05B54 /* Build configuration list for PBXProject "eION" */;
+			buildConfigurationList = B3C1BF2B2746D5DA006BD338 /* Build configuration list for PBXProject "eION" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -116,44 +137,43 @@
 				en,
 				Base,
 			);
-			mainGroup = B375E8202746A6C200E05B54;
-			productRefGroup = B375E82A2746A6C200E05B54 /* Products */;
+			mainGroup = B3C1BF272746D5DA006BD338;
+			productRefGroup = B3C1BF312746D5DA006BD338 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B375E8282746A6C200E05B54 /* eION */,
+				B3C1BF2F2746D5DA006BD338 /* eION */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		B375E8272746A6C200E05B54 /* Resources */ = {
+		B3C1BF2E2746D5DA006BD338 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B375E8342746A6C300E05B54 /* Preview Assets.xcassets in Resources */,
-				B375E8312746A6C300E05B54 /* Assets.xcassets in Resources */,
+				B3C1BF3B2746D5DB006BD338 /* Preview Assets.xcassets in Resources */,
+				B3C1BF382746D5DB006BD338 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		B375E8252746A6C200E05B54 /* Sources */ = {
+		B3C1BF2C2746D5DA006BD338 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B375E8392746A6C300E05B54 /* eION.xcdatamodeld in Sources */,
-				B375E8362746A6C300E05B54 /* Persistence.swift in Sources */,
-				B375E82F2746A6C200E05B54 /* ContentView.swift in Sources */,
-				B375E82D2746A6C200E05B54 /* eIONApp.swift in Sources */,
+				B3C1BF362746D5DA006BD338 /* ContentView.swift in Sources */,
+				B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */,
+				B3C1BF342746D5DA006BD338 /* eIONApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		B375E83A2746A6C300E05B54 /* Debug */ = {
+		B3C1BF3C2746D5DB006BD338 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -214,7 +234,7 @@
 			};
 			name = Debug;
 		};
-		B375E83B2746A6C300E05B54 /* Release */ = {
+		B3C1BF3D2746D5DB006BD338 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -269,7 +289,7 @@
 			};
 			name = Release;
 		};
-		B375E83D2746A6C300E05B54 /* Debug */ = {
+		B3C1BF3F2746D5DB006BD338 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -297,7 +317,7 @@
 			};
 			name = Debug;
 		};
-		B375E83E2746A6C300E05B54 /* Release */ = {
+		B3C1BF402746D5DB006BD338 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -328,20 +348,20 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B375E8242746A6C200E05B54 /* Build configuration list for PBXProject "eION" */ = {
+		B3C1BF2B2746D5DA006BD338 /* Build configuration list for PBXProject "eION" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B375E83A2746A6C300E05B54 /* Debug */,
-				B375E83B2746A6C300E05B54 /* Release */,
+				B3C1BF3C2746D5DB006BD338 /* Debug */,
+				B3C1BF3D2746D5DB006BD338 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B375E83C2746A6C300E05B54 /* Build configuration list for PBXNativeTarget "eION" */ = {
+		B3C1BF3E2746D5DB006BD338 /* Build configuration list for PBXNativeTarget "eION" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				B375E83D2746A6C300E05B54 /* Debug */,
-				B375E83E2746A6C300E05B54 /* Release */,
+				B3C1BF3F2746D5DB006BD338 /* Debug */,
+				B3C1BF402746D5DB006BD338 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -349,17 +369,17 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		B375E8372746A6C300E05B54 /* eION.xcdatamodeld */ = {
+		B3C1BF412746D61D006BD338 /* GestioneION.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				B375E8382746A6C300E05B54 /* eION.xcdatamodel */,
+				B3C1BF422746D61D006BD338 /* GestioneION.xcdatamodel */,
 			);
-			currentVersion = B375E8382746A6C300E05B54 /* eION.xcdatamodel */;
-			path = eION.xcdatamodeld;
+			currentVersion = B3C1BF422746D61D006BD338 /* GestioneION.xcdatamodel */;
+			path = GestioneION.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
 /* End XCVersionGroup section */
 	};
-	rootObject = B375E8212746A6C200E05B54 /* Project object */;
+	rootObject = B3C1BF282746D5DA006BD338 /* Project object */;
 }
