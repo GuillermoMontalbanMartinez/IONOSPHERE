@@ -14,7 +14,7 @@ class CoreDataManager {
     let contexto : NSManagedObjectContext
     
     init() {
-        contenedor = NSPersistentContainer(name:"eION")
+        contenedor = NSPersistentContainer(name:"GestioneION")
         contenedor.loadPersistentStores{(descripcion, error) in
             if let error = error {
                 print("Error al cargar datos de CoreData: \(error)")
