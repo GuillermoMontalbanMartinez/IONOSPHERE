@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B32A33CF2747EE8F002BA977 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A33CE2747EE8F002BA977 /* CoreDataManager.swift */; };
 		B3C1BF342746D5DA006BD338 /* eIONApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C1BF332746D5DA006BD338 /* eIONApp.swift */; };
 		B3C1BF362746D5DA006BD338 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C1BF352746D5DA006BD338 /* ContentView.swift */; };
 		B3C1BF382746D5DB006BD338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C1BF372746D5DB006BD338 /* Assets.xcassets */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B32A33CE2747EE8F002BA977 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B3C1BF302746D5DA006BD338 /* eION.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = eION.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3C1BF332746D5DA006BD338 /* eIONApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONApp.swift; sourceTree = "<group>"; };
 		B3C1BF352746D5DA006BD338 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		B3C1BF452746D732006BD338 /* VistaModelo */ = {
 			isa = PBXGroup;
 			children = (
+				B32A33CE2747EE8F002BA977 /* CoreDataManager.swift */,
 			);
 			path = VistaModelo;
 			sourceTree = "<group>";
@@ -166,6 +169,7 @@
 			files = (
 				B3C1BF362746D5DA006BD338 /* ContentView.swift in Sources */,
 				B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */,
+				B32A33CF2747EE8F002BA977 /* CoreDataManager.swift in Sources */,
 				B3C1BF342746D5DA006BD338 /* eIONApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
