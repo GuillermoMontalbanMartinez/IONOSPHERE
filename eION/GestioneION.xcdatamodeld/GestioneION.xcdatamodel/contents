@@ -5,6 +5,7 @@
         <attribute name="a27" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="clase" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="fechaCreacion" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="nombrePulso" optional="YES" attributeType="String"/>
         <attribute name="ubicacion" optional="YES" attributeType="String"/>
         <relationship name="usuarioRelation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Usuario"/>
     </entity>
@@ -16,7 +17,7 @@
         <relationship name="pulsoRelation" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Pulso"/>
     </entity>
     <elements>
+        <element name="Pulso" positionX="51.82421875" positionY="49.2421875" width="128" height="134"/>
         <element name="Usuario" positionX="-314.41796875" positionY="-96.95703125" width="128" height="118"/>
-        <element name="Pulso" positionX="51.82421875" positionY="49.2421875" width="128" height="133"/>
     </elements>
 </model>

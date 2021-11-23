@@ -30,7 +30,7 @@ class ViewModel: ObservableObject {
         let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
         do {
             self.usuarios = try gestorCoreData.contexto.fetch(fetchUsuarios).sorted(){$0.nombre!<$1.nombre!}
-            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
+            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.nombrePulso! < $1.nombrePulso!}
         } catch let error {
             print("Error al cargar los datos :\(error)")
         }
@@ -62,8 +62,9 @@ class ViewModel: ObservableObject {
         saveData()
     }
     
-    func addPulso(fechaCreacion: Date, clase:Bool, ubicacion:String, a27:Double, a03:Double) {
+    func addPulso(fechaCreacion: Date, clase:Bool, ubicacion:String, a27:Double, a03:Double, nombrePulso:String) {
         let newPulso = Pulso(context: gestorCoreData.contexto)
+        newPulso.nombrePulso = nombrePulso
         newPulso.fechaCreacion = fechaCreacion
         newPulso.clase = clase
         newPulso.ubicacion = ubicacion
