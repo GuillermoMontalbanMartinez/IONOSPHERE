@@ -55,6 +55,12 @@ struct LoginView_swift: View {
                              //   .stroke(Color.gray, lineWidth: 3))
                     .frame(width: 350, height: 325)
                     
+                Button(action: {
+                    
+                }, label : {
+                    Text("¿No tienes cuenta?")
+                    Text("Registrate").underline()
+                })
                     
                     
             }
