@@ -20,8 +20,8 @@ class ViewModel: ObservableObject {
     }
     
     /**
-            Funcion que cargar los datos en memoria.
-             Los usuario los ordena por el nombre y los pulsos por fecha de creación
+        Funcion que cargar los datos en memoria.
+        Los usuario los ordena por el nombre y los pulsos por fecha de creación
      */
     func loadData() {
         usuarios.removeAll()
@@ -36,7 +36,7 @@ class ViewModel: ObservableObject {
         }
     }
     /**
-                Guardamos los datos y volvemos a cargarlos en memoria
+        Guardamos los datos y volvemos a cargarlos en memoria
      */
     func saveData() {
         gestorCoreData.save()
@@ -44,7 +44,7 @@ class ViewModel: ObservableObject {
     }
     
     /**
-                Creacion de los usuarios
+        Creacion de los usuarios
      */
     func addUsuario(nombre: String, password: String, foto: UIImage, tipoUsuario: Int16) {
         let newUser = Usuario(context: gestorCoreData.contexto)
@@ -76,5 +76,9 @@ class ViewModel: ObservableObject {
     func deletePulso(pulso: Pulso) {
         gestorCoreData.contexto.delete(pulso)
         saveData()
+    }
+    
+    func iniciarSesion(nombre:String, contraseña:String) {
+        
     }
 }
