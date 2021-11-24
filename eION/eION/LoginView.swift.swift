@@ -12,18 +12,18 @@ struct LoginView_swift: View {
     @State var password: String = ""
     
     var body: some View {
-        ZStack {
-            VStack {
+        GeometryReader { geometry in
+            VStack(alignment: .center, spacing: -140) {
                 Image("AppLogo").resizable().frame(width: 200, height: 200, alignment: .center)
-                VStack {
+                VStack(alignment: .center, spacing:20) {
                     HStack {
                         Text("Nombre      ")
                         TextField("Nombre usuario", text: $username)
-                            .padding()
-                            .cornerRadius(5.0)
-                            .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 2))
-                    }
-                    
+                                .padding()
+                                .cornerRadius(5.0)
+                                .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 2))
+                        }.frame(width: 325, height: 70, alignment: .center)
+                        
                     HStack {
                         Text("Contraseña")
                         TextField("Contraseña", text: $password)
@@ -31,8 +31,8 @@ struct LoginView_swift: View {
                             .cornerRadius(5.0)
                             .overlay(RoundedRectangle(cornerRadius: 16).stroke(Color.gray, lineWidth: 2))
                             .padding(.bottom,20)
-                    }
-                    
+                    }.frame(width: 325, height: 70, alignment: .center)
+                        
                     Button( action: {
                         //iniciarSesion(nombre: username, contraseña: password)
                         print("Hello world \(username)")
@@ -48,25 +48,20 @@ struct LoginView_swift: View {
                             .shadow(radius: 16)
                             .frame(width: 250, height: 90, alignment: .center)
                     })
-                    
-                }.shadow(color: Color.gray, radius: 16, x: 5, y: 5).background(Color.white)
-                    //.overlay(
-                          //  RoundedRectangle(cornerRadius: 16)
-                             //   .stroke(Color.gray, lineWidth: 3))
-                    .frame(width: 350, height: 325)
-                    
+                }.frame(width: geometry.size.width/1.1, height: geometry.size.height/2, alignment: .center)
+                    .background(Color.white)
+                    .cornerRadius(30)
+                    .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
+                    .shadow(radius: 10)
+               
                 Button(action: {
                     
                 }, label : {
                     Text("¿No tienes cuenta?")
                     Text("Registrate").underline()
-                })
-                    
-                    
+                }).frame(width: 400, height: 200, alignment: .center)
             }
-            
         }
-        
     }
 }
 
