@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListadoUbicacionesView: View {
+    @EnvironmentObject var vm : ViewModel
     @State var text: String = ""
     var body: some View {
         NavigationView{
@@ -18,15 +19,17 @@ struct ListadoUbicacionesView: View {
                     BusquedaView(text: $text)
                     
                     List(){
-                        FilaTablaview(tituloIzq: "Provincia 1")
-                        FilaTablaview(tituloIzq: "Provincia 2")
-                        FilaTablaview(tituloIzq: "Provincia 3")
-                        FilaTablaview(tituloIzq: "Provincia 4")
-                        FilaTablaview(tituloIzq: "Provincia 5")
-                        FilaTablaview(tituloIzq: "Provincia 1")
-                        FilaTablaview(tituloIzq: "Provincia 2")
-                        FilaTablaview(tituloIzq: "Provincia 3")
-                        FilaTablaview(tituloIzq: "Provincia 4")
+                        if(text.isEmpty){
+                            FilaTablaview(tituloIzq: "Provincia 1")
+                            FilaTablaview(tituloIzq: "Provincia 2")
+                            FilaTablaview(tituloIzq: "Provincia 3")
+                            FilaTablaview(tituloIzq: "Provincia 4")
+                            FilaTablaview(tituloIzq: "Provincia 5")
+                            FilaTablaview(tituloIzq: "Provincia 1")
+                            FilaTablaview(tituloIzq: "Provincia 2")
+                            FilaTablaview(tituloIzq: "Provincia 3")
+                            FilaTablaview(tituloIzq: "Provincia 4")
+                        }
                     }
                         .scaledToFit()
                         .onAppear(){
