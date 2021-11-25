@@ -19,6 +19,7 @@ struct ListadoUbicacionesView: View {
                     BusquedaView(text: $text)
                     
                     List(){
+                        
                         if(text.isEmpty){
                             FilaTablaview(tituloIzq: "Provincia 1")
                             FilaTablaview(tituloIzq: "Provincia 2")
