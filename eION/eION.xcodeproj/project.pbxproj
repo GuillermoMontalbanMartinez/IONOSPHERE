@@ -7,10 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */; };
+		2936664F274FE06800482D47 /* BusquedaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936664E274FE06800482D47 /* BusquedaView.swift */; };
 		780F3839274D25A400DC10D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F3838274D25A300DC10D0 /* HomeView.swift */; };
 		78BBF62E274D29610006CBD6 /* PulsoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBF62D274D29610006CBD6 /* PulsoView.swift */; };
 		78BBF630274D2C250006CBD6 /* BuscadorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBF62F274D2C250006CBD6 /* BuscadorView.swift */; };
-		78BBF632274D30280006CBD6 /* FilaTablaview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBF631274D30280006CBD6 /* FilaTablaview.swift */; };
+		78BBF632274D30280006CBD6 /* FilaTablaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78BBF631274D30280006CBD6 /* FilaTablaView.swift */; };
 		B32A33CF2747EE8F002BA977 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A33CE2747EE8F002BA977 /* CoreDataManager.swift */; };
 		B32A33D12747F241002BA977 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A33D02747F241002BA977 /* ViewModel.swift */; };
 		B343CCCB274DB11200F4A61E /* LoginView.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = B343CCCA274DB11200F4A61E /* LoginView.swift.swift */; };
@@ -23,10 +25,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoUbicacionesView.swift; sourceTree = "<group>"; };
+		2936664E274FE06800482D47 /* BusquedaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusquedaView.swift; sourceTree = "<group>"; };
 		780F3838274D25A300DC10D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		78BBF62D274D29610006CBD6 /* PulsoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PulsoView.swift; sourceTree = "<group>"; };
 		78BBF62F274D2C250006CBD6 /* BuscadorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscadorView.swift; sourceTree = "<group>"; };
-		78BBF631274D30280006CBD6 /* FilaTablaview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilaTablaview.swift; sourceTree = "<group>"; };
+		78BBF631274D30280006CBD6 /* FilaTablaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilaTablaView.swift; sourceTree = "<group>"; };
 		B32A33CE2747EE8F002BA977 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B32A33D02747F241002BA977 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B343CCCA274DB11200F4A61E /* LoginView.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift.swift; sourceTree = "<group>"; };
@@ -50,13 +54,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		29366650274FE25100482D47 /* Modelo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Modelo;
+			sourceTree = "<group>";
+		};
+		29366651274FE26100482D47 /* Extensiones */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensiones;
+			sourceTree = "<group>";
+		};
 		B3C1BF272746D5DA006BD338 = {
 			isa = PBXGroup;
 			children = (
+				29366651274FE26100482D47 /* Extensiones */,
+				29366650274FE25100482D47 /* Modelo */,
 				B3C1BF412746D61D006BD338 /* GestioneION.xcdatamodeld */,
-				B3C1BF462746D74E006BD338 /* Extensiones */,
 				B3C1BF452746D732006BD338 /* VistaModelo */,
-				B3C1BF442746D72A006BD338 /* Modelo */,
 				B3C1BF322746D5DA006BD338 /* eION */,
 				B3C1BF312746D5DA006BD338 /* Products */,
 			);
@@ -80,9 +98,11 @@
 				780F3838274D25A300DC10D0 /* HomeView.swift */,
 				78BBF62D274D29610006CBD6 /* PulsoView.swift */,
 				78BBF62F274D2C250006CBD6 /* BuscadorView.swift */,
-				78BBF631274D30280006CBD6 /* FilaTablaview.swift */,
+				78BBF631274D30280006CBD6 /* FilaTablaView.swift */,
 				B343CCCA274DB11200F4A61E /* LoginView.swift.swift */,
 				B343CCCC274E3EE100F4A61E /* RegistroView.swift */,
+				2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */,
+				2936664E274FE06800482D47 /* BusquedaView.swift */,
 			);
 			path = eION;
 			sourceTree = "<group>";
@@ -95,13 +115,6 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		B3C1BF442746D72A006BD338 /* Modelo */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Modelo;
-			sourceTree = "<group>";
-		};
 		B3C1BF452746D732006BD338 /* VistaModelo */ = {
 			isa = PBXGroup;
 			children = (
@@ -109,13 +122,6 @@
 				B32A33D02747F241002BA977 /* ViewModel.swift */,
 			);
 			path = VistaModelo;
-			sourceTree = "<group>";
-		};
-		B3C1BF462746D74E006BD338 /* Extensiones */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Extensiones;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,7 +201,9 @@
 				78BBF62E274D29610006CBD6 /* PulsoView.swift in Sources */,
 				B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */,
 				780F3839274D25A400DC10D0 /* HomeView.swift in Sources */,
-				78BBF632274D30280006CBD6 /* FilaTablaview.swift in Sources */,
+				2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */,
+				78BBF632274D30280006CBD6 /* FilaTablaView.swift in Sources */,
+				2936664F274FE06800482D47 /* BusquedaView.swift in Sources */,
 				B343CCCB274DB11200F4A61E /* LoginView.swift.swift in Sources */,
 				B32A33CF2747EE8F002BA977 /* CoreDataManager.swift in Sources */,
 				B3C1BF342746D5DA006BD338 /* eIONApp.swift in Sources */,
