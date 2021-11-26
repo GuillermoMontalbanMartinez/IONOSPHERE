@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct RegistroView: View {
+    @State var showView: Bool = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,12 +29,15 @@ struct RegistroView: View {
                         HStack() {
                             Text("¿Tienes una cuenta creada", tableName: "Login")
                             Button {
-                             
+                                self.showView = true
                             } label: {
                                 Text("Iniciar sesión", tableName: "Login")
                                     .foregroundColor(.black)
                                     .underline()
                                     .bold()
+                            }
+                            NavigationLink(destination: LoginView(),isActive: $showView) {
+                                EmptyView()
                             }
                         }.padding(.top,-150)
                     }

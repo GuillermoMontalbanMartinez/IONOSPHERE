@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct LoginView: View {
-    @State var username: String = ""
-    @State var password: String = ""
     @State var showView: Bool = false
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -36,11 +35,14 @@ struct LoginView: View {
                                 .underline()
                                 .bold()
                         }
-                        NavigationLink("", destination: RegistroView(), isActive: $showView)
+                        NavigationLink(destination: RegistroView(), isActive: $showView) {
+                                EmptyView()
+                        }
                     }
                 }
             }
-        }
+        }.navigationBarTitle("")
+         .navigationBarHidden(true)
     }
 }
 
