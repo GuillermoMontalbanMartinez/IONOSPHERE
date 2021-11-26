@@ -2,9 +2,8 @@
 //  CrearPulsoView.swift
 //  eION
 //
-//  Created by Jorge Mora Campoy on 24/11/21.
+//  Created by Jorge Mora Campoy on 26/11/21.
 //
-
 import SwiftUI
 
 struct CrearPulsoView: View {
@@ -72,3 +71,4 @@ struct CrearPulsoView_Previews: PreviewProvider {
         }
     }
 }
+

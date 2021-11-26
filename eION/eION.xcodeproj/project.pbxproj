@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */; };
 		2936664F274FE06800482D47 /* BusquedaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936664E274FE06800482D47 /* BusquedaView.swift */; };
+		707CA9902750619600CA2FE9 /* CrearPulsoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */; };
 		780F3839274D25A400DC10D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F3838274D25A300DC10D0 /* HomeView.swift */; };
 		786E20422750283A00C5901E /* DiagramaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E20412750283A00C5901E /* DiagramaView.swift */; };
 		786E2044275028BE00C5901E /* HomeAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E2043275028BE00C5901E /* HomeAdminView.swift */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoUbicacionesView.swift; sourceTree = "<group>"; };
 		2936664E274FE06800482D47 /* BusquedaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusquedaView.swift; sourceTree = "<group>"; };
+		707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrearPulsoView.swift; sourceTree = "<group>"; };
 		780F3838274D25A300DC10D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		786E20412750283A00C5901E /* DiagramaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramaView.swift; sourceTree = "<group>"; };
 		786E2043275028BE00C5901E /* HomeAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdminView.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				2936664E274FE06800482D47 /* BusquedaView.swift */,
 				9CA2702C27500AE100C10236 /* ListaUsuariosAdmin.swift */,
 				786E2043275028BE00C5901E /* HomeAdminView.swift */,
+				707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */,
 			);
 			path = eION;
 			sourceTree = "<group>";
@@ -235,6 +238,7 @@
 				B343CCCB274DB11200F4A61E /* LoginView.swift in Sources */,
 				B32A33CF2747EE8F002BA977 /* CoreDataManager.swift in Sources */,
 				B3C1BF342746D5DA006BD338 /* eIONApp.swift in Sources */,
+				707CA9902750619600CA2FE9 /* CrearPulsoView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
