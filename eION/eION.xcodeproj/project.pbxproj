@@ -10,6 +10,8 @@
 		2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */; };
 		2936664F274FE06800482D47 /* BusquedaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936664E274FE06800482D47 /* BusquedaView.swift */; };
 		707CA9902750619600CA2FE9 /* CrearPulsoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */; };
+		707CA992275069D300CA2FE9 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */; };
+		708059A92750EDC6008F3004 /* MicrofonoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708059A82750EDC6008F3004 /* MicrofonoView.swift */; };
 		780F3839274D25A400DC10D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F3838274D25A300DC10D0 /* HomeView.swift */; };
 		786E20422750283A00C5901E /* DiagramaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E20412750283A00C5901E /* DiagramaView.swift */; };
 		786E2044275028BE00C5901E /* HomeAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E2043275028BE00C5901E /* HomeAdminView.swift */; };
@@ -34,6 +36,8 @@
 		2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoUbicacionesView.swift; sourceTree = "<group>"; };
 		2936664E274FE06800482D47 /* BusquedaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusquedaView.swift; sourceTree = "<group>"; };
 		707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrearPulsoView.swift; sourceTree = "<group>"; };
+		707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpeechRecognizer.swift; path = eION/SpeechRecognizer.swift; sourceTree = SOURCE_ROOT; };
+		708059A82750EDC6008F3004 /* MicrofonoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrofonoView.swift; sourceTree = "<group>"; };
 		780F3838274D25A300DC10D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		786E20412750283A00C5901E /* DiagramaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramaView.swift; sourceTree = "<group>"; };
 		786E2043275028BE00C5901E /* HomeAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdminView.swift; sourceTree = "<group>"; };
@@ -69,6 +73,7 @@
 		29366651274FE26100482D47 /* Extensiones */ = {
 			isa = PBXGroup;
 			children = (
+				707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */,
 			);
 			path = Extensiones;
 			sourceTree = "<group>";
@@ -129,6 +134,7 @@
 				9CA2702C27500AE100C10236 /* ListaUsuariosAdmin.swift */,
 				786E2043275028BE00C5901E /* HomeAdminView.swift */,
 				707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */,
+				708059A82750EDC6008F3004 /* MicrofonoView.swift */,
 			);
 			path = eION;
 			sourceTree = "<group>";
@@ -223,8 +229,10 @@
 				B32A33D12747F241002BA977 /* ViewModel.swift in Sources */,
 				B3C1BF362746D5DA006BD338 /* ContentView.swift in Sources */,
 				786E20422750283A00C5901E /* DiagramaView.swift in Sources */,
+				708059A92750EDC6008F3004 /* MicrofonoView.swift in Sources */,
 				B343CCCD274E3EE100F4A61E /* RegistroView.swift in Sources */,
 				78BBF630274D2C250006CBD6 /* BuscadorView.swift in Sources */,
+				707CA992275069D300CA2FE9 /* SpeechRecognizer.swift in Sources */,
 				78BBF62E274D29610006CBD6 /* PulsoView.swift in Sources */,
 				B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */,
 				786E204727502A0F00C5901E /* MenuView.swift in Sources */,
@@ -371,6 +379,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"eION/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "El audio se graba para transcribir la reunión. Las grabaciones de audio se descartan después de la transcripción ";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Puede ver una transcripción de texto de su reunión en la aplicación";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -399,6 +409,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"eION/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "El audio se graba para transcribir la reunión. Las grabaciones de audio se descartan después de la transcripción ";
+				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Puede ver una transcripción de texto de su reunión en la aplicación";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

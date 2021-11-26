@@ -5,12 +5,16 @@
 //  Created by Jorge Mora Campoy on 26/11/21.
 //
 import SwiftUI
+import AVFoundation
 
 struct CrearPulsoView: View {
     var clases = ["a03","a27"]
+    @State var valorPorVoz : String = ""
     @State var claseSeleccionada = ""
-    @State var valorSliderRedondeado : String = ""
     @State var valorSlider : Double = 0
+    @State var modoGrabacion : Bool = false
+   
+    
     var body: some View {
         NavigationView{
         VStack{
@@ -24,9 +28,18 @@ struct CrearPulsoView: View {
                             
                                 
                                 HStack{
-                                    
-                                }
-                            Spacer()
+                                    Text("Introduzca un valor para A27: \(valorPorVoz) ")
+                                            Spacer()
+                                    Image(systemName: "mic.fill").resizable().frame(width:25, height: 32).onTapGesture {
+                                        modoGrabacion.toggle()
+                                    }.sheet(isPresented: $modoGrabacion ){
+                                        MicrofonoView(valorPorVoz: $valorPorVoz,modoGrabacion: $modoGrabacion)
+                                    }
+                                 
+                                }.frame(width: 300, alignment: .leading)
+                          
+                            
+                                           
                                 HStack{
                                     NavigationView {
                                                Form {
@@ -36,7 +49,7 @@ struct CrearPulsoView: View {
                                                                Text($0)
                                                     }
                                                 }
-                                            }.padding()
+                                            }
                                         }
                                 }
                         }
@@ -44,7 +57,7 @@ struct CrearPulsoView: View {
                         VStack{
                         Button(action:{
                             print("Pulso creado")
-                            valorSliderRedondeado  = String(String(valorSlider).prefix(7))
+                            let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
                             
                             valorSlider = Double(valorSliderRedondeado) ?? 0.0
                         }, label:{
@@ -56,8 +69,9 @@ struct CrearPulsoView: View {
                   }.listRowSeparator(.hidden)
               
                 
-            }.frame(width: 350, height:400 ).background(.white).cornerRadius(30).shadow( radius: 10).onAppear(perform: {
+            }.frame(width: 350, height:450 ).background(.white).cornerRadius(30).shadow( radius: 10).onAppear(perform: {
                 UITableView.appearance().backgroundColor = .clear
+                
             })
            
         }.navigationTitle(Text("Nuevo pulso").font(.largeTitle).foregroundColor(Color.accentColor))
