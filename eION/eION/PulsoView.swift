@@ -48,5 +48,6 @@ struct PulsoView: View {
 struct PulsoView_Previews: PreviewProvider {
     static var previews: some View {
         PulsoView(identificador: "0001", a03: 23.5, a27: 0.5, fechaRegistro: "05/04/03")
+.previewInterfaceOrientation(.portrait)
     }
 }

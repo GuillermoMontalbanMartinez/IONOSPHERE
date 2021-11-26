@@ -10,7 +10,7 @@ import SwiftUI
 struct LoginView: View {
     @State var username: String = ""
     @State var password: String = ""
-    
+    @State var showView: Bool = false
     var body: some View {
         NavigationView {
             ZStack {
@@ -27,14 +27,16 @@ struct LoginView: View {
                 VStack(spacing: 15) {
                     LoginForm()
                     HStack() {
-                        Text("¿No tienes cuenta?", tableName: "Login").bold()
+                        Text("¿No tienes cuenta?", tableName: "Login")
                          Button {
-                             
+                             showView = true
                          } label: {
                              Text("Registrate", tableName: "Login")
                                 .foregroundColor(.black)
                                 .underline()
+                                .bold()
                         }
+                        NavigationLink("", destination: RegistroView(), isActive: $showView)
                     }
                 }
             }
@@ -43,7 +45,6 @@ struct LoginView: View {
 }
 
 private struct LoginForm: View {
-    
     @State var username:String = ""
     @State var password:String = ""
     
@@ -95,5 +96,6 @@ private struct LoginForm: View {
 struct LoginView_swift_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+.previewInterfaceOrientation(.portrait)
     }
 }

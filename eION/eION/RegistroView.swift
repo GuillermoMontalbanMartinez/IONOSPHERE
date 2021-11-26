@@ -25,19 +25,21 @@ struct RegistroView: View {
                     VStack(spacing: 190) {
                         RegistroForm()
                         HStack() {
-                            Text("¿Tienes una cuenta creada", tableName: "Login").bold()
+                            Text("¿Tienes una cuenta creada", tableName: "Login")
                             Button {
                              
                             } label: {
                                 Text("Iniciar sesión", tableName: "Login")
                                     .foregroundColor(.black)
                                     .underline()
+                                    .bold()
                             }
                         }.padding(.top,-150)
                     }
                 }
             }
-        }
+        }.navigationBarTitle("")
+        .navigationBarHidden(true)
     }
 }
 
