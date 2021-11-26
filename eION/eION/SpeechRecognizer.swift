@@ -11,27 +11,29 @@ import Speech
 import SwiftUI
 
 struct SpeechRecognizer {
+    
     private class SpeechAssist {
         var audioEngine: AVAudioEngine?
         var recognitionRequest: SFSpeechAudioBufferRecognitionRequest?
         var recognitionTask: SFSpeechRecognitionTask?
         let speechRecognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "es-ES"))
-
+        
         deinit {
             reset()
         }
-
+        
         func reset() {
             recognitionTask?.cancel()
+            recognitionTask?.finish()
             audioEngine?.stop()
             audioEngine = nil
             recognitionRequest = nil
             recognitionTask = nil
         }
     }
-
+    
     private let assistant = SpeechAssist()
-
+    
     func record(to speech: Binding<String>) {
         relay(speech, message: "Requesting access")
         canAccess { authorized in
@@ -39,9 +41,9 @@ struct SpeechRecognizer {
                 relay(speech, message: "Access denied")
                 return
             }
-
+            
             relay(speech, message: "Access granted")
-
+            
             assistant.audioEngine = AVAudioEngine()
             guard let audioEngine = assistant.audioEngine else {
                 fatalError("Unable to create audio engine")
@@ -51,16 +53,16 @@ struct SpeechRecognizer {
                 fatalError("Unable to create request")
             }
             recognitionRequest.shouldReportPartialResults = true
-
+            
             do {
                 relay(speech, message: "")
-
+                
                 let audioSession = AVAudioSession.sharedInstance()
                 try audioSession.setCategory(.record, mode: .measurement, options: .duckOthers)
                 try audioSession.setActive(true, options: .notifyOthersOnDeactivation)
                 let inputNode = audioEngine.inputNode
                 relay(speech, message: "Found input node")
-
+                
                 let recordingFormat = inputNode.outputFormat(forBus: 0)
                 inputNode.installTap(onBus: 0, bufferSize: 1024, format: recordingFormat) { (buffer: AVAudioPCMBuffer, when: AVAudioTime) in
                     recognitionRequest.append(buffer)
@@ -74,7 +76,7 @@ struct SpeechRecognizer {
                         relay(speech, message: result.bestTranscription.formattedString)
                         isFinal = result.isFinal
                     }
-
+                    
                     if error != nil || isFinal {
                         audioEngine.stop()
                         inputNode.removeTap(onBus: 0)

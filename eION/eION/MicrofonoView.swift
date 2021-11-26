@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MicrofonoView: View {
-    private let speechRecognizer = SpeechRecognizer()
+    @State var speechRecognizer = SpeechRecognizer()
     @Binding var valorPorVoz :String
     @State var isRecording : Bool = false
     @Binding var modoGrabacion: Bool
@@ -21,8 +21,15 @@ struct MicrofonoView: View {
                 VStack{
                     Image(systemName: "mic.circle").resizable().frame(width: 150, height: 150, alignment: .center).foregroundColor(Color.accentColor).onTapGesture {
                         isRecording.toggle()
+                        speechRecognizer.record(to: $valorPorVoz)
                     }
                     Text("Pulsa para grabar").padding().font(.footnote)
+                    
+                    Button() {
+                        modoGrabacion.toggle()
+                    } label: {
+                        Text("Cancelar")
+                    }.padding().background(Color.accentColor).foregroundColor(.white).clipShape(Capsule())
                 }
             } else{
                 VStack{
@@ -32,24 +39,18 @@ struct MicrofonoView: View {
                     }else{
                         Text("Valor de A27: \(valorPorVoz)").padding()
                     }
-                    Button(action:{
-                        
+                    
+                    Button(){
                         isRecording.toggle()
-                    }, label:{
-                        Image(systemName: "x.circle").resizable().frame(width: 40, height: 40, alignment: .center).foregroundColor(Color.black)
-                        
-                    })
+                        speechRecognizer.stopRecording()
+                    } label : {
+                        Text("Hecho")
+                    }.padding().background(Color.green).foregroundColor(.white).clipShape(Capsule())
                 }.onAppear{
-                    speechRecognizer.record(to: $valorPorVoz)
+                    
                 }
             }
-            
-            Button() {
-                modoGrabacion.toggle()
-            } label: {
-                Text("Cancelar")
-            }.padding().background(Color.accentColor).foregroundColor(.white).clipShape(Capsule())
-            
+                        
             Spacer()
         }
     }

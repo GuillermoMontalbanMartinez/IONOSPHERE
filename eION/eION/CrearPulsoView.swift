@@ -13,6 +13,7 @@ struct CrearPulsoView: View {
     @State var claseSeleccionada = ""
     @State var valorSlider : Double = 0
     @State var modoGrabacion : Bool = false
+    @State var isRecording = false
     
     var body: some View {
         NavigationView{
@@ -76,9 +77,9 @@ struct CrearPulsoView: View {
     }
     
     struct CrearPulsoView_Previews: PreviewProvider {
-     static var previews: some View {
-     CrearPulsoView()
-     }
-     }
+        static var previews: some View {
+            CrearPulsoView()
+        }
+    }
 }
 
