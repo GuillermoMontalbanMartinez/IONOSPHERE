@@ -27,7 +27,7 @@ struct LoginView: View {
                 VStack(spacing: 15) {
                     LoginForm()
                     HStack() {
-                        Text("¿No tienes cuenta?", tableName: "Login")
+                        Text("¿No tienes cuenta?", tableName: "Login").bold()
                          Button {
                              
                          } label: {
@@ -84,7 +84,7 @@ private struct LoginForm: View {
                     .background(.black)
                     .cornerRadius(8)
                     .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
-                }.padding(.bottom, 30)
+            }.padding(.bottom, 30)
         }.background()
          .cornerRadius(20)
          .shadow(color: .gray.opacity(0.4), radius: 4)
