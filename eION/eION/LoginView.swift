@@ -12,7 +12,7 @@ struct LoginView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
+            VStack {
                 VStack {
                     Image("AppLogo")
                         .resizable()
@@ -20,8 +20,7 @@ struct LoginView: View {
                         .frame(width: 200)
                         .clipShape(Circle())
                         .frame( alignment: .top)
-                    Spacer()
-                }
+                }.offset(y:-140)
                 
                 VStack(spacing: 15) {
                     LoginForm()
@@ -39,10 +38,9 @@ struct LoginView: View {
                                 EmptyView()
                         }
                     }
-                }
+                }.offset(y:-120)
             }
-        }.navigationBarTitle("")
-         .navigationBarHidden(true)
+        }
     }
 }
 

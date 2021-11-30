@@ -11,40 +11,21 @@ struct RegistroView: View {
     @State var showView: Bool = false
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                VStack {
-                    VStack {
-                        Image("AppLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200)
-                            .clipShape(Circle())
-                            .frame( alignment: .top)
-                        Spacer()
-                    }.padding(.top,-50)
-              
-                    VStack(spacing: 190) {
-                        RegistroForm()
-                        HStack() {
-                            Text("¿Tienes una cuenta creada", tableName: "Login")
-                            Button {
-                                self.showView = true
-                            } label: {
-                                Text("Iniciar sesión", tableName: "Login")
-                                    .foregroundColor(.black)
-                                    .underline()
-                                    .bold()
-                            }
-                            NavigationLink(destination: LoginView(),isActive: $showView) {
-                                EmptyView()
-                            }
-                        }.padding(.top,-150)
-                    }
-                }
-            }
-        }.navigationBarTitle("")
-        .navigationBarHidden(true)
+        VStack {
+            VStack {
+                Image("AppLogo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 200)
+                    .clipShape(Circle())
+                    .frame( alignment: .top)
+                    
+            }.padding(40)
+                .offset(y:-120)
+            VStack(spacing: 15) {
+                RegistroForm()
+            }.offset(y:-140)
+        }
     }
 }
 
