@@ -10,12 +10,16 @@ import SwiftUI
 struct FilaTablaview: View {
     var tituloIzq: String
     var tituloDer: String? //Puede no existir
+    var botonAdmin: Bool? // True switcher
     var body: some View {
         HStack {
             Text(tituloIzq)
             Spacer()
             if ( tituloDer != nil) {
                 Text(tituloDer!).font(.caption).foregroundColor(.gray)
+            }
+            if(botonAdmin == true){
+                //funcion para cargar boton en on / off segun tipo usuario
             }
 
         }
