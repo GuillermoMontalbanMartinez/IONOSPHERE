@@ -8,8 +8,48 @@
 import SwiftUI
 
 struct ListaUsuariosAdmin: View {
+    @State var text: String = ""
+    var usuarios: [String] = ["Hunor","Guillermo","Marta","Cristian","Jorge","Francisco","Luis","Ramón","Manel"]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            VStack(alignment: .center, spacing: -140) {
+                
+                VStack(alignment: .center, spacing:20) {
+                    
+                    BusquedaView(text: $text)
+                    HStack(alignment: .center, spacing: 0 ){
+                        Text("Usuario")
+                        Spacer()
+                        Text("Lector/Visitante")
+                    }.padding(.init(top: 0, leading: 40, bottom: -20, trailing: 50))
+                       
+                    
+                    
+                    List(){
+                        ForEach(usuarios, id: \.self) { usuario in
+                                                    if(text.isEmpty || usuario.hasPrefix(text)){
+                                                        NavigationLink(destination: ListadoPulsosView()){
+                                                            FilaTablaview(tituloIzq: usuario)
+                                                        }
+                                                    }
+                                                }
+                        
+                    }
+                        .scaledToFit()
+                        .onAppear(){
+                            UITableView.appearance().backgroundColor = .clear
+                        }
+                        
+                }
+                .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
+                    .background(Color.white)
+                    .cornerRadius(30)
+                    .shadow(radius: 10)
+               
+            }
+                .navigationTitle("Usuarios")
+            
+        }
     }
 }
 
