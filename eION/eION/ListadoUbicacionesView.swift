@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ListadoUbicacionesView: View {
-    @EnvironmentObject var vm : ViewModel
     @State var text: String = ""
+    var provincias: [String] = ["Almería", "Ávila", "Barcelona", "Zaragoza"]
     var body: some View {
         NavigationView{
             VStack(alignment: .center, spacing: -140) {
@@ -19,17 +19,12 @@ struct ListadoUbicacionesView: View {
                     BusquedaView(text: $text)
                     
                     List(){
-                        
-                        if(text.isEmpty){
-                            FilaTablaview(tituloIzq: "Provincia 1")
-                            FilaTablaview(tituloIzq: "Provincia 2")
-                            FilaTablaview(tituloIzq: "Provincia 3")
-                            FilaTablaview(tituloIzq: "Provincia 4")
-                            FilaTablaview(tituloIzq: "Provincia 5")
-                            FilaTablaview(tituloIzq: "Provincia 1")
-                            FilaTablaview(tituloIzq: "Provincia 2")
-                            FilaTablaview(tituloIzq: "Provincia 3")
-                            FilaTablaview(tituloIzq: "Provincia 4")
+                        ForEach(provincias, id: \.self) { provincia in
+                            if(text.isEmpty || provincia.hasPrefix(text)){
+                                NavigationLink(destination: ListadoPulsosView()){
+                                    FilaTablaview(tituloIzq: provincia)
+                                }
+                            }
                         }
                     }
                         .scaledToFit()

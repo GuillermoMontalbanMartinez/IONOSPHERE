@@ -30,6 +30,7 @@
 		B3C1BF382746D5DB006BD338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C1BF372746D5DB006BD338 /* Assets.xcassets */; };
 		B3C1BF3B2746D5DB006BD338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */; };
 		B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3C1BF412746D61D006BD338 /* GestioneION.xcdatamodeld */; };
+		F87DC2152757DF6F009B2F32 /* ListadoPulsosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		B3C1BF372746D5DB006BD338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B3C1BF422746D61D006BD338 /* GestioneION.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GestioneION.xcdatamodel; sourceTree = "<group>"; };
+		F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoPulsosView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				B343CCCA274DB11200F4A61E /* LoginView.swift */,
 				B343CCCC274E3EE100F4A61E /* RegistroView.swift */,
 				2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */,
+				F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */,
 				2936664E274FE06800482D47 /* BusquedaView.swift */,
 				9CA2702C27500AE100C10236 /* ListaUsuariosAdmin.swift */,
 				786E2043275028BE00C5901E /* HomeAdminView.swift */,
@@ -236,6 +239,7 @@
 				78BBF62E274D29610006CBD6 /* PulsoView.swift in Sources */,
 				B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */,
 				786E204727502A0F00C5901E /* MenuView.swift in Sources */,
+				F87DC2152757DF6F009B2F32 /* ListadoPulsosView.swift in Sources */,
 				780F3839274D25A400DC10D0 /* HomeView.swift in Sources */,
 				786E204A275031AE00C5901E /* TabButton.swift in Sources */,
 				2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */,
