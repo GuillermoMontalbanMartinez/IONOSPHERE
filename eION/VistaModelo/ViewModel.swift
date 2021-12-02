@@ -63,6 +63,7 @@ class ViewModel: ObservableObject {
                 throw error.datoRepetido
             }
         }
+        
         saveData()
     }
     
