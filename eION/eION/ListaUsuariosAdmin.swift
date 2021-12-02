@@ -28,7 +28,7 @@ struct ListaUsuariosAdmin: View {
                     List(){
                         ForEach(usuarios, id: \.self) { usuario in
                             if(text.isEmpty || usuario.hasPrefix(text)){
-                                NavigationLink(destination: ListadoPulsosView()){
+                                NavigationLink(destination: ListadoUbicacionesView()){
                                     FilaTablaview(tituloIzq: usuario, botonAdmin: true)
                                 }
                             }

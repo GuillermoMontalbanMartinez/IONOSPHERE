@@ -8,8 +8,11 @@ import SwiftUI
 import AVFoundation
 
 struct CrearPulsoView: View {
-    var clases = ["a03","a27"]
-    @State var valorPorVoz : String = ""
+    @EnvironmentObject var vm: ViewModel
+    var clases = ["Good","Bad"]
+    var ubicacion :String = "Almería"
+    @State var tipoClase : Bool = false
+    @State var valorPorVoz : Double = 0
     @State var claseSeleccionada = ""
     @State var valorSlider : Double = 0
     @State var modoGrabacion : Bool = false
@@ -25,17 +28,19 @@ struct CrearPulsoView: View {
                             Text("Introduzca un valor para A03: \((round(100000 * valorSlider) / 100000))").padding(.top)
                             Slider(value: $valorSlider, in: -1...1).frame(width:300)
                             Spacer()
-                            
-                            
-                            HStack{
-                                Text("Introduzca un valor para A27: \(valorPorVoz) ")
+                        
+                           // HStack{
+                                /*Text("Introduzca un valor para A27: \(valorPorVoz) ")
                                 Spacer()
                                 Image(systemName: "mic.fill").resizable().frame(width:25, height: 32).onTapGesture {
                                     modoGrabacion.toggle()
                                 }.sheet(isPresented: $modoGrabacion ){
                                     MicrofonoView(valorPorVoz: $valorPorVoz,modoGrabacion: $modoGrabacion)
-                                }
-                            }.frame(width: 300, alignment: .leading)
+                                }*/
+                                Text("Introduzca un valor para A27: \((round(100000 * valorPorVoz) / 100000))").padding(.top)
+                                Slider(value: $valorPorVoz, in: -1...1).frame(width:300)
+                                
+                            //}.frame(width: 300, alignment: .center)
                             
                             HStack{
                                 NavigationView {
@@ -55,8 +60,25 @@ struct CrearPulsoView: View {
                                 Button(action:{
                                     print("Pulso creado")
                                     let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
+                                    let valorPorVozRedondeado  = String(String(valorPorVoz).prefix(7))
                                     
                                     valorSlider = Double(valorSliderRedondeado) ?? 0.0
+                                    
+                                    valorPorVoz = Double(valorPorVozRedondeado) ?? 0.0
+                                   /* let formater = DateFormatter()
+                                    formater.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                    let fecha = formater.string(from: Date())*/
+                                    
+                                    
+                                    if(claseSeleccionada == "Good"){
+                                        tipoClase = true
+                                    }else{
+                                        tipoClase = false
+                                    }
+                                    
+                                    vm.addPulso(fechaCreacion: Date(), clase: tipoClase, ubicacion: ubicacion, a27: valorPorVoz, a03: valorSlider, nombrePulso: "")
+                                    print("Pulso creado")
+                                    
                                 }, label:{
                                     Text("Crear pulso")
                                     
