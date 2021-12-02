@@ -10,7 +10,6 @@
         <relationship name="usuarioRelation" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Usuario"/>
     </entity>
     <entity name="Usuario" representedClassName="Usuario" syncable="YES" codeGenerationType="class">
-        <attribute name="foto" optional="YES" attributeType="Binary"/>
         <attribute name="nombre" optional="YES" attributeType="String"/>
         <attribute name="password" optional="YES" attributeType="String"/>
         <attribute name="tipoUsuario" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
@@ -18,6 +17,6 @@
     </entity>
     <elements>
         <element name="Pulso" positionX="51.82421875" positionY="49.2421875" width="128" height="134"/>
-        <element name="Usuario" positionX="-314.41796875" positionY="-96.95703125" width="128" height="118"/>
+        <element name="Usuario" positionX="-314.41796875" positionY="-96.95703125" width="128" height="89"/>
     </elements>
 </model>
