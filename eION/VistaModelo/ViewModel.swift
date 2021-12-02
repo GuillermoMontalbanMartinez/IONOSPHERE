@@ -57,14 +57,22 @@ class ViewModel: ObservableObject {
         newUser.nombre = nombre
         newUser.password = password
         newUser.tipoUsuario = 1
+        var errorEncontrado: Bool = false
 
         for u in usuarios {
             if (u.nombre == newUser.nombre) {
+                errorEncontrado = true
                 throw error.datoRepetido
             }
         }
+        if (errorEncontrado) {
+            
+        } else {
+            print("milagro")
+            saveData()
+        }
         
-        saveData()
+        
     }
     
     func deleteUsuario(indexSet: IndexSet) {

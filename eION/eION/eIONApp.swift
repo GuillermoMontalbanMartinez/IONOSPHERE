@@ -12,7 +12,7 @@ struct eIONApp: App {
     @StateObject private var vm: ViewModel = ViewModel()
     var body: some Scene {
         WindowGroup {
-            ListaUsuariosAdmin().environmentObject(vm)
+            RegistroView().environmentObject(vm)
         }
     }
 }
