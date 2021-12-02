@@ -14,7 +14,7 @@ class ViewModel: ObservableObject {
     let gestorCoreData = CoreDataManager.instace // singleton
     
     enum error: Error {
-            case invalid
+            case datoRepetido
             case uncorrect
         }
     
@@ -60,7 +60,7 @@ class ViewModel: ObservableObject {
 
         for u in usuarios {
             if (u.nombre == newUser.nombre) {
-                throw error.invalid
+                throw error.datoRepetido
             }
         }
         saveData()

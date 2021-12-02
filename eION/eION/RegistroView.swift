@@ -68,7 +68,18 @@ private struct RegistroForm: View {
                 
             
                     Button {
-                       try! model.addUsuario(nombre: username, password: password)
+                       /*try! model.addUsuario(nombre: username, password: password)
+                        */
+                            
+                        do {
+                            try model.addUsuario(nombre: username, password: password)
+                            
+                        } catch eION.ViewModel.error.datoRepetido {
+                            print("Usuario existente en la base de datos")
+                        } catch {
+                            print("Error desconocido")
+                        }
+                        
                                     
                     } label: {
                         Text("Registrarse", tableName: "Login")
