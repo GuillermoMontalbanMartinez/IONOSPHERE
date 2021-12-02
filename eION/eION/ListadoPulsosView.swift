@@ -6,15 +6,52 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct ListadoPulsosView: View {
     @EnvironmentObject var vm : ViewModel
     @State var text: String = ""
     @State var mostrarFiltro: Bool = false
+    //var provincia : String
+    var latitud: Double = 0.0
+    var longitud: Double = 0.0
+    @State private var region = MKCoordinateRegion()
+    init(provincia : String){
+        switch(provincia){
+        case "Almería":
+            latitud = 36.8402
+            longitud = -2.46792
+            break
+        case "Ávila":
+            latitud = 40.6564
+            longitud = -4.70032
+            break
+        case "Barcelona":
+            latitud = 41.3879
+            longitud = 2.16992
+            break
+        case "Zaragoza":
+            latitud = 41.6563
+            longitud = -0.876566
+            break
+        default:
+            latitud = 0.0
+            longitud = 0.0
+        }
+    }
+    
     var body: some View {
         NavigationView{
             VStack(alignment: .center, spacing: -140) {
                 
+                Map(coordinateRegion: $region)
+                    .onAppear(){
+                        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
+                            longitude: longitud),
+                            span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                        )
+                    }
+                        .frame(width: 400, height: 150, alignment: .center)
                 VStack(alignment: .center, spacing:20) {
                     HStack{
                         BusquedaView(text: $text)
@@ -22,29 +59,30 @@ struct ListadoPulsosView: View {
                         Button(){
                             mostrarFiltro.toggle()
                         }label:{
-                            Image(systemName: "plus.rectangle.fill")
+                            Image(systemName: "chevron.up.chevron.down")
                                 .resizable()
                                 .frame(width: 70, height: 40)
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color.accentColor)
                                 .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
                         }
                             .padding(.bottom, 63)
                     }
                     
-                    List(){
-                        /*ForEach(vm.pulsos){pulso in
+                    List(){/*
+                        ForEach(vm.pulsos) { pulso in
                             if(text.isEmpty || pulso.hasPrefix(text)){
-                                NavigationLink(destination: PulsoView(identificador: pulso.nombrePulso, a03: pulso.a03, a27: pulso.a27, fechaRegistro: pulso.fechaRegistro)){
+                                NavigationLink(destination: PulsoView(identificador: pulso.nombrePulso, a03: pulso.a03, a27: pulso.a27, fechaRegistro: pulso.fechaRegistro)) {
                                     FilaTablaview(tituloIzq: pulso.nombrePulso, tituloDer: pulso.fechaRegistro)
                                 }
                             }
                         }
                             .onDelete{ indexSet in
                                 vm.pulsos.remove(atOffsets: indexSet)
-                            }*/
+                            }
+                         */
                     }
                         .scaledToFit()
-                        .onAppear(){
+                        .onAppear() {
                             UITableView.appearance().backgroundColor = .clear
                         }
                 }
@@ -61,7 +99,7 @@ struct ListadoPulsosView: View {
                             Image(systemName: "plus.circle.fill")
                                 .resizable()
                                 .frame(width: 30, height: 30)
-                                .foregroundColor(.blue)
+                                .foregroundColor(Color.accentColor)
                                 .padding(.top, 100)
                         }
                 )
@@ -74,6 +112,7 @@ struct ListadoPulsosView: View {
 
 struct ListadoPulsos_Previews: PreviewProvider {
     static var previews: some View {
-        ListadoPulsosView()
+        ListadoPulsosView(provincia: "Almería")
+            .environmentObject(ViewModel())
     }
 }

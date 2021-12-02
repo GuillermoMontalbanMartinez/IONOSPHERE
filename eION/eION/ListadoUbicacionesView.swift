@@ -19,9 +19,10 @@ struct ListadoUbicacionesView: View {
                     BusquedaView(text: $text)
                     
                     List(){
+                        
                         ForEach(provincias, id: \.self) { provincia in
                             if(text.isEmpty || provincia.hasPrefix(text)){
-                                NavigationLink(destination: ListadoPulsosView()){
+                                NavigationLink(destination: ListadoPulsosView(provincia: provincia)){
                                     FilaTablaview(tituloIzq: provincia)
                                 }
                             }
@@ -31,6 +32,7 @@ struct ListadoUbicacionesView: View {
                         .onAppear(){
                             UITableView.appearance().backgroundColor = .clear
                         }
+                    
                 }
                 .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
                     .background(Color.white)
