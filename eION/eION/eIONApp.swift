@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct eIONApp: App {
+    @StateObject private var vm: ViewModel = ViewModel()
     var body: some Scene {
         WindowGroup {
-            MenuView()
+            CrearPulsoView().environmentObject(vm)
         }
     }
 }
