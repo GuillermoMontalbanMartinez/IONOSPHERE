@@ -62,9 +62,9 @@ struct ListadoPulsosView: View {
                             mostrarFiltro.toggle()
                         }label:{
                             Image(systemName: "chevron.up.chevron.down")
-                                .resizable()
                                 .frame(width: 70, height: 40)
-                                .foregroundColor(Color.accentColor)
+                                .background(Color.accentColor)
+                                .foregroundColor(.white)
                                 .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
                         }
                             .padding(.bottom, 63)
@@ -103,7 +103,6 @@ struct ListadoPulsosView: View {
                                 .resizable()
                                 .frame(width: 30, height: 30)
                                 .foregroundColor(Color.accentColor)
-                                .padding(.top, 100)
                         }
                 )
                 .sheet(isPresented: $mostrarFiltro){

@@ -24,6 +24,7 @@ struct ListadoUbicacionesView: View {
                             if(text.isEmpty || provincia.hasPrefix(text)){
                                 NavigationLink(destination: ListadoPulsosView(provincia: provincia)){
                                     FilaTablaview(tituloIzq: provincia)
+                                    
                                 }
                             }
                         }
@@ -40,7 +41,7 @@ struct ListadoUbicacionesView: View {
                     .shadow(radius: 10)
                
             }
-                .navigationTitle("Ubicación")
+            .navigationTitle("Ubicación")
             
         }
     }
@@ -48,6 +49,6 @@ struct ListadoUbicacionesView: View {
 
 struct ListadoUbicacionesView_Previews: PreviewProvider {
     static var previews: some View {
-        ListadoUbicacionesView(text: "")
+        ListadoUbicacionesView()
     }
 }
