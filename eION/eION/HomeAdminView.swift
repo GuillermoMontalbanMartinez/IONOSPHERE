@@ -19,7 +19,7 @@ struct HomeAdminView: View {
             VStack {
                 ZStack {
                     ForEach(0..<lista.count) { index in
-                        DiagramaView( lista: lista, index: index, className: clases[index] ).foregroundColor(Color(generateRandomColor())).onTapGesture {
+                        DiagramaView( lista: lista, index: index).foregroundColor(Color(generateRandomColor())).onTapGesture {
                             mostrarInformación = true
                             self.tappedValue = index
                         }
