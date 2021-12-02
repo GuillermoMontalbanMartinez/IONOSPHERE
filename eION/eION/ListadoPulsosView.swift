@@ -43,15 +43,17 @@ struct ListadoPulsosView: View {
     var body: some View {
         NavigationView{
             VStack(alignment: .center, spacing: -140) {
+                VStack{
+                    Map(coordinateRegion: $region)
+                        .onAppear(){
+                            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
+                                longitude: longitud),
+                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                            )
+                        }
+                            .frame(width: 400, height: 150, alignment: .center)
+                }
                 
-                Map(coordinateRegion: $region)
-                    .onAppear(){
-                        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
-                            longitude: longitud),
-                            span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                        )
-                    }
-                        .frame(width: 400, height: 150, alignment: .center)
                 VStack(alignment: .center, spacing:20) {
                     HStack{
                         BusquedaView(text: $text)
@@ -68,18 +70,19 @@ struct ListadoPulsosView: View {
                             .padding(.bottom, 63)
                     }
                     
-                    List(){/*
+                    List(){
+                        
                         ForEach(vm.pulsos) { pulso in
-                            if(text.isEmpty || pulso.hasPrefix(text)){
-                                NavigationLink(destination: PulsoView(identificador: pulso.nombrePulso, a03: pulso.a03, a27: pulso.a27, fechaRegistro: pulso.fechaRegistro)) {
-                                    FilaTablaview(tituloIzq: pulso.nombrePulso, tituloDer: pulso.fechaRegistro)
+                            if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
+                            NavigationLink(destination: PulsoView(identificador: pulso.nombrePulso!, a03: pulso.a03, a27: pulso.a27, fechaRegistro: formatearFecha(pulso: pulso.fechaCreacion ?? Date()))) {
+                                FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()))
                                 }
                             }
                         }
                             .onDelete{ indexSet in
                                 vm.pulsos.remove(atOffsets: indexSet)
                             }
-                         */
+                            
                     }
                         .scaledToFit()
                         .onAppear() {
@@ -106,8 +109,16 @@ struct ListadoPulsosView: View {
                 .sheet(isPresented: $mostrarFiltro){
                     //FiltroView
                 }
+                
         }
     }
+}
+
+func formatearFecha(pulso: Date) -> String {
+    let formater = DateFormatter()
+    formater.dateFormat = "yyyy-MM-dd HH:mm:ss"
+    let fecha = formater.string(from: pulso)
+    return fecha
 }
 
 struct ListadoPulsos_Previews: PreviewProvider {

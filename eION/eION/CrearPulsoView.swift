@@ -76,7 +76,7 @@ struct CrearPulsoView: View {
                                         tipoClase = false
                                     }
                                     
-                                    vm.addPulso(fechaCreacion: Date(), clase: tipoClase, ubicacion: ubicacion, a27: valorPorVoz, a03: valorSlider, nombrePulso: "")
+                                    vm.addPulso(fechaCreacion: Date(), clase: tipoClase, ubicacion: ubicacion, a27: valorPorVoz, a03: valorSlider, nombrePulso: "Pulso 1")
                                     print("Pulso creado")
                                     
                                 }, label:{
