@@ -9,7 +9,7 @@ import SwiftUI
 
 struct RegistroView: View {
     @State var showView: Bool = false
-    
+    @EnvironmentObject var model: ViewModel
     var body: some View {
         VStack {
             VStack {
@@ -23,7 +23,7 @@ struct RegistroView: View {
             }.padding(40)
                 .offset(y:-120)
             VStack(spacing: 15) {
-                RegistroForm()
+                RegistroForm().environmentObject(model)
             }.offset(y:-140)
         }
     }
@@ -33,6 +33,9 @@ private struct RegistroForm: View {
     @State var username: String = ""
     @State var password: String = ""
     @State var repeatPassword: String = ""
+    
+    @EnvironmentObject var model: ViewModel
+    
     
     var body: some View {
         VStack {
@@ -63,17 +66,30 @@ private struct RegistroForm: View {
                         Divider().background(.black)
                     }
                 }
-                Button {
-                                
-                } label: {
-                    Text("Registrarse", tableName: "Login")
-                        .foregroundColor(.white)
-                        .padding([.top, .bottom], 15)
-                        .padding([.leading, .trailing], 25)
-                        .background(.black)
-                        .cornerRadius(8)
-                        .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
-                }.padding(.bottom, 30)
+                
+            
+                    Button {
+                        do {
+                            try model.addUsuario(nombre: username, password: password)
+                            
+                        } catch eION.ViewModel.error.datoRepetido {
+                            
+                            print("Usuario existente en la base de datos")
+                        } catch {
+                            print("Error desconocido")
+                        }
+                    } label: {
+                        Text("Registrarse", tableName: "Login")
+                            .foregroundColor(.white)
+                            .padding([.top, .bottom], 15)
+                            .padding([.leading, .trailing], 25)
+                            .background(.black)
+                            .cornerRadius(8)
+                            .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
+                    }.padding(.bottom, 30)
+                
+                
+                
             }.padding([.leading, .trailing], 20)
             .padding([.top, .bottom], 30)
         }.background()
@@ -82,6 +98,7 @@ private struct RegistroForm: View {
             .padding([.leading, .trailing])
             
     }
+    
 }
 
 struct RegistroView_Previews: PreviewProvider {

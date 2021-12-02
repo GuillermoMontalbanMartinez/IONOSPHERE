@@ -8,9 +8,15 @@
 import Foundation
 import CoreData
 import UIKit
+import SwiftUI
 
 class ViewModel: ObservableObject {
     let gestorCoreData = CoreDataManager.instace // singleton
+    
+    enum error: Error {
+            case datoRepetido
+            case uncorrect
+        }
     
     @Published var usuarios:[Usuario] = []
     @Published var pulsos: [Pulso] = []
@@ -46,12 +52,18 @@ class ViewModel: ObservableObject {
     /**
         Creacion de los usuarios
      */
-    func addUsuario(nombre: String, password: String, foto: UIImage, tipoUsuario: Int16) {
+    func addUsuario(nombre: String, password: String) throws {
         let newUser = Usuario(context: gestorCoreData.contexto)
         newUser.nombre = nombre
         newUser.password = password
-        newUser.foto = foto.pngData()
-        newUser.tipoUsuario = tipoUsuario
+        newUser.tipoUsuario = 1
+
+        for u in usuarios {
+            if (u.nombre == newUser.nombre) {
+                throw error.datoRepetido
+            }
+        }
+        
         saveData()
     }
     

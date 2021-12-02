@@ -8,42 +8,72 @@
 import SwiftUI
 
 struct HomeAdminView: View {
-    let lista = [1.0, 2.0, 3.0, 3.0, 4.0 ,5.0, 1.0]
+    let lista = [1.0, 2.0]
+    let clases = ["Good", "Bad"]
+    @State var chosenColors: [Color] = []
+    @State var tappedValue = 0
+    @State var mostrarInformación = false
     
-    let colors = [
-        Color(red: 126/255, green: 40/255, blue: 80/255),
-        Color(red: 49/255, green: 63/255, blue: 95/255),
-        Color(red: 37/255, green: 166/255, blue: 188/255),
-        Color(red: 130/255, green: 122/255, blue: 162/255),
-        Color(red: 241/255, green: 165/255, blue: 138/255)
-    ]
-
     var body: some View {
         NavigationView {
             VStack {
                 ZStack {
                     ForEach(0..<lista.count) { index in
-                        DiagramaView( lista: lista, index: index ).foregroundColor(Color(generateRandomColor()))
+                        DiagramaView( lista: lista, index: index).foregroundColor(Color(generateRandomColor())).onTapGesture {
+                            mostrarInformación = true
+                            self.tappedValue = index
+                        }
                     }
                 }
+                
+                if (mostrarInformación) {
+                    ClaseInfoView(valor: lista[tappedValue], nombreClase: clases[tappedValue])
+                }
+                
             }.navigationTitle(Text("Estadísticas"))
         }
+    }
+}
 
+struct ClaseInfoView: View {
+    let valor: Double
+    let nombreClase: String
+    
+    var body: some View {
+        VStack(alignment: .leading) {
+            HStack {
+                Text("Nombre de la clase:").fontWeight(.bold)
+                Text("\(nombreClase)")
+            }
+            HStack {
+                Text("Número de instancias:").fontWeight(.bold)
+                Text("\(String(format:"%.2f", valor))")
+            }
+            
+        }.padding().background(Color("FilaTabla")).clipShape(Capsule())
+        
     }
 }
 
 func generateRandomColor() -> UIColor {
-    let redValue = CGFloat(drand48())
-    let greenValue = CGFloat(drand48())
-    let blueValue = CGFloat(drand48())
-        
-    let randomColor = UIColor(red: redValue, green: greenValue, blue: blueValue, alpha: 1.0)
-        
-    return randomColor
+    return UIColor.random()
+}
+
+extension UIColor {
+    static func random() -> UIColor {
+        return UIColor(
+            red:   .random(in: 0...1),
+            green: .random(in: 0...1),
+            blue:  .random(in: 0...1),
+            alpha: 0.5
+        )
     }
+}
+
+
 
 struct HomeAdminView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeAdminView()
+        HomeAdminView(mostrarInformación: true)
     }
 }

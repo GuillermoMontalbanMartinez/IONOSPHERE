@@ -12,8 +12,7 @@ struct eIONApp: App {
     @StateObject private var vm: ViewModel = ViewModel()
     var body: some Scene {
         WindowGroup {
-            //CrearPulsoView().environmentObject(vm)
-            ListadoUbicacionesView().environmentObject(vm)
+            RegistroView().environmentObject(vm)
         }
     }
 }
