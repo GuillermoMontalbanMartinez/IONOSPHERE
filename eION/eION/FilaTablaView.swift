@@ -11,7 +11,7 @@ struct FilaTablaview: View {
     var tituloIzq: String
     var tituloDer: String? //Puede no existir
     var botonAdmin: Bool? // True para incluir boton en vista Administrador
-    @State var tipoUsuario = true
+    @State var tipoUsuario = false
     
     var body: some View {
         HStack {

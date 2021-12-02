@@ -73,7 +73,6 @@ private struct RegistroForm: View {
                             try model.addUsuario(nombre: username, password: password)
                             
                         } catch eION.ViewModel.error.datoRepetido {
-                            
                             print("Usuario existente en la base de datos")
                         } catch {
                             print("Error desconocido")
@@ -103,6 +102,6 @@ private struct RegistroForm: View {
 
 struct RegistroView_Previews: PreviewProvider {
     static var previews: some View {
-        RegistroView()
+        RegistroView().environmentObject(ViewModel())
     }
 }

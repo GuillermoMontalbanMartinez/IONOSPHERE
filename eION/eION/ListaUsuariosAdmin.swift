@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ListaUsuariosAdmin: View {
     @State var text: String = ""
+    @EnvironmentObject var vm : ViewModel
     @State var usuarios: [String] = ["Hunor","Guillermo","Marta","Cristian","Jorge","Francisco","Luis","Ramón","Manel"]
     var body: some View {
         NavigationView{
@@ -26,10 +27,19 @@ struct ListaUsuariosAdmin: View {
                     
                     
                     List(){
-                        ForEach(usuarios, id: \.self) { usuario in
+                        /*ForEach(usuarios) { usuario in
                             if(text.isEmpty || usuario.hasPrefix(text)){
                                 NavigationLink(destination: ListadoUbicacionesView()){
+                                    
                                     FilaTablaview(tituloIzq: usuario, botonAdmin: true)
+                                }
+                            }
+                        }*/
+                        ForEach(vm.usuarios){ usuario in
+                            if(text.isEmpty || usuario.nombre!.hasPrefix(text)){
+                                NavigationLink(destination: ListadoUbicacionesView()){
+                                    
+                                    FilaTablaview(tituloIzq: usuario.nombre!, botonAdmin: true)
                                 }
                             }
                         }
@@ -61,6 +71,6 @@ struct ListaUsuariosAdmin: View {
 
 struct ListaUsuariosAdmin_Previews: PreviewProvider {
     static var previews: some View {
-        ListaUsuariosAdmin()
+        ListaUsuariosAdmin().environmentObject(ViewModel())
     }
 }

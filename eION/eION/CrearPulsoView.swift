@@ -101,7 +101,6 @@ struct CrearPulsoView: View {
     struct CrearPulsoView_Previews: PreviewProvider {
         static var previews: some View {
             CrearPulsoView()
-.previewInterfaceOrientation(.portraitUpsideDown)
         }
     }
 }
