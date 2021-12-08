@@ -10,7 +10,7 @@ import SwiftUI
 struct ListaUsuariosAdmin: View {
     @State var text: String = ""
     @EnvironmentObject var vm : ViewModel
-    @State var usuarios: [String] = ["Hunor","Guillermo","Marta","Cristian","Jorge","Francisco","Luis","Ramón","Manel"]
+    //@State var usuarios: [String] = ["Hunor","Guillermo","Marta","Cristian","Jorge","Francisco","Luis","Ramón","Manel"]
     var body: some View {
         NavigationView{
             VStack(alignment: .center, spacing: -140) {
@@ -27,28 +27,26 @@ struct ListaUsuariosAdmin: View {
                     
                     
                     List(){
-                        /*ForEach(usuarios) { usuario in
-                            if(text.isEmpty || usuario.hasPrefix(text)){
-                                NavigationLink(destination: ListadoUbicacionesView()){
-                                    
-                                    FilaTablaview(tituloIzq: usuario, botonAdmin: true)
-                                }
-                            }
-                        }*/
+                        
                         ForEach(vm.usuarios){ usuario in
                             if(text.isEmpty || usuario.nombre!.hasPrefix(text)){
                                 NavigationLink(destination: ListadoUbicacionesView()){
-                                    
+                                    // Probar aqui la funcion para ver si usuario.tipoUsuario = 1 o 2
+                                    // y asignar el valor a tipousuario: Bool para el toogle
+                                    // A filaTablaView pasarle un parámetro más que establezca el Toogle()
                                     FilaTablaview(tituloIzq: usuario.nombre!, botonAdmin: true)
                                 }
                             }
                         }
                         .onDelete(perform: vm.deleteUsuario)
-                        //Opcion de poder mover los usuario por la lista
+                        //Opcion de poder mover los usuario por la lista, sería añadiendo el boton de editar
+                        // Mueve demasiado los elementos hacia la derecha y no queda bien con las vistas actuales.
                         //.onMove{
-                        //   (IndexSet, index) in usuarios.move(fromOffsets: IndexSet, toOffset: index)
+                        //    (IndexSet, index) in vm.usuarios.move(fromOffsets: IndexSet, toOffset: index)
                         //}
                     }
+                    //Boton para la opcion de editar los elementos, opcion de mover y borrar con boton en vez de arrastrar.
+                    //.navigationBarItems(trailing: EditButton())
                     .scaledToFit()
                     .onAppear(){
                         UITableView.appearance().backgroundColor = .clear
