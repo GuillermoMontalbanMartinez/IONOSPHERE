@@ -43,9 +43,7 @@ struct ListaUsuariosAdmin: View {
                                 }
                             }
                         }
-                        .onDelete{
-                            IndexSet in usuarios.remove(atOffsets: IndexSet)
-                        }
+                        .onDelete(perform: vm.deleteUsuario)
                         //Opcion de poder mover los usuario por la lista
                         //.onMove{
                         //   (IndexSet, index) in usuarios.move(fromOffsets: IndexSet, toOffset: index)
