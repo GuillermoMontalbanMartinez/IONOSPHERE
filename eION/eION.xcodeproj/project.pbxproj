@@ -31,6 +31,7 @@
 		B3C1BF3B2746D5DB006BD338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */; };
 		B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3C1BF412746D61D006BD338 /* GestioneION.xcdatamodeld */; };
 		F87DC2152757DF6F009B2F32 /* ListadoPulsosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */; };
+		F8AB18BF2760C0D700A5CAA4 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B3C1BF422746D61D006BD338 /* GestioneION.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GestioneION.xcdatamodel; sourceTree = "<group>"; };
 		F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoPulsosView.swift; sourceTree = "<group>"; };
+		F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +135,7 @@
 				B343CCCC274E3EE100F4A61E /* RegistroView.swift */,
 				2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */,
 				F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */,
+				F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */,
 				2936664E274FE06800482D47 /* BusquedaView.swift */,
 				9CA2702C27500AE100C10236 /* ListaUsuariosAdmin.swift */,
 				786E2043275028BE00C5901E /* HomeAdminView.swift */,
@@ -246,6 +249,7 @@
 				9CA2702D27500AE100C10236 /* ListaUsuariosAdmin.swift in Sources */,
 				78BBF632274D30280006CBD6 /* FilaTablaView.swift in Sources */,
 				786E2044275028BE00C5901E /* HomeAdminView.swift in Sources */,
+				F8AB18BF2760C0D700A5CAA4 /* CustomNavigationView.swift in Sources */,
 				2936664F274FE06800482D47 /* BusquedaView.swift in Sources */,
 				B343CCCB274DB11200F4A61E /* LoginView.swift in Sources */,
 				B32A33CF2747EE8F002BA977 /* CoreDataManager.swift in Sources */,

@@ -9,9 +9,11 @@ import SwiftUI
 import MapKit
 
 struct ListadoPulsosView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     @EnvironmentObject var vm : ViewModel
     @State var text: String = ""
     @State var mostrarFiltro: Bool = false
+    @State var anadir : Bool = false
     //var provincia : String
     var latitud: Double = 0.0
     var longitud: Double = 0.0
@@ -42,18 +44,21 @@ struct ListadoPulsosView: View {
     
     var body: some View {
         NavigationView{
-            VStack(alignment: .center, spacing: -140) {
-                VStack{
-                    Map(coordinateRegion: $region)
-                        .onAppear(){
-                            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
-                                longitude: longitud),
-                                span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                            )
-                        }
-                            .frame(width: 400, height: 150, alignment: .center)
+            VStack {
+                ZStack (alignment: .top){
+                    VStack{
+                        Map(coordinateRegion: $region)
+                            .onAppear(){
+                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
+                                    longitude: longitud),
+                                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                                )
+                            }
+                                .frame(width: 400, height: 250, alignment: .center)
+                    } 
+                    CustomNavigationView(title: "Tus Pulsos", botones: true, destino: true, anadir: $anadir)
                 }
-                
+                NavigationLink("", destination: CrearPulsoView(), isActive: $anadir)
                 VStack(alignment: .center, spacing:20) {
                     HStack{
                         BusquedaView(text: $text)
@@ -95,21 +100,12 @@ struct ListadoPulsosView: View {
                     .shadow(radius: 10)
                
             }
-                .navigationTitle("Tus Pulsos")
-                .navigationBarItems(
-                    trailing:
-                        NavigationLink(destination: CrearPulsoView()){
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(Color.accentColor)
-                        }
-                )
                 .sheet(isPresented: $mostrarFiltro){
                     //FiltroView
                 }
                 
-        }
+                
+        }.navigationBarHidden(true)
     }
 }
 
