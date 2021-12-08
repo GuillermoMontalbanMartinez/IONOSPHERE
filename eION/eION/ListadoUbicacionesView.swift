@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct ListadoUbicacionesView: View {
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    var destino : Bool = false
     @State var text: String = ""
     var provincias: [String] = ["Almería", "Ávila", "Barcelona", "Zaragoza"]
     var body: some View {
         NavigationView{
-            VStack(alignment: .center, spacing: -140) {
-                
+            VStack{
+                CustomNavigationView(title:"Ubicación", botones: false, destino: destino, anadir: .constant(false))
                 VStack(alignment: .center, spacing:20) {
                     
                     BusquedaView(text: $text)
@@ -40,10 +42,9 @@ struct ListadoUbicacionesView: View {
                     .cornerRadius(30)
                     .shadow(radius: 10)
                
-            }
-            .navigationTitle("Ubicación")
+            }.navigationBarHidden(true)
             
-        }
+        }.navigationBarHidden(true)
     }
 }
 
