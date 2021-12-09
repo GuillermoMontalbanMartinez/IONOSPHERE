@@ -20,6 +20,7 @@ struct MenuView: View {
             TabView(selection: $seleccion) {
                 HomeView().tag("Home")
                 ListadoUbicacionesView().tag("Ubicaciones")
+                ListaUsuariosAdmin().tag("Usuarios")
                 HomeAdminView().tag("HomeAdmin")
                 // LoginView().tag("CerrarSesion")
             }
@@ -27,7 +28,7 @@ struct MenuView: View {
             HStack(spacing: 0) {
                 TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house.fill", selected: $seleccion)
                 Spacer(minLength: 0)
-                TabButton(title: "Ubicaciones", image: "note.text", selected: $seleccion)
+                TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "note.text", selected: $seleccion)
                 Spacer(minLength: 0)
                 TabButton(title: "CerrarSesion", image: "arrow.backward.square.fill", selected: $seleccion)
                 
@@ -42,10 +43,10 @@ struct MenuView: View {
     }
 }
     
-    struct MenuView_Previews: PreviewProvider {
-        static var previews: some View {
-            MenuView()
-        }
-    }
+   // struct MenuView_Previews: PreviewProvider {
+        //static var previews: some View {
+         //   MenuView()
+     //   }
+  //  }
     
     
