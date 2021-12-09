@@ -37,8 +37,8 @@ struct CustomNavigationView: View {
                     }
                 }
             }
-        }.padding()
-        Spacer()
+        }.padding([.trailing,.leading])
+        //Spacer()
     }
 }
 
