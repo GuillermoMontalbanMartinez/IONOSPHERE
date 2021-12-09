@@ -30,7 +30,7 @@ struct ListaUsuariosAdmin: View {
                         
                         ForEach(vm.usuarios){ usuario in
                             if(text.isEmpty || usuario.nombre!.hasPrefix(text)){
-                                NavigationLink(destination: ListadoUbicacionesView()){
+                                NavigationLink(destination: ListadoUbicacionesView(destino: true)){
                                     // Probar aqui la funcion para ver si usuario.tipoUsuario = 1 o 2
                                     // y asignar el valor a tipousuario: Bool para el toogle
                                     // A filaTablaView pasarle un parámetro más que establezca el Toogle()

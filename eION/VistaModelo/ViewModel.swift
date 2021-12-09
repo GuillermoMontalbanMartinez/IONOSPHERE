@@ -20,6 +20,7 @@ class ViewModel: ObservableObject {
     
     @Published var usuarios:[Usuario] = []
     @Published var pulsos: [Pulso] = []
+    @Published var usuarioLogeado: Usuario? = nil
     
     init(){
         loadData()
@@ -98,7 +99,15 @@ class ViewModel: ObservableObject {
         saveData()
     }
     
-    func iniciarSesion(nombre:String, contraseña:String) {
+    func iniciarSesion(nombre:String, contraseña:String) -> Bool {
+        let user:Usuario = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})[0]
         
+        guard user != nil else {
+            print("usuario nil")
+            return false
+        }
+        print("usuario no nil devuelve true")
+        usuarioLogeado = user
+        return true
     }
 }
