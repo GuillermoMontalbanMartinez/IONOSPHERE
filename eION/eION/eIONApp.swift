@@ -10,9 +10,14 @@ import SwiftUI
 @main
 struct eIONApp: App {
     @StateObject private var vm: ViewModel = ViewModel()
+    @State var logeado: Bool = false
     var body: some Scene {
         WindowGroup {
-            ListadoUbicacionesView().environmentObject(vm)
+            if logeado {
+                MenuView().environmentObject(vm)
+            } else {
+                LoginView(logeado: $logeado).environmentObject(vm)
+            }
         }
     }
 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @State var showView: Bool = false
+    @Binding var logeado: Bool
     
     var body: some View {
         NavigationView {
@@ -23,7 +24,7 @@ struct LoginView: View {
                 }.offset(y:-140)
                 
                 VStack(spacing: 15) {
-                    LoginForm()
+                    LoginForm(logeado: $logeado)
                     HStack() {
                         Text("¿No tienes cuenta?", tableName: "Login")
                          Button {
@@ -47,6 +48,8 @@ struct LoginView: View {
 private struct LoginForm: View {
     @State var username:String = ""
     @State var password:String = ""
+    @EnvironmentObject var vm : ViewModel
+    @Binding var logeado: Bool
     
     var body: some View {
         VStack {
@@ -76,7 +79,13 @@ private struct LoginForm: View {
              .padding([.top, .bottom], 30)
             
             Button {
-                            
+                if vm.iniciarSesion(nombre: username, contraseña: password) {
+                    logeado.toggle()
+                    print(logeado)
+                } else {
+                    print("Error")
+                }
+                
             } label: {
                 Text("Iniciar sesión", tableName: "Login")
                     .foregroundColor(.white)
@@ -95,7 +104,7 @@ private struct LoginForm: View {
 
 struct LoginView_swift_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(logeado: .constant(false))
 .previewInterfaceOrientation(.portrait)
     }
 }

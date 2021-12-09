@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct MenuView: View {
-    @State var seleccion: String = "Home"
+    @State var seleccion: String = ""
+    @EnvironmentObject var vm : ViewModel
     
     init() {
         UITabBar.appearance().isHidden = false
@@ -19,17 +20,23 @@ struct MenuView: View {
             TabView(selection: $seleccion) {
                 HomeView().tag("Home")
                 ListadoUbicacionesView().tag("Ubicaciones")
-                LoginView().tag("CerrarSesion")
+                HomeAdminView().tag("HomeAdmin")
+                // LoginView().tag("CerrarSesion")
             }
             
             HStack(spacing: 0) {
-                TabButton(title: "Home", image: "house.fill", selected: $seleccion)
+                TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house.fill", selected: $seleccion)
                 Spacer(minLength: 0)
                 TabButton(title: "Ubicaciones", image: "note.text", selected: $seleccion)
                 Spacer(minLength: 0)
                 TabButton(title: "CerrarSesion", image: "arrow.backward.square.fill", selected: $seleccion)
                 
-            }.padding(.vertical, 15).padding(.horizontal, 15).background(Color.accentColor).cornerRadius(20)
+            }.padding(.vertical, 15)
+                .padding(.horizontal, 15)
+                .background(Color.accentColor)
+                .cornerRadius(20)
+                .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
+                
         }
         
     }
