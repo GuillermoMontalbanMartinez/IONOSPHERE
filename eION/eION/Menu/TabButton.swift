@@ -25,7 +25,12 @@ struct TabButton: View {
                     .frame(width: 25, height: 25).foregroundColor(.white)
                 
                 if selected == title {
-                    Text(title).fontWeight(.bold).foregroundColor(.white)
+                    if ( title.contains("Home")) {
+                        Text("Home").fontWeight(.bold).foregroundColor(.white)
+                    } else {
+                        Text(title).fontWeight(.bold).foregroundColor(.white)
+
+                    }
                 }
                 
                 
@@ -36,8 +41,8 @@ struct TabButton: View {
     }
 }
 
-struct TabButton_Previews: PreviewProvider {
+/*struct TabButton_Previews: PreviewProvider {
     static var previews: some View {
         TabButton(title: "home", image: "house.fill", selected: .constant("home"))
     }
-}
+}*/
