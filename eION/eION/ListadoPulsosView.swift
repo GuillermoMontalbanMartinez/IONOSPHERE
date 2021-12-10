@@ -46,68 +46,71 @@ struct ListadoPulsosView: View {
         
         NavigationView{
             
-                    VStack {
-                        CustomNavigationView(title: "Tus Pulsos", botones: true, destino: true, anadir: $anadir)
+            VStack {
+                CustomNavigationView(title: "Tus Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 120)
+                
+                Map(coordinateRegion: $region)
+                    .onAppear(){
+                        region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
+                            longitude: longitud),
+                            span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                        )
+                    }
+                    .frame(width: 400, height: 300)
+                    .ignoresSafeArea()
+                
+                VStack(alignment: .center, spacing:20) {
+                    HStack{
+                        BusquedaView(text: $text)
+                            .padding(.leading, 60)
+                        Button(){
+                            mostrarFiltro.toggle()
+                        }label:{
+                            Image(systemName: "chevron.up.chevron.down")
+                                .frame(width: 70, height: 40)
+                                .background(Color.accentColor)
+                                .foregroundColor(.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
+                        }
+                            .padding(.bottom, 63)
+                    }
+                    
+                    List(){
                         
-                        Map(coordinateRegion: $region)
-                            .onAppear(){
-                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
-                                    longitude: longitud),
-                                    span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                                )
-                            }
-                            .frame(width: 400, height: 250)
-                        
-                        NavigationLink("", destination: CrearPulsoView(), isActive: $anadir)
-                        
-                        VStack(alignment: .center, spacing:20) {
-                            HStack{
-                                BusquedaView(text: $text)
-                                    .padding(.leading, 60)
-                                Button(){
-                                    mostrarFiltro.toggle()
-                                }label:{
-                                    Image(systemName: "chevron.up.chevron.down")
-                                        .frame(width: 70, height: 40)
-                                        .background(Color.accentColor)
-                                        .foregroundColor(.white)
-                                        .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
+                        ForEach(vm.pulsos) { pulso in
+                            if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
+                            NavigationLink(destination: PulsoView(identificador: pulso.nombrePulso!, a03: pulso.a03, a27: pulso.a27, fechaRegistro: formatearFecha(pulso: pulso.fechaCreacion ?? Date()))) {
+                                FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()))
                                 }
-                                    .padding(.bottom, 63)
+                            }
+                        }
+                            .onDelete{ indexSet in
+                                vm.pulsos.remove(atOffsets: indexSet)
                             }
                             
-                            List(){
-                                
-                                ForEach(vm.pulsos) { pulso in
-                                    if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
-                                    NavigationLink(destination: PulsoView(identificador: pulso.nombrePulso!, a03: pulso.a03, a27: pulso.a27, fechaRegistro: formatearFecha(pulso: pulso.fechaCreacion ?? Date()))) {
-                                        FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()))
-                                        }
-                                    }
-                                }
-                                    .onDelete{ indexSet in
-                                        vm.pulsos.remove(atOffsets: indexSet)
-                                    }
-                                    
-                            }
-                                .scaledToFit()
-                                .onAppear() {
-                                    UITableView.appearance().backgroundColor = .clear
-                                }
+                    }
+                        .scaledToFit()
+                        .onAppear() {
+                            UITableView.appearance().backgroundColor = .clear
                         }
-                            //.frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
-                            .background(Color.white)
-                            .cornerRadius(30)
-                            .shadow(radius: 10)
-                         
-                        Spacer()
-                    } .offset(y: -60)
-                        .sheet(isPresented: $mostrarFiltro){
-                            //FiltroView
-                        }
+                }
+                    .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
+                    .background(Color.white)
+                    .cornerRadius(30)
+                    .shadow(radius: 10)
+                 
+                Spacer()
+            }
+                .background(
+                    NavigationLink("", destination: CrearPulsoView(), isActive: $anadir)
+                )
+                .sheet(isPresented: $mostrarFiltro){
+                    //FiltroView
+                }
+                .navigationBarHidden(true)
             
                 
-        }.navigationBarHidden(true).edgesIgnoringSafeArea(.top)//.ignoresSafeArea()
+        }
     }
 }
 

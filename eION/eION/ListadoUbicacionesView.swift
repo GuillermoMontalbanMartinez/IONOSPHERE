@@ -44,7 +44,9 @@ struct ListadoUbicacionesView: View {
                
             }.navigationBarHidden(true)
             
-        }.navigationBarHidden(true)
+        }
+            //.navigationBarHidden(true)
+            .navigationBarTitleDisplayMode(.inline)
     }
 }
 
