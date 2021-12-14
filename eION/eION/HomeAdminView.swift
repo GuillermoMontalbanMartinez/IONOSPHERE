@@ -64,63 +64,64 @@ struct HomeAdminView: View {
     @State private var currentIndex = -1
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                VStack(spacing: 20) {
-                    Text("Estadísticas")
-                        .bold()
-                        .font(.largeTitle)
-                    ZStack {
-                        ZStack  {
-                            ForEach(0..<chartDataSet.count){ i in
-                                PieChartSlice(center: CGPoint(x: geometry.frame(in: .local).midX, y: (geometry.frame(in:  .local).minY) + 200), radius: geometry.frame(in: .local).width/2, startDegree: pieSlices[i].startDegree, endDegree: pieSlices[i].endDegree, accentColor: pieColors[i], separatorColor: Color.white).scaleEffect(currentIndex != -1 && currentIndex == i ? 1 : 0.9).opacity(currentIndex == i || currentIndex == -1 ? 1 : 0.5)
-                                    .onTapGesture {
-                                        if currentIndex == i {
-                                            currentIndex = -1
-                                        } else {
-                                            currentIndex = i
+        NavigationView {
+            GeometryReader { geometry in
+                ScrollView {
+                    VStack(spacing: 20) {
+                        Text("Estadísticas")
+                            .bold()
+                            .font(.largeTitle)
+                        ZStack {
+                            ZStack  {
+                                ForEach(0..<chartDataSet.count){ i in
+                                    PieChartSlice(center: CGPoint(x: geometry.frame(in: .local).midX, y: (geometry.frame(in:  .local).minY) + 200), radius: geometry.frame(in: .local).width/2, startDegree: pieSlices[i].startDegree, endDegree: pieSlices[i].endDegree, accentColor: pieColors[i], separatorColor: Color.white).scaleEffect(currentIndex != -1 && currentIndex == i ? 1 : 0.9).opacity(currentIndex == i || currentIndex == -1 ? 1 : 0.5)
+                                        .onTapGesture {
+                                            if currentIndex == i {
+                                                currentIndex = -1
+                                            } else {
+                                                currentIndex = i
+                                            }
                                         }
-                                    }
+                                }
                             }
+                            
+                            VStack  {
+                                if currentIndex != -1{
+                                    Text("\(String(format:"%.2f", chartDataSet[currentIndex].value))")
+                                        .font(.caption)
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(5)
+                                        .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white).shadow(radius: 3))
+                                    
+                                    Text("\(chartDataSet[currentIndex].label)")
+                                        .font(.caption)
+                                        .bold()
+                                        .foregroundColor(.black)
+                                        .padding(5)
+                                        .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white).shadow(radius: 3))
+                                }
+                            }
+                            .padding()
                         }
                         
-                        VStack  {
-                            if currentIndex != -1{
-                                Text("\(String(format:"%.2f", chartDataSet[currentIndex].value))")
-                                    .font(.caption)
-                                    .bold()
-                                    .foregroundColor(.black)
-                                    .padding(5)
-                                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white).shadow(radius: 3))
-                                
-                                Text("\(chartDataSet[currentIndex].label)")
-                                    .font(.caption)
-                                    .bold()
-                                    .foregroundColor(.black)
-                                    .padding(5)
-                                    .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white).shadow(radius: 3))
+                        VStack(alignment:   .leading)  {
+                            ForEach(0..<chartDataSet.count)   {    i in
+                                HStack {
+                                    pieColors[i]
+                                        .aspectRatio(contentMode: .fit)
+                                        .padding(10).frame(width: 50, height: 50)
+                                    Text(chartDataSet[i].label)
+                                        .font(.caption)
+                                        .bold()
+                                }
                             }
                         }
-                        .padding()
-                    }
-                    
-                    VStack(alignment:   .leading)  {
-                        ForEach(0..<chartDataSet.count)   {    i in
-                            HStack {
-                                pieColors[i]
-                                    .aspectRatio(contentMode: .fit)
-                                    .padding(10).frame(width: 50, height: 50)
-                                Text(chartDataSet[i].label)
-                                    .font(.caption)
-                                    .bold()
-                            }
-                        }
-                    }
-                }.frame(height: geometry.size.height)
+                    }.frame(height: geometry.size.height)
+                }
             }
+            .padding().navigationTitle("Administrador")
         }
-        .padding().navigationTitle("Administrador")
-        
     }
 }
 

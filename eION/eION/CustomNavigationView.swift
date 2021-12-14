@@ -19,10 +19,15 @@ struct CustomNavigationView: View {
         VStack{
             HStack{
                 if(destino){
-                    Button(action: {self.presentationMode.wrappedValue.dismiss()}){
+                
+                    Button {
+                        self.presentationMode.wrappedValue.dismiss()
+                    } label: {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.black)
+                            .frame(width: 30, height: 30)
                     }
+
                 }
                 
                 Text(title)
@@ -42,8 +47,8 @@ struct CustomNavigationView: View {
     }
 }
 
-struct CustomNavigationView_Previews: PreviewProvider {
+/*struct CustomNavigationView_Previews: PreviewProvider {
     static var previews: some View {
         CustomNavigationView(anadir: .constant(false))
     }
-}
+}*/

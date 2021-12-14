@@ -65,8 +65,8 @@ struct ListaUsuariosAdmin: View {
     }
 }
 
-struct ListaUsuariosAdmin_Previews: PreviewProvider {
+/*struct ListaUsuariosAdmin_Previews: PreviewProvider {
     static var previews: some View {
         ListaUsuariosAdmin().environmentObject(ViewModel())
     }
-}
+}*/

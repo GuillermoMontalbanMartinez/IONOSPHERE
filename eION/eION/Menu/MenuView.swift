@@ -16,28 +16,30 @@ struct MenuView: View {
     }
     
     var body: some View {
-        ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
-            TabView(selection: $seleccion) {
-                HomeView().tag("Home")
-                ListadoUbicacionesView().tag("Ubicaciones")
-                ListaUsuariosAdmin().tag("Usuarios")
-                HomeAdminView().tag("HomeAdmin")
-                // LoginView().tag("CerrarSesion")
-            }
-            
-            HStack(spacing: 0) {
-                TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house.fill", selected: $seleccion)
-                Spacer(minLength: 0)
-                TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "note.text", selected: $seleccion)
-                Spacer(minLength: 0)
-                TabButton(title: "Cerrar sesión", image: "arrow.backward.square.fill", selected: $seleccion)
+            ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
+                TabView(selection: $seleccion) {
+                    HomeView().tag("Home")
+                    ListadoUbicacionesView().tag("Ubicaciones")
+                    ListaUsuariosAdmin().tag("Usuarios")
+                    HomeAdminView().tag("HomeAdmin")
+                    // LoginView().tag("CerrarSesion")
+                }
                 
-            }.padding(.vertical, 20)
-                .padding(.horizontal, 15)
-                .background(Color.accentColor)
-                .cornerRadius(20)
-                .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
-        }.ignoresSafeArea()
+                HStack(spacing: 0) {
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house.fill", selected: $seleccion)
+                    Spacer(minLength: 0)
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "note.text", selected: $seleccion)
+                    Spacer(minLength: 0)
+                    TabButton(title: "Cerrar sesión", image: "arrow.backward.square.fill", selected: $seleccion)
+                    
+                }.padding(.vertical, 20)
+                    .padding(.horizontal, 15)
+                    .background(Color.accentColor)
+                    .cornerRadius(20)
+                    .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
+            }.ignoresSafeArea()
+        
+
         
     }
 }

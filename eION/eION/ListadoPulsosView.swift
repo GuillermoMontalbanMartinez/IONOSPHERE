@@ -43,9 +43,7 @@ struct ListadoPulsosView: View {
     }
     
     var body: some View {
-        
-        NavigationView{
-            
+                    
             VStack {
                 CustomNavigationView(title: "Tus Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 120)
                 
@@ -98,7 +96,7 @@ struct ListadoPulsosView: View {
                     .background(Color.white)
                     .cornerRadius(30)
                     .shadow(radius: 10)
-                 
+                
                 Spacer()
             }
                 .background(
@@ -108,9 +106,6 @@ struct ListadoPulsosView: View {
                     //FiltroView
                 }
                 .navigationBarHidden(true)
-            
-                
-        }
     }
 }
 
@@ -121,9 +116,9 @@ func formatearFecha(pulso: Date) -> String {
     return fecha
 }
 
-struct ListadoPulsos_Previews: PreviewProvider {
+/*struct ListadoPulsos_Previews: PreviewProvider {
     static var previews: some View {
         ListadoPulsosView(provincia: "Almería")
             .environmentObject(ViewModel())
     }
-}
+}*/
