@@ -30,15 +30,14 @@ struct MenuView: View {
                 Spacer(minLength: 0)
                 TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "note.text", selected: $seleccion)
                 Spacer(minLength: 0)
-                TabButton(title: "CerrarSesion", image: "arrow.backward.square.fill", selected: $seleccion)
+                TabButton(title: "Cerrar sesión", image: "arrow.backward.square.fill", selected: $seleccion)
                 
-            }.padding(.vertical, 15)
+            }.padding(.vertical, 20)
                 .padding(.horizontal, 15)
                 .background(Color.accentColor)
                 .cornerRadius(20)
                 .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
-                
-        }
+        }.ignoresSafeArea()
         
     }
 }

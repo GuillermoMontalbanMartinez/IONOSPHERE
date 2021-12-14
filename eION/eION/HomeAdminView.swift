@@ -40,7 +40,6 @@ var pieSlices: [PieSlice] {
     
     /* enumerated() devuelve el par (indice, dato), así podemos hacer el foreach e iterar sobre cada indice del array y obtener el dato correspondiente (data) */
     chartDataSet.enumerated().forEach {(index, data) in
-        print( "DATO: \(data)")
         let value = normalizedValue(index: index, data: chartDataSet)
         if slices.isEmpty    {
             slices.append((.init(startDegree: 0, endDegree: value * 360)))
@@ -120,7 +119,7 @@ struct HomeAdminView: View {
                 }.frame(height: geometry.size.height)
             }
         }
-        .padding()
+        .padding().navigationTitle("Administrador")
         
     }
 }
