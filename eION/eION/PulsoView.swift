@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct PulsoView: View {
-    @State var busqueda: String = ""
     var identificador: String
     var a03: Double
     var a27: Double
     var fechaRegistro: String
+    var clase: Bool
     
     var body: some View {
         GeometryReader { geometry in
@@ -26,6 +26,11 @@ struct PulsoView: View {
                 HStack(alignment: .center, spacing: 10.0) {
                     Text("A27").fontWeight(.bold).frame(width: 100, alignment: .leading)
                     Text("\(a27)")
+                }
+                
+                HStack(alignment: .center, spacing: 10.0) {
+                    Text("Clase").fontWeight(.bold).frame(width: 100, alignment: .leading)
+                    Text(clase ? "Good" : "Bad")
                 }
                 
                 HStack(alignment: .center, spacing: 10.0) {
@@ -45,9 +50,9 @@ struct PulsoView: View {
 
 
 
-struct PulsoView_Previews: PreviewProvider {
+/*struct PulsoView_Previews: PreviewProvider {
     static var previews: some View {
         PulsoView(identificador: "0001", a03: 23.5, a27: 0.5, fechaRegistro: "05/04/03")
 .previewInterfaceOrientation(.portrait)
     }
-}
+}*/
