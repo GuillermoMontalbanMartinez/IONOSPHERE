@@ -45,6 +45,7 @@ private struct RegistroForm: View {
                 HStack(alignment: .bottom) {
                     Text("Usuario", tableName: "Registro")
                        .frame(minWidth: 90, alignment: .leading)
+                       .disableAutocorrection(true)
                     VStack(spacing: 0) {
                         TextField("", text: $username)
                         Divider().background(.black)
@@ -99,6 +100,14 @@ private struct RegistroForm: View {
                         .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
                 }.padding(.bottom, 30)
                 
+                if emptyPassword && emptyRepeatPassword {
+                    Text("Introduzca la contraseña").foregroundColor(.red)
+                        .offset(x:10, y: -185)
+                    Text("Repite la contraseña")
+                        .foregroundColor(.red)
+                        .offset(x: 10, y: -185)
+                }
+                
                 if emptyUsername {
                     Text("Introduce el usuario")
                         .foregroundColor(.red)
@@ -116,12 +125,11 @@ private struct RegistroForm: View {
                         .foregroundColor(.red)
                         .offset(x: 10,y: -140)
                 }
-                
+
             }.padding([.leading, .trailing], 20)
             .padding([.top, .bottom], 30)
             
-        
-            
+    
         }.background()
             .cornerRadius(20)
             .shadow(color: .black.opacity(0.4), radius: 4)
