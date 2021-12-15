@@ -60,7 +60,8 @@ struct CrearPulsoView: View {
                             }
                             
                             VStack{
-                                Button(action:{
+                                
+                                Button {
                                     print("Pulso creado")
                                     let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
                                     let valorPorVozRedondeado  = Double(valorPorVoz) ?? 0
@@ -75,12 +76,14 @@ struct CrearPulsoView: View {
                                 
                                     vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: "Pulso 1")
                                     print("Pulso creado")
-                                    
-                                }, label:{
+                                } label: {
                                     Text("Crear pulso")
-                                    
-                                }).frame(width: 150, height: 50 ).foregroundColor(.white).background(Color.accentColor).cornerRadius(10).padding()
+                                        .foregroundColor(.white)
+                                        .padding([.top, .bottom], 15)
+                                        .padding([.leading, .trailing], 25)
+                                }.buttonStyle(CustomButton())
                                 
+
                             }.frame(width : 265)
                         }.listRowSeparator(.hidden)
                         

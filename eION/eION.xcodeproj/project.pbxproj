@@ -13,6 +13,7 @@
 		707CA992275069D300CA2FE9 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */; };
 		708059A92750EDC6008F3004 /* MicrofonoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708059A82750EDC6008F3004 /* MicrofonoView.swift */; };
 		780F3839274D25A400DC10D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F3838274D25A300DC10D0 /* HomeView.swift */; };
+		783E97732769FC3F005BFD15 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E97722769FC3F005BFD15 /* CustomButtonView.swift */; };
 		786E20422750283A00C5901E /* DiagramaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E20412750283A00C5901E /* DiagramaView.swift */; };
 		786E2044275028BE00C5901E /* HomeAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E2043275028BE00C5901E /* HomeAdminView.swift */; };
 		786E204727502A0F00C5901E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E204627502A0F00C5901E /* MenuView.swift */; };
@@ -41,6 +42,7 @@
 		707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpeechRecognizer.swift; path = eION/SpeechRecognizer.swift; sourceTree = SOURCE_ROOT; };
 		708059A82750EDC6008F3004 /* MicrofonoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrofonoView.swift; sourceTree = "<group>"; };
 		780F3838274D25A300DC10D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		783E97722769FC3F005BFD15 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		786E20412750283A00C5901E /* DiagramaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramaView.swift; sourceTree = "<group>"; };
 		786E2043275028BE00C5901E /* HomeAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdminView.swift; sourceTree = "<group>"; };
 		786E204627502A0F00C5901E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,16 @@
 				707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */,
 			);
 			path = Extensiones;
+			sourceTree = "<group>";
+		};
+		783E97742769FF3B005BFD15 /* CustomComponents */ = {
+			isa = PBXGroup;
+			children = (
+				783E97722769FC3F005BFD15 /* CustomButtonView.swift */,
+				78BBF631274D30280006CBD6 /* FilaTablaView.swift */,
+				78BBF62F274D2C250006CBD6 /* BuscadorView.swift */,
+			);
+			path = CustomComponents;
 			sourceTree = "<group>";
 		};
 		786E20402750282A00C5901E /* Shapes */ = {
@@ -122,6 +134,7 @@
 		B3C1BF322746D5DA006BD338 /* eION */ = {
 			isa = PBXGroup;
 			children = (
+				783E97742769FF3B005BFD15 /* CustomComponents */,
 				786E2048275031A000C5901E /* Menu */,
 				B3C1BF332746D5DA006BD338 /* eIONApp.swift */,
 				B3C1BF352746D5DA006BD338 /* ContentView.swift */,
@@ -129,10 +142,7 @@
 				B3C1BF392746D5DB006BD338 /* Preview Content */,
 				780F3838274D25A300DC10D0 /* HomeView.swift */,
 				78BBF62D274D29610006CBD6 /* PulsoView.swift */,
-				78BBF62F274D2C250006CBD6 /* BuscadorView.swift */,
-				78BBF631274D30280006CBD6 /* FilaTablaView.swift */,
 				B343CCCA274DB11200F4A61E /* LoginView.swift */,
-				B343CCCC274E3EE100F4A61E /* RegistroView.swift */,
 				2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */,
 				F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */,
 				F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */,
@@ -141,6 +151,7 @@
 				786E2043275028BE00C5901E /* HomeAdminView.swift */,
 				707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */,
 				708059A82750EDC6008F3004 /* MicrofonoView.swift */,
+				B343CCCC274E3EE100F4A61E /* RegistroView.swift */,
 			);
 			path = eION;
 			sourceTree = "<group>";
@@ -252,6 +263,7 @@
 				F8AB18BF2760C0D700A5CAA4 /* CustomNavigationView.swift in Sources */,
 				2936664F274FE06800482D47 /* BusquedaView.swift in Sources */,
 				B343CCCB274DB11200F4A61E /* LoginView.swift in Sources */,
+				783E97732769FC3F005BFD15 /* CustomButtonView.swift in Sources */,
 				B32A33CF2747EE8F002BA977 /* CoreDataManager.swift in Sources */,
 				B3C1BF342746D5DA006BD338 /* eIONApp.swift in Sources */,
 				707CA9902750619600CA2FE9 /* CrearPulsoView.swift in Sources */,
