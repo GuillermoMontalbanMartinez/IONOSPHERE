@@ -18,7 +18,7 @@ struct PieSlice {
 /* Los datos que vamos a necesitar deben tener una label y un value*/
 struct ChartData {
     var label: String
-    var value: Double
+    var value: Int
 }
 
 /* Debe haber tantos colores como datos tengamos en chartDataSet*/
@@ -28,11 +28,7 @@ let pieColors = [
 ]
 
 /* Los datos que se van a representar en el diagrama*/
-let chartDataSet = [
-    ChartData(label: "Good", value: 2.0),
-    ChartData(label: "Bad", value: 1.0)
-    
-]
+var chartDataSet : [ChartData] = []
 
 /* Un array de vistas de tipo PieSlice*/
 var pieSlices: [PieSlice] {
@@ -50,18 +46,20 @@ var pieSlices: [PieSlice] {
     return slices
 }
 
-
 func normalizedValue(index: Int, data: [ChartData]) -> Double {
     var total = 0.0
     data.forEach { data in
-        total += data.value
+        total += Double(data.value)
     }
-    return data[index].value/total
+    
+    return Double(data[index].value)/total
 }
 
 
 struct HomeAdminView: View {
     @State private var currentIndex = -1
+
+    @EnvironmentObject var vm : ViewModel
     
     var body: some View {
         NavigationView {
@@ -76,10 +74,13 @@ struct HomeAdminView: View {
                                 ForEach(0..<chartDataSet.count){ i in
                                     PieChartSlice(center: CGPoint(x: geometry.frame(in: .local).midX, y: (geometry.frame(in:  .local).minY) + 200), radius: geometry.frame(in: .local).width/2, startDegree: pieSlices[i].startDegree, endDegree: pieSlices[i].endDegree, accentColor: pieColors[i], separatorColor: Color.white).scaleEffect(currentIndex != -1 && currentIndex == i ? 1 : 0.9).opacity(currentIndex == i || currentIndex == -1 ? 1 : 0.5)
                                         .onTapGesture {
-                                            if currentIndex == i {
-                                                currentIndex = -1
-                                            } else {
-                                                currentIndex = i
+                                            
+                                            withAnimation(.spring()) {
+                                                if currentIndex == i {
+                                                    currentIndex = -1
+                                                } else {
+                                                    currentIndex = i
+                                                }
                                             }
                                         }
                                 }
@@ -87,7 +88,7 @@ struct HomeAdminView: View {
                             
                             VStack  {
                                 if currentIndex != -1{
-                                    Text("\(String(format:"%.2f", chartDataSet[currentIndex].value))")
+                                    Text("\(chartDataSet[currentIndex].value)")
                                         .font(.caption)
                                         .bold()
                                         .foregroundColor(.black)
@@ -121,6 +122,14 @@ struct HomeAdminView: View {
                 }
             }
             .padding().navigationTitle("Administrador")
+        }.onAppear{
+            let data = vm.getInstanciasClases()
+            
+            chartDataSet = [
+                ChartData(label: "Good", value: data["Good"] ?? 10),
+                ChartData(label: "Bad", value: data["Bad"]  ?? 11)
+            ]
+            
         }
     }
 }
