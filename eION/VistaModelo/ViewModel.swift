@@ -100,7 +100,7 @@ class ViewModel: ObservableObject {
     }
     
     func iniciarSesion(nombre:String, contraseña:String) -> Bool {
-        let user:Usuario = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})[0]
+        /*let user:Usuario = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})[0]
         
         guard user != nil else {
             print("usuario nil")
@@ -109,6 +109,18 @@ class ViewModel: ObservableObject {
         print("usuario no nil devuelve true")
         usuarioLogeado = user
         return true
+         */
+        
+        let user:[Usuario] = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})
+        
+        print(user)
+        if !user.isEmpty {
+            usuarioLogeado = user[0]
+            return true
+        } else {
+            return false
+        }
+       
     }
     
     func getInstanciasClases() -> [String: Int] {
