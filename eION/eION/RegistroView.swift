@@ -100,6 +100,7 @@ private struct RegistroForm: View {
                         .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
                 }.padding(.bottom, 30)
                 
+                /*
                 if emptyPassword && emptyRepeatPassword {
                     Text("Introduzca la contraseña").foregroundColor(.red)
                         .offset(x:10, y: -185)
@@ -107,7 +108,7 @@ private struct RegistroForm: View {
                         .foregroundColor(.red)
                         .offset(x: 10, y: -185)
                 }
-                
+                */
                 if emptyUsername {
                     Text("Introduce el usuario")
                         .foregroundColor(.red)
@@ -127,7 +128,7 @@ private struct RegistroForm: View {
                 }
 
             }.padding([.leading, .trailing], 20)
-            .padding([.top, .bottom], 30)
+             .padding([.top, .bottom], 30)
             
     
         }.background()
