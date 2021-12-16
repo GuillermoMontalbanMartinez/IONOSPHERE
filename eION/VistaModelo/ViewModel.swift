@@ -122,4 +122,19 @@ class ViewModel: ObservableObject {
         }
        
     }
+    
+    func getInstanciasClases() -> [String: Int] {
+        let numPulsosGood: Int = pulsos.filter({$0.clase == true}).count
+        let numPulsosBad: Int = pulsos.filter({$0.clase == false}).count
+        
+        var result : [String:Int] = [:]
+    
+        
+        result["Good"] = numPulsosGood
+        result["Bad"]  = numPulsosBad
+                
+        return result
+    }
+    
+    
 }

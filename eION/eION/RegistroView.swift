@@ -95,10 +95,9 @@ private struct RegistroForm: View {
                         .foregroundColor(.white)
                         .padding([.top, .bottom], 15)
                         .padding([.leading, .trailing], 25)
-                        .background(.black)
                         .cornerRadius(8)
                         .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
-                }.padding(.bottom, 30)
+                }.buttonStyle(CustomButton())
                 
                 /*
                 if emptyPassword && emptyRepeatPassword {
