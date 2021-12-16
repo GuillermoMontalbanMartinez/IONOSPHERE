@@ -136,5 +136,18 @@ class ViewModel: ObservableObject {
         return result
     }
     
-    
+    /**
+         Funcion para cambiar el tipo de usuario
+         */
+        func cambiarTipo(nombre: String){
+            let usuario = usuarios.first(where: {$0.nombre == nombre})
+        
+            if (usuario!.tipoUsuario == 1){
+                usuario!.tipoUsuario = 2
+            }else{
+                usuario!.tipoUsuario = 1
+            }
+            print("cambiando")
+            saveData()
+        }
 }

@@ -14,7 +14,7 @@ struct FilaTablaview: View {
     @State var tipoUsuario: Bool
     var nombre: String?
     //
-    //@EnvironmentObject var tipoUsu: ViewModel
+    @EnvironmentObject var vm: ViewModel
     var body: some View {
         HStack {
             Text(tituloIzq)
@@ -31,6 +31,14 @@ struct FilaTablaview: View {
                 // Creo que esto se deberia hacer en la vista ListaUsuariosAdmin
                 
                 Toggle("", isOn: $tipoUsuario)
+                    .onChange(of: tipoUsuario){Value in
+                       
+                        //vm.usuarios.first(where: {$0.nombre == nombre})?.tipoUsuario = tipoUsuario ? 1 : 2
+                        vm.cambiarTipo(nombre: nombre!)
+                    }
+                    
+            
+                
                 
                 
             }
