@@ -81,6 +81,8 @@ private struct RegistroForm: View {
                     } else if repeatPassword.isEmpty {
                         emptyRepeatPassword = true
                     } else {
+                        
+                        #if eIONB
                         do {
                             try model.addUsuario(nombre: username, password: password)
                         } catch eION.ViewModel.error.datoRepetido {
@@ -88,6 +90,22 @@ private struct RegistroForm: View {
                         } catch {
                             print("Error desconocido")
                         }
+                        
+                        #endif
+                        
+                        
+                        #if eIONML
+                        do {
+                            try model.addUsuario(nombre: username, password: password)
+                        } catch eIONML.ViewModel.error.datoRepetido {
+                            print("Usuario existente en la base de datos")
+                        } catch {
+                            print("Error desconocido")
+                        }
+                        
+                        #endif
+                        
+                        
                     }
 
                 } label: {
