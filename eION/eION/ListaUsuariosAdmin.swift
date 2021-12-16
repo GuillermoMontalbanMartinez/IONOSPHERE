@@ -10,7 +10,7 @@ import SwiftUI
 struct ListaUsuariosAdmin: View {
     @State var text: String = ""
     @EnvironmentObject var vm : ViewModel
-    //@State var usuarios: [String] = ["Hunor","Guillermo","Marta","Cristian","Jorge","Francisco","Luis","Ramón","Manel"]
+    
     var body: some View {
         NavigationView{
             VStack(alignment: .center, spacing: -140) {
@@ -29,14 +29,16 @@ struct ListaUsuariosAdmin: View {
                     List(){
                         
                         ForEach(vm.usuarios){ usuario in
-                            if(text.isEmpty || usuario.nombre!.hasPrefix(text)){
-                                NavigationLink(destination: ListadoUbicacionesView(destino: true)){
-                                    // Probar aqui la funcion para ver si usuario.tipoUsuario = 1 o 2
-                                    // y asignar el valor a tipousuario: Bool para el toogle
-                                    // A filaTablaView pasarle un parámetro más que establezca el Toogle()
-                                    FilaTablaview(tituloIzq: usuario.nombre!, botonAdmin: true)
+                            if(usuario.tipoUsuario != 0){
+                                if(text.isEmpty || usuario.nombre!.hasPrefix(text)){
+                                    NavigationLink(destination: ListadoUbicacionesView(destino: true)){
+                                        // Probar aqui la funcion para ver si usuario.tipoUsuario = 1 o 2
+                                        // y asignar el valor a tipousuario: Bool para el toogle
+                                        // A filaTablaView pasarle un parámetro más que establezca el Toogle()
+                                        FilaTablaview(tituloIzq: usuario.nombre!, botonAdmin: true, tipoUsuario: usuario.tipoUsuario == 1 ? true : false, nombre: usuario.nombre ?? "")
+                                    }
                                 }
-                            }
+                        }
                         }
                         .onDelete(perform: vm.deleteUsuario)
                         //Opcion de poder mover los usuario por la lista, sería añadiendo el boton de editar

@@ -80,7 +80,7 @@ struct ListadoPulsosView: View {
                             ForEach(vm.pulsos) { pulso in
                                 if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
                                     NavigationLink(destination: PulsoView(identificador: pulso.nombrePulso!, a03: pulso.a03, a27: pulso.a27, fechaRegistro: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), clase: pulso.clase)) {
-                                        FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()))
+                                        FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
                                     }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
                                 }
                             }

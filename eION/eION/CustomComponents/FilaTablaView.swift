@@ -11,7 +11,8 @@ struct FilaTablaview: View {
     var tituloIzq: String
     var tituloDer: String? //Puede no existir
     var botonAdmin: Bool? // True para incluir boton en vista Administrador
-    @State var tipoUsuario = true
+    @State var tipoUsuario: Bool
+    var nombre: String?
     //
     //@EnvironmentObject var tipoUsu: ViewModel
     var body: some View {
@@ -31,11 +32,7 @@ struct FilaTablaview: View {
                 
                 Toggle("", isOn: $tipoUsuario)
                 
-                //if(tipoUsuario){
-                //    tipoUsu = 1
-                //}else{
-                //   tipoUsu = 2
-                //}
+                
             }
 
         }
@@ -46,8 +43,8 @@ struct FilaTablaview: View {
     }
 }
 
-struct FilaTablaview_Previews: PreviewProvider {
+/*struct FilaTablaview_Previews: PreviewProvider {
     static var previews: some View {
         FilaTablaview(tituloIzq: "Prueba", tituloDer: "Prueba")
     }
-}
+}*/
