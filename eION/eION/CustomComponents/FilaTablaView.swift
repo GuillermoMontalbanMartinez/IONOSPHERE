@@ -16,6 +16,7 @@ struct FilaTablaview: View {
     //
     @EnvironmentObject var vm: ViewModel
     var body: some View {
+        
         HStack {
             Text(tituloIzq)
             Spacer()
@@ -23,36 +24,27 @@ struct FilaTablaview: View {
                 Text(tituloDer!).font(.caption).foregroundColor(.gray)
             }
             if(botonAdmin == true){
-                
-                // He pensado en algo como ->
-                // variable nueva con el tipo de usuario (tipoUsu)
-                // tipoUsu == 1 ? tipoUsuario = true : tipoUsuario = false
-                // Crear un metodo en ViewModel donde se cambie el tipo de usuario.
-                // Creo que esto se deberia hacer en la vista ListaUsuariosAdmin
-                
                 Toggle("", isOn: $tipoUsuario)
                     .onChange(of: tipoUsuario){Value in
-                       
-                        //vm.usuarios.first(where: {$0.nombre == nombre})?.tipoUsuario = tipoUsuario ? 1 : 2
                         vm.cambiarTipo(nombre: nombre!)
                     }
-                    
-            
-                
-                
-                
             }
-
         }
-            .padding()
-            .frame(width: 280)
-            .background(Color("FilaTabla"))
-            .cornerRadius(20)
+        .padding(.top, 20)
+        .padding(.bottom, 20)
+        .padding(.leading, 20)
+        .padding(.trailing, 20)
+        .frame(width: 280)
+        .background(Color("FilaTabla"))
+        .cornerRadius(10)
+        
+        
+        
     }
 }
 
 /*struct FilaTablaview_Previews: PreviewProvider {
-    static var previews: some View {
-        FilaTablaview(tituloIzq: "Prueba", tituloDer: "Prueba")
-    }
-}*/
+ static var previews: some View {
+ FilaTablaview(tituloIzq: "Prueba", tituloDer: "Prueba")
+ }
+ }*/

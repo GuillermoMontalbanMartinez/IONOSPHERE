@@ -23,25 +23,23 @@ struct CrearPulsoView: View {
     
     var body: some View {
         GeometryReader {geometry in
-            VStack(alignment: .leading){
+            VStack(alignment: .center){
                 
-                if emptyPulso {
-                    Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
-                        .foregroundColor(.red)
-                        .offset(x:10, y: 50)
-                }
-                if emptyA27 {
-                    Label("Introduzca valor A27", systemImage: "xmark.octagon")
-                        .foregroundColor(.red)
-                        .offset(x:10, y: 50)
-                }
-
-                VStack(alignment: .leading) {
+                VStack(alignment: .center) {
+                    
+                    if emptyPulso {
+                        Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
+                            .foregroundColor(.red)
+                            .offset(x:10, y: 50)
+                    }
+                    if emptyA27 {
+                        Label("Introduzca valor A27", systemImage: "xmark.octagon")
+                            .foregroundColor(.red)
+                            .offset(x:10, y: 50)
+                    }
+                    
                     HStack(alignment: .center) {
-                        Text("Nombre del pulso: ").frame(width: 150, alignment: .leading)
-                        
-                        TextField("", text: $nombrePulso).frame(alignment: .leading)
-                        Spacer()
+                        CustomTextFieldView(text: $nombrePulso, name: "Nombre del pulso")
                     }.padding(.leading).padding(.top)
                     
                     Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))").padding(.top)
@@ -88,9 +86,11 @@ struct CrearPulsoView: View {
                                 valorSlider = Double(valorSliderRedondeado) ?? 0.0
                                 // valorPorVoz = Double(valorPorVozRedondeado)
                                 
-#if eIONML
-                                claseElegida = vm.calcularClase(a05: valorSlider, a27: valorPorVozRedondeado )
-#endif
+                                #if eIONML
+                                    claseElegida = vm.calcularClase(a05: valorSlider, a27: valorPorVozRedondeado )
+                                #endif
+                                
+                                print("Vamos a crear el pulso")
                                 
                                 vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso)
                                 print("Pulso creado")
@@ -108,7 +108,7 @@ struct CrearPulsoView: View {
                     }
                 }
                 
-            }.frame(width: geometry.size.width/1.5, height: geometry.size.height/2, alignment: .center)
+            }.frame(width: geometry.size.width/1.4, height: geometry.size.height/2, alignment: .center)
                 .padding(.init(top: 40, leading:  30, bottom: 40, trailing: 30))
                 .background(Color.white)
                 .cornerRadius(30)

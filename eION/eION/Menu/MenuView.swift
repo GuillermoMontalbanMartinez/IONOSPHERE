@@ -38,7 +38,7 @@ struct MenuView: View {
                     
                 }.padding(.vertical, 20)
                     .padding(.horizontal, 15)
-                    .background(Color.accentColor)
+                    .background(Color.white)
                     .cornerRadius(20)
                     .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
             }.ignoresSafeArea()

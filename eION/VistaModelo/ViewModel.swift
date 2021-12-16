@@ -91,6 +91,9 @@ class ViewModel: ObservableObject {
         newPulso.ubicacion = ubicacion
         newPulso.a03 = a03
         newPulso.a27 = a27
+        
+        print("Creando pulso")
+
         saveData()
     }
     
@@ -164,5 +167,26 @@ class ViewModel: ObservableObject {
         }
         
         return true
+    }
+    
+    
+    func ordenarPulsos(propiedad: String) -> Void {
+        
+        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
+
+        do {
+            
+            if propiedad == "nombre" {
+                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.nombrePulso! < $1.nombrePulso!}
+            } else if propiedad == "fecha" {
+                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
+
+            }
+            
+        } catch let error {
+            print("Error al cargar los datos :\(error)")
+        }
+        
+
     }
 }

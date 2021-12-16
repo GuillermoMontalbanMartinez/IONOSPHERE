@@ -42,6 +42,8 @@ struct ListadoPulsosView: View {
         }
     }
     
+    @State var selection = ""
+    
     var body: some View {
         
         GeometryReader { geometry in
@@ -59,7 +61,7 @@ struct ListadoPulsosView: View {
                         .frame(width: 400, height: 300)
                         .ignoresSafeArea()
                     
-                    VStack(alignment: .center, spacing:20) {
+                    VStack(alignment: .center, spacing:5) {
                         HStack{
                             BusquedaView(text: $text)
                                 .padding(.leading, 60)
@@ -82,6 +84,7 @@ struct ListadoPulsosView: View {
                                     NavigationLink(destination: PulsoView(identificador: pulso.nombrePulso!, a03: pulso.a03, a27: pulso.a27, fechaRegistro: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), clase: pulso.clase)) {
                                         FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
                                     }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
+                                        
                                 }
                             }
                             .onDelete{ indexSet in
@@ -104,9 +107,15 @@ struct ListadoPulsosView: View {
                     .background(
                         NavigationLink("", destination: CrearPulsoView(), isActive: $anadir)
                     )
-                    .sheet(isPresented: $mostrarFiltro){
-                        //FiltroView
-                    }
+                    .confirmationDialog("Seleccione un filtro", isPresented: $mostrarFiltro, titleVisibility: .visible) {
+                                    Button("Ordenar por nombre") {
+                                        vm.ordenarPulsos(propiedad: "nombre")
+                                    }
+
+                                    Button("Ordenar por fecha") {
+                                        vm.ordenarPulsos(propiedad: "fecha")
+                                    }
+                                }
                     .navigationBarHidden(true)
             }
         }

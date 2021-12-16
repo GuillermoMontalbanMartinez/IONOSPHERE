@@ -43,31 +43,16 @@ private struct RegistroForm: View {
         VStack {
             VStack(spacing: 30) {
                 HStack(alignment: .bottom) {
-                    Text("Usuario", tableName: "Registro")
-                       .frame(minWidth: 90, alignment: .leading)
-                       .disableAutocorrection(true)
-                    VStack(spacing: 0) {
-                        TextField("", text: $username)
-                        Divider().background(.black)
-                      }
+                    CustomTextFieldView(text: $username, name: "Nombre de usuario")
                 }
                             
                 HStack(alignment: .bottom) {
-                    Text("Contraseña ", tableName: "Registro")
-                        .frame(minWidth: 90, alignment: .leading)
-                    VStack(spacing: 0) {
-                        SecureField("", text: $password)
-                        Divider().background(.black)
-                    }
+                    CustomSecureFieldView(text: $password, name: "Contraseña")
                 }
                             
                  HStack(alignment: .bottom) {
-                    Text("Repetir contraseña", tableName: "Registro")
-                        .frame(minWidth: 90, alignment: .leading)
-                    VStack(spacing: 0) {
-                        SecureField("", text: $repeatPassword)
-                        Divider().background(.black)
-                    }
+                     CustomSecureFieldView(text: $repeatPassword, name: "Repetir contraseña")
+
                 }
                 
                 Button {
