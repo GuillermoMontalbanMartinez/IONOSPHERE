@@ -150,4 +150,19 @@ class ViewModel: ObservableObject {
             print("cambiando")
             saveData()
         }
+    
+    
+        func calcularClase(a05: Double, a27: Double) -> Bool {
+        if a05 <= 0.0409 {
+            return true
+        } else if a05 > 0.0409 {
+            if a27 <= 0.99989 {
+                return true
+            } else {
+                return true
+            }
+        }
+        
+        return true
+    }
 }
