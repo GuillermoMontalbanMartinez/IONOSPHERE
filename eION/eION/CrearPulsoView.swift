@@ -12,6 +12,9 @@ struct CrearPulsoView: View {
     var ubicacion :String = "Almería"
     @State var valorPorVoz : String = ""
     @State var valorSlider : Double = 0
+    @State var nombrePulso : String = ""
+    @State var emptyPulso : Bool = false
+    @State var emptyA27 : Bool = false
     @State var modoGrabacion : Bool = false
     @State var isRecording = false
     @State private var indexClase = 0
@@ -25,13 +28,44 @@ struct CrearPulsoView: View {
                 VStack{
                     Section{
                         VStack{
-                            Spacer()
-                            Text("Introduzca un valor para A03: \((round(100000 * valorSlider) / 100000))").padding(.top)
+                            if emptyPulso {
+                                Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
+                                    .foregroundColor(.red)
+                                    .offset(x:10, y: 50)
+                            }
+                            if emptyA27 {
+                                Label("Introduzca valor A27", systemImage: "xmark.octagon")
+                                    .foregroundColor(.red)
+                                    .offset(x:10, y: 50)
+                            }
+                          Spacer()
+                            VStack() {
+                                HStack(alignment: .bottom) {
+                                    Text("Nombre del pulso: ").frame(width: 150, alignment: .leading)
+                                      
+                                    TextField("", text: $nombrePulso).frame(alignment: .leading)
+                              
+                                    Spacer()
+                                }.padding(.leading).padding(.top)
+                                HStack{
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                VStack{
+                                    Divider().background(.black)
+                                }.frame(width: 160).padding(.leading)
+                                    Spacer()
+                                }
+                            
+                            Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))").padding(.top)
                             Slider(value: $valorSlider, in: -1...1).frame(width:300)
-                            Spacer()
                             
                             HStack{
-                                Text("Introduzca un valor para A27: \(valorPorVoz) ")
+                                Text("Valor para A27: \(valorPorVoz) ")
                                 Spacer()
                                 Image(systemName: "mic.fill").resizable().frame(width:25, height: 32).onTapGesture {
                                     modoGrabacion.toggle()
@@ -57,25 +91,34 @@ struct CrearPulsoView: View {
                                     .onChange(of: indexClase) { index in
                                         claseElegida = listaClases[index] == "Good" ? true : false
                                     }
-                            }
+                            }.frame(width: 300, alignment: .leading)
                             
                             VStack{
                                 
                                 Button {
-                                    print("Pulso creado")
-                                    let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
-                                    let valorPorVozRedondeado  = Double(valorPorVoz) ?? 0
+                                    emptyPulso = false
+                                    emptyA27 = false
+                                    if nombrePulso.isEmpty {
+                                        emptyPulso = true
+                                    }else if(valorPorVoz.isEmpty){
+                                        emptyA27 = true
+                                    }else{
+                                        print("Pulso creado")
+                                        let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
+                                        let valorPorVozRedondeado  = Double(valorPorVoz) ?? 0
+                                        
+                                        
+                                        valorSlider = Double(valorSliderRedondeado) ?? 0.0
+                                        // valorPorVoz = Double(valorPorVozRedondeado)
+                                        /* let formater = DateFormatter()
+                                         formater.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                                         let fecha = formater.string(from: Date())*/
+                                        
                                     
-                                    
-                                    valorSlider = Double(valorSliderRedondeado) ?? 0.0
-                                    // valorPorVoz = Double(valorPorVozRedondeado)
-                                    /* let formater = DateFormatter()
-                                     formater.dateFormat = "yyyy-MM-dd HH:mm:ss"
-                                     let fecha = formater.string(from: Date())*/
-                                    
-                                
-                                    vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: "Pulso 1")
-                                    print("Pulso creado")
+                                        vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso)
+                                        print("Pulso creado")
+                                    }
+                                  
                                 } label: {
                                     Text("Crear pulso")
                                         .foregroundColor(.white)
@@ -99,12 +142,13 @@ struct CrearPulsoView: View {
     }
     
     
-    /*struct CrearPulsoView_Previews: PreviewProvider {
-     static var previews: some View {
-     CrearPulsoView()
-     }
-     }*/
-    
+  
 }
 
+}
 
+struct CrearPulsoView_Previews: PreviewProvider {
+ static var previews: some View {
+ CrearPulsoView()
+    }
+ }
