@@ -14,6 +14,7 @@ struct LoginView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Spacer()
                 VStack {
                     Image("AppLogo")
                         .resizable()
@@ -21,26 +22,31 @@ struct LoginView: View {
                         .frame(width: 200)
                         .clipShape(Circle())
                         .frame( alignment: .top)
-                }.offset(y:-140)
+                }.offset(y: 0)
                 
-                VStack(spacing: 15) {
-                    LoginForm(logeado: $logeado)
-                    HStack() {
-                        Text("¿No tienes cuenta?", tableName: "Login")
-                         Button {
-                             showView = true
-                         } label: {
-                             Text("Registrate", tableName: "Login")
-                                .foregroundColor(.black)
-                                .underline()
-                                .bold()
+                GeometryReader { geo in
+                    VStack(spacing: 0) {
+                        Spacer()
+                        Text("Inicia sesión").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                        LoginForm(logeado: $logeado)
+                        HStack() {
+                            Text("¿No tienes cuenta?", tableName: "Login").foregroundColor(.white)
+                             Button {
+                                 showView = true
+                             } label: {
+                                 Text("Registrate", tableName: "Login")
+                                     .foregroundColor(.white)
+                                    .underline()
+                                    .bold()
+                            }
+                            NavigationLink(destination: RegistroView(), isActive: $showView) {
+                                    EmptyView()
+                            }
                         }
-                        NavigationLink(destination: RegistroView(), isActive: $showView) {
-                                EmptyView()
-                        }
-                    }
-                }.offset(y:-120)
-            }
+                    }.offset(y:-100).background(wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7))
+                                                    .foregroundColor(.accentColor).opacity(1))
+                }
+            }.ignoresSafeArea()
         }
     }
 }
@@ -58,6 +64,7 @@ private struct LoginForm: View {
     @State var isTapped = false
     
     var body: some View {
+        
         VStack {
             VStack(spacing: 30) {
                 HStack(alignment: .bottom) {
@@ -93,13 +100,13 @@ private struct LoginForm: View {
  
             } label: {
                 Text("Iniciar sesión", tableName: "Login")
-                    .foregroundColor(.white)
+                    .foregroundColor(.accentColor)
                     .padding([.top, .bottom], 15)
                     .padding([.leading, .trailing], 25)
                     .cornerRadius(8)
-                    .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
+                   /* .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)*/
             }.buttonStyle(CustomButton())
-        }.background()
+        }//.background()
          .cornerRadius(20)
          .shadow(color: .gray.opacity(0.4), radius: 4)
          .padding([.leading, .trailing])

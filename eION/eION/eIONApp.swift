@@ -13,10 +13,12 @@ struct eIONApp: App {
     @State var logeado: Bool = false
     var body: some Scene {
         WindowGroup {
-            if logeado {
-                MenuView().environmentObject(vm)
-            } else {
-                LoginView(logeado: $logeado).environmentObject(vm)
+            VStack {
+                if logeado {
+                    MenuView().environmentObject(vm)
+                } else {
+                    LoginView(logeado: $logeado).environmentObject(vm)
+                }
             }
         }
     }

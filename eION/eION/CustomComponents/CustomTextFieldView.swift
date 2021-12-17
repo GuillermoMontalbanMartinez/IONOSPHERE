@@ -38,10 +38,10 @@ struct CustomTextFieldView: View {
                     .foregroundColor(isTapped ? Color.accentColor : Color.gray)
                 , alignment: .leading)
             
-            Rectangle().fill(isTapped ? Color.accentColor : Color.gray)
+            /*Rectangle().fill(isTapped ? Color.accentColor : Color.gray)
                 .opacity(isTapped ? 1 : 0.5)
                 .frame(height: 1)
-                .padding(.top, 10)
+                .padding(.top, 10)*/
             
         }.padding(.vertical, 12)
             .padding(.horizontal)
