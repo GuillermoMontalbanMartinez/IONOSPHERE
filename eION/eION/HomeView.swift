@@ -54,27 +54,31 @@ struct HomeView: View {
                                 Text(Date().formatted())
                                 
                             }
-                            HStack(spacing: 30) {
-                                ForEach(0..<3) { index in
-                                    
-                                    VStack {
-                                        Image(systemName: "dot.radiowaves.left.and.right").foregroundColor(Color.accentColor)
-                                        Text(vm.pulsos[index].nombrePulso!).foregroundColor(Color.accentColor).font(.headline)
-                                        Text(vm.pulsos[index].ubicacion ?? "").foregroundColor(Color.accentColor).font(.caption)
+                            
+                            if ( vm.pulsos.count > 0 ) {
+                                HStack(spacing: 30) {
+                                    ForEach(0..<3) { index in
                                         
-                                        
-                                        Button {
-                                            shareButton()
+                                        VStack {
+                                            Image(systemName: "dot.radiowaves.left.and.right").foregroundColor(Color.accentColor)
+                                            Text(vm.pulsos[index].nombrePulso!).foregroundColor(Color.accentColor).font(.headline)
+                                            Text(vm.pulsos[index].ubicacion ?? "").foregroundColor(Color.accentColor).font(.caption)
                                             
-                                        } label: {
-                                            Image(systemName: "square.and.arrow.up").foregroundColor(Color.white)
-                                        }
+                                            
+                                            Button {
+                                                shareButton()
+                                                
+                                            } label: {
+                                                Image(systemName: "square.and.arrow.up").foregroundColor(Color.white)
+                                            }
+                                            
+                                        }.padding().frame(width: 100, height: 100)
+                                            .background(.ultraThinMaterial).cornerRadius(100)
                                         
-                                    }.padding().frame(width: 100, height: 100)
-                                        .background(.ultraThinMaterial).cornerRadius(100)
-                                    
+                                    }
                                 }
                             }
+
                         }
                         
                         Spacer()
