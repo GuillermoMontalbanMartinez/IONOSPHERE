@@ -22,11 +22,11 @@ struct CrearPulsoView: View {
     @State var claseElegida: Bool = true
     
     var body: some View {
-        GeometryReader {geometry in
-            VStack(alignment: .center){
-                
+        GeometryReader {geo in
                 VStack(alignment: .center) {
-                    
+                    Spacer()
+                    Text("Crear un pulso").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                    //Spacer()
                     if emptyPulso {
                         Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
                             .foregroundColor(.red)
@@ -38,24 +38,24 @@ struct CrearPulsoView: View {
                             .offset(x:10, y: 50)
                     }
                     
-                    HStack(alignment: .center) {
-                        CustomTextFieldView(text: $nombrePulso, name: "Nombre del pulso")
-                    }.padding(.leading).padding(.top)
-                    
-                    Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))").padding(.top)
-                    Slider(value: $valorSlider, in: -1...1).frame(width:300)
-                    
-                    HStack{
-                        Text("Valor para A27: \(valorPorVoz) ")
-                        Spacer()
-                        Image(systemName: "mic.fill").resizable().frame(width:25, height: 32).onTapGesture {
-                            modoGrabacion.toggle()
-                        }.sheet(isPresented: $modoGrabacion ){
-                            MicrofonoView(valorPorVoz: $valorPorVoz,modoGrabacion: $modoGrabacion)
+                    VStack {
+                        CustomTextFieldView(text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
+                        
+                        Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))").padding(.top)
+                        Slider(value: $valorSlider, in: -1...1).frame(width:300)
+                        
+                        HStack{
+                            Text("Valor para A27: \(valorPorVoz) ")
+                            Spacer()
+                            Image(systemName: "mic.fill").resizable().frame(width:25, height: 32).onTapGesture {
+                                modoGrabacion.toggle()
+                            }.sheet(isPresented: $modoGrabacion ){
+                                MicrofonoView(valorPorVoz: $valorPorVoz,modoGrabacion: $modoGrabacion)
+                            }
                         }
                     }
-                    
-                    #if eIONB
+                                        
+#if eIONB
                     HStack {
                         Text("Clase")
                         Picker("Elija su clase", selection: $indexClase) {
@@ -68,55 +68,60 @@ struct CrearPulsoView: View {
                                 claseElegida = listaClases[index] == "Good" ? true : false
                             }
                     }
-                    #endif
+#endif
                     
-                    VStack{
-                        Button {
-                            emptyPulso = false
-                            emptyA27 = false
-                            if nombrePulso.isEmpty {
-                                emptyPulso = true
-                            }else if(valorPorVoz.isEmpty){
-                                emptyA27 = true
-                            }else{
-                                print("Pulso creado")
-                                let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
-                                let valorPorVozRedondeado  = Double(valorPorVoz) ?? 0
-                                
-                                valorSlider = Double(valorSliderRedondeado) ?? 0.0
-                                // valorPorVoz = Double(valorPorVozRedondeado)
-                                
-                                #if eIONML
-                                    claseElegida = vm.calcularClase(a05: valorSlider, a27: valorPorVozRedondeado )
-                                #endif
-                                
-                                print("Vamos a crear el pulso")
-                                
-                                vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso)
-                                print("Pulso creado")
-                            }
+                    Button {
+                        emptyPulso = false
+                        emptyA27 = false
+                        if nombrePulso.isEmpty {
+                            emptyPulso = true
+                        }else if(valorPorVoz.isEmpty){
+                            emptyA27 = true
+                        }else{
+                            print("Pulso creado")
+                            let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
+                            let valorPorVozRedondeado  = Double(valorPorVoz) ?? 0
                             
+                            valorSlider = Double(valorSliderRedondeado) ?? 0.0
+                            // valorPorVoz = Double(valorPorVozRedondeado)
                             
-                        } label: {
-                            Text("Crear pulso")
-                                .foregroundColor(.white)
-                                .padding([.top, .bottom], 15)
-                                .padding([.leading, .trailing], 25)
-                        }.buttonStyle(CustomButton())
+#if eIONML
+                            claseElegida = vm.calcularClase(a05: valorSlider, a27: valorPorVozRedondeado )
+#endif
+                            
+                            print("Vamos a crear el pulso")
+                            
+                            vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso)
+                            print("Pulso creado")
+                        }
                         
                         
-                    }
-                }
+                    } label: {
+                        Text("Crear pulso")
+                            .foregroundColor(.accentColor)
+                            .padding([.top, .bottom], 15)
+                            .padding([.leading, .trailing], 25)
+                    }.buttonStyle(CustomButton())
+                    
+                    Spacer()
+                    
+                    
+                } .padding(.init(top: 40, leading:  30, bottom: 40, trailing: 30))
+                .background(wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7))
+                                .foregroundColor(.accentColor).opacity(1))
+                //.background(Color.white)
+                //.cornerRadius(30)
+                .foregroundColor(.white)
                 
-            }.frame(width: geometry.size.width/1.4, height: geometry.size.height/2, alignment: .center)
-                .padding(.init(top: 40, leading:  30, bottom: 40, trailing: 30))
-                .background(Color.white)
-                .cornerRadius(30)
-                .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
-                .shadow(radius: 10).onAppear {
+                //.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
+                //shadow(radius: 10)
+                .onAppear {
                     UITableView.appearance().backgroundColor = .clear
-                }
-        }
+                    //UITableView.appearance().tintColor = .white
+                    
+                }.ignoresSafeArea()
+                
+            }//.frame(width: geo.size.width/1.4, height: geo.size.height/2, alignment: .center)
     }
     
 }
