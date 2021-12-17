@@ -34,6 +34,7 @@ private struct RegistroForm: View {
     @State var username: String = ""
     @State var password: String = ""
     @State var repeatPassword: String = ""
+    @State var registeredUser: Bool = false
     @State var emptyUsername: Bool = false
     @State var emptyPassword: Bool = false
     @State var emptyRepeatPassword: Bool = false
@@ -74,9 +75,24 @@ private struct RegistroForm: View {
                     emptyUsername = false
                     emptyPassword = false
                     emptyRepeatPassword = false
-                    if username.isEmpty {
+                    registeredUser = false
+                    
+                    if username.isEmpty && password.isEmpty && repeatPassword.isEmpty {
                         emptyUsername = true
-                    } else if password.isEmpty{
+                        emptyPassword = true
+                        emptyRepeatPassword = true
+                    } else if username.isEmpty && password.isEmpty {
+                        emptyUsername = true
+                        emptyPassword = true
+                    } else if username.isEmpty && repeatPassword.isEmpty{
+                        emptyUsername = true
+                        emptyRepeatPassword = true
+                    } else if password.isEmpty && repeatPassword.isEmpty {
+                        emptyPassword = true
+                        emptyRepeatPassword = true
+                    } else if username.isEmpty {
+                        emptyUsername = true
+                    } else if password.isEmpty {
                         emptyPassword = true
                     } else if repeatPassword.isEmpty {
                         emptyRepeatPassword = true
@@ -85,6 +101,8 @@ private struct RegistroForm: View {
                             try model.addUsuario(nombre: username, password: password)
                         } catch eION.ViewModel.error.datoRepetido {
                             print("Usuario existente en la base de datos")
+                            registeredUser = true
+                            
                         } catch {
                             print("Error desconocido")
                         }
@@ -99,37 +117,42 @@ private struct RegistroForm: View {
                         .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
                 }.buttonStyle(CustomButton())
                 
-                /*
-                if emptyPassword && emptyRepeatPassword {
-                    Text("Introduzca la contraseña").foregroundColor(.red)
-                        .offset(x:10, y: -185)
-                    Text("Repite la contraseña")
+                if emptyUsername && emptyPassword && emptyRepeatPassword {
+                    Label("Introduzca los datos", systemImage: "xmark.octagon")
                         .foregroundColor(.red)
-                        .offset(x: 10, y: -185)
-                }
-                */
-                if emptyUsername {
-                    Text("Introduce el usuario")
+                        .offset(x: 10, y:-40)
+                } else if emptyUsername && emptyPassword {
+                    Label("Introduzca el usuario y la contraseña", systemImage: "xmark.octagon")
                         .foregroundColor(.red)
-                        .offset(x: 10,y: -235)
-                }
-                
-                if emptyPassword {
-                    Text("Introduce la contraseña")
+                        .offset(x: 10, y:-40)
+                } else if emptyUsername && emptyRepeatPassword {
+                    Label("Introducir el usuario y la repetición", systemImage: "xmark.octagon")
                         .foregroundColor(.red)
-                        .offset(x: 10,y: -185)
-                }
-                
-                if emptyRepeatPassword {
-                    Text("Repite la contraseña")
+                        .offset(x: 10, y:-40)
+                } else if emptyPassword && emptyRepeatPassword {
+                    Label("Introduzca la contraseña y la repetición", systemImage: "xmark.octagon")
                         .foregroundColor(.red)
-                        .offset(x: 10,y: -140)
+                        .offset(x: 10, y:-40)
+                } else if emptyUsername {
+                    Label("Introduzca el nombre de usuario", systemImage: "xmark.octagon")
+                        .foregroundColor(.red)
+                        .offset(x: 10, y:-40)
+                } else if emptyPassword{
+                    Label("Introduzca la contraseña", systemImage: "xmark.octagon")
+                        .foregroundColor(.red)
+                        .offset(x: 10, y:-40)
+                } else if emptyRepeatPassword {
+                    Label("Repita la contraseña", systemImage: "xmark.octagon")
+                        .foregroundColor(.red)
+                        .offset(x: 10, y:-40)
+                } else if registeredUser {
+                    Label("El usuario ya existe", systemImage: "xmark.octagon")
+                        .foregroundColor(.red)
+                        .offset(x: 10, y:-40)
                 }
 
             }.padding([.leading, .trailing], 20)
              .padding([.top, .bottom], 30)
-            
-    
         }.background()
             .cornerRadius(20)
             .shadow(color: .black.opacity(0.4), radius: 4)
