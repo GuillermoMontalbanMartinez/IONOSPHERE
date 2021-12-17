@@ -54,28 +54,18 @@ private struct LoginForm: View {
     @EnvironmentObject var vm : ViewModel
     @Binding var logeado: Bool
     
+    
+    @State var isTapped = false
+    
     var body: some View {
         VStack {
             VStack(spacing: 30) {
                 HStack(alignment: .bottom) {
-                    Text("Nombre", tableName: "Login")
-                        .frame(minWidth: 90, alignment: .leading)
-                        .disableAutocorrection(true)
-                    VStack(spacing: 0) {
-                        TextField("", text: $username)
-                        Divider()
-                            .background(.black)
-                    }
+                    CustomTextFieldView(text: $username, name: "Nombre")
                 }
             
                 HStack(alignment: .bottom) {
-                    Text("Contraseña", tableName: password)
-                        .frame(minWidth: 90, alignment: .leading)
-                    VStack(spacing: 0) {
-                        SecureField("", text: $password)
-                        Divider()
-                            .background(.black)
-                    }
+                    CustomSecureFieldView(text: $password, name: "Contraseña")
                 }
             }.padding([.leading, .trailing], 20)
              .padding([.top, .bottom], 30)

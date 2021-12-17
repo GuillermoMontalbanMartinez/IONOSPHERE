@@ -29,7 +29,7 @@ struct ListadoUbicacionesView: View {
                                 ForEach(provincias, id: \.self) { provincia in
                                     if(text.isEmpty || provincia.hasPrefix(text)){
                                         NavigationLink(destination: ListadoPulsosView(provincia: provincia)){
-                                            FilaTablaview(tituloIzq: provincia)
+                                            FilaTablaview(tituloIzq: provincia, tipoUsuario: true)
                                         }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
                                     }
                                 }

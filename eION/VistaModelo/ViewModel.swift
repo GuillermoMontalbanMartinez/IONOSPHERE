@@ -91,6 +91,9 @@ class ViewModel: ObservableObject {
         newPulso.ubicacion = ubicacion
         newPulso.a03 = a03
         newPulso.a27 = a27
+        
+        print("Creando pulso")
+
         saveData()
     }
     
@@ -136,5 +139,54 @@ class ViewModel: ObservableObject {
         return result
     }
     
+    /**
+         Funcion para cambiar el tipo de usuario
+         */
+        func cambiarTipo(nombre: String){
+            let usuario = usuarios.first(where: {$0.nombre == nombre})
+        
+            if (usuario!.tipoUsuario == 1){
+                usuario!.tipoUsuario = 2
+            }else{
+                usuario!.tipoUsuario = 1
+            }
+            print("cambiando")
+            saveData()
+        }
     
+    
+        func calcularClase(a05: Double, a27: Double) -> Bool {
+        if a05 <= 0.0409 {
+            return true
+        } else if a05 > 0.0409 {
+            if a27 <= 0.99989 {
+                return true
+            } else {
+                return true
+            }
+        }
+        
+        return true
+    }
+    
+    
+    func ordenarPulsos(propiedad: String) -> Void {
+        
+        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
+
+        do {
+            
+            if propiedad == "nombre" {
+                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.nombrePulso! < $1.nombrePulso!}
+            } else if propiedad == "fecha" {
+                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
+
+            }
+            
+        } catch let error {
+            print("Error al cargar los datos :\(error)")
+        }
+        
+
+    }
 }
