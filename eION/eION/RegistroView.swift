@@ -35,6 +35,7 @@ private struct RegistroForm: View {
     @State var password: String = ""
     @State var repeatPassword: String = ""
     @State var registeredUser: Bool = false
+    @State var differentPassword: Bool = false
     @State var emptyUsername: Bool = false
     @State var emptyPassword: Bool = false
     @State var emptyRepeatPassword: Bool = false
@@ -53,7 +54,6 @@ private struct RegistroForm: View {
                             
                  HStack(alignment: .bottom) {
                      CustomSecureFieldView(text: $repeatPassword, name: "Repetir contraseña")
-
                 }
                 
                 Button {
@@ -61,6 +61,7 @@ private struct RegistroForm: View {
                     emptyPassword = false
                     emptyRepeatPassword = false
                     registeredUser = false
+                    differentPassword = false
                     
                     if username.isEmpty && password.isEmpty && repeatPassword.isEmpty {
                         emptyUsername = true
@@ -81,8 +82,9 @@ private struct RegistroForm: View {
                         emptyPassword = true
                     } else if repeatPassword.isEmpty {
                         emptyRepeatPassword = true
+                    } else if password != repeatPassword {
+                        differentPassword = true
                     } else {
-                        
                         #if eIONB
                         do {
                             try model.addUsuario(nombre: username, password: password)
@@ -102,6 +104,7 @@ private struct RegistroForm: View {
                             try model.addUsuario(nombre: username, password: password)
                         } catch eIONML.ViewModel.error.datoRepetido {
                             print("Usuario existente en la base de datos")
+                            registeredUser = true
                         } catch {
                             print("Error desconocido")
                         }
@@ -150,6 +153,10 @@ private struct RegistroForm: View {
                         .offset(x: 10, y:-40)
                 } else if registeredUser {
                     Label("El usuario ya existe", systemImage: "xmark.octagon")
+                        .foregroundColor(.red)
+                        .offset(x: 10, y:-40)
+                } else if differentPassword {
+                    Label("Las contraseñas deben ser iguales", systemImage: "xmark.octagon")
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 }
