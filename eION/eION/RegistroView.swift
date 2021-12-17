@@ -19,7 +19,6 @@ struct RegistroView: View {
                     .frame(width: 200)
                     .clipShape(Circle())
                     .frame( alignment: .top)
-                    
             }.padding(40)
             .offset(y:-120)
             
@@ -95,7 +94,6 @@ private struct RegistroForm: View {
                         } catch {
                             print("Error desconocido")
                         }
-                        
                         #endif
                         
                         
@@ -110,8 +108,7 @@ private struct RegistroForm: View {
                         }
                         
                         #endif
-                        
-                        
+   
                     }
 
                 } label: {
@@ -160,16 +157,13 @@ private struct RegistroForm: View {
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 }
-
             }.padding([.leading, .trailing], 20)
              .padding([.top, .bottom], 30)
         }.background()
             .cornerRadius(20)
             .shadow(color: .black.opacity(0.4), radius: 4)
             .padding([.leading, .trailing])
-            
     }
-    
 }
 
 struct RegistroView_Previews: PreviewProvider {
