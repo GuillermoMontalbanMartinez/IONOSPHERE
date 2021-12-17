@@ -29,13 +29,11 @@ struct CustomSecureFieldView: View {
                     }
                 }
             
-            Rectangle().fill(isTapped && !text.isEmpty ? Color.accentColor : Color.gray)
+            /*Rectangle().fill(isTapped && !text.isEmpty ? Color.accentColor : Color.gray)
                 .opacity(isTapped && !text.isEmpty ? 1 : 0.5)
                 .frame(height: 1)
-                .padding(.top, 10)
-                
-
-            
+                .padding(.top, 10)*/
+ 
             
         }.padding(.vertical, 12)
             .padding(.horizontal)

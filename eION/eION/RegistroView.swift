@@ -11,7 +11,7 @@ struct RegistroView: View {
     @State var showView: Bool = false
     @EnvironmentObject var model: ViewModel
     var body: some View {
-        VStack {
+        VStack() {
             VStack {
                 Image("AppLogo")
                     .resizable()
@@ -21,12 +21,20 @@ struct RegistroView: View {
                     .frame( alignment: .top)
                     
             }.padding(40)
-            .offset(y:-120)
             
-            VStack(spacing: 15) {
-                RegistroForm().environmentObject(model)
-            }.offset(y:-140)
-        }
+
+            GeometryReader { geo in
+                VStack(spacing: 0) {
+                    Spacer()
+
+                    Text("Regístrate").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                    
+                    RegistroForm().environmentObject(model)
+                }.offset(y:-50).background(wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7))
+                                                .foregroundColor(.accentColor).opacity(1))
+            }
+
+        }.ignoresSafeArea()
     }
 }
 
@@ -116,11 +124,11 @@ private struct RegistroForm: View {
 
                 } label: {
                     Text("Registrarse", tableName: "Login")
-                        .foregroundColor(.white)
+                        .foregroundColor(.accentColor)
                         .padding([.top, .bottom], 15)
                         .padding([.leading, .trailing], 25)
                         .cornerRadius(8)
-                        .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
+                        //.shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)
                 }.buttonStyle(CustomButton())
                 
                 if emptyUsername && emptyPassword && emptyRepeatPassword {
@@ -163,7 +171,7 @@ private struct RegistroForm: View {
 
             }.padding([.leading, .trailing], 20)
              .padding([.top, .bottom], 30)
-        }.background()
+        }//.background()
             .cornerRadius(20)
             .shadow(color: .black.opacity(0.4), radius: 4)
             .padding([.leading, .trailing])
