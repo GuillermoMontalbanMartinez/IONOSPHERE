@@ -14,41 +14,47 @@ struct ListadoUbicacionesView: View {
     var provincias: [String] = ["Almería", "Ávila", "Barcelona", "Zaragoza"]
     var body: some View {
         NavigationView{
-            
-            GeometryReader { geometry in
-                
-                ScrollView {
-                    VStack{
-                        CustomNavigationView(title:"Ubicación", botones: false, destino: destino, anadir: .constant(false))
-                        VStack(alignment: .center, spacing:20) {
-                            
-                            BusquedaView(text: $text)
-                            
-                            List(){
+            ZStack {
+                GeometryReader { geometry in
+                    
+                    BackgroundView(height: 50)
+                    
+                    ScrollView {
+                        VStack{
+                            CustomNavigationView(title:"Ubicación", botones: false, destino: destino, anadir: .constant(false))
+                            VStack(alignment: .center, spacing:20) {
                                 
-                                ForEach(provincias, id: \.self) { provincia in
-                                    if(text.isEmpty || provincia.hasPrefix(text)){
-                                        NavigationLink(destination: ListadoPulsosView(provincia: provincia)){
-                                            FilaTablaview(tituloIzq: provincia, tipoUsuario: true)
-                                        }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
+                                BusquedaView(text: $text)
+                                
+                                List(){
+                                    
+                                    ForEach(provincias, id: \.self) { provincia in
+                                        if(text.isEmpty || provincia.hasPrefix(text)){
+                                            NavigationLink(destination: ListadoPulsosView(provincia: provincia)){
+                                                FilaTablaview(tituloIzq: provincia, tipoUsuario: true)
+                                            }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
+                                        }
                                     }
                                 }
+                                    .scaledToFit()
+                                    .onAppear(){
+                                        UITableView.appearance().backgroundColor = .clear
+                                        UITableViewCell.appearance().backgroundColor = .blue
+                                    }
+                                
                             }
-                                .scaledToFit()
-                                .onAppear(){
-                                    UITableView.appearance().backgroundColor = .clear
-                                }
-                            
-                        }
-                        .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
-                            .background(Color.white)
-                            .cornerRadius(30)
-                            .shadow(radius: 10)
-                       
-                    }.navigationBarHidden(true).frame(height: geometry.size.height)
+                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
+                            .background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                                .cornerRadius(30)
+                                //.shadow(radius: 10)
+                           
+                        }.navigationBarHidden(true).frame(height: geometry.size.height)
+                    }
+                    
                 }
-                
             }
+            
+
         }
             //.navigationBarHidden(true)
             .navigationBarTitleDisplayMode(.inline)

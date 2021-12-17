@@ -9,16 +9,33 @@ import SwiftUI
 
 struct CustomShape: Shape {
     func path(in rect: CGRect) -> Path {
-        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: [.bottomLeft,.bottomRight], cornerRadii: CGSize(width: 10, height: 10))
-        
-        return Path(path.cgPath)
+        return Path { path in
+            path.move(to: CGPoint(x: rect.width , y: rect.height))
+            path.move(to: CGPoint(x: rect.width , y: 0))
+            path.move(to: CGPoint(x: 0 , y: rect.height))
+
+            let mid = rect.width / 2
+            path.move(to: CGPoint(x: mid-40 , y: rect.height))
+            
+            let to = CGPoint(x: mid , y: rect.height - 20)
+            let control1 = CGPoint(x: mid - 15 , y: rect.height)
+            let control2 = CGPoint(x: mid - 15, y: rect.height - 20)
+            
+            let to1 = CGPoint(x: mid + 40, y: rect.height)
+            let control3 = CGPoint(x: mid + 15 , y: rect.height - 20)
+            let control4 = CGPoint(x: mid + 15, y: rect.height)
+
+            path.addCurve(to: to, control1: control1, control2: control2)
+            path.addCurve(to: to1, control1: control3, control2: control4)
+
+        }
     }
     
 }
 
 struct TabButton: View {
     var title: String
-    var image: String
+    @State var image: String
     
     @Binding var selected: String
     
@@ -29,21 +46,12 @@ struct TabButton: View {
             }
         }) {
             VStack(spacing: 6) {
-                
-                ZStack {
-                    CustomShape().fill(Color.clear).frame(width: 45, height: 6)
-                    if ( selected == title ) {
-                        CustomShape().fill(Color.accentColor).frame(width: 45, height: 6, alignment: .center)
-                    }
-                }.padding(.bottom, 10)
-                
+                            
 
-            
-                
-                Image(systemName: image).resizable().renderingMode(.template)
+                Image(systemName: image ).resizable().renderingMode(.template)
                     .frame(width: 25, height: 25).foregroundColor(selected == title ? .accentColor : .gray)
                 
-                Text(title).font(.caption).fontWeight(.bold).foregroundColor(Color.black.opacity( selected == title ? 0.6 : 0.2))
+                //Text(title).font(.caption).fontWeight(.bold).foregroundColor(Color.black.opacity( selected == title ? 0.6 : 0.2))
                 
                 /*if selected == title {
                     if ( title.contains("Home")) {
@@ -54,8 +62,17 @@ struct TabButton: View {
                     }
                 }*/
                 
+                /*ZStack {
+                    CustomShape().fill(Color.clear).frame(width: 45, height: 6)
+                    if ( selected == title ) {
+                        CustomShape().fill(.white).frame(width: 45, height: 6, alignment: .center)
+                    }
+                }.padding(.bottom, 10)*/
                 
-            }.padding(.vertical,10).padding(.horizontal)//.background(Color.accentColor.opacity(selected == title ? 0.08 : 0)).clipShape(Capsule())
+                
+            }.padding(.vertical,10).padding(.horizontal).offset(y: selected == title ? -10 : 0).onAppear {
+                image = selected == title ? image + ".fill" : image
+            }
         }
         
 

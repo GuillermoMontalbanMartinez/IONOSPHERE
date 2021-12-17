@@ -15,35 +15,46 @@ struct PulsoView: View {
     var clase: Bool
     
     var body: some View {
-        GeometryReader { geometry in
-            VStack(alignment: .leading, spacing: 10) {
-                Text(identificador).font(.title).fontWeight(.bold)
-                HStack(alignment: .center, spacing: 10.0) {
-                    Text("A03").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                    Text("\(a03)")
-                }
+        
+        ZStack {
+            BackgroundView(height: 40).padding(.top, 200)
+            GeometryReader { geometry in
+                VStack(alignment: .leading, spacing: 10) {
+                    
+                    HStack {
+                        Text(identificador).font(.largeTitle).fontWeight(.bold)
+                        Image(systemName: "bookmark").foregroundColor(Color.accentColor).frame(width: 100, height: 100).scaledToFit()
+                    }
+                    
+                    HStack(alignment: .center, spacing: 10.0) {
+                        Text("A03").fontWeight(.bold).frame(width: 100, alignment: .leading)
+                        Text("\(a03)").font(.caption)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 10.0) {
+                        Text("A27").fontWeight(.bold).frame(width: 100, alignment: .leading)
+                        Text("\(a27)").font(.caption)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 10.0) {
+                        Text("Clase").fontWeight(.bold).frame(width: 100, alignment: .leading)
+                        Text(clase ? "Good" : "Bad").font(.caption)
+                    }
+                    
+                    HStack(alignment: .center, spacing: 10.0) {
+                        Text("Fecha de registro").fontWeight(.bold).frame(width: 100, alignment: .leading)
+                        Text(fechaRegistro).font(.caption)
+                    }
+                    
+                    
+                }.frame(width: geometry.size.width/1.1, height: geometry.size.height/2, alignment: .center)
+                    //.foregroundColor(.white)
+                    //.background(.ultraThinMaterial)
+                    //.cornerRadius(30)
+                    .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
+                    //.shadow(radius: 10)
                 
-                HStack(alignment: .center, spacing: 10.0) {
-                    Text("A27").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                    Text("\(a27)")
-                }
-                
-                HStack(alignment: .center, spacing: 10.0) {
-                    Text("Clase").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                    Text(clase ? "Good" : "Bad")
-                }
-                
-                HStack(alignment: .center, spacing: 10.0) {
-                    Text("Fecha de registro").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                    Text(fechaRegistro)
-                }
-                
-            }.frame(width: geometry.size.width/1.1, height: geometry.size.height/2, alignment: .center)
-                .background(Color.white)
-                .cornerRadius(30)
-                .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
-                .shadow(radius: 10)
-            
+            }
         }
     }
 }

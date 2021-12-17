@@ -28,18 +28,18 @@ struct MenuView: View {
                  
                 
                 HStack(spacing: 0) {
-                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house.fill", selected: $seleccion)
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house", selected: $seleccion)
                     Spacer(minLength: 0)
-                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "note.text", selected: $seleccion)
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet", selected: $seleccion)
                     Spacer(minLength: 0)
-                    TabButton(title: "Cerrar sesión", image: "arrow.backward.square.fill", selected: $seleccion).onTapGesture {
+                    TabButton(title: "Cerrar sesión", image: "arrow.forward.square.fill", selected: $seleccion).onTapGesture {
                         logout = true
                     }
                     
                 }.padding(.vertical, 20)
                     .padding(.horizontal, 15)
-                    .background(Color.white)
-                    .cornerRadius(20)
+                    .background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    //.cornerRadius(20)
                     .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
             }.ignoresSafeArea()
         

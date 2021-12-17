@@ -63,7 +63,7 @@ struct DiagramaView: View {
                 ZStack {
                     ZStack  {
                         ForEach(0..<chartDataSet.count){ i in
-                            PieChartSlice(center: CGPoint(x: geometry.frame(in: .local).midX, y: (geometry.frame(in:  .local).minY) + 200), radius: geometry.frame(in: .local).width/2, startDegree: pieSlices[i].startDegree, endDegree: pieSlices[i].endDegree, accentColor: pieColors[i], separatorColor: Color.white).scaleEffect(currentIndex != -1 && currentIndex == i ? 1 : 0.9).opacity(currentIndex == i || currentIndex == -1 ? 1 : 0.5)
+                            PieChartSlice(center: CGPoint(x: geometry.frame(in: .local).midX, y: (geometry.frame(in:  .local).minY) + 200), radius: geometry.frame(in: .local).width/2, startDegree: pieSlices[i].startDegree, endDegree: pieSlices[i].endDegree, accentColor: pieColors[i], separatorColor: Color.white).scaleEffect(currentIndex != -1 && currentIndex == i ? 0.9 : 0.8).opacity(currentIndex == i || currentIndex == -1 ? 1 : 0.5)
                                 .onTapGesture {
                                     
                                     withAnimation(.spring()) {
@@ -96,7 +96,7 @@ struct DiagramaView: View {
                     }
                     .padding()
                 }
-                
+                Spacer()
                 VStack(alignment:   .leading)  {
                     ForEach(0..<chartDataSet.count)   {    i in
                         HStack {

@@ -12,6 +12,7 @@ struct HomeAdminView: View {
     @EnvironmentObject var vm : ViewModel
     
     var body: some View {
+        
         NavigationView {
             GeometryReader { geometry in
                 ScrollView {

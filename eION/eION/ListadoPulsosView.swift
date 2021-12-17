@@ -60,6 +60,7 @@ struct ListadoPulsosView: View {
                         }
                         .frame(width: 400, height: 300)
                         .ignoresSafeArea()
+                        
                     
                     VStack(alignment: .center, spacing:5) {
                         HStack{
