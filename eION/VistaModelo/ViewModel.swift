@@ -116,7 +116,7 @@ class ViewModel: ObservableObject {
         
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})
         
-        print(user)
+        print( "USUARIO: \(user)")
         if !user.isEmpty {
             usuarioLogeado = user[0]
             return true
@@ -186,7 +186,23 @@ class ViewModel: ObservableObject {
         } catch let error {
             print("Error al cargar los datos :\(error)")
         }
+    }
+    
+    
+    func updateUserData(nombre: String, imagen: UIImage) -> Bool {
+        let user:[Usuario] = usuarios.filter({$0.nombre == nombre})
         
+        //let jpegImageData = imagen.jpegData(compressionQuality: 1.0)
+        let pngImageData  = imagen.pngData()
+        
+        if !user.isEmpty {
+            user[0].foto = pngImageData
+            print( "USUARIO: \(user)")
+            saveData()
+            return true
+        } else {
+            return false
+        }
 
     }
 }

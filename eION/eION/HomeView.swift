@@ -76,20 +76,42 @@ struct HomeView: View {
                         VStack(alignment: .leading, spacing: 30) {
                             VStack(alignment: .leading) {
                                 Text("Otros usuarios").font(.largeTitle).fontWeight(.bold)
-                                
                             }
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 30) {
                                     ForEach(0..<vm.usuarios.count) { index in
-                                        VStack {
+                                        VStack(spacing: 0) {
+                                            
                                             Text(vm.usuarios[index].nombre ?? "")
-                                        }.padding().frame(width: 100, height: 100).cornerRadius(100)
+                                            if vm.usuarios[index].foto != nil {
+                                                Image(uiImage: UIImage(data: vm.usuarios[index].foto ?? Data()) ?? UIImage())
+                                                .resizable()
+                                                .scaledToFit()
+                                                .cornerRadius(100)
+                                                .frame(width: 100, height:100)
+                                                .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
+                                                .padding(.vertical)
+                                            } else {
+                                                Image("unknown")
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .cornerRadius(100)
+                                                    .frame(width: 100, height:100)
+                                                    .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
+                                                    .padding(.vertical)
+                                            }
+                                                
+                                        }.padding().cornerRadius(100)
                                     }
                                 }
                             }.frame(maxWidth: .infinity)
+                            
+                            Text("Otros usuarios que también están compartiendo sus pulsos")
+                                .font(.caption)
+                                .foregroundColor(.gray)
                         }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
                         
-                        
+                        Spacer()
                         
                     }
                 }.frame(maxWidth: .infinity)

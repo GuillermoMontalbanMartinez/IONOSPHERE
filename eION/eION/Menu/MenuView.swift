@@ -24,6 +24,8 @@ struct MenuView: View {
                     ListaUsuariosAdmin().tag("Usuarios")
                     HomeAdminView().tag("HomeAdmin")
                     // LoginView().tag("CerrarSesion")
+                    
+                    EditarPerfilView().tag("EditarPerfil")
                 }
                  
                 
@@ -31,6 +33,8 @@ struct MenuView: View {
                     TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house", selected: $seleccion)
                     Spacer(minLength: 0)
                     TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet", selected: $seleccion)
+                    Spacer(minLength: 0)
+                    TabButton(title: "EditarPerfil", image: "person.fill", selected: $seleccion)
                     Spacer(minLength: 0)
                     TabButton(title: "Cerrar sesión", image: "arrow.forward.square.fill", selected: $seleccion).onTapGesture {
                         logout = true
