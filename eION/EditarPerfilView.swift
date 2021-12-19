@@ -21,14 +21,25 @@ struct EditarPerfilView: View {
             
             
             VStack {
-                
+                        
+                Text("Edita tu perfil").font(.largeTitle).font(.system(.body, design: .rounded)).foregroundColor(.white).fontWeight(.bold)
                 Button {
                 mostrarImagePicker.toggle() }label:{
-                    Image(uiImage: imageGeneral) .resizable()
-                        .frame(width: 200, height:200)
-                        .cornerRadius(100)
-                        .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
-                        .padding(.vertical)
+                    if vm.usuarioLogeado?.foto != nil {
+                        Image(uiImage: UIImage(data: vm.usuarioLogeado?.foto ?? Data()) ?? UIImage())
+                            .resizable()
+                            .frame(width: 200, height:200)
+                            .cornerRadius(100)
+                            .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
+                            .padding(.vertical)
+                    } else {
+                        Image("unknown") .resizable()
+                            .frame(width: 200, height:200)
+                            .cornerRadius(100)
+                            .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
+                            .padding(.vertical)
+                    }
+                    
                     
                 }
                 .sheet(isPresented: $mostrarImagePicker){
@@ -36,9 +47,9 @@ struct EditarPerfilView: View {
                 }
                 
                 if ( datosActualizados == 1 ) {
-                    Text("Datos actualizados correctamente").font(.headline).foregroundColor(.green)
+                    Text("Datos actualizados correctamente").font(.headline).foregroundColor(.green).font(.system(.body, design: .rounded))
                 } else if (datosActualizados == 2) {
-                    Text("Ha ocurrido un error actualizando sus datos").font(.headline).foregroundColor(.red)
+                    Text("Ha ocurrido un error actualizando sus datos").font(.headline).foregroundColor(.red).font(.system(.body, design: .rounded))
                 }
 
                 Button {
@@ -49,6 +60,7 @@ struct EditarPerfilView: View {
                     }
                 } label: {
                     Text("Guardar")
+                        .font(.system(.body, design: .rounded))
                         .foregroundColor(.accentColor)
                         .padding([.top, .bottom], 15)
                         .padding([.leading, .trailing], 25)
@@ -63,8 +75,8 @@ struct EditarPerfilView: View {
     }
 }
 
-struct EditarPerfilView_Previews: PreviewProvider {
+/*struct EditarPerfilView_Previews: PreviewProvider {
     static var previews: some View {
         EditarPerfilView()
     }
-}
+}*/
