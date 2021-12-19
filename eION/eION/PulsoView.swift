@@ -19,7 +19,7 @@ struct PulsoView: View {
     var body: some View {
         
         ZStack {
-            BackgroundView(height: 40).padding(.top, 200)
+            BackgroundView(height: 40).padding(.top, 300)
             GeometryReader { geometry in
                 VStack(alignment: .leading, spacing: 10) {
                     

@@ -14,8 +14,7 @@ import MessageUI
 struct HomeView: View {
     @EnvironmentObject var vm : ViewModel
     @State private var isShareSheetShowing = false
-    @State private var showingSheet = false
-    @State private var tappedIndex = -1
+    // @State private var tappedIndex = -1
     
     var body: some View {
         ZStack {
@@ -42,28 +41,7 @@ struct HomeView: View {
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(spacing: 30) {
                                             ForEach(0..<3) { index in
-                                                VStack {
-                                                    Image(systemName: "dot.radiowaves.left.and.right").resizable().foregroundColor(Color.accentColor).scaledToFit()
-                                                    Text(vm.pulsos[index].nombrePulso!).foregroundColor(Color.accentColor).font(.headline)
-                                                    Text(vm.pulsos[index].ubicacion ?? "").foregroundColor(Color.accentColor).font(.caption)
-                                                    
-                                                    Text(vm.pulsos[index].usuarioRelation?.nombre  ?? "").font(.caption)
-
-                                                    
-                                                    Button {
-                                                        showingSheet.toggle()
-                                                        tappedIndex = index
-                                                    } label: {
-                                                        Image(systemName: "square.and.arrow.up").foregroundColor(Color.black)
-                                                        Text("\(tappedIndex)").opacity(0).frame(width: 0, height: 0)
-
-                                                    }.sheet(isPresented: $showingSheet) {
-                                                        ShareSheet(items: [vm.pulsos[tappedIndex].nombrePulso!, vm.pulsos[tappedIndex].a03, vm.pulsos[tappedIndex].a27])
-                                                    }
-                                                    
-                                                }.padding().frame(width: 200, height: 200)
-                                                    .background(Color("FilaTabla")).cornerRadius(100)
-                                                
+                                                FilaPulso(index: index).environmentObject(vm)
                                             }
                                         }
                                         
@@ -143,6 +121,47 @@ struct ShareSheet: UIViewControllerRepresentable {
         return controller
     }
     
+}
+
+struct FilaPulso: View
+{
+    @State var tappedIndex = 0
+    var index: Int
+    @State private var showingSheet = false
+    @EnvironmentObject var vm : ViewModel
+    
+    @State var showPulsoView = false
+    
+    var body: some View{
+        VStack {
+            
+            VStack {
+                Image(systemName: "dot.radiowaves.left.and.right").resizable().foregroundColor(Color.accentColor).scaledToFit()
+                Text(vm.pulsos[index].nombrePulso!).foregroundColor(Color.accentColor).font(.headline)
+                Text(vm.pulsos[index].ubicacion ?? "").foregroundColor(Color.accentColor).font(.caption)
+                
+                Text(vm.pulsos[index].usuarioRelation?.nombre  ?? "").font(.caption)
+            }.onTapGesture {
+                showPulsoView = true
+            }
+            
+            Button {
+                showingSheet.toggle()
+                tappedIndex = index
+            } label: {
+                Image(systemName: "square.and.arrow.up").foregroundColor(Color.black)
+                Text("\(tappedIndex)").opacity(0).frame(width: 0, height: 0)
+
+            }.sheet(isPresented: $showingSheet) {
+                ShareSheet(items: [vm.pulsos[tappedIndex].nombrePulso!, vm.pulsos[tappedIndex].a03, vm.pulsos[tappedIndex].a27])
+            }
+            
+        }.padding().frame(width: 150, height: 150)
+            .background(Color("FilaTabla")).cornerRadius(100)
+            .sheet(isPresented: $showPulsoView) {
+                PulsoView(pulso: vm.pulsos[index])
+            }
+    }
 }
 
 
