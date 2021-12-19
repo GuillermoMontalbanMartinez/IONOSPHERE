@@ -83,7 +83,7 @@ class ViewModel: ObservableObject {
         saveData()
     }
     
-    func addPulso(fechaCreacion: Date, clase:Bool, ubicacion:String, a27:Double, a03:Double, nombrePulso:String) {
+    func addPulso(fechaCreacion: Date, clase:Bool, ubicacion:String, a27:Double, a03:Double, nombrePulso:String, nombreUsuario: String) {
         let newPulso = Pulso(context: gestorCoreData.contexto)
         newPulso.nombrePulso = nombrePulso
         newPulso.fechaCreacion = fechaCreacion
@@ -91,6 +91,9 @@ class ViewModel: ObservableObject {
         newPulso.ubicacion = ubicacion
         newPulso.a03 = a03
         newPulso.a27 = a27
+        
+        newPulso.usuarioRelation = usuarios.filter({$0.nombre == nombreUsuario}).first
+        
         
         print("Creando pulso")
 
