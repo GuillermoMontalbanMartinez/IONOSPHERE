@@ -14,21 +14,22 @@ class ViewModel: ObservableObject {
     let gestorCoreData = CoreDataManager.instace // singleton
     
     enum error: Error {
-            case datoRepetido
-            case uncorrect
-        }
+        case datoRepetido
+        case uncorrect
+    }
     
     @Published var usuarios:[Usuario] = []
     @Published var pulsos: [Pulso] = []
     @Published var usuarioLogeado: Usuario? = nil
+    @Published var loading = false
     
     init(){
         loadData()
     }
     
     /**
-        Funcion que cargar los datos en memoria.
-        Los usuario los ordena por el nombre y los pulsos por fecha de creación
+     Funcion que cargar los datos en memoria.
+     Los usuario los ordena por el nombre y los pulsos por fecha de creación
      */
     func loadData() {
         usuarios.removeAll()
@@ -43,7 +44,7 @@ class ViewModel: ObservableObject {
         }
     }
     /**
-        Guardamos los datos y volvemos a cargarlos en memoria
+     Guardamos los datos y volvemos a cargarlos en memoria
      */
     func saveData() {
         gestorCoreData.save()
@@ -51,15 +52,16 @@ class ViewModel: ObservableObject {
     }
     
     /**
-        Creacion de los usuarios
+     Creacion de los usuarios
      */
     func addUsuario(nombre: String, password: String) throws {
+        self.loading = true
         let newUser = Usuario(context: gestorCoreData.contexto)
         newUser.nombre = nombre
         newUser.password = password
         newUser.tipoUsuario = 1
         var errorEncontrado: Bool = false
-
+        
         for u in usuarios {
             if (u.nombre == newUser.nombre) {
                 errorEncontrado = true
@@ -72,18 +74,20 @@ class ViewModel: ObservableObject {
             print("milagro")
             saveData()
         }
-        
-        
+        self.loading = false
     }
     
     func deleteUsuario(indexSet: IndexSet) {
+        self.loading = true
         for index in indexSet {
             gestorCoreData.contexto.delete(usuarios[index])
         }
         saveData()
+        self.loading = false
     }
     
     func addPulso(fechaCreacion: Date, clase:Bool, ubicacion:String, a27:Double, a03:Double, nombrePulso:String, nombreUsuario: String) {
+        self.loading = true
         let newPulso = Pulso(context: gestorCoreData.contexto)
         newPulso.nombrePulso = nombrePulso
         newPulso.fechaCreacion = fechaCreacion
@@ -96,27 +100,31 @@ class ViewModel: ObservableObject {
         
         
         print("Creando pulso")
-
+        
         saveData()
+        self.loading = false
     }
     
     func deletePulso(pulso: Pulso) {
+        self.loading = true
         gestorCoreData.contexto.delete(pulso)
         saveData()
+        self.loading = false
     }
     
     func iniciarSesion(nombre:String, contraseña:String) -> Bool {
         /*let user:Usuario = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})[0]
-        
-        guard user != nil else {
-            print("usuario nil")
-            return false
-        }
-        print("usuario no nil devuelve true")
-        usuarioLogeado = user
-        return true
+         
+         guard user != nil else {
+         print("usuario nil")
+         return false
+         }
+         print("usuario no nil devuelve true")
+         usuarioLogeado = user
+         return true
          */
         
+        self.loading = true
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})
         
         print( "USUARIO: \(user)")
@@ -126,39 +134,43 @@ class ViewModel: ObservableObject {
         } else {
             return false
         }
-       
+        self.loading = false
     }
     
     func getInstanciasClases() -> [String: Int] {
+        self.loading = true
         let numPulsosGood: Int = pulsos.filter({$0.clase == true}).count
         let numPulsosBad: Int = pulsos.filter({$0.clase == false}).count
         
         var result : [String:Int] = [:]
-    
+        
         
         result["Good"] = numPulsosGood
         result["Bad"]  = numPulsosBad
-                
+        
+        self.loading = false
         return result
     }
     
     /**
-         Funcion para cambiar el tipo de usuario
-         */
-        func cambiarTipo(nombre: String){
-            let usuario = usuarios.first(where: {$0.nombre == nombre})
+     Funcion para cambiar el tipo de usuario
+     */
+    func cambiarTipo(nombre: String){
+        self.loading = true
+        let usuario = usuarios.first(where: {$0.nombre == nombre})
         
-            if (usuario!.tipoUsuario == 1){
-                usuario!.tipoUsuario = 2
-            }else{
-                usuario!.tipoUsuario = 1
-            }
-            print("cambiando")
-            saveData()
+        if (usuario!.tipoUsuario == 1){
+            usuario!.tipoUsuario = 2
+        }else{
+            usuario!.tipoUsuario = 1
         }
+        print("cambiando")
+        saveData()
+        self.loading = false
+    }
     
     
-        func calcularClase(a05: Double, a27: Double) -> Bool {
+    func calcularClase(a05: Double, a27: Double) -> Bool {
         if a05 <= 0.0409 {
             return true
         } else if a05 > 0.0409 {
@@ -176,14 +188,14 @@ class ViewModel: ObservableObject {
     func ordenarPulsos(propiedad: String) -> Void {
         
         let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
-
+        
         do {
             
             if propiedad == "nombre" {
                 self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.nombrePulso! < $1.nombrePulso!}
             } else if propiedad == "fecha" {
                 self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
-
+                
             }
             
         } catch let error {
@@ -193,6 +205,7 @@ class ViewModel: ObservableObject {
     
     
     func updateUserData(nombre: String, imagen: UIImage) -> Bool {
+        self.loading = true
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre})
         
         //let jpegImageData = imagen.jpegData(compressionQuality: 1.0)
@@ -202,10 +215,12 @@ class ViewModel: ObservableObject {
             user[0].foto = pngImageData
             print( "USUARIO: \(user)")
             saveData()
+            self.loading = false
             return true
         } else {
+            self.loading = false
             return false
         }
-
+        
     }
 }

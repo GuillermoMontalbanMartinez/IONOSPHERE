@@ -74,7 +74,7 @@ struct HomeView: View {
                                                 .resizable()
                                                 .scaledToFit()
                                                 .cornerRadius(100)
-                                                .frame(width: 200, height:200)
+                                                .frame(width: 150, height:150)
                                                 .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
                                                 .padding(.vertical)
                                             } else {
@@ -82,7 +82,7 @@ struct HomeView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                     .cornerRadius(100)
-                                                    .frame(width: 200, height:200)
+                                                    .frame(width: 150, height:150)
                                                     .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
                                                     .padding(.vertical)
                                             }
@@ -157,7 +157,7 @@ struct FilaPulso: View
             }
             
         }.padding().frame(width: 150, height: 150)
-            .background(Color("FilaTabla")).cornerRadius(100)
+            .background(Color("FilaTabla")).cornerRadius(20)
             .sheet(isPresented: $showPulsoView) {
                 PulsoView(pulso: vm.pulsos[index])
             }

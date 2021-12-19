@@ -15,8 +15,14 @@ struct BackgroundView: View {
             GeometryReader { geo in
                 ZStack {
                     wave(waveHeight: height, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 200) * -1 * 0.8))
+                        .foregroundColor(Color("FilaTabla"))
+                        .padding(.top, 300)
+                    
+
+                    wave(waveHeight: 30, phase: Angle(degrees: Double(geo.frame(in: .global).minY) * 0.7))
                         .foregroundColor(.accentColor)
                         .padding(.top, 300)
+
                     
                     /*LinearGradient(colors: [.accentColor.opacity(0.9), .white], startPoint: .topLeading, endPoint: .bottomTrailing)
                         .mask( Circle().frame(width: 400).blur(radius: 5).offset(x:200, y: -200))
