@@ -22,7 +22,7 @@ struct LoginView: View {
                         .frame(width: 200)
                         .clipShape(Circle())
                         .frame( alignment: .top)
-                }.offset(y: 0)
+                }.padding(40)//.offset(y: 10)
                 
                 GeometryReader { geo in
                     VStack(spacing: 0) {
