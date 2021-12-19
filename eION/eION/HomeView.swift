@@ -8,12 +8,14 @@
 
 
 import SwiftUI
+import MessageUI
 
 
 struct HomeView: View {
     @EnvironmentObject var vm : ViewModel
     @State private var isShareSheetShowing = false
-    @State private var showingPopup = true
+    @State private var showingSheet = false
+    @State private var tappedIndex = -1
     
     var body: some View {
         ZStack {
@@ -41,19 +43,25 @@ struct HomeView: View {
                                         HStack(spacing: 30) {
                                             ForEach(0..<3) { index in
                                                 VStack {
-                                                    Image(systemName: "dot.radiowaves.left.and.right").foregroundColor(Color.accentColor)
+                                                    Image(systemName: "dot.radiowaves.left.and.right").resizable().foregroundColor(Color.accentColor).scaledToFit()
                                                     Text(vm.pulsos[index].nombrePulso!).foregroundColor(Color.accentColor).font(.headline)
                                                     Text(vm.pulsos[index].ubicacion ?? "").foregroundColor(Color.accentColor).font(.caption)
                                                     
+                                                    Text(vm.pulsos[index].usuarioRelation?.nombre  ?? "").font(.caption)
+
                                                     
                                                     Button {
-                                                        shareButton()
-                                                        
+                                                        showingSheet.toggle()
+                                                        tappedIndex = index
                                                     } label: {
                                                         Image(systemName: "square.and.arrow.up").foregroundColor(Color.black)
+                                                        Text("\(tappedIndex)").opacity(0).frame(width: 0, height: 0)
+
+                                                    }.sheet(isPresented: $showingSheet) {
+                                                        ShareSheet(items: [vm.pulsos[tappedIndex].nombrePulso!, vm.pulsos[tappedIndex].a03, vm.pulsos[tappedIndex].a27])
                                                     }
                                                     
-                                                }.padding().frame(width: 100, height: 100)
+                                                }.padding().frame(width: 200, height: 200)
                                                     .background(Color("FilaTabla")).cornerRadius(100)
                                                 
                                             }
@@ -88,7 +96,7 @@ struct HomeView: View {
                                                 .resizable()
                                                 .scaledToFit()
                                                 .cornerRadius(100)
-                                                .frame(width: 100, height:100)
+                                                .frame(width: 200, height:200)
                                                 .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
                                                 .padding(.vertical)
                                             } else {
@@ -96,7 +104,7 @@ struct HomeView: View {
                                                     .resizable()
                                                     .scaledToFit()
                                                     .cornerRadius(100)
-                                                    .frame(width: 100, height:100)
+                                                    .frame(width: 200, height:200)
                                                     .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
                                                     .padding(.vertical)
                                             }
@@ -120,15 +128,21 @@ struct HomeView: View {
         
         
     }
-    
-    func shareButton() {
-        isShareSheetShowing.toggle()
+}
+
+struct ShareSheet: UIViewControllerRepresentable {
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         
-        let url = URL(string: "https://apple.com")
-        let av = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-        
-        UIApplication.shared.windows.first?.rootViewController?.present(av, animated: true, completion: nil)
     }
+    
+    var items: [Any]
+    
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        
+        return controller
+    }
+    
 }
 
 
@@ -139,3 +153,5 @@ struct HomeView: View {
  HomeView()
  }
  }*/
+
+
