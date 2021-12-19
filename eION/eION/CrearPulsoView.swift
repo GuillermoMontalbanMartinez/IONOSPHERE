@@ -96,7 +96,8 @@ struct CrearPulsoView: View {
                             
                             print("Vamos a crear el pulso")
                             
-                            vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso)
+                            vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso, nombreUsuario: vm.usuarioLogeado?.nombre ?? "")
+                            
                             print("Pulso creado")
                         }
                         
