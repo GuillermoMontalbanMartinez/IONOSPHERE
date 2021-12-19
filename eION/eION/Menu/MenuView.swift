@@ -19,13 +19,14 @@ struct MenuView: View {
     var body: some View {
             ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
                 TabView(selection: $seleccion) {
-                    HomeView().tag("Home")
-                    ListadoUbicacionesView().tag("Ubicaciones")
-                    ListaUsuariosAdmin().tag("Usuarios")
-                    HomeAdminView().tag("HomeAdmin")
+                    HomeView().tag("Home").transition(.opacity.animation(.default))
+                    ListadoUbicacionesView().tag("Ubicaciones").transition(.opacity.animation(.default))
+                    ListaUsuariosAdmin().tag("Usuarios").transition(.opacity.animation(.default))
+                    HomeAdminView().tag("HomeAdmin").transition(.opacity.animation(.default))
                     // LoginView().tag("CerrarSesion")
                     
-                    EditarPerfilView().tag("EditarPerfil")
+                    EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
+                    
                 }
                  
                 
