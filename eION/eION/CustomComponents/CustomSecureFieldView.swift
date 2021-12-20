@@ -12,22 +12,47 @@ struct CustomSecureFieldView: View {
     @Binding var text: String
     var name: String
     @State var isTapped = false
+    @State var passOculta = true
+    
     var body: some View {
-        VStack(alignment: .leading,  spacing: 0) {
-            SecureField("", text: $text).background(
-                
-                Text(name)
-                    .scaleEffect(isTapped ? 0.8 : 1)
-                    .offset(x: isTapped ? -7 : 0, y: isTapped ? -20 : 0)
-                    .foregroundColor(isTapped ? Color.accentColor : Color.gray)
-                
-                , alignment: .leading)
-                .padding(.top, isTapped ? 15 : 0)
-                .onTapGesture {
-                    withAnimation(.easeIn) {
-                        isTapped = true
-                    }
+        HStack(alignment: .center,  spacing: 0) {
+            if passOculta  {
+                HStack {
+                    SecureField("", text: $text).background(
+                        
+                        Text(name)
+                            .scaleEffect(isTapped ? 0.8 : 1)
+                            .offset(x: isTapped ? -7 : 0, y: isTapped ? -20 : 0)
+                            .foregroundColor(isTapped ? Color.accentColor : Color.gray)
+                        
+                        , alignment: .leading)
+                        .padding(.top, isTapped ? 15 : 0)
+                        .onTapGesture {
+                            withAnimation(.easeIn) {
+                                isTapped = true
+                            }
+                        }
+                }.padding(.vertical, 12)
+                    .padding(.horizontal)
+                    .background(Color.white)
+                    .cornerRadius(5)
+            } else {
+                CustomTextFieldView(text: $text, name: name)
+            }
+            
+            
+
+            
+            Button {
+                passOculta.toggle()
+            } label: {
+                if passOculta {
+                    Image(systemName: "eye.fill")
+
+                } else {
+                    Image(systemName: "eye.slash.fill")
                 }
+            }.padding(20)
             
             /*Rectangle().fill(isTapped && !text.isEmpty ? Color.accentColor : Color.gray)
                 .opacity(isTapped && !text.isEmpty ? 1 : 0.5)
@@ -35,10 +60,7 @@ struct CustomSecureFieldView: View {
                 .padding(.top, 10)*/
  
             
-        }.padding(.vertical, 12)
-            .padding(.horizontal)
-            .background(Color.white)
-            .cornerRadius(5)
+        }.background(Color.white).cornerRadius(5)
     }
 }
 

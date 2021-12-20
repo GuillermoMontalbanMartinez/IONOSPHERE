@@ -19,27 +19,32 @@ struct MenuView: View {
     var body: some View {
             ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
                 TabView(selection: $seleccion) {
-                    HomeView().tag("Home")
-                    ListadoUbicacionesView().tag("Ubicaciones")
-                    ListaUsuariosAdmin().tag("Usuarios")
-                    HomeAdminView().tag("HomeAdmin")
+                    HomeView().tag("Home").transition(.opacity.animation(.default))
+                    ListadoUbicacionesView().tag("Ubicaciones").transition(.opacity.animation(.default))
+                    ListaUsuariosAdmin().tag("Usuarios").transition(.opacity.animation(.default))
+                    HomeAdminView().tag("HomeAdmin").transition(.opacity.animation(.default))
                     // LoginView().tag("CerrarSesion")
+                    
+                    EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
+                    
                 }
                  
                 
                 HStack(spacing: 0) {
-                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house.fill", selected: $seleccion)
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house", selected: $seleccion)
                     Spacer(minLength: 0)
-                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "note.text", selected: $seleccion)
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet", selected: $seleccion)
                     Spacer(minLength: 0)
-                    TabButton(title: "Cerrar sesión", image: "arrow.backward.square.fill", selected: $seleccion).onTapGesture {
+                    TabButton(title: "EditarPerfil", image: "person.fill", selected: $seleccion)
+                    Spacer(minLength: 0)
+                    TabButton(title: "Cerrar sesión", image: "arrow.forward.square.fill", selected: $seleccion).onTapGesture {
                         logout = true
                     }
                     
                 }.padding(.vertical, 20)
                     .padding(.horizontal, 15)
-                    .background(Color.white)
-                    .cornerRadius(20)
+                    .background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    //.cornerRadius(20)
                     .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
             }.ignoresSafeArea()
         

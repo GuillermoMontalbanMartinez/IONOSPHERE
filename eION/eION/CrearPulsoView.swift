@@ -22,11 +22,16 @@ struct CrearPulsoView: View {
     @State var claseElegida: Bool = true
     
     var body: some View {
-        GeometryReader {geo in
+        ZStack {
+            GeometryReader {geo in
+                
+                BackgroundView(height: 40).padding(.top, -300)
+                
+                
                 VStack(alignment: .center) {
                     Spacer()
                     Text("Crear un pulso").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
-                    //Spacer()
+
                     if emptyPulso {
                         Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
                             .foregroundColor(.red)
@@ -42,7 +47,7 @@ struct CrearPulsoView: View {
                         CustomTextFieldView(text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
                         
                         Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))").padding(.top)
-                        Slider(value: $valorSlider, in: -1...1).frame(width:300)
+                        Slider(value: $valorSlider, in: -1...1).frame(width:300).accentColor(.white)
                         
                         HStack{
                             Text("Valor para A27: \(valorPorVoz) ")
@@ -54,7 +59,7 @@ struct CrearPulsoView: View {
                             }
                         }
                     }
-                                        
+                    
 #if eIONB
                     HStack {
                         Text("Clase")
@@ -91,7 +96,8 @@ struct CrearPulsoView: View {
                             
                             print("Vamos a crear el pulso")
                             
-                            vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso)
+                            vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso, nombreUsuario: vm.usuarioLogeado?.nombre ?? "")
+                            
                             print("Pulso creado")
                         }
                         
@@ -103,27 +109,20 @@ struct CrearPulsoView: View {
                             .padding([.leading, .trailing], 25)
                     }.buttonStyle(CustomButton())
                     
-                    Spacer()
-                    
-                    
                 } .padding(.init(top: 40, leading:  30, bottom: 40, trailing: 30))
-                .background(wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7))
-                                .foregroundColor(.accentColor).opacity(1))
+                    
+                
                 //.background(Color.white)
                 //.cornerRadius(30)
                 .foregroundColor(.white)
                 
                 //.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
                 //shadow(radius: 10)
-                .onAppear {
-                    UITableView.appearance().backgroundColor = .clear
-                    //UITableView.appearance().tintColor = .white
-                    
-                }.ignoresSafeArea()
+
                 
             }//.frame(width: geo.size.width/1.4, height: geo.size.height/2, alignment: .center)
+        }
     }
-    
 }
 
 
