@@ -25,10 +25,9 @@ struct ListadoUbicacionesView: View {
                     ScrollView {
                         VStack{
                             CustomNavigationView(title:"Ubicación", botones: false, destino: destino, anadir: .constant(false))
-                            VStack(alignment: .center, spacing:20) {
-                                BusquedaView(text: $text)
-                                Spacer()
-                                
+
+                            VStack(alignment: .center, spacing:10) {
+                                BusquedaView(text: $text).frame(width: 300, height: 100, alignment: .center)
                                 LazyVGrid(columns: columns, spacing: 20) {
                                     ForEach(0..<provincias.count ) { index in
                                         if(text.isEmpty || provincias[index].hasPrefix(text)){
@@ -39,35 +38,29 @@ struct ListadoUbicacionesView: View {
                                                     Image("barcelona").resizable().frame(width: 100, height: 100)
                                                 }.padding().frame(width: 150, height: 150).background(.white).cornerRadius(30)
                                             }
-                                            
-                                            
                                         }
                                     }
-                                }.frame(width: 300)
-                                
-                                
-                                    .scaledToFit()
+                                }.padding().background(.thinMaterial).cornerRadius(20)
                                     .onAppear(){
                                         UITableView.appearance().backgroundColor = .clear
                                         UITableViewCell.appearance().backgroundColor = .blue
                                     }
                                 
+                                Spacer()
+
                             }
-                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
+                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center).padding(.top, 50)//.background(.thinMaterial)
                             //.background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
                             .cornerRadius(30)
                             //.shadow(radius: 10)
-                            
                         }.navigationBarHidden(true).frame(height: geometry.size.height)
                     }
-                    
                 }
-            }
-            
-            
+            }.ignoresSafeArea()
         }
         //.navigationBarHidden(true)
         .navigationBarTitleDisplayMode(.inline)
+        .ignoresSafeArea()
     }
 }
 
