@@ -98,8 +98,20 @@ class ViewModel: ObservableObject {
         
         newPulso.usuarioRelation = usuarios.filter({$0.nombre == nombreUsuario}).first
         
-        
         print("Creando pulso")
+        
+        saveData()
+        self.loading = false
+    }
+    
+    func guardarPulsoUsuario(usuario: Usuario, pulso: Pulso){
+        self.loading = true
+        
+        if ( usuario.guardaPulsoRelation?.contains(pulso) ?? false ) {
+            pulso.pulsoGuardado = nil
+        } else {
+            pulso.pulsoGuardado = usuario
+        }
         
         saveData()
         self.loading = false
