@@ -17,7 +17,7 @@ struct EditarPerfilView: View {
     var body: some View {
         ZStack {
             
-            BackgroundView(height: 40).padding(.top, -100)
+            BackgroundView(height: 40).padding(.top, -200)
             
             if ( vm.loading ) {
                 ProgressView().foregroundColor(.white)
@@ -36,7 +36,7 @@ struct EditarPerfilView: View {
                             }
                             
                         }.padding()
-                    }.frame(maxWidth: .infinity)
+                    }.frame(maxWidth: .infinity).padding(.top, 150).padding(.bottom, 50)
                 }
 
             }

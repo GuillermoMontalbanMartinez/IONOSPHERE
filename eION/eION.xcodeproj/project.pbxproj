@@ -20,6 +20,7 @@
 		786E2044275028BE00C5901E /* HomeAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E2043275028BE00C5901E /* HomeAdminView.swift */; };
 		786E204727502A0F00C5901E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E204627502A0F00C5901E /* MenuView.swift */; };
 		786E204A275031AE00C5901E /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E2049275031AE00C5901E /* TabButton.swift */; };
+		78831B6D27721F2100D43EE1 /* Wave2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78831B6C27721F2000D43EE1 /* Wave2.swift */; };
 		788AFE65276BF70B00857042 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AFE64276BF70B00857042 /* CustomTextFieldView.swift */; };
 		788AFE67276BF7CB00857042 /* CustomSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AFE66276BF7CB00857042 /* CustomSecureFieldView.swift */; };
 		788AFE6A276C04CC00857042 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A33D02747F241002BA977 /* ViewModel.swift */; };
@@ -83,6 +84,7 @@
 		786E2043275028BE00C5901E /* HomeAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdminView.swift; sourceTree = "<group>"; };
 		786E204627502A0F00C5901E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		786E2049275031AE00C5901E /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
+		78831B6C27721F2000D43EE1 /* Wave2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave2.swift; sourceTree = "<group>"; };
 		788AFE64276BF70B00857042 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		788AFE66276BF7CB00857042 /* CustomSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureFieldView.swift; sourceTree = "<group>"; };
 		788AFE8B276C04CC00857042 /* eION copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eION copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				785BB979276CE2D400C8ADE1 /* Wave.swift */,
+				78831B6C27721F2000D43EE1 /* Wave2.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				780F3839274D25A400DC10D0 /* HomeView.swift in Sources */,
 				786E204A275031AE00C5901E /* TabButton.swift in Sources */,
 				2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */,
+				78831B6D27721F2100D43EE1 /* Wave2.swift in Sources */,
 				788AFE67276BF7CB00857042 /* CustomSecureFieldView.swift in Sources */,
 				9CA2702D27500AE100C10236 /* ListaUsuariosAdmin.swift in Sources */,
 				78CF2F18276D405300D7490B /* ImagePicker.swift in Sources */,

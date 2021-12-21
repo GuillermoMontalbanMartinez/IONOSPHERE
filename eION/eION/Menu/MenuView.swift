@@ -26,7 +26,6 @@ struct MenuView: View {
                     // LoginView().tag("CerrarSesion")
                     
                     EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
-                    
                 }
                  
                 
@@ -41,10 +40,10 @@ struct MenuView: View {
                         logout = true
                     }
                     
-                }.padding(.vertical, 20)
+                }.ignoresSafeArea().padding(.vertical, 20)
                     .padding(.horizontal, 15)
-                    .background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
-                    //.cornerRadius(20)
+                    .background(.regularMaterial)
+                    .cornerRadius(30)
                     .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
             }.ignoresSafeArea()
         
@@ -53,10 +52,10 @@ struct MenuView: View {
     }
 }
     
-   // struct MenuView_Previews: PreviewProvider {
-        //static var previews: some View {
-         //   MenuView()
-     //   }
-  //  }
+    struct MenuView_Previews: PreviewProvider {
+        static var previews: some View {
+            MenuView().environmentObject(ViewModel())
+        }
+    }
     
     
