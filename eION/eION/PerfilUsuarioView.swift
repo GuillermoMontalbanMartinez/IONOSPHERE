@@ -26,9 +26,8 @@ struct PerfilUsuarioView: View {
                             VStack(alignment: .center, spacing: 30) {
                                 VStack(alignment: .center) {
                                     
-                                    Text(usuario.nombre ?? "Nombre usuario").font(.system(size: 28, weight: .bold, design: .rounded))
-                                   
-                                    
+                                    Text(usuario.nombre ?? "Nombre usuario").font(.custom("Poppins-Regular", size: 28))
+
                                 }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                                 
                                 if usuario.foto != nil {
@@ -56,7 +55,7 @@ struct PerfilUsuarioView: View {
                         
                         VStack(alignment: .leading, spacing: 30) {
                             VStack(alignment: .leading) {
-                                Text("Sus pulsos").font(.largeTitle).fontWeight(.bold)
+                                Text("Sus pulsos").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold)
                             }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                            
                             

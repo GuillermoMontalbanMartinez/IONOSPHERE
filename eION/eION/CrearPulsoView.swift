@@ -30,15 +30,17 @@ struct CrearPulsoView: View {
                 
                 VStack(alignment: .center) {
                     Spacer()
-                    Text("Crear un pulso").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                    Text("Crear un pulso").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.black)
 
                     if emptyPulso {
                         Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
+                            .font(.custom("Poppins-Regular", size: 18))
                             .foregroundColor(.red)
                             .offset(x:10, y: 50)
                     }
                     if emptyA27 {
                         Label("Introduzca valor A27", systemImage: "xmark.octagon")
+                            .font(.custom("Poppins-Regular", size: 18))
                             .foregroundColor(.red)
                             .offset(x:10, y: 50)
                     }
@@ -46,11 +48,12 @@ struct CrearPulsoView: View {
                     VStack {
                         CustomTextFieldView(text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
                         
-                        Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))").padding(.top)
-                        Slider(value: $valorSlider, in: -1...1).frame(width:300).accentColor(.white)
+                        Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))")
+                            .font(.custom("Poppins-Regular", size: 18)).padding(.top)
+                        Slider(value: $valorSlider, in: -1...1).frame(width:300).accentColor(.accentColor)
                         
                         HStack{
-                            Text("Valor para A27: \(valorPorVoz) ")
+                            Text("Valor para A27: \(valorPorVoz) ").font(.custom("Poppins-Regular", size: 18))
                             Spacer()
                             Image(systemName: "mic.fill").resizable().frame(width:25, height: 32).onTapGesture {
                                 modoGrabacion.toggle()
@@ -62,10 +65,10 @@ struct CrearPulsoView: View {
                     
 #if eIONB
                     HStack {
-                        Text("Clase")
+                        Text("Clase").font(.custom("Poppins-Regular", size: 18))
                         Picker("Elija su clase", selection: $indexClase) {
                             ForEach(0 ..< listaClases.count) {
-                                Text (self.listaClases[$0])
+                                Text (self.listaClases[$0]).font(.custom("Poppins-Regular", size: 18))
                             }
                         }.pickerStyle(.segmented)
                             .padding()
@@ -104,6 +107,7 @@ struct CrearPulsoView: View {
                         
                     } label: {
                         Text("Crear pulso")
+                            .font(.custom("Poppins-Regular", size: 18))
                             .foregroundColor(.accentColor)
                             .padding([.top, .bottom], 15)
                             .padding([.leading, .trailing], 25)
@@ -114,7 +118,7 @@ struct CrearPulsoView: View {
                 
                 //.background(Color.white)
                 //.cornerRadius(30)
-                .foregroundColor(.white)
+                .foregroundColor(.black)
                 
                 //.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
                 //shadow(radius: 10)

@@ -42,7 +42,7 @@ struct HomeView: View {
                                 if ( vm.pulsos.count > 0 ) {
                                     ScrollView(.horizontal, showsIndicators: false) {
                                         HStack(spacing: 30) {
-                                            ForEach(0..<3) { index in
+                                            ForEach(0..<vm.pulsos.count) { index in
                                                 FilaPulso(index: index).environmentObject(vm)
                                             }
                                         }
@@ -111,8 +111,6 @@ struct HomeView: View {
                 }.frame(maxWidth: .infinity)
             }
         }.ignoresSafeArea().background(Color("Background"))
-        
-        
     }
 }
 
