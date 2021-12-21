@@ -14,6 +14,7 @@ import MessageUI
 struct HomeView: View {
     @EnvironmentObject var vm : ViewModel
     @State private var isShareSheetShowing = false
+    @State private var isSheetPerfilUsuario = false
     
     var body: some View {
         ZStack {
@@ -75,14 +76,22 @@ struct HomeView: View {
                                                     .scaledToFit()
                                                     .cornerRadius(20)
                                                     .frame(width: 150, height:150)
-                                                    .padding(.vertical)
+                                                    .padding(.vertical).onTapGesture(perform: {
+                                                        isSheetPerfilUsuario.toggle()
+                                                    }).sheet(isPresented: $isSheetPerfilUsuario){
+                                                        PerfilUsuarioView(usuario:vm.usuarios[index])
+                                                    }
                                             } else {
                                                 Image("unknown")
                                                     .resizable()
                                                     .scaledToFit()
                                                     .cornerRadius(20)
                                                     .frame(width: 150, height:150)
-                                                    .padding(.vertical)
+                                                    .padding(.vertical).onTapGesture(perform: {
+                                                        isSheetPerfilUsuario.toggle()
+                                                    }).sheet(isPresented: $isSheetPerfilUsuario){
+                                                        PerfilUsuarioView(usuario:vm.usuarios[index])
+                                                    }
                                             }
                                             
                                         }.padding().cornerRadius(100)

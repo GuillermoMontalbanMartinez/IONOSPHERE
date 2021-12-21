@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */; };
 		2936664F274FE06800482D47 /* BusquedaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2936664E274FE06800482D47 /* BusquedaView.swift */; };
+		701A63D7277223FD00F8A4B2 /* PerfilUsuarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701A63D6277223FD00F8A4B2 /* PerfilUsuarioView.swift */; };
 		707CA9902750619600CA2FE9 /* CrearPulsoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */; };
 		707CA992275069D300CA2FE9 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */; };
 		708059A92750EDC6008F3004 /* MicrofonoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708059A82750EDC6008F3004 /* MicrofonoView.swift */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoUbicacionesView.swift; sourceTree = "<group>"; };
 		2936664E274FE06800482D47 /* BusquedaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusquedaView.swift; sourceTree = "<group>"; };
+		701A63D6277223FD00F8A4B2 /* PerfilUsuarioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PerfilUsuarioView.swift; sourceTree = "<group>"; };
 		707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrearPulsoView.swift; sourceTree = "<group>"; };
 		707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpeechRecognizer.swift; path = eION/SpeechRecognizer.swift; sourceTree = SOURCE_ROOT; };
 		708059A82750EDC6008F3004 /* MicrofonoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrofonoView.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 			isa = PBXGroup;
 			children = (
 				B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */,
+				701A63D6277223FD00F8A4B2 /* PerfilUsuarioView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				783E97732769FC3F005BFD15 /* CustomButtonView.swift in Sources */,
 				785BB97A276CE2D400C8ADE1 /* Wave.swift in Sources */,
 				B32A33CF2747EE8F002BA977 /* CoreDataManager.swift in Sources */,
+				701A63D7277223FD00F8A4B2 /* PerfilUsuarioView.swift in Sources */,
 				B3C1BF342746D5DA006BD338 /* eIONApp.swift in Sources */,
 				707CA9902750619600CA2FE9 /* CrearPulsoView.swift in Sources */,
 			);
