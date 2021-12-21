@@ -41,9 +41,8 @@ struct MenuView: View {
                     }
                     
                 }.ignoresSafeArea().padding(.vertical, 20)
-                    .padding(.horizontal, 15)
+                    .padding(.horizontal, 20)
                     .background(.regularMaterial)
-                    .cornerRadius(30)
                     .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
             }.ignoresSafeArea()
         
