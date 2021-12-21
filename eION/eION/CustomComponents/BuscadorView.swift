@@ -20,6 +20,7 @@ struct BuscadorView: View {
                                      : Color(UIColor.gray).opacity(0.9))
 
                 TextField(self.mensajeBuscador, text: $busqueda)
+                    .font(.custom("Poppins-Regular", size: 18))
                     .onTapGesture {
                         self.isEditing = true
                     }
@@ -37,6 +38,8 @@ struct BuscadorView: View {
                     
                 }) {
                     Text("Cancel")
+                        .font(.custom("Poppins-Regular", size: 18))
+
                 }
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))

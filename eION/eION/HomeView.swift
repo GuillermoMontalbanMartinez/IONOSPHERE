@@ -14,14 +14,14 @@ import MessageUI
 struct HomeView: View {
     @EnvironmentObject var vm : ViewModel
     @State private var isShareSheetShowing = false
-    // @State private var tappedIndex = -1
+    @State private var isSheetPerfilUsuario = false
     
     var body: some View {
         ZStack {
             GeometryReader { geo in
-
-                BackgroundView(height: 40)
                 
+                BackgroundView(height: 40)//.blur(radius: 20)
+
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 30) {
                         
@@ -32,10 +32,12 @@ struct HomeView: View {
                             VStack(alignment: .leading, spacing: 30) {
                                 VStack(alignment: .leading) {
                                     
-                                    Text("Novedades").font(.largeTitle).fontWeight(.bold)
-                                    Text("Hoy, \(Date().formatted())")
+                                    Text("Novedades").font(.custom("Poppins-Regular", size: 28))
+
+                                    Text("Hoy, \(Date().formatted())").font(.custom("Poppins-Regular", size: 18))
+
                                     
-                                }
+                                }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                                 
                                 if ( vm.pulsos.count > 0 ) {
                                     ScrollView(.horizontal, showsIndicators: false) {
@@ -49,53 +51,59 @@ struct HomeView: View {
                                 }
                                 
                                 Text("Observa los pulsos creados en los últimos días y compártelos con tus amigos")
-                                    .font(.caption)
-                                    .foregroundColor(.gray)
-                                
+                                    .font(.custom("Poppins-Regular", size: 14))
+                                    .foregroundColor(.black)
                             }
                             
                             Spacer()
                             
-                        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
+                        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
                         
                         
                         VStack(alignment: .leading, spacing: 30) {
                             VStack(alignment: .leading) {
-                                Text("Otros usuarios").font(.largeTitle).fontWeight(.bold)
-                            }
+                                Text("Otros usuarios").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold)
+                            }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 30) {
                                     ForEach(0..<vm.usuarios.count) { index in
                                         VStack(spacing: 0) {
                                             
-                                            Text(vm.usuarios[index].nombre ?? "")
+                                            Text(vm.usuarios[index].nombre ?? "").font(.custom("Poppins-Regular", size: 18))
+
+                                            
                                             if vm.usuarios[index].foto != nil {
                                                 Image(uiImage: UIImage(data: vm.usuarios[index].foto ?? Data()) ?? UIImage())
-                                                .resizable()
-                                                .scaledToFit()
-                                                .cornerRadius(100)
-                                                .frame(width: 150, height:150)
-                                                .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
-                                                .padding(.vertical)
+                                                    .resizable()
+                                                    .scaledToFit()
+                                                    .cornerRadius(20)
+                                                    .frame(width: 150, height:150)
+                                                    .padding(.vertical).onTapGesture(perform: {
+                                                        isSheetPerfilUsuario.toggle()
+                                                    }).sheet(isPresented: $isSheetPerfilUsuario){
+                                                        PerfilUsuarioView(usuario:vm.usuarios[index])
+                                                    }
                                             } else {
                                                 Image("unknown")
                                                     .resizable()
                                                     .scaledToFit()
-                                                    .cornerRadius(100)
+                                                    .cornerRadius(20)
                                                     .frame(width: 150, height:150)
-                                                    .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
-                                                    .padding(.vertical)
+                                                    .padding(.vertical).onTapGesture(perform: {
+                                                        isSheetPerfilUsuario.toggle()
+                                                    }).sheet(isPresented: $isSheetPerfilUsuario){
+                                                        PerfilUsuarioView(usuario:vm.usuarios[index])
+                                                    }
                                             }
-                                                
+                                            
                                         }.padding().cornerRadius(100)
                                     }
                                 }
                             }.frame(maxWidth: .infinity)
                             
-                            Text("Otros usuarios que también están compartiendo sus pulsos")
-                                .font(.caption)
-                                .foregroundColor(.gray)
-                        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
+                            Text("Otros usuarios que también están compartiendo sus pulsos").font(.custom("Poppins-Regular", size: 14))
+                                .foregroundColor(.black)
+                        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
                         
                         Spacer()
                         
@@ -136,28 +144,33 @@ struct FilaPulso: View
         VStack {
             
             VStack {
-                Image(systemName: "dot.radiowaves.left.and.right").resizable().foregroundColor(Color.accentColor).scaledToFit()
-                Text(vm.pulsos[index].nombrePulso!).foregroundColor(Color.accentColor).font(.headline)
-                Text(vm.pulsos[index].ubicacion ?? "").foregroundColor(Color.accentColor).font(.caption)
+                Image(systemName: "waveform").resizable().scaledToFit()
+                    .foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
+                Text(vm.pulsos[index].nombrePulso!).foregroundColor(Color.accentColor).font(.system(size: 18, weight: .regular, design: .rounded))
+                
+                Text(vm.pulsos[index].ubicacion ?? "").foregroundColor(Color.accentColor).font(.system(size: 14, weight: .regular, design: .rounded))
+                
                 
                 Text(vm.pulsos[index].usuarioRelation?.nombre  ?? "").font(.caption)
             }.onTapGesture {
                 showPulsoView = true
+            }.contextMenu {
+                VStack {
+                    Button {
+                        showingSheet.toggle()
+                        tappedIndex = index
+                    } label: {
+                        Text("Compartir")
+                        Image(systemName: "square.and.arrow.up").foregroundColor(Color.black)
+                    }
+                }
             }
-            
-            Button {
-                showingSheet.toggle()
-                tappedIndex = index
-            } label: {
-                Image(systemName: "square.and.arrow.up").foregroundColor(Color.black)
-                Text("\(tappedIndex)").opacity(0).frame(width: 0, height: 0)
+        }.sheet(isPresented: $showingSheet) {
+            ShareSheet(items: [vm.pulsos[tappedIndex].nombrePulso!, vm.pulsos[tappedIndex].a03, vm.pulsos[tappedIndex].a27])
 
-            }.sheet(isPresented: $showingSheet) {
-                ShareSheet(items: [vm.pulsos[tappedIndex].nombrePulso!, vm.pulsos[tappedIndex].a03, vm.pulsos[tappedIndex].a27])
-            }
-            
         }.padding().frame(width: 150, height: 150)
-            .background(Color("FilaTabla")).cornerRadius(20)
+            .background(.ultraThinMaterial)
+            .cornerRadius(20)
             .sheet(isPresented: $showPulsoView) {
                 PulsoView(pulso: vm.pulsos[index])
             }

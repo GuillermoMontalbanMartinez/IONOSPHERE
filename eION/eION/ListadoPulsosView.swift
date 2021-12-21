@@ -82,7 +82,7 @@ struct ListadoPulsosView: View {
                             
                             ForEach(vm.pulsos) { pulso in
                                 if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
-                                    NavigationLink(destination: PulsoView(pulso: pulso)) {
+                                    NavigationLink(destination: PulsoView(pulso: pulso).environmentObject(vm)) {
                                         FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
                                     }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
                                         

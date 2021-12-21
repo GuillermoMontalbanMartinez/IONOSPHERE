@@ -65,16 +65,17 @@ class ViewModel: ObservableObject {
         for u in usuarios {
             if (u.nombre == newUser.nombre) {
                 errorEncontrado = true
+                self.loading = false
                 throw error.datoRepetido
             }
         }
         if (errorEncontrado) {
-            
+            self.loading = false
         } else {
+            self.loading = false
             print("milagro")
             saveData()
         }
-        self.loading = false
     }
     
     func deleteUsuario(indexSet: IndexSet) {
@@ -98,8 +99,20 @@ class ViewModel: ObservableObject {
         
         newPulso.usuarioRelation = usuarios.filter({$0.nombre == nombreUsuario}).first
         
-        
         print("Creando pulso")
+        
+        saveData()
+        self.loading = false
+    }
+    
+    func guardarPulsoUsuario(usuario: Usuario, pulso: Pulso){
+        self.loading = true
+        
+        if ( usuario.guardaPulsoRelation?.contains(pulso) ?? false ) {
+            pulso.pulsoGuardado = nil
+        } else {
+            pulso.pulsoGuardado = usuario
+        }
         
         saveData()
         self.loading = false
@@ -129,12 +142,13 @@ class ViewModel: ObservableObject {
         
         print( "USUARIO: \(user)")
         if !user.isEmpty {
+            self.loading = false
             usuarioLogeado = user[0]
             return true
         } else {
+            self.loading = false
             return false
         }
-        self.loading = false
     }
     
     func getInstanciasClases() -> [String: Int] {

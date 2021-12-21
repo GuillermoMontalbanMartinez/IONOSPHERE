@@ -21,6 +21,7 @@ struct CustomSecureFieldView: View {
                     SecureField("", text: $text).background(
                         
                         Text(name)
+                            .font(.custom("Poppins-Regular", size: 18))
                             .scaleEffect(isTapped ? 0.8 : 1)
                             .offset(x: isTapped ? -7 : 0, y: isTapped ? -20 : 0)
                             .foregroundColor(isTapped ? Color.accentColor : Color.gray)

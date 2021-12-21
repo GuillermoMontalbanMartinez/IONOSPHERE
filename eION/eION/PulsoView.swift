@@ -15,17 +15,20 @@ struct PulsoView: View {
     var clase: Bool*/
     
     var pulso: Pulso
+    @EnvironmentObject var vm : ViewModel
     
     var body: some View {
         
         ZStack {
-            BackgroundView(height: 40).padding(.top, 300)
+            BackgroundView(height: 40)//.padding(.top, 300)
             GeometryReader { geometry in
                 VStack(alignment: .leading, spacing: 10) {
                     
                     HStack {
                         Text(pulso.nombrePulso ?? "").font(.largeTitle).fontWeight(.bold)
-                        Image(systemName: "bookmark").foregroundColor(Color.accentColor).frame(width: 100, height: 100).scaledToFit()
+                        Image(systemName: (vm.usuarioLogeado?.guardaPulsoRelation?.contains(pulso) ?? false) ? "bookmark.fill" :  "bookmark").foregroundColor(Color.accentColor).frame(width: 100, height: 100).scaledToFit().onTapGesture {
+                            vm.guardarPulsoUsuario(usuario: vm.usuarioLogeado!, pulso: pulso)
+                        }
                     }
                     
                     HStack(alignment: .center, spacing: 10.0) {
