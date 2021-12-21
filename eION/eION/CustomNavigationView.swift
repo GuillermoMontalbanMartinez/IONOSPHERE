@@ -31,7 +31,8 @@ struct CustomNavigationView: View {
                 }
                 
                 Text(title)
-                    .font(.system(size: 35, weight: .bold))
+                    .font(.custom("Poppins-Regular", size: 35))
+
                 Spacer()
                 if (botones){
                     Button(action: {anadir.toggle()}){

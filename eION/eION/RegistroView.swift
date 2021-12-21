@@ -27,7 +27,7 @@ struct RegistroView: View {
                 VStack(spacing: 0) {
                     Spacer()
 
-                    Text("Regístrate").font(.largeTitle).fontWeight(.bold).foregroundColor(.white)
+                    Text("Regístrate").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.white)
                     
                     RegistroForm().environmentObject(model)
                 }.offset(y:-50).background(wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7))
@@ -124,6 +124,7 @@ private struct RegistroForm: View {
 
                 } label: {
                     Text("Registrarse", tableName: "Login")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.accentColor)
                         .padding([.top, .bottom], 15)
                         .padding([.leading, .trailing], 25)
@@ -132,39 +133,48 @@ private struct RegistroForm: View {
                 }.buttonStyle(CustomButton())
                 
                 if emptyUsername && emptyPassword && emptyRepeatPassword {
-                    Label("Introduzca los datos", systemImage: "xmark.octagon")
+                    Label("Introduzca los datos", systemImage: "xmark.octagon").font(.custom("Poppins-Regular", size: 18))
+
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 } else if emptyUsername && emptyPassword {
                     Label("Introduzca el usuario y la contraseña", systemImage: "xmark.octagon")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 } else if emptyUsername && emptyRepeatPassword {
                     Label("Introducir el usuario y la repetición", systemImage: "xmark.octagon")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 } else if emptyPassword && emptyRepeatPassword {
                     Label("Introduzca la contraseña y la repetición", systemImage: "xmark.octagon")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 } else if emptyUsername {
                     Label("Introduzca el nombre de usuario", systemImage: "xmark.octagon")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 } else if emptyPassword{
                     Label("Introduzca la contraseña", systemImage: "xmark.octagon")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 } else if emptyRepeatPassword {
                     Label("Repita la contraseña", systemImage: "xmark.octagon")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 } else if registeredUser {
                     Label("El usuario ya existe", systemImage: "xmark.octagon")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 } else if differentPassword {
                     Label("Las contraseñas deben ser iguales", systemImage: "xmark.octagon")
+                        .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
                         .offset(x: 10, y:-40)
                 }
@@ -180,8 +190,8 @@ private struct RegistroForm: View {
     
 }
 
-struct RegistroView_Previews: PreviewProvider {
+/*struct RegistroView_Previews: PreviewProvider {
     static var previews: some View {
         RegistroView().environmentObject(ViewModel())
     }
-}
+}*/

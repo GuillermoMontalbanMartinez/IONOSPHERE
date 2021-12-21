@@ -17,10 +17,10 @@ struct EditarPerfilView: View {
     var body: some View {
         ZStack {
             
-            BackgroundView(height: 40).padding(.top, -200)
+            BackgroundView(height: 40)//.padding(.top, -200)
             
             if ( vm.loading ) {
-                ProgressView().foregroundColor(.white)
+                ProgressView().foregroundColor(.black)
             } else {
                 ScrollView(showsIndicators: false) {
                     VStack {
@@ -28,7 +28,7 @@ struct EditarPerfilView: View {
                             .environmentObject(vm)
                         
                         VStack(alignment: .leading) {
-                            Text("Tus pulsos guardados").font(.title).foregroundColor(.white).fontWeight(.bold)
+                            Text("Tus pulsos guardados").font(.custom("Poppins-Regular", size: 28)).foregroundColor(.black).fontWeight(.bold)
                             if let pulsos = vm.usuarioLogeado?.guardaPulsoRelation?.allObjects as? [Pulso] {
                                 ForEach(pulsos) { pulso in
                                     PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
@@ -54,11 +54,11 @@ struct PulsoInfo : View {
     var body: some View {
         
         HStack {
-            Text(pulso.nombrePulso ?? "" ).font(.headline).fontWeight(.bold).foregroundColor(.accentColor)
+            Text(pulso.nombrePulso ?? "" ).font(.custom("Poppins-Regular", size: 18)).fontWeight(.bold).foregroundColor(.accentColor)
             
             Spacer()
             
-            Text("0").font(.footnote).fontWeight(.bold).foregroundColor(.black.opacity(0.7))
+            Text("0").font(.custom("Poppins-Regular", size: 14)).fontWeight(.bold).foregroundColor(.black.opacity(0.7))
             
         }.sheet(isPresented: $mostrarPulso) {
             PulsoView(pulso: pulso).environmentObject(vm)
@@ -80,7 +80,7 @@ struct EditarPerfilFormulario : View {
     var body: some View {
         
         VStack {
-            Text("Edita tu perfil").font(.largeTitle).font(.system(.body, design: .rounded)).foregroundColor(.white).fontWeight(.bold)
+            Text("Edita tu perfil").font(.custom("Poppins-Regular", size: 28)).foregroundColor(.black)
             Button {
                 mostrarImagePicker.toggle() }label:{
                     if vm.usuarioLogeado?.foto != nil {
@@ -105,9 +105,9 @@ struct EditarPerfilFormulario : View {
                 }
             
             if ( datosActualizados == 1 ) {
-                Text("Datos actualizados correctamente").font(.headline).foregroundColor(.green).font(.system(.body, design: .rounded))
+                Text("Datos actualizados correctamente").font(.custom("Poppins-Regular", size: 18)).foregroundColor(.green)
             } else if (datosActualizados == 2) {
-                Text("Ha ocurrido un error actualizando sus datos").font(.headline).foregroundColor(.red).font(.system(.body, design: .rounded))
+                Text("Ha ocurrido un error actualizando sus datos").font(.custom("Poppins-Regular", size: 18))
             }
             
             Button {
@@ -118,7 +118,7 @@ struct EditarPerfilFormulario : View {
                 }
             } label: {
                 Text("Guardar")
-                    .font(.system(.body, design: .rounded))
+                    .font(.custom("Poppins-Regular", size: 18))
                     .foregroundColor(.accentColor)
                     .padding([.top, .bottom], 15)
                     .padding([.leading, .trailing], 25)

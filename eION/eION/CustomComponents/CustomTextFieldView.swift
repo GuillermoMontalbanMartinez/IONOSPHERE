@@ -33,6 +33,7 @@ struct CustomTextFieldView: View {
             .background(
                 
                 Text(name)
+                    .font(.custom("Poppins-Regular", size: 18))
                     .scaleEffect(isTapped ? 0.8 : 1)
                     .offset(x: isTapped ? -7 : 0, y: isTapped ? -15 : 0)
                     .foregroundColor(isTapped ? Color.accentColor : Color.gray)

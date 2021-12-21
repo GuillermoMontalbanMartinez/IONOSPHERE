@@ -21,7 +21,11 @@
 		786E2044275028BE00C5901E /* HomeAdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E2043275028BE00C5901E /* HomeAdminView.swift */; };
 		786E204727502A0F00C5901E /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E204627502A0F00C5901E /* MenuView.swift */; };
 		786E204A275031AE00C5901E /* TabButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E2049275031AE00C5901E /* TabButton.swift */; };
-		78831B6D27721F2100D43EE1 /* Wave2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78831B6C27721F2000D43EE1 /* Wave2.swift */; };
+		78831B7B27724EAE00D43EE1 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78ED3891276D1EAB00749190 /* BackgroundView.swift */; };
+		78831B7E277250C200D43EE1 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78831B7C277250C200D43EE1 /* Poppins-SemiBold.ttf */; };
+		78831B7F277250C200D43EE1 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78831B7C277250C200D43EE1 /* Poppins-SemiBold.ttf */; };
+		78831B80277250C200D43EE1 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78831B7D277250C200D43EE1 /* Poppins-Regular.ttf */; };
+		78831B81277250C200D43EE1 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78831B7D277250C200D43EE1 /* Poppins-Regular.ttf */; };
 		788AFE65276BF70B00857042 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AFE64276BF70B00857042 /* CustomTextFieldView.swift */; };
 		788AFE67276BF7CB00857042 /* CustomSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AFE66276BF7CB00857042 /* CustomSecureFieldView.swift */; };
 		788AFE6A276C04CC00857042 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A33D02747F241002BA977 /* ViewModel.swift */; };
@@ -86,7 +90,9 @@
 		786E2043275028BE00C5901E /* HomeAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdminView.swift; sourceTree = "<group>"; };
 		786E204627502A0F00C5901E /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 		786E2049275031AE00C5901E /* TabButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabButton.swift; sourceTree = "<group>"; };
-		78831B6C27721F2000D43EE1 /* Wave2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave2.swift; sourceTree = "<group>"; };
+		78831B7127724C9400D43EE1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		78831B7C277250C200D43EE1 /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-SemiBold.ttf"; sourceTree = "<group>"; };
+		78831B7D277250C200D43EE1 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Regular.ttf"; sourceTree = "<group>"; };
 		788AFE64276BF70B00857042 /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		788AFE66276BF7CB00857042 /* CustomSecureFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSecureFieldView.swift; sourceTree = "<group>"; };
 		788AFE8B276C04CC00857042 /* eION copy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "eION copy.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,7 +160,6 @@
 			isa = PBXGroup;
 			children = (
 				785BB979276CE2D400C8ADE1 /* Wave.swift */,
-				78831B6C27721F2000D43EE1 /* Wave2.swift */,
 			);
 			path = Shapes;
 			sourceTree = "<group>";
@@ -176,10 +181,20 @@
 			path = Menu;
 			sourceTree = "<group>";
 		};
+		78831B6E27724C5F00D43EE1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				78831B7D277250C200D43EE1 /* Poppins-Regular.ttf */,
+				78831B7C277250C200D43EE1 /* Poppins-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		B3C1BF272746D5DA006BD338 = {
 			isa = PBXGroup;
 			children = (
 				78CF2F1A276D408800D7490B /* EditarPerfilView.swift */,
+				78831B6E27724C5F00D43EE1 /* Fonts */,
 				785BB978276CE2C800C8ADE1 /* Shapes */,
 				786E20402750282A00C5901E /* Diagrama */,
 				29366651274FE26100482D47 /* Extensiones */,
@@ -202,6 +217,7 @@
 		B3C1BF322746D5DA006BD338 /* eION */ = {
 			isa = PBXGroup;
 			children = (
+				78831B7127724C9400D43EE1 /* Info.plist */,
 				783E97742769FF3B005BFD15 /* CustomComponents */,
 				786E2048275031A000C5901E /* Menu */,
 				B3C1BF332746D5DA006BD338 /* eIONApp.swift */,
@@ -317,8 +333,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78831B7F277250C200D43EE1 /* Poppins-SemiBold.ttf in Resources */,
 				788AFE86276C04CC00857042 /* Preview Assets.xcassets in Resources */,
 				788AFE87276C04CC00857042 /* Assets.xcassets in Resources */,
+				78831B81277250C200D43EE1 /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,8 +344,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78831B7E277250C200D43EE1 /* Poppins-SemiBold.ttf in Resources */,
 				B3C1BF3B2746D5DB006BD338 /* Preview Assets.xcassets in Resources */,
 				B3C1BF382746D5DB006BD338 /* Assets.xcassets in Resources */,
+				78831B80277250C200D43EE1 /* Poppins-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +367,7 @@
 				788AFE70276C04CC00857042 /* SpeechRecognizer.swift in Sources */,
 				788AFE71276C04CC00857042 /* PulsoView.swift in Sources */,
 				788AFE72276C04CC00857042 /* CustomTextFieldView.swift in Sources */,
+				78831B7B27724EAE00D43EE1 /* BackgroundView.swift in Sources */,
 				788AFE73276C04CC00857042 /* GestioneION.xcdatamodeld in Sources */,
 				788AFE74276C04CC00857042 /* MenuView.swift in Sources */,
 				78CF2F1C276D408800D7490B /* EditarPerfilView.swift in Sources */,
@@ -388,7 +409,6 @@
 				780F3839274D25A400DC10D0 /* HomeView.swift in Sources */,
 				786E204A275031AE00C5901E /* TabButton.swift in Sources */,
 				2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */,
-				78831B6D27721F2100D43EE1 /* Wave2.swift in Sources */,
 				788AFE67276BF7CB00857042 /* CustomSecureFieldView.swift in Sources */,
 				9CA2702D27500AE100C10236 /* ListaUsuariosAdmin.swift in Sources */,
 				78CF2F18276D405300D7490B /* ImagePicker.swift in Sources */,
@@ -598,6 +618,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"eION/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = eION/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "El audio se graba para transcribir la reunión. Las grabaciones de audio se descartan después de la transcripción ";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Puede ver una transcripción de texto de su reunión en la aplicación";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -629,6 +650,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"eION/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = eION/Info.plist;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "El audio se graba para transcribir la reunión. Las grabaciones de audio se descartan después de la transcripción ";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Puede ver una transcripción de texto de su reunión en la aplicación";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

@@ -32,8 +32,10 @@ struct HomeView: View {
                             VStack(alignment: .leading, spacing: 30) {
                                 VStack(alignment: .leading) {
                                     
-                                    Text("Novedades").font(.system(size: 28, weight: .bold, design: .rounded))
-                                    Text("Hoy, \(Date().formatted())").font(.system(size: 18, weight: .regular, design: .rounded))
+                                    Text("Novedades").font(.custom("Poppins-Regular", size: 28))
+
+                                    Text("Hoy, \(Date().formatted())").font(.custom("Poppins-Regular", size: 18))
+
                                     
                                 }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                                 
@@ -49,9 +51,8 @@ struct HomeView: View {
                                 }
                                 
                                 Text("Observa los pulsos creados en los últimos días y compártelos con tus amigos")
-                                    .font(.system(size: 14, weight: .regular, design: .rounded))
+                                    .font(.custom("Poppins-Regular", size: 14))
                                     .foregroundColor(.black)
-                                
                             }
                             
                             Spacer()
@@ -61,14 +62,15 @@ struct HomeView: View {
                         
                         VStack(alignment: .leading, spacing: 30) {
                             VStack(alignment: .leading) {
-                                Text("Otros usuarios").font(.largeTitle).fontWeight(.bold)
+                                Text("Otros usuarios").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold)
                             }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                             ScrollView(.horizontal, showsIndicators: false) {
                                 HStack(spacing: 30) {
                                     ForEach(0..<vm.usuarios.count) { index in
                                         VStack(spacing: 0) {
                                             
-                                            Text(vm.usuarios[index].nombre ?? "").font(.system(size: 18, weight: .regular, design: .rounded))
+                                            Text(vm.usuarios[index].nombre ?? "").font(.custom("Poppins-Regular", size: 18))
+
                                             
                                             if vm.usuarios[index].foto != nil {
                                                 Image(uiImage: UIImage(data: vm.usuarios[index].foto ?? Data()) ?? UIImage())
@@ -99,8 +101,7 @@ struct HomeView: View {
                                 }
                             }.frame(maxWidth: .infinity)
                             
-                            Text("Otros usuarios que también están compartiendo sus pulsos")
-                                .font(.system(size: 14, weight: .regular, design: .rounded))
+                            Text("Otros usuarios que también están compartiendo sus pulsos").font(.custom("Poppins-Regular", size: 14))
                                 .foregroundColor(.black)
                         }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
                         

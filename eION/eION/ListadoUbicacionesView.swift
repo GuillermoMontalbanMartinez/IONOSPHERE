@@ -34,7 +34,7 @@ struct ListadoUbicacionesView: View {
                                             NavigationLink(destination: ListadoPulsosView(provincia: provincias[index])){
                                                 //FilaTablaview(tituloIzq: provincia, tipoUsuario: true)
                                                 VStack(alignment: .leading) {
-                                                    Text(provincias[index]).font(.headline).foregroundColor(.black).fontWeight(.bold)
+                                                    Text(provincias[index]).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.black).fontWeight(.bold)
                                                     Image("barcelona").resizable().frame(width: 100, height: 100)
                                                 }.padding().frame(width: 150, height: 150).background(.white).cornerRadius(30)
                                             }
