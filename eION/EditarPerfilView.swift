@@ -19,6 +19,9 @@ struct EditarPerfilView: View {
             
             BackgroundView(height: 40)//.padding(.top, -200)
             
+            RoundedRectangle(cornerRadius: 40).background(.thinMaterial)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height).blur(radius: 100)
+            
             if ( vm.loading ) {
                 ProgressView().foregroundColor(.black)
             } else {

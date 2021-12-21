@@ -8,12 +8,6 @@
 import SwiftUI
 
 struct PulsoView: View {
-    /*var identificador: String
-    var a03: Double
-    var a27: Double
-    var fechaRegistro: String
-    var clase: Bool*/
-    
     var pulso: Pulso
     @EnvironmentObject var vm : ViewModel
     
@@ -25,36 +19,36 @@ struct PulsoView: View {
                 VStack(alignment: .leading, spacing: 10) {
                     
                     HStack {
-                        Text(pulso.nombrePulso ?? "").font(.largeTitle).fontWeight(.bold)
+                        Text(pulso.nombrePulso ?? "").font(.custom("Poppins-Regular", size: 22)).fontWeight(.bold)
                         Image(systemName: (vm.usuarioLogeado?.guardaPulsoRelation?.contains(pulso) ?? false) ? "bookmark.fill" :  "bookmark").foregroundColor(Color.accentColor).frame(width: 100, height: 100).scaledToFit().onTapGesture {
                             vm.guardarPulsoUsuario(usuario: vm.usuarioLogeado!, pulso: pulso)
                         }
                     }
                     
                     HStack(alignment: .center, spacing: 10.0) {
-                        Text("A03").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                        Text("\(pulso.a03)").font(.caption)
+                        Text("A03").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                        Text("\(pulso.a03)").font(.custom("Poppins-Regular", size: 14))
                     }
                     
                     HStack(alignment: .center, spacing: 10.0) {
-                        Text("A27").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                        Text("\(pulso.a27)").font(.caption)
+                        Text("A27").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                        Text("\(pulso.a27)").font(.custom("Poppins-Regular", size: 14))
+                    }
+                    
+                    HStack(alignment: .center, spacing: 15.0) {
+                        Text("Clase").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                        Text(pulso.clase ? "Good" : "Bad").font(.custom("Poppins-Regular", size: 14))
                     }
                     
                     HStack(alignment: .center, spacing: 10.0) {
-                        Text("Clase").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                        Text(pulso.clase ? "Good" : "Bad").font(.caption)
-                    }
-                    
-                    HStack(alignment: .center, spacing: 10.0) {
-                        Text("Fecha de registro").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                        Text(formatearFecha(pulso: pulso.fechaCreacion ?? Date())).font(.caption)
+                        Text("Fecha de registro").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                        Text(formatearFecha(pulso: pulso.fechaCreacion ?? Date())).font(.custom("Poppins-Regular", size: 14))
                     }
                     
                     if pulso.usuarioRelation?.nombre != nil  {
                         HStack {
-                            Text("Nombre usuario").fontWeight(.bold).frame(width: 100, alignment: .leading)
-                            Text(pulso.usuarioRelation?.nombre  ?? "").font(.caption)
+                            Text("Nombre usuario").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                            Text(pulso.usuarioRelation?.nombre  ?? "").font(.custom("Poppins-Regular", size: 14))
                         }
                     }
                     

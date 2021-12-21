@@ -48,9 +48,9 @@ struct LoginView: View {
                                         EmptyView()
                                 }
                             }
-                        }.offset(y:-100).background(BackgroundView(height: 0))
+                        }.offset(y:-100)
                     }
-                }.ignoresSafeArea()
+                }.ignoresSafeArea().background(BackgroundView(height: 0))
             }
         }
 
@@ -74,7 +74,7 @@ private struct LoginForm: View {
         } else {
             VStack {
                 VStack(spacing: 30) {
-                    Text("Inicia sesión").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
+                    Text("Inicia sesión").font(.custom("Poppins-SemiBold", size: 28)).fontWeight(.bold).foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                     HStack(alignment: .bottom) {
                         CustomTextFieldView(text: $username, name: "Nombre")
                     }
@@ -113,7 +113,7 @@ private struct LoginForm: View {
                         
                        /* .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)*/
                 }.buttonStyle(CustomButton())
-            }.background(.thinMaterial)
+            }.background(.ultraThinMaterial)
              .cornerRadius(20)
              //.shadow(color: .gray.opacity(0.4), radius: 4)
              .padding([.leading, .trailing])

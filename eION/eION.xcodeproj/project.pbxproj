@@ -26,6 +26,7 @@
 		78831B7F277250C200D43EE1 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78831B7C277250C200D43EE1 /* Poppins-SemiBold.ttf */; };
 		78831B80277250C200D43EE1 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78831B7D277250C200D43EE1 /* Poppins-Regular.ttf */; };
 		78831B81277250C200D43EE1 /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 78831B7D277250C200D43EE1 /* Poppins-Regular.ttf */; };
+		78831B82277276B000D43EE1 /* PerfilUsuarioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701A63D6277223FD00F8A4B2 /* PerfilUsuarioView.swift */; };
 		788AFE65276BF70B00857042 /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AFE64276BF70B00857042 /* CustomTextFieldView.swift */; };
 		788AFE67276BF7CB00857042 /* CustomSecureFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 788AFE66276BF7CB00857042 /* CustomSecureFieldView.swift */; };
 		788AFE6A276C04CC00857042 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B32A33D02747F241002BA977 /* ViewModel.swift */; };
@@ -235,6 +236,7 @@
 				707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */,
 				708059A82750EDC6008F3004 /* MicrofonoView.swift */,
 				B343CCCC274E3EE100F4A61E /* RegistroView.swift */,
+				701A63D6277223FD00F8A4B2 /* PerfilUsuarioView.swift */,
 			);
 			path = eION;
 			sourceTree = "<group>";
@@ -243,7 +245,6 @@
 			isa = PBXGroup;
 			children = (
 				B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */,
-				701A63D6277223FD00F8A4B2 /* PerfilUsuarioView.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -383,6 +384,7 @@
 				788AFE7E276C04CC00857042 /* BusquedaView.swift in Sources */,
 				788AFE7F276C04CC00857042 /* LoginView.swift in Sources */,
 				788AFE80276C04CC00857042 /* CustomButtonView.swift in Sources */,
+				78831B82277276B000D43EE1 /* PerfilUsuarioView.swift in Sources */,
 				785BB97B276CE2D400C8ADE1 /* Wave.swift in Sources */,
 				788AFE81276C04CC00857042 /* CoreDataManager.swift in Sources */,
 				788AFE82276C04CC00857042 /* eIONApp.swift in Sources */,
