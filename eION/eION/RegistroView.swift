@@ -108,7 +108,7 @@ private struct RegistroForm: View {
                         #if eIONML
                         do {
                             try model.addUsuario(nombre: username, password: password)
-                        } catch eIONML.ViewModel.error.datoRepetido {
+                        } catch eION_copy.ViewModel.error.datoRepetido {
                             print("Usuario existente en la base de datos")
                             registeredUser = true
                         } catch {

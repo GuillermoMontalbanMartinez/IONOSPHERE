@@ -125,18 +125,7 @@ class ViewModel: ObservableObject {
         self.loading = false
     }
     
-    func iniciarSesion(nombre:String, contraseña:String) -> Bool {
-        /*let user:Usuario = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})[0]
-         
-         guard user != nil else {
-         print("usuario nil")
-         return false
-         }
-         print("usuario no nil devuelve true")
-         usuarioLogeado = user
-         return true
-         */
-        
+    func iniciarSesion(nombre:String, contraseña:String) -> Bool {        
         self.loading = true
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})
         
@@ -185,17 +174,23 @@ class ViewModel: ObservableObject {
     
     
     func calcularClase(a05: Double, a27: Double) -> Bool {
+        var isClassB: Double
+        var isClassG: Double
+        
         if a05 <= 0.0409 {
-            return true
-        } else if a05 > 0.0409 {
+            isClassB = 1.07 + a05*(-0.7)
+            isClassG = -1.07 + a05*(0.7)
+        } else {
             if a27 <= 0.99989 {
-                return true
+                isClassB = -0.36 + a05*(-0.95) + a27*(0.12)
+                isClassG = -0.36 + a05*(0.95) + a27*(-0.12)
             } else {
-                return true
+                isClassB = -0.44 + a05*(0.29) + a27*(0.69)
+                isClassG = 0.44 + a05*(-0.29) + a27*(-0.69)
             }
         }
         
-        return true
+        return isClassB > isClassG ? false : true
     }
     
     

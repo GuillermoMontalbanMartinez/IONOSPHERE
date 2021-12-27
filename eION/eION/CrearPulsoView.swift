@@ -94,7 +94,7 @@ struct CrearPulsoView: View {
                             // valorPorVoz = Double(valorPorVozRedondeado)
                             
 #if eIONML
-                            claseElegida = vm.calcularClase(a05: valorSlider, a27: valorPorVozRedondeado )
+                            claseElegida = vm.calcularClase(a05: valorSlider, a27: valorPorVozRedondeado)
 #endif
                             
                             print("Vamos a crear el pulso")
