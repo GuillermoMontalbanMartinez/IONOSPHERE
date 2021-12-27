@@ -190,7 +190,7 @@ class ViewModel: ObservableObject {
             }
         }
         
-        return isClassB > isClassG ? true : false
+        return isClassB > isClassG ? false : true
     }
     
     
