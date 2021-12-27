@@ -238,7 +238,5 @@ class ViewModel: ObservableObject {
         
     }
     
-    func signOff() -> Bool {
-        let 
-    }
+   
 }
