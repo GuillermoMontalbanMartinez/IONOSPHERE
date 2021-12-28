@@ -73,6 +73,8 @@
 		B3C1BF382746D5DB006BD338 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C1BF372746D5DB006BD338 /* Assets.xcassets */; };
 		B3C1BF3B2746D5DB006BD338 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */; };
 		B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B3C1BF412746D61D006BD338 /* GestioneION.xcdatamodeld */; };
+		B3C9B120277A0A53005441EF /* CerrarSesionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C9B11F277A0A53005441EF /* CerrarSesionView.swift */; };
+		B3C9B121277A0A53005441EF /* CerrarSesionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C9B11F277A0A53005441EF /* CerrarSesionView.swift */; };
 		F87DC2152757DF6F009B2F32 /* ListadoPulsosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */; };
 		F8AB18BF2760C0D700A5CAA4 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +115,7 @@
 		B3C1BF372746D5DB006BD338 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3C1BF3A2746D5DB006BD338 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B3C1BF422746D61D006BD338 /* GestioneION.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GestioneION.xcdatamodel; sourceTree = "<group>"; };
+		B3C9B11F277A0A53005441EF /* CerrarSesionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CerrarSesionView.swift; sourceTree = "<group>"; };
 		F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoPulsosView.swift; sourceTree = "<group>"; };
 		F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -227,6 +230,7 @@
 				780F3838274D25A300DC10D0 /* HomeView.swift */,
 				78BBF62D274D29610006CBD6 /* PulsoView.swift */,
 				B343CCCA274DB11200F4A61E /* LoginView.swift */,
+				B3C9B11F277A0A53005441EF /* CerrarSesionView.swift */,
 				2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */,
 				F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */,
 				F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */,
@@ -371,6 +375,7 @@
 				78831B7B27724EAE00D43EE1 /* BackgroundView.swift in Sources */,
 				788AFE73276C04CC00857042 /* GestioneION.xcdatamodeld in Sources */,
 				788AFE74276C04CC00857042 /* MenuView.swift in Sources */,
+				B3C9B121277A0A53005441EF /* CerrarSesionView.swift in Sources */,
 				78CF2F1C276D408800D7490B /* EditarPerfilView.swift in Sources */,
 				788AFE75276C04CC00857042 /* ListadoPulsosView.swift in Sources */,
 				788AFE76276C04CC00857042 /* HomeView.swift in Sources */,
@@ -408,6 +413,7 @@
 				B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */,
 				786E204727502A0F00C5901E /* MenuView.swift in Sources */,
 				F87DC2152757DF6F009B2F32 /* ListadoPulsosView.swift in Sources */,
+				B3C9B120277A0A53005441EF /* CerrarSesionView.swift in Sources */,
 				780F3839274D25A400DC10D0 /* HomeView.swift in Sources */,
 				786E204A275031AE00C5901E /* TabButton.swift in Sources */,
 				2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */,

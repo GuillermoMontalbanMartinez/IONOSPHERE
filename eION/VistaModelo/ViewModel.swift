@@ -233,5 +233,7 @@ class ViewModel: ObservableObject {
         
     }
     
-   
+    func signOut() -> Void {
+        print("prueba")
+    }
 }

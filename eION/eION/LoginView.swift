@@ -12,7 +12,6 @@ struct LoginView: View {
     @Binding var logeado: Bool
     
     var body: some View {
-        
         ZStack {
             NavigationView {
                 VStack {
@@ -33,7 +32,6 @@ struct LoginView: View {
                             HStack() {
                                 Text("¿No tienes cuenta?", tableName: "Login").foregroundColor(.black)
                                     .font(.custom("Poppins-Regular", size: 18))
-
                                  Button {
                                      showView = true
                                  } label: {
@@ -110,7 +108,6 @@ private struct LoginForm: View {
                     Text("Iniciar sesión", tableName: "Login")
                         .font(.custom("Poppins-Regular", size: 18))
                         .padding()
-                        
                        /* .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)*/
                 }.buttonStyle(CustomButton())
             }.background(.ultraThinMaterial)
