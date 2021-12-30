@@ -15,6 +15,9 @@
 		708059A92750EDC6008F3004 /* MicrofonoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708059A82750EDC6008F3004 /* MicrofonoView.swift */; };
 		780F3839274D25A400DC10D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F3838274D25A300DC10D0 /* HomeView.swift */; };
 		783E97732769FC3F005BFD15 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E97722769FC3F005BFD15 /* CustomButtonView.swift */; };
+		7851550F277DDCE60022029E /* eIONUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851550E277DDCE60022029E /* eIONUITests.swift */; };
+		78515511277DDCE60022029E /* eIONUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78515510277DDCE60022029E /* eIONUITestsLaunchTests.swift */; };
+		7851551E277DDD610022029E /* eIONUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851551D277DDD610022029E /* eIONUnitTests.swift */; };
 		785BB97A276CE2D400C8ADE1 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BB979276CE2D400C8ADE1 /* Wave.swift */; };
 		785BB97B276CE2D400C8ADE1 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BB979276CE2D400C8ADE1 /* Wave.swift */; };
 		786E20422750283A00C5901E /* DiagramaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 786E20412750283A00C5901E /* DiagramaView.swift */; };
@@ -79,6 +82,23 @@
 		F8AB18BF2760C0D700A5CAA4 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		78515512277DDCE60022029E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3C1BF282746D5DA006BD338 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3C1BF2F2746D5DA006BD338;
+			remoteInfo = eION;
+		};
+		7851551F277DDD610022029E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B3C1BF282746D5DA006BD338 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B3C1BF2F2746D5DA006BD338;
+			remoteInfo = eION;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoUbicacionesView.swift; sourceTree = "<group>"; };
 		2936664E274FE06800482D47 /* BusquedaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusquedaView.swift; sourceTree = "<group>"; };
@@ -89,6 +109,11 @@
 		780F3838274D25A300DC10D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		783E97722769FC3F005BFD15 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		78515504277DBE790022029E /* eION-copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "eION-copy-Info.plist"; sourceTree = "<group>"; };
+		7851550C277DDCE60022029E /* eIONUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eIONUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7851550E277DDCE60022029E /* eIONUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONUITests.swift; sourceTree = "<group>"; };
+		78515510277DDCE60022029E /* eIONUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7851551B277DDD610022029E /* eIONUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eIONUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7851551D277DDD610022029E /* eIONUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONUnitTests.swift; sourceTree = "<group>"; };
 		785BB979276CE2D400C8ADE1 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
 		786E20412750283A00C5901E /* DiagramaView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiagramaView.swift; sourceTree = "<group>"; };
 		786E2043275028BE00C5901E /* HomeAdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAdminView.swift; sourceTree = "<group>"; };
@@ -122,6 +147,20 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		78515509277DDCE60022029E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78515518277DDD610022029E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		788AFE84276C04CC00857042 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,6 +198,23 @@
 				78ED3891276D1EAB00749190 /* BackgroundView.swift */,
 			);
 			path = CustomComponents;
+			sourceTree = "<group>";
+		};
+		7851550D277DDCE60022029E /* eIONUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7851550E277DDCE60022029E /* eIONUITests.swift */,
+				78515510277DDCE60022029E /* eIONUITestsLaunchTests.swift */,
+			);
+			path = eIONUITests;
+			sourceTree = "<group>";
+		};
+		7851551C277DDD610022029E /* eIONUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				7851551D277DDD610022029E /* eIONUnitTests.swift */,
+			);
+			path = eIONUnitTests;
 			sourceTree = "<group>";
 		};
 		785BB978276CE2C800C8ADE1 /* Shapes */ = {
@@ -207,6 +263,8 @@
 				B3C1BF412746D61D006BD338 /* GestioneION.xcdatamodeld */,
 				B3C1BF452746D732006BD338 /* VistaModelo */,
 				B3C1BF322746D5DA006BD338 /* eION */,
+				7851550D277DDCE60022029E /* eIONUITests */,
+				7851551C277DDD610022029E /* eIONUnitTests */,
 				B3C1BF312746D5DA006BD338 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -216,6 +274,8 @@
 			children = (
 				B3C1BF302746D5DA006BD338 /* eION.app */,
 				788AFE8B276C04CC00857042 /* eION copy.app */,
+				7851550C277DDCE60022029E /* eIONUITests.xctest */,
+				7851551B277DDD610022029E /* eIONUnitTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -267,6 +327,42 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		7851550B277DDCE60022029E /* eIONUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78515514277DDCE60022029E /* Build configuration list for PBXNativeTarget "eIONUITests" */;
+			buildPhases = (
+				78515508277DDCE60022029E /* Sources */,
+				78515509277DDCE60022029E /* Frameworks */,
+				7851550A277DDCE60022029E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78515513277DDCE60022029E /* PBXTargetDependency */,
+			);
+			name = eIONUITests;
+			productName = eIONUITests;
+			productReference = 7851550C277DDCE60022029E /* eIONUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		7851551A277DDD610022029E /* eIONUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 78515521277DDD610022029E /* Build configuration list for PBXNativeTarget "eIONUnitTests" */;
+			buildPhases = (
+				78515517277DDD610022029E /* Sources */,
+				78515518277DDD610022029E /* Frameworks */,
+				78515519277DDD610022029E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				78515520277DDD610022029E /* PBXTargetDependency */,
+			);
+			name = eIONUnitTests;
+			productName = eIONUnitTests;
+			productReference = 7851551B277DDD610022029E /* eIONUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		788AFE68276C04CC00857042 /* eION copy */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 788AFE88276C04CC00857042 /* Build configuration list for PBXNativeTarget "eION copy" */;
@@ -311,6 +407,14 @@
 				LastSwiftUpdateCheck = 1310;
 				LastUpgradeCheck = 1310;
 				TargetAttributes = {
+					7851550B277DDCE60022029E = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = B3C1BF2F2746D5DA006BD338;
+					};
+					7851551A277DDD610022029E = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = B3C1BF2F2746D5DA006BD338;
+					};
 					B3C1BF2F2746D5DA006BD338 = {
 						CreatedOnToolsVersion = 13.1;
 					};
@@ -331,11 +435,27 @@
 			targets = (
 				B3C1BF2F2746D5DA006BD338 /* eION */,
 				788AFE68276C04CC00857042 /* eION copy */,
+				7851550B277DDCE60022029E /* eIONUITests */,
+				7851551A277DDD610022029E /* eIONUnitTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		7851550A277DDCE60022029E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78515519277DDD610022029E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		788AFE85276C04CC00857042 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,6 +481,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		78515508277DDCE60022029E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7851550F277DDCE60022029E /* eIONUITests.swift in Sources */,
+				78515511277DDCE60022029E /* eIONUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		78515517277DDD610022029E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7851551E277DDD610022029E /* eIONUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		788AFE69276C04CC00857042 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -439,7 +576,106 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		78515513277DDCE60022029E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3C1BF2F2746D5DA006BD338 /* eION */;
+			targetProxy = 78515512277DDCE60022029E /* PBXContainerItemProxy */;
+		};
+		78515520277DDD610022029E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B3C1BF2F2746D5DA006BD338 /* eION */;
+			targetProxy = 7851551F277DDD610022029E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		78515515277DDCE60022029E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ual.eIONUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = eION;
+			};
+			name = Debug;
+		};
+		78515516277DDCE60022029E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ual.eIONUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = eION;
+			};
+			name = Release;
+		};
+		78515522277DDD610022029E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ual.eIONUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eION.app/eION";
+			};
+			name = Debug;
+		};
+		78515523277DDD610022029E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = ual.eIONUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/eION.app/eION";
+			};
+			name = Release;
+		};
 		788AFE89276C04CC00857042 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -687,6 +923,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		78515514277DDCE60022029E /* Build configuration list for PBXNativeTarget "eIONUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78515515277DDCE60022029E /* Debug */,
+				78515516277DDCE60022029E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		78515521277DDD610022029E /* Build configuration list for PBXNativeTarget "eIONUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				78515522277DDD610022029E /* Debug */,
+				78515523277DDD610022029E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		788AFE88276C04CC00857042 /* Build configuration list for PBXNativeTarget "eION copy" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

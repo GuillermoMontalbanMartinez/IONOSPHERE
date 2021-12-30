@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "B3C1BF2F2746D5DA006BD338"
-               BuildableName = "eION.app"
-               BlueprintName = "eION"
+               BlueprintIdentifier = "7851550B277DDCE60022029E"
+               BuildableName = "eIONUITests.xctest"
+               BlueprintName = "eIONUITests"
                ReferencedContainer = "container:eION.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -35,16 +35,6 @@
                BlueprintIdentifier = "7851550B277DDCE60022029E"
                BuildableName = "eIONUITests.xctest"
                BlueprintName = "eIONUITests"
-               ReferencedContainer = "container:eION.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7851551A277DDD610022029E"
-               BuildableName = "eIONUnitTests.xctest"
-               BlueprintName = "eIONUnitTests"
                ReferencedContainer = "container:eION.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -77,16 +67,6 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "B3C1BF2F2746D5DA006BD338"
-            BuildableName = "eION.app"
-            BlueprintName = "eION"
-            ReferencedContainer = "container:eION.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
