@@ -233,7 +233,14 @@ class ViewModel: ObservableObject {
         
     }
     
-    func signOut() -> Void {
-        print("prueba")
+    /**
+       Método para desconectar de la aplicación 
+     */
+    func signOut(disconnect: Bool) -> Bool {
+        if (!disconnect) {
+            return false
+        }
+        usuarioLogeado = nil
+        return true
     }
 }

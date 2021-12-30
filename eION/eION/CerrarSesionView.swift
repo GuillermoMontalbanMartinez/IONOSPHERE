@@ -57,7 +57,7 @@ private struct FormCerrarSesion: View {
              .frame(width: 300, height: 300)
              .cornerRadius(150)
              .clipShape(Circle())
-             .background(BackgroundView(height: 3))
+             .background(BackgroundView(height: 0))
              .background(.ultraThinMaterial)
              .offset(y:-70)
         }
