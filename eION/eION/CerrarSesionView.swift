@@ -27,7 +27,8 @@ struct CerrarSesionView_Previews: PreviewProvider {
 
 private struct FormCerrarSesion: View {
     @EnvironmentObject var vm : ViewModel
-
+    @State var disconnect:Bool = false
+    
     var body: some View {
         NavigationView {
             VStack {
@@ -41,7 +42,7 @@ private struct FormCerrarSesion: View {
                     .offset(y: 10)
                 HStack {
                     Button {
-                    
+                        disconnect = true
                     } label: {
                         Label("Confirmar", systemImage: "checkmark.rectangle.fill").foregroundColor(.green)
                     }.buttonStyle(.bordered)

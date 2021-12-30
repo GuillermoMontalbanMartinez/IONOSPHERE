@@ -26,6 +26,7 @@ struct MenuView: View {
                     // LoginView().tag("CerrarSesion")
                     
                     EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
+                    CerrarSesionView.tag("Cerrar Sesion").transition(.opacity.animation(.default))
                 }
                  
                 
