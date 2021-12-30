@@ -23,7 +23,7 @@ class ViewModel: ObservableObject {
     @Published var usuarioLogeado: Usuario? = nil
     @Published var loading = false
     @Published var logeado: Bool = false
-
+    @AppStorage("loginActive") var loginActive: Bool?
     
     init(){
         loadData()
@@ -138,6 +138,7 @@ class ViewModel: ObservableObject {
         if !user.isEmpty {
             self.loading = false
             usuarioLogeado = user[0]
+            loginActive = true
             return true
         } else {
             self.loading = false

@@ -25,16 +25,23 @@ struct MenuView: View {
                     HomeAdminView().tag("HomeAdmin").transition(.opacity.animation(.default))
                     // LoginView().tag("CerrarSesion")
                     
-                    EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
+                    if ( vm.usuarioLogeado?.tipoUsuario != 0 ) {
+                        EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
+
+                    }
                 }
                  
                 
-                HStack(spacing: 0) {
+                HStack(spacing: 0) {                    
                     TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house", selected: $seleccion, logout: $logout)
                     Spacer(minLength: 0)
                     TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet", selected: $seleccion, logout: $logout)
-                    Spacer(minLength: 0)
-                    TabButton(title: "EditarPerfil", image: "person.fill", selected: $seleccion, logout: $logout)
+        
+                    if ( vm.usuarioLogeado?.tipoUsuario != 0 ) {
+                        Spacer(minLength: 0)
+                        TabButton(title: "EditarPerfil", image: "person.fill", selected: $seleccion, logout: $logout)
+                    }
+
                     Spacer(minLength: 0)
                     TabButton(title: "Cerrar sesión", image: "arrow.forward.square.fill", selected: $seleccion, logout: $logout)
                     
@@ -46,6 +53,7 @@ struct MenuView: View {
                             // Acciones a realizar cuando se cierra sesion
                             vm.logeado = false
                             vm.usuarioLogeado = nil
+                            vm.loginActive = false
                         },
                         secondaryButton: .cancel()
                     )

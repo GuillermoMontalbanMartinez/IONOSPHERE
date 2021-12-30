@@ -14,7 +14,7 @@ struct eIONApp: App {
     var body: some Scene {
         WindowGroup {
             VStack {
-                if vm.logeado {
+                if ((vm.loginActive ?? false) || vm.logeado) {
                     MenuView().environmentObject(vm)
                 } else {
                     LoginView(logeado: $vm.logeado).environmentObject(vm)
