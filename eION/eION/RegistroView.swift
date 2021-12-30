@@ -30,7 +30,7 @@ struct RegistroView: View {
                     
                     RegistroForm().environmentObject(model)
                 }.offset(y:-50).background(wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7))
-                                                .foregroundColor(.accentColor).opacity(1))
+                 .foregroundColor(.accentColor).opacity(1))
             }
 
         }.ignoresSafeArea()

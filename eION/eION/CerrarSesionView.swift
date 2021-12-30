@@ -12,52 +12,54 @@ struct CerrarSesionView: View {
         VStack {
             VStack {
                 FormCerrarSesion()
-            }.background(.blue)
+            }
             
-        }.background(.blue)
-        
+        }
     }
 }
 
 struct CerrarSesionView_Previews: PreviewProvider {
     static var previews: some View {
-        CerrarSesionView()
+            CerrarSesionView()
     }
 }
 
 
 private struct FormCerrarSesion: View {
     @EnvironmentObject var vm : ViewModel
-    
-    
+
     var body: some View {
         NavigationView {
             VStack {
-                Image("lock")
+                Image(systemName: "lock.fill")
                     .resizable()
-                    .frame(width: 125, height: 125, alignment: .center)
+                    .frame(width: 70, height: 100, alignment: .center)
+                    .offset(y:10)
+                    .foregroundColor(.black)
                 Text("¿Desea cerrar sesión?")
                     .bold()
+                    .offset(y: 10)
                 HStack {
                     Button {
                     
                     } label: {
-                        Label("Confirmar", image: "checkmark.rectangle.fill")
-                    }
+                        Label("Confirmar", systemImage: "checkmark.rectangle.fill").foregroundColor(.green)
+                    }.buttonStyle(.bordered)
                     
                     Button {
                         
                     } label: {
-                        Label("Cancelar", image: "xmark.circle.fill")
-                    }
-                    
-                }
-            }.background(.white)
-                .cornerRadius(20)
-                .padding([.leading, .trailing])
-                .offset(y: -100)
-                .frame(width: 250, height: 250, alignment: .center)
-            
+                        Label("Cancelar", systemImage: "xmark.circle.fill").foregroundColor(.red)
+                    }.buttonStyle(.bordered)
+                }.padding()
+                 .offset(y:-10)
+            }.scaledToFill()
+             .frame(width: 300, height: 300)
+             .cornerRadius(150)
+             .clipShape(Circle())
+             .background(BackgroundView(height: 3))
+             .background(.ultraThinMaterial)
+             .offset(y:-70)
         }
     }
 }
