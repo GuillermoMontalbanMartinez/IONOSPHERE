@@ -33,7 +33,7 @@ private struct FormCerrarSesion: View {
             VStack {
                 Image(systemName: "lock.fill")
                     .resizable()
-                    .frame(width: 70, height: 100, alignment: .center)
+                    .frame(width: 30, height: 50, alignment: .center)
                     .offset(y:10)
                     .foregroundColor(.black)
                 Text("¿Desea cerrar sesión?")
@@ -55,8 +55,7 @@ private struct FormCerrarSesion: View {
                  .offset(y:-10)
             }.scaledToFill()
              .frame(width: 300, height: 300)
-             .cornerRadius(150)
-             .clipShape(Circle())
+             .cornerRadius(20)
              .background(BackgroundView(height: 3))
              .background(.ultraThinMaterial)
              .offset(y:-70)

@@ -22,6 +22,8 @@ class ViewModel: ObservableObject {
     @Published var pulsos: [Pulso] = []
     @Published var usuarioLogeado: Usuario? = nil
     @Published var loading = false
+    @Published var logeado: Bool = false
+
     
     init(){
         loadData()
@@ -193,23 +195,34 @@ class ViewModel: ObservableObject {
         return isClassB > isClassG ? false : true
     }
     
+    func getPulsosUbicacion(ubicacion: String) {
+        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
+
+        do{
+            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter( {$0.ubicacion == ubicacion} )
+        } catch let error {
+            print ( "Error al cargar los pulsos por ubicacion : \(error)" )
+        }        
+    }
     
-    func ordenarPulsos(propiedad: String) -> Void {
-        
+    func obtenerPulsos() -> [Pulso] {
+        return self.pulsos
+    }
+    
+    func ordenarPulsos(propiedad: String, ubicacion: String) {
         let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
         
         do {
-            
             if propiedad == "nombre" {
-                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.nombrePulso! < $1.nombrePulso!}
+                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter({$0.ubicacion == ubicacion}).sorted(){$0.nombrePulso! < $1.nombrePulso!}
             } else if propiedad == "fecha" {
-                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
+                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter({$0.ubicacion == ubicacion}).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
                 
             }
-            
         } catch let error {
             print("Error al cargar los datos :\(error)")
         }
+        
     }
     
     
@@ -230,8 +243,8 @@ class ViewModel: ObservableObject {
             self.loading = false
             return false
         }
-        
     }
+    
     
     func signOut() -> Void {
         print("prueba")

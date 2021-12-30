@@ -36,13 +36,16 @@ struct CustomShape: Shape {
 struct TabButton: View {
     var title: String
     @State var image: String
-    
     @Binding var selected: String
+    @Binding var logout: Bool
     
     var body: some View {
         Button( action: {
             withAnimation(.spring()) {
                 selected = title
+                if ( selected == "Cerrar sesión" ) {
+                    logout = true
+                }
             }
         }) {
             VStack(spacing: 6) {
@@ -51,23 +54,7 @@ struct TabButton: View {
                 Image(systemName: image ).resizable().renderingMode(.template)
                     .frame(width: 25, height: 25).foregroundColor(selected == title ? .accentColor : .gray)
                 
-                //Text(title).font(.caption).fontWeight(.bold).foregroundColor(Color.black.opacity( selected == title ? 0.6 : 0.2))
                 
-                /*if selected == title {
-                    if ( title.contains("Home")) {
-                        Text("Home").fontWeight(.bold).foregroundColor(.white)
-                    } else {
-                        Text(title).fontWeight(.bold).foregroundColor(.white)
-
-                    }
-                }*/
-                
-                /*ZStack {
-                    CustomShape().fill(Color.clear).frame(width: 45, height: 6)
-                    if ( selected == title ) {
-                        CustomShape().fill(.white).frame(width: 45, height: 6, alignment: .center)
-                    }
-                }.padding(.bottom, 10)*/
                 
                 
             }.padding(.vertical,10).padding(.horizontal).offset(y: selected == title ? -10 : 0).onAppear {
