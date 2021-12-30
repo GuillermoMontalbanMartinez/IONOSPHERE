@@ -206,6 +206,12 @@ class ViewModel: ObservableObject {
     }
     
     func obtenerPulsos() -> [Pulso] {
+        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
+        do {
+            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos)
+        } catch let error {
+            print("ERROR AL OBTENER PULSOS : \(error)")
+        }
         return self.pulsos
     }
     
