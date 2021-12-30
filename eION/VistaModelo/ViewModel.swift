@@ -101,6 +101,9 @@ class ViewModel: ObservableObject {
         
         newPulso.usuarioRelation = usuarios.filter({$0.nombre == nombreUsuario}).first
         
+        print("USUARIO RELACION")
+        print(usuarios.filter({$0.nombre == nombreUsuario}).first ?? "ninguno")
+        
         print("Creando pulso")
         
         saveData()
@@ -235,8 +238,6 @@ class ViewModel: ObservableObject {
     func updateUserData(nombre: String, imagen: UIImage) -> Bool {
         self.loading = true
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre})
-        
-        //let jpegImageData = imagen.jpegData(compressionQuality: 1.0)
         let pngImageData  = imagen.pngData()
         
         if !user.isEmpty {
@@ -249,10 +250,5 @@ class ViewModel: ObservableObject {
             self.loading = false
             return false
         }
-    }
-    
-    
-    func signOut() -> Void {
-        print("prueba")
     }
 }
