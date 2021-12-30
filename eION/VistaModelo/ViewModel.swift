@@ -13,7 +13,7 @@ import SwiftUI
 class ViewModel: ObservableObject {
     let gestorCoreData = CoreDataManager.instace // singleton
     
-    enum error: Error {
+    public enum error: Error {
         case datoRepetido
         case uncorrect
     }

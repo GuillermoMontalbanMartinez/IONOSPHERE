@@ -7,26 +7,59 @@
 
 import XCTest
 
+@testable import eION // Importamos el otro esquema
+
 class eIONUnitTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var vm : ViewModel!
+    
+    override func setUp() {
+        super.setUp()
+        vm = ViewModel()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        vm = nil
+        super.tearDown()
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        measure {
-            // Put the code you want to measure the time of here.
+    
+    
+    /* El nombre debe empezar por "test" **/
+    func testItShouldCreateAnUser() throws {
+        // Given
+        let name = self.randomString(of: 4)
+        let password = self.randomString(of: 5)
+        
+        // When
+        var result = false
+        do {
+            try vm.addUsuario(nombre: name, password: password)
+            result = vm.iniciarSesion(nombre: name, contraseña: password)
+        } catch {
+            
         }
+        
+        // Then
+        XCTAssertTrue(result)
+    }
+    
+    func testItShouldThrowExceptionIfUserAlreadyExists() throws {
+        // Given
+        let name = "Marta"
+        let password = "0707"
+        
+        // When + Then
+        XCTAssertThrowsError(try vm.addUsuario(nombre: name, password: password))
+    }
+    
+    
+    private func randomString(of length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        var s = ""
+        for _ in 0 ..< length {
+            s.append(letters.randomElement()!)
+        }
+        return s
     }
 
 }
