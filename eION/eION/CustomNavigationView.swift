@@ -44,7 +44,7 @@ struct CustomNavigationView: View {
                 }
             }
         }.padding([.trailing,.leading])
-        //Spacer()
+        
     }
 }
 

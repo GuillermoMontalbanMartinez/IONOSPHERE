@@ -114,17 +114,9 @@ struct CrearPulsoView: View {
                     }.buttonStyle(CustomButton())
                     
                 } .padding(.init(top: 40, leading:  30, bottom: 40, trailing: 30))
-                    
-                
-                //.background(Color.white)
-                //.cornerRadius(30)
-                .foregroundColor(.black)
-                
-                //.position(x: geo.frame(in: .local).midX, y: geo.frame(in: .local).midY)
-                //shadow(radius: 10)
-
-                
-            }//.frame(width: geo.size.width/1.4, height: geo.size.height/2, alignment: .center)
+                  .foregroundColor(.black)
+   
+            }
         }
     }
 }

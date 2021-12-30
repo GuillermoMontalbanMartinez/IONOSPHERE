@@ -49,16 +49,13 @@ struct ListadoUbicacionesView: View {
                                 Spacer()
 
                             }
-                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center).padding(.top, 50)//.background(.thinMaterial)
-                            //.background(Color.white, in: RoundedRectangle(cornerRadius: 20, style: .continuous))
+                            .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center).padding(.top, 50)
                             .cornerRadius(30)
-                            //.shadow(radius: 10)
                         }.navigationBarHidden(true).frame(height: geometry.size.height)
                     }
                 }
             }.ignoresSafeArea()
         }
-        //.navigationBarHidden(true)
         .navigationBarTitleDisplayMode(.inline)
         .ignoresSafeArea()
     }

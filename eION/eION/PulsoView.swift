@@ -54,12 +54,7 @@ struct PulsoView: View {
                     
                     
                 }.frame(width: geometry.size.width/1.1, height: geometry.size.height/2, alignment: .center)
-                    //.foregroundColor(.white)
-                    //.background(.ultraThinMaterial)
-                    //.cornerRadius(30)
                     .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
-                    //.shadow(radius: 10)
-                
             }
         }
     }
