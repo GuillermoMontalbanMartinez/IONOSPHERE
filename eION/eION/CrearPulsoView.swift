@@ -9,7 +9,7 @@ import AVFoundation
 
 struct CrearPulsoView: View {
     @EnvironmentObject var vm: ViewModel
-    var ubicacion :String = "Almería"
+    var ubicacion: String
     @State var valorPorVoz : String = ""
     @State var valorSlider : Double = 0
     @State var nombrePulso : String = ""

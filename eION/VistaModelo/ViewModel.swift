@@ -4,7 +4,6 @@
 //
 //  Created by Guillermo Montalban Martinez on 19/11/21.
 //
-
 import Foundation
 import CoreData
 import UIKit
@@ -13,7 +12,7 @@ import SwiftUI
 class ViewModel: ObservableObject {
     let gestorCoreData = CoreDataManager.instace // singleton
     
-    enum error: Error {
+    public enum error: Error {
         case datoRepetido
         case uncorrect
     }
@@ -22,6 +21,8 @@ class ViewModel: ObservableObject {
     @Published var pulsos: [Pulso] = []
     @Published var usuarioLogeado: Usuario? = nil
     @Published var loading = false
+    @Published var logeado: Bool = false
+    @AppStorage("loginActive") var loginActive: Bool?
     
     init(){
         loadData()
@@ -99,6 +100,9 @@ class ViewModel: ObservableObject {
         
         newPulso.usuarioRelation = usuarios.filter({$0.nombre == nombreUsuario}).first
         
+        print("USUARIO RELACION")
+        print(usuarios.filter({$0.nombre == nombreUsuario}).first ?? "ninguno")
+        
         print("Creando pulso")
         
         saveData()
@@ -125,7 +129,7 @@ class ViewModel: ObservableObject {
         self.loading = false
     }
     
-    func iniciarSesion(nombre:String, contraseña:String) -> Bool {        
+    func iniciarSesion(nombre:String, contraseña:String) -> Bool {
         self.loading = true
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})
         
@@ -133,6 +137,7 @@ class ViewModel: ObservableObject {
         if !user.isEmpty {
             self.loading = false
             usuarioLogeado = user[0]
+            loginActive = true
             return true
         } else {
             self.loading = false
@@ -193,31 +198,46 @@ class ViewModel: ObservableObject {
         return isClassB > isClassG ? false : true
     }
     
+    func getPulsosUbicacion(ubicacion: String) {
+        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
+
+        do{
+            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter( {$0.ubicacion == ubicacion} )
+        } catch let error {
+            print ( "Error al cargar los pulsos por ubicacion : \(error)" )
+        }
+    }
     
-    func ordenarPulsos(propiedad: String) -> Void {
-        
+    func obtenerPulsos() -> [Pulso] {
+        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
+        do {
+            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos)
+        } catch let error {
+            print("ERROR AL OBTENER PULSOS : \(error)")
+        }
+        return self.pulsos
+    }
+    
+    func ordenarPulsos(propiedad: String, ubicacion: String) {
         let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
         
         do {
-            
             if propiedad == "nombre" {
-                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.nombrePulso! < $1.nombrePulso!}
+                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter({$0.ubicacion == ubicacion}).sorted(){$0.nombrePulso! < $1.nombrePulso!}
             } else if propiedad == "fecha" {
-                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
+                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter({$0.ubicacion == ubicacion}).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
                 
             }
-            
         } catch let error {
             print("Error al cargar los datos :\(error)")
         }
+        
     }
     
     
     func updateUserData(nombre: String, imagen: UIImage) -> Bool {
         self.loading = true
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre})
-        
-        //let jpegImageData = imagen.jpegData(compressionQuality: 1.0)
         let pngImageData  = imagen.pngData()
         
         if !user.isEmpty {
@@ -230,17 +250,5 @@ class ViewModel: ObservableObject {
             self.loading = false
             return false
         }
-        
-    }
-    
-    /**
-       Método para desconectar de la aplicación 
-     */
-    func signOut(disconnect: Bool) -> Bool {
-        if (!disconnect) {
-            return false
-        }
-        usuarioLogeado = nil
-        return true
     }
 }

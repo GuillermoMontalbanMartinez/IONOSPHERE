@@ -4,7 +4,6 @@
 //
 //  Created by Guillermo Montalban Martinez on 27/12/21.
 //
-
 import SwiftUI
 
 struct CerrarSesionView: View {
@@ -27,14 +26,13 @@ struct CerrarSesionView_Previews: PreviewProvider {
 
 private struct FormCerrarSesion: View {
     @EnvironmentObject var vm : ViewModel
-    @State var disconnect:Bool = false
-    
+
     var body: some View {
         NavigationView {
             VStack {
                 Image(systemName: "lock.fill")
                     .resizable()
-                    .frame(width: 70, height: 100, alignment: .center)
+                    .frame(width: 30, height: 50, alignment: .center)
                     .offset(y:10)
                     .foregroundColor(.black)
                 Text("¿Desea cerrar sesión?")
@@ -42,7 +40,7 @@ private struct FormCerrarSesion: View {
                     .offset(y: 10)
                 HStack {
                     Button {
-                        disconnect = true
+                    
                     } label: {
                         Label("Confirmar", systemImage: "checkmark.rectangle.fill").foregroundColor(.green)
                     }.buttonStyle(.bordered)
@@ -56,9 +54,8 @@ private struct FormCerrarSesion: View {
                  .offset(y:-10)
             }.scaledToFill()
              .frame(width: 300, height: 300)
-             .cornerRadius(150)
-             .clipShape(Circle())
-             .background(BackgroundView(height: 0))
+             .cornerRadius(20)
+             .background(BackgroundView(height: 3))
              .background(.ultraThinMaterial)
              .offset(y:-70)
         }

@@ -29,23 +29,52 @@ struct EditarPerfilView: View {
                     VStack {
                         EditarPerfilFormulario(nombre: $nombre, mostrarImagePicker: $mostrarImagePicker, imageGeneral: $imageGeneral, datosActualizados: $datosActualizados)
                             .environmentObject(vm)
+                        PulsosGuardados().environmentObject(vm)
+                        PulsosCreados().environmentObject(vm)
                         
-                        VStack(alignment: .leading) {
-                            Text("Tus pulsos guardados").font(.custom("Poppins-Regular", size: 28)).foregroundColor(.black).fontWeight(.bold)
-                            if let pulsos = vm.usuarioLogeado?.guardaPulsoRelation?.allObjects as? [Pulso] {
-                                ForEach(pulsos) { pulso in
-                                    PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
-                                }
-                            }
-                            
-                        }.padding()
                     }.frame(maxWidth: .infinity).padding(.top, 150).padding(.bottom, 50)
                 }
-
+                
             }
         }.ignoresSafeArea()
         
         
+    }
+}
+
+struct PulsosCreados: View {
+    @EnvironmentObject var vm : ViewModel
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Tus pulsos creados").font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
+            if let pulsos = vm.usuarioLogeado?.pulsoRelation?.allObjects as? [Pulso] {
+                if pulsos.count != 0 {
+                    ForEach(pulsos) { pulso in
+                        PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
+                    }
+                } else {
+                    Text("No has creado pulsos todavía").font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
+                }
+            }
+        }.padding()
+    }
+}
+
+struct PulsosGuardados: View {
+    @EnvironmentObject var vm : ViewModel
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Tus pulsos guardados").font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
+            if let pulsos = vm.usuarioLogeado?.guardaPulsoRelation?.allObjects as? [Pulso] {
+                if pulsos.count != 0 {
+                    ForEach(pulsos) { pulso in
+                        PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
+                    }
+                } else {
+                    Text("No tiene pulsos guardados todavía").font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
+                }
+            }
+        }.padding()
     }
 }
 
@@ -58,17 +87,13 @@ struct PulsoInfo : View {
         
         HStack {
             Text(pulso.nombrePulso ?? "" ).font(.custom("Poppins-Regular", size: 18)).fontWeight(.bold).foregroundColor(.accentColor)
-            
             Spacer()
-            
-            Text("0").font(.custom("Poppins-Regular", size: 14)).fontWeight(.bold).foregroundColor(.black.opacity(0.7))
-            
         }.sheet(isPresented: $mostrarPulso) {
             PulsoView(pulso: pulso).environmentObject(vm)
         }.padding().background(.ultraThinMaterial).cornerRadius(10)
-        .onTapGesture {
-            mostrarPulso = true
-        }
+            .onTapGesture {
+                mostrarPulso = true
+            }
     }
 }
 

@@ -4,7 +4,6 @@
 //
 //  Created by Marta Fernandez Garcia on 25/11/21.
 //
-
 import SwiftUI
 
 struct MenuView: View {
@@ -25,21 +24,39 @@ struct MenuView: View {
                     HomeAdminView().tag("HomeAdmin").transition(.opacity.animation(.default))
                     // LoginView().tag("CerrarSesion")
                     
-                    EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
-                    CerrarSesionView.tag("Cerrar Sesion").transition(.opacity.animation(.default))
+                    if ( vm.usuarioLogeado?.tipoUsuario != 0 ) {
+                        EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
+
+                    }
                 }
                  
                 
                 HStack(spacing: 0) {
-                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house", selected: $seleccion)
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house", selected: $seleccion, logout: $logout)
                     Spacer(minLength: 0)
-                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet", selected: $seleccion)
-                    Spacer(minLength: 0)
-                    TabButton(title: "EditarPerfil", image: "person.fill", selected: $seleccion)
-                    Spacer(minLength: 0)
-                    TabButton(title: "Cerrar sesión", image: "arrow.forward.square.fill", selected: $seleccion).onTapGesture {
-                        logout = true
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet", selected: $seleccion, logout: $logout)
+        
+                    if ( vm.usuarioLogeado?.tipoUsuario != 0 ) {
+                        Spacer(minLength: 0)
+                        TabButton(title: "EditarPerfil", image: "person.fill", selected: $seleccion, logout: $logout)
                     }
+
+                    Spacer(minLength: 0)
+                    TabButton(title: "Cerrar sesión", image: "arrow.forward.square.fill", selected: $seleccion, logout: $logout)
+                    
+                }.alert(isPresented: $logout) {
+                    Alert(
+                        title: Text("Cerrar sesión"),
+                        message: Text("¿Desea cerrar sesión?"),
+                        primaryButton: .destructive(Text("Cerrar sesión")) {
+                            // Acciones a realizar cuando se cierra sesion
+                            vm.logeado = false
+                            vm.usuarioLogeado = nil
+                            vm.loginActive = false
+                        },
+                        secondaryButton: .cancel()
+                    )
+                    
                     
                 }.ignoresSafeArea().padding(.vertical, 20)
                     .padding(.horizontal, 20)

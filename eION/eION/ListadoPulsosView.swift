@@ -14,11 +14,13 @@ struct ListadoPulsosView: View {
     @State var text: String = ""
     @State var mostrarFiltro: Bool = false
     @State var anadir : Bool = false
-    //var provincia : String
     var latitud: Double = 0.0
     var longitud: Double = 0.0
+    var provincia: String
+    
     @State private var region = MKCoordinateRegion()
     init(provincia : String){
+        self.provincia = provincia
         switch(provincia){
         case "Almería":
             latitud = 36.8402
@@ -45,9 +47,7 @@ struct ListadoPulsosView: View {
     @State var selection = ""
     
     var body: some View {
-        
         GeometryReader { geometry in
-            
             ScrollView {
                 VStack {
                     CustomNavigationView(title: "Tus Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 120)
@@ -60,7 +60,7 @@ struct ListadoPulsosView: View {
                         }
                         .frame(width: 400, height: 300)
                         .ignoresSafeArea()
-                        
+                    
                     
                     VStack(alignment: .center, spacing:5) {
                         HStack{
@@ -85,12 +85,18 @@ struct ListadoPulsosView: View {
                                     NavigationLink(destination: PulsoView(pulso: pulso).environmentObject(vm)) {
                                         FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
                                     }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
-                                        
+                                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                            Button {
+                                                vm.deletePulso(pulso: pulso)
+                                                vm.getPulsosUbicacion(ubicacion: provincia)
+                                            } label: {
+                                                Image(systemName: "trash.fill").foregroundColor(.white)
+                                            }
+                                            .tint(.red)
+                                        }
                                 }
                             }
-                            .onDelete{ indexSet in
-                                vm.pulsos.remove(atOffsets: indexSet)
-                            }
+                            
                             
                         }
                         .scaledToFit()
@@ -106,18 +112,20 @@ struct ListadoPulsosView: View {
                     Spacer()
                 }.frame(height: geometry.size.height)
                     .background(
-                        NavigationLink("", destination: CrearPulsoView(), isActive: $anadir)
+                        NavigationLink("", destination: CrearPulsoView(ubicacion: provincia), isActive: $anadir)
                     )
                     .confirmationDialog("Seleccione un filtro", isPresented: $mostrarFiltro, titleVisibility: .visible) {
-                                    Button("Ordenar por nombre") {
-                                        vm.ordenarPulsos(propiedad: "nombre")
-                                    }
-
-                                    Button("Ordenar por fecha") {
-                                        vm.ordenarPulsos(propiedad: "fecha")
-                                    }
-                                }
-                    .navigationBarHidden(true)
+                        Button("Ordenar por nombre") {
+                            vm.ordenarPulsos(propiedad: "nombre", ubicacion: provincia)
+                        }
+                        
+                        Button("Ordenar por fecha") {
+                            vm.ordenarPulsos(propiedad: "fecha", ubicacion: provincia)
+                        }
+                    }
+                    .navigationBarHidden(true).onAppear {
+                        vm.getPulsosUbicacion(ubicacion: provincia)
+                    }
             }
         }
     }

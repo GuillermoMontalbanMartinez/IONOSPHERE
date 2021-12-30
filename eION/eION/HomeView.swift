@@ -13,6 +13,7 @@ import MessageUI
 struct HomeView: View {
     @EnvironmentObject var vm : ViewModel
     @State private var isShareSheetShowing = false
+    @State var pulsos: [Pulso] = []
     var body: some View {
         ZStack {
             GeometryReader { geo in
@@ -21,13 +22,16 @@ struct HomeView: View {
                     VStack(spacing: 30) {
                         Image("AppLogo").resizable().frame(width: 200, height: 200, alignment: .center)
                         VStack(alignment: .center, spacing: 20) {
-                            Novedades().environmentObject(vm)
+                            Novedades(pulsos: pulsos)
                             Spacer()
                         }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
                             Usuarios().environmentObject(vm)
                         Spacer()
                     }
                 }.frame(maxWidth: .infinity)
+                    .onAppear {
+                        self.pulsos = vm.obtenerPulsos()
+                    }
             }
         }.ignoresSafeArea().background(Color("Background"))
     }
@@ -44,18 +48,19 @@ struct ShareSheet: UIViewControllerRepresentable {
 
 
 struct Novedades: View {
-    @EnvironmentObject var vm: ViewModel
+
+    var pulsos: [Pulso]
     var body: some View{
         VStack(alignment: .leading, spacing: 30) {
             VStack(alignment: .leading) {
                 Text("Novedades").font(.custom("Poppins-Regular", size: 28))
                 Text("Hoy, \(Date().formatted())").font(.custom("Poppins-Regular", size: 18))
             }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
-            if ( vm.pulsos.count > 0 ) {
+            if ( pulsos.count > 0 ) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
-                        ForEach(0..<vm.pulsos.count) { index in
-                            FilaPulso(index: index).environmentObject(vm)
+                        ForEach(0 ..< pulsos.count) { index in
+                            FilaPulso(pulso: pulsos[index])
                         }
                     }
                 }.frame(maxWidth: .infinity)
@@ -115,8 +120,7 @@ struct Usuarios: View {
 
 struct FilaPulso: View
 {
-    @State var tappedIndex = 0
-    var index: Int
+    var pulso: Pulso
     @State private var showingSheet = false
     @EnvironmentObject var vm : ViewModel
     @State var showPulsoView = false
@@ -126,16 +130,15 @@ struct FilaPulso: View
             VStack {
                 Image(systemName: "waveform").resizable().scaledToFit()
                     .foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
-                Text(vm.pulsos[index].nombrePulso!).foregroundColor(Color.accentColor).font(.system(size: 18, weight: .regular, design: .rounded))
-                Text(vm.pulsos[index].ubicacion ?? "").foregroundColor(Color.accentColor).font(.system(size: 14, weight: .regular, design: .rounded))
-                Text(vm.pulsos[index].usuarioRelation?.nombre  ?? "").font(.caption)
+                Text(pulso.nombrePulso ?? "").foregroundColor(Color.accentColor).font(.system(size: 18, weight: .regular, design: .rounded))
+                Text(pulso.ubicacion ?? "").foregroundColor(Color.accentColor).font(.system(size: 14, weight: .regular, design: .rounded))
+                Text(pulso.usuarioRelation?.nombre  ?? "").font(.caption)
             }.onTapGesture {
                 showPulsoView = true
             }.contextMenu {
                 VStack {
                     Button {
                         showingSheet.toggle()
-                        tappedIndex = index
                     } label: {
                         Text("Compartir")
                         Image(systemName: "square.and.arrow.up").foregroundColor(Color.black)
@@ -143,13 +146,13 @@ struct FilaPulso: View
                 }
             }
         }.sheet(isPresented: $showingSheet) {
-            ShareSheet(items: [vm.pulsos[tappedIndex].nombrePulso!, vm.pulsos[tappedIndex].a03, vm.pulsos[tappedIndex].a27])
+            ShareSheet(items: [pulso.nombrePulso ?? "", pulso.a03, pulso.a27])
 
         }.padding().frame(width: 150, height: 150)
             .background(.ultraThinMaterial)
             .cornerRadius(20)
             .sheet(isPresented: $showPulsoView) {
-                PulsoView(pulso: vm.pulsos[index])
+                PulsoView(pulso: pulso)
             }
     }
 }
