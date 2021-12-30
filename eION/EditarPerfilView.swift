@@ -87,11 +87,7 @@ struct PulsoInfo : View {
         
         HStack {
             Text(pulso.nombrePulso ?? "" ).font(.custom("Poppins-Regular", size: 18)).fontWeight(.bold).foregroundColor(.accentColor)
-            
             Spacer()
-            
-            Text("0").font(.custom("Poppins-Regular", size: 14)).fontWeight(.bold).foregroundColor(.black.opacity(0.7))
-            
         }.sheet(isPresented: $mostrarPulso) {
             PulsoView(pulso: pulso).environmentObject(vm)
         }.padding().background(.ultraThinMaterial).cornerRadius(10)
