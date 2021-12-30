@@ -16,7 +16,6 @@
 		780F3839274D25A400DC10D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F3838274D25A300DC10D0 /* HomeView.swift */; };
 		783E97732769FC3F005BFD15 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E97722769FC3F005BFD15 /* CustomButtonView.swift */; };
 		7851550F277DDCE60022029E /* eIONUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851550E277DDCE60022029E /* eIONUITests.swift */; };
-		78515511277DDCE60022029E /* eIONUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78515510277DDCE60022029E /* eIONUITestsLaunchTests.swift */; };
 		7851551E277DDD610022029E /* eIONUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851551D277DDD610022029E /* eIONUnitTests.swift */; };
 		785BB97A276CE2D400C8ADE1 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BB979276CE2D400C8ADE1 /* Wave.swift */; };
 		785BB97B276CE2D400C8ADE1 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BB979276CE2D400C8ADE1 /* Wave.swift */; };
@@ -111,7 +110,6 @@
 		78515504277DBE790022029E /* eION-copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "eION-copy-Info.plist"; sourceTree = "<group>"; };
 		7851550C277DDCE60022029E /* eIONUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eIONUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7851550E277DDCE60022029E /* eIONUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONUITests.swift; sourceTree = "<group>"; };
-		78515510277DDCE60022029E /* eIONUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7851551B277DDD610022029E /* eIONUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eIONUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7851551D277DDD610022029E /* eIONUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONUnitTests.swift; sourceTree = "<group>"; };
 		785BB979276CE2D400C8ADE1 /* Wave.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wave.swift; sourceTree = "<group>"; };
@@ -204,7 +202,6 @@
 			isa = PBXGroup;
 			children = (
 				7851550E277DDCE60022029E /* eIONUITests.swift */,
-				78515510277DDCE60022029E /* eIONUITestsLaunchTests.swift */,
 			);
 			path = eIONUITests;
 			sourceTree = "<group>";
@@ -486,7 +483,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				7851550F277DDCE60022029E /* eIONUITests.swift in Sources */,
-				78515511277DDCE60022029E /* eIONUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
