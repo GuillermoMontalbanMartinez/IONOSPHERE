@@ -23,7 +23,7 @@ struct LoginView: View {
                             .frame(width: 200)
                             .clipShape(Circle())
                             .frame( alignment: .top)
-                    }.padding(40)//.offset(y: 10)
+                    }.padding(40)
                     
                     GeometryReader { geo in
                         VStack(spacing: 0) {
@@ -37,7 +37,6 @@ struct LoginView: View {
                                  } label: {
                                      Text("Registrate", tableName: "Login")
                                          .font(.custom("Poppins-Regular", size: 18))
-
                                          .foregroundColor(.black)
                                         .underline()
                                         .bold()
@@ -51,7 +50,6 @@ struct LoginView: View {
                 }.ignoresSafeArea().background(BackgroundView(height: 0))
             }
         }
-
     }
 }
 
@@ -66,7 +64,6 @@ private struct LoginForm: View {
     @State var isTapped = false
     
     var body: some View {
-        
         if ( vm.loading ) {
             ProgressView().foregroundColor(.white)
         } else {
@@ -108,11 +105,9 @@ private struct LoginForm: View {
                     Text("Iniciar sesión", tableName: "Login")
                         .font(.custom("Poppins-Regular", size: 18))
                         .padding()
-                       /* .shadow(color: Color(red: 13.0/255.0, green: 16.0/255.0, blue: 51.0/255.0).opacity(0.4), radius: 1, y: 4)*/
                 }.buttonStyle(CustomButton())
             }.background(.ultraThinMaterial)
              .cornerRadius(20)
-             //.shadow(color: .gray.opacity(0.4), radius: 4)
              .padding([.leading, .trailing])
              
             
@@ -140,7 +135,7 @@ private struct LoginForm: View {
                     .offset(x: 10, y:-40)
             }
         }
-        }
+    }
 }
 
 /*struct LoginView_swift_Previews: PreviewProvider {

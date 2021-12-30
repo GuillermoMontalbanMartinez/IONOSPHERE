@@ -17,7 +17,7 @@ struct EditarPerfilView: View {
     var body: some View {
         ZStack {
             
-            BackgroundView(height: 40)//.padding(.top, -200)
+            BackgroundView(height: 40)
             
             RoundedRectangle(cornerRadius: 40).background(.thinMaterial)
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height).blur(radius: 100)
