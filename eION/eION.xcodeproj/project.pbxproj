@@ -13,6 +13,7 @@
 		707CA9902750619600CA2FE9 /* CrearPulsoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */; };
 		707CA992275069D300CA2FE9 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */; };
 		708059A92750EDC6008F3004 /* MicrofonoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708059A82750EDC6008F3004 /* MicrofonoView.swift */; };
+		70DD0212277F88BB008FF6D6 /* WhiteString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70DD0211277F88BB008FF6D6 /* WhiteString.swift */; };
 		780F3839274D25A400DC10D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F3838274D25A300DC10D0 /* HomeView.swift */; };
 		783E97732769FC3F005BFD15 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E97722769FC3F005BFD15 /* CustomButtonView.swift */; };
 		7851550F277DDCE60022029E /* eIONUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851550E277DDCE60022029E /* eIONUITests.swift */; };
@@ -107,6 +108,7 @@
 		707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrearPulsoView.swift; sourceTree = "<group>"; };
 		707CA991275069D300CA2FE9 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SpeechRecognizer.swift; path = eION/SpeechRecognizer.swift; sourceTree = SOURCE_ROOT; };
 		708059A82750EDC6008F3004 /* MicrofonoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrofonoView.swift; sourceTree = "<group>"; };
+		70DD0211277F88BB008FF6D6 /* WhiteString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteString.swift; sourceTree = "<group>"; };
 		780F3838274D25A300DC10D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		783E97722769FC3F005BFD15 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		78515504277DBE790022029E /* eION-copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "eION-copy-Info.plist"; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 		B3C1BF272746D5DA006BD338 = {
 			isa = PBXGroup;
 			children = (
+				70DD0211277F88BB008FF6D6 /* WhiteString.swift */,
 				78515504277DBE790022029E /* eION-copy-Info.plist */,
 				78CF2F1A276D408800D7490B /* EditarPerfilView.swift */,
 				78831B6E27724C5F00D43EE1 /* Fonts */,
@@ -548,6 +551,7 @@
 				B32A33D12747F241002BA977 /* ViewModel.swift in Sources */,
 				786E20422750283A00C5901E /* DiagramaView.swift in Sources */,
 				708059A92750EDC6008F3004 /* MicrofonoView.swift in Sources */,
+				70DD0212277F88BB008FF6D6 /* WhiteString.swift in Sources */,
 				B343CCCD274E3EE100F4A61E /* RegistroView.swift in Sources */,
 				78BBF630274D2C250006CBD6 /* BuscadorView.swift in Sources */,
 				707CA992275069D300CA2FE9 /* SpeechRecognizer.swift in Sources */,

@@ -16,5 +16,3 @@ extension String {
         return String(self.replace(string: ",", replacement: ".").prefix(9))
     }
   }
-
-
