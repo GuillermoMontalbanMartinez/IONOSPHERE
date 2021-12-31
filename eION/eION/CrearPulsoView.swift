@@ -8,10 +8,12 @@ import SwiftUI
 import AVFoundation
 
 struct CrearPulsoView: View {
-    @EnvironmentObject var vm: ViewModel
-    var ubicacion: String
+   @EnvironmentObject var vm: ViewModel
+    var ubicacion :String
     @State var valorPorVoz : String = ""
+    @State var valorPorVozRedondeado : Double = 0
     @State var valorSlider : Double = 0
+    @State var comprobacion : Bool = false
     @State var nombrePulso : String = ""
     @State var emptyPulso : Bool = false
     @State var emptyA27 : Bool = false
@@ -20,6 +22,7 @@ struct CrearPulsoView: View {
     @State private var indexClase = 0
     var listaClases: [String] = ["Good", "Bad"]
     @State var claseElegida: Bool = true
+    @State var pulsoCreado : Bool = false
     
     var body: some View {
         ZStack {
@@ -36,24 +39,32 @@ struct CrearPulsoView: View {
                         Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
                             .font(.custom("Poppins-Regular", size: 18))
                             .foregroundColor(.red)
-                            .offset(x:10, y: 50)
+                          
                     }
                     if emptyA27 {
                         Label("Introduzca valor A27", systemImage: "xmark.octagon")
                             .font(.custom("Poppins-Regular", size: 18))
                             .foregroundColor(.red)
-                            .offset(x:10, y: 50)
+                           
                     }
+                    
+                    if comprobacion {
+                        Label("A27 tiene que ser un valor numérico valor entre -1 y 1", systemImage: "xmark.octagon")
+                            .font(.custom("Poppins-Regular", size: 18))
+                            .foregroundColor(.red)
+                    }
+                    
+                
                     
                     VStack {
                         CustomTextFieldView(text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
                         
-                        Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))")
+                        Text( "Valor para A05: \((round(100000 * valorSlider) / 100000))")
                             .font(.custom("Poppins-Regular", size: 18)).padding(.top)
                         Slider(value: $valorSlider, in: -1...1).frame(width:300).accentColor(.accentColor)
                         
                         HStack{
-                            Text("Valor para A27: \(valorPorVoz) ").font(.custom("Poppins-Regular", size: 18))
+                            Text("Valor para A27: \(valorPorVoz.removeWhitespace()) ").font(.custom("Poppins-Regular", size: 18))
                             Spacer()
                             Image(systemName: "mic.fill").resizable().frame(width:25, height: 32).onTapGesture {
                                 modoGrabacion.toggle()
@@ -81,27 +92,51 @@ struct CrearPulsoView: View {
                     Button {
                         emptyPulso = false
                         emptyA27 = false
+                        comprobacion = false
+                        
                         if nombrePulso.isEmpty {
+                            
                             emptyPulso = true
+
                         }else if(valorPorVoz.isEmpty){
                             emptyA27 = true
+                        
+                        
                         }else{
-                            print("Pulso creado")
+                          
                             let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
-                            let valorPorVozRedondeado  = Double(valorPorVoz) ?? 0
-                            
                             valorSlider = Double(valorSliderRedondeado) ?? 0.0
-                            // valorPorVoz = Double(valorPorVozRedondeado)
+                            
+                            valorPorVoz = valorPorVoz.removeWhitespace()
+                            valorPorVoz = String(valorPorVoz.prefix(8))
+                            
+                            let numericSet : [Character] = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+                            let filteredCharacters = valorPorVoz.filter {
+                              return numericSet.contains($0)
+                            }
+                            
+                            let filteredString = String(filteredCharacters)
+                            
+                            if (filteredString == "" || valorPorVozRedondeado > 1 || valorPorVozRedondeado < -1){
+                                comprobacion = true
+                            }else{
+                                valorPorVozRedondeado = Double(valorPorVoz)!
+                            }
+                           
                             
 #if eIONML
                             claseElegida = vm.calcularClase(a05: valorSlider, a27: valorPorVozRedondeado)
 #endif
                             
-                            print("Vamos a crear el pulso")
-                            
+                            if(comprobacion == false){
                             vm.addPulso(fechaCreacion: Date(), clase: claseElegida, ubicacion: ubicacion, a27: valorPorVozRedondeado, a03: valorSlider, nombrePulso: nombrePulso, nombreUsuario: vm.usuarioLogeado?.nombre ?? "")
                             
-                            print("Pulso creado")
+                            pulsoCreado.toggle()
+                            nombrePulso = ""
+                            valorSlider = 0
+                            valorPorVoz = ""
+                            }
+                            
                         }
                         
                         
@@ -113,13 +148,29 @@ struct CrearPulsoView: View {
                             .padding([.leading, .trailing], 25)
                     }.buttonStyle(CustomButton())
                     
-                } .padding(.init(top: 40, leading:  30, bottom: 40, trailing: 30))
-                  .foregroundColor(.black)
-   
+                    if pulsoCreado{
+                      
+                        Text("Pulso creado")
+                            .font(.custom("Poppins-Regular", size: 18))
+                            .foregroundColor(.green)
+                            .offset(y: -50)
+                        
+                        
+                    }
+                } .padding(.init(top: 40, leading:  30, bottom: 40, trailing: 30)).onDisappear(){
+                    pulsoCreado = false
+              
+                }.foregroundColor(.black)
+                
+              
+                
             }
+            
         }
+        
     }
 }
+
 
 
 /*struct CrearPulsoView_Previews: PreviewProvider {
