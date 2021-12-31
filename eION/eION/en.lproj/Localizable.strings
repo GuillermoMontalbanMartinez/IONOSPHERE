@@ -1,0 +1,18 @@
+/* 
+  Localizable.strings
+  eION
+
+  Created by Guillermo Montalban Martinez on 31/12/21.
+  
+*/
+
+// Login (en)
+
+"form-title-login-key" = "Sign In";
+"form-button-signin-login-key" = "Sign In";
+"form-name-login-key" = "Name";
+"form-password-login-key" = "Password";
+"form-account-login-key" = "¿Do you have an account?";
+
+// Registro (en)
+

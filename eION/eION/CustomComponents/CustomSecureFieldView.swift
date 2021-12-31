@@ -19,7 +19,6 @@ struct CustomSecureFieldView: View {
             if passOculta  {
                 HStack {
                     SecureField("", text: $text).background(
-                        
                         Text(name)
                             .font(.custom("Poppins-Regular", size: 18))
                             .scaleEffect(isTapped ? 0.8 : 1)
@@ -39,6 +38,7 @@ struct CustomSecureFieldView: View {
                     .cornerRadius(5)
             } else {
                 CustomTextFieldView(text: $text, name: name)
+                
             }
             
             

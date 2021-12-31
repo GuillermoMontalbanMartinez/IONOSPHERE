@@ -30,7 +30,7 @@ struct LoginView: View {
                             Spacer()
                             LoginForm(logeado: $logeado)
                             HStack() {
-                                Text("¿No tienes cuenta?", tableName: "Login").foregroundColor(.black)
+                                Text("form-account-login-key").foregroundColor(.black)
                                     .font(.custom("Poppins-Regular", size: 18))
                                  Button {
                                      showView = true
@@ -69,13 +69,13 @@ private struct LoginForm: View {
         } else {
             VStack {
                 VStack(spacing: 30) {
-                    Text("Inicia sesión").font(.custom("Poppins-SemiBold", size: 28)).fontWeight(.bold).foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
+                    Text("form-title-login-key").font(.custom("Poppins-SemiBold", size: 28)).fontWeight(.bold).foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                     HStack(alignment: .bottom) {
-                        CustomTextFieldView(text: $username, name: "Nombre")
+                        CustomTextFieldView(text: $username, name:"form-name-login-key")
                     }
                 
                     HStack(alignment: .bottom) {
-                        CustomSecureFieldView(text: $password, name: "Contraseña")
+                        CustomSecureFieldView(text: $password, name:"form-password-login-key")
                     }
                 }.padding([.leading, .trailing], 20)
                  .padding([.top, .bottom], 30)
@@ -102,7 +102,7 @@ private struct LoginForm: View {
                     }
      
                 } label: {
-                    Text("Iniciar sesión", tableName: "Login")
+                    Text("form-button-signin-login-key")
                         .font(.custom("Poppins-Regular", size: 18))
                         .padding()
                 }.buttonStyle(CustomButton())
