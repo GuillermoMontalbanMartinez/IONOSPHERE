@@ -113,11 +113,20 @@ class ViewModel: ObservableObject {
     func guardarPulsoUsuario(usuario: Usuario, pulso: Pulso){
         self.loading = true
         
+        /*
         if ( usuario.guardaPulsoRelation?.contains(pulso) ?? false ) {
             pulso.pulsoGuardado = nil
         } else {
             pulso.pulsoGuardado = usuario
         }
+         refactoring de código old versión */
+        
+        pulso.pulsoGuardado = nil
+        
+        if (!(usuario.guardaPulsoRelation?.contains(pulso) ?? false)) {
+            pulso.pulsoGuardado = usuario
+        }
+        
         
         saveData()
         self.loading = false
@@ -135,6 +144,7 @@ class ViewModel: ObservableObject {
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})
         
         print( "USUARIO: \(user)")
+        /*
         if !user.isEmpty {
             self.loading = false
             usuarioLogeado = user[0]
@@ -144,6 +154,17 @@ class ViewModel: ObservableObject {
             self.loading = false
             return false
         }
+         refactoring de código old version*/
+        
+        self.loading = false
+        
+        if !user.isEmpty {
+            usuarioLogeado = user[0]
+            loginActive = true
+            return true
+        }
+        
+        return false
     }
     
     func getInstanciasClases() -> [String: Int] {
@@ -168,11 +189,20 @@ class ViewModel: ObservableObject {
         self.loading = true
         let usuario = usuarios.first(where: {$0.nombre == nombre})
         
+        /*
         if (usuario!.tipoUsuario == 1){
             usuario!.tipoUsuario = 2
         }else{
             usuario!.tipoUsuario = 1
         }
+         refactoring de código old versión */
+        
+        usuario!.tipoUsuario = 2
+       
+        if (!(usuario!.tipoUsuario == 1)) {
+            usuario!.tipoUsuario = 1
+        }
+        
         print("cambiando")
         saveData()
         self.loading = false
@@ -183,6 +213,7 @@ class ViewModel: ObservableObject {
         var isClassB: Double
         var isClassG: Double
         
+        /*
         if a05 <= 0.0409 {
             isClassB = 1.07 + a05*(-0.7)
             isClassG = -1.07 + a05*(0.7)
@@ -195,7 +226,20 @@ class ViewModel: ObservableObject {
                 isClassG = 0.44 + a05*(-0.29) + a27*(-0.69)
             }
         }
+         refactoring de código old version*/
         
+        
+         if !(a05 <= 0.0409) && !(a27 <= 0.99989) {
+            isClassB = -0.44 + a05*(0.29) + a27*(0.69)
+            isClassG = 0.44 + a05*(-0.29) + a27*(-0.69)
+         } else if !(a05 <= 0.0409) && a27 <= 0.99989 {
+            isClassB = -0.36 + a05*(-0.95) + a27*(0.12)
+            isClassG = -0.36 + a05*(0.95) + a27*(-0.12)
+         } else {
+            isClassB = 1.07 + a05*(-0.7)
+            isClassG = -1.07 + a05*(0.7)
+         }
+         
         return isClassB > isClassG ? false : true
     }
     
@@ -211,11 +255,13 @@ class ViewModel: ObservableObject {
     
     func obtenerPulsos() -> [Pulso] {
         let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
+        
         do {
             self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos)
         } catch let error {
             print("ERROR AL OBTENER PULSOS : \(error)")
         }
+        
         return self.pulsos
     }
     
@@ -227,7 +273,6 @@ class ViewModel: ObservableObject {
                 self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter({$0.ubicacion == ubicacion}).sorted(){$0.nombrePulso! < $1.nombrePulso!}
             } else if propiedad == "fecha" {
                 self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter({$0.ubicacion == ubicacion}).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
-                
             }
         } catch let error {
             print("Error al cargar los datos :\(error)")
@@ -241,6 +286,7 @@ class ViewModel: ObservableObject {
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre})
         let pngImageData  = imagen.pngData()
         
+        /*
         if !user.isEmpty {
             user[0].foto = pngImageData
             print( "USUARIO: \(user)")
@@ -251,5 +297,17 @@ class ViewModel: ObservableObject {
             self.loading = false
             return false
         }
+         refactoring de código old version */
+        
+        if !user.isEmpty {
+            user[0].foto = pngImageData
+            print("USUARIO: \(user)")
+            saveData()
+            self.loading = false
+            return true
+        }
+        
+        self.loading = false
+        return false
     }
 }
