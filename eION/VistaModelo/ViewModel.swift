@@ -70,13 +70,14 @@ class ViewModel: ObservableObject {
                 throw error.datoRepetido
             }
         }
-        if (errorEncontrado) {
-            self.loading = false
-        } else {
-            self.loading = false
-            print("milagro")
+
+        self.loading = false
+        
+        if (!errorEncontrado) {
+            print("usuario agregado correctamente")
             saveData()
         }
+        
     }
     
     func deleteUsuario(indexSet: IndexSet) {
