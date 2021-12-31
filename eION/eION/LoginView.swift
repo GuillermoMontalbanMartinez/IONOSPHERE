@@ -71,7 +71,7 @@ private struct LoginForm: View {
                 VStack(spacing: 30) {
                     Text("form-title-login-key").font(.custom("Poppins-SemiBold", size: 28)).fontWeight(.bold).foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                     HStack(alignment: .bottom) {
-                        CustomTextFieldView(text: $username, name:"form-name-login-key")
+                        CustomTextFieldView(localizedStringKey: "form-name-login-key", text: $username, name:"form-name-login-key")
                     }
                 
                     HStack(alignment: .bottom) {

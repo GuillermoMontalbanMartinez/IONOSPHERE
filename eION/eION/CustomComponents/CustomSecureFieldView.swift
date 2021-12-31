@@ -37,7 +37,7 @@ struct CustomSecureFieldView: View {
                     .background(Color.white)
                     .cornerRadius(5)
             } else {
-                CustomTextFieldView(text: $text, name: name)
+                CustomTextFieldView(localizedStringKey: "form-name-registro-key", text: $text, name: name)
                 
             }
             

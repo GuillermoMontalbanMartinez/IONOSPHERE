@@ -46,7 +46,7 @@ struct CrearPulsoView: View {
                     }
                     
                     VStack {
-                        CustomTextFieldView(text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
+                        CustomTextFieldView(localizedStringKey: "form-name-login-key", text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
                         
                         Text( "Valor para A03: \((round(100000 * valorSlider) / 100000))")
                             .font(.custom("Poppins-Regular", size: 18)).padding(.top)

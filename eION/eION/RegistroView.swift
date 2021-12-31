@@ -52,7 +52,7 @@ private struct RegistroForm: View {
         VStack {
             VStack(spacing: 30) {
                 HStack(alignment: .bottom) {
-                    CustomTextFieldView(text: $username, name: "Nombre de usuario")
+                    CustomTextFieldView(localizedStringKey: "form-name-registro-key", text: $username, name: "Nombre de usuario")
                 }
                             
                 HStack(alignment: .bottom) {
