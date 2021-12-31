@@ -117,10 +117,14 @@ struct CrearPulsoView: View {
                             
                             let filteredString = String(filteredCharacters)
                             
-                            if (filteredString == "" || valorPorVozRedondeado > 1 || valorPorVozRedondeado < -1){
+                            if(filteredString == ""){
                                 comprobacion = true
                             }else{
                                 valorPorVozRedondeado = Double(valorPorVoz)!
+                            }
+                            
+                            if (valorPorVozRedondeado > 1 || valorPorVozRedondeado < -1){
+                               comprobacion = true
                             }
                            
                             
