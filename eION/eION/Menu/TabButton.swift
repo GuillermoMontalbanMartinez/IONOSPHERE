@@ -49,17 +49,9 @@ struct TabButton: View {
             }
         }) {
             VStack(spacing: 6) {
-                            
-
-                Image(systemName: image ).resizable().renderingMode(.template)
-                    .frame(width: 25, height: 25).foregroundColor(selected == title ? .accentColor : .gray)
-                
-                
-                
-                
-            }.padding(.vertical,10).padding(.horizontal).offset(y: selected == title ? -10 : 0).onAppear {
-                image = selected == title ? image + ".fill" : image
-            }
+                Image(systemName: "\(image)\(title == selected ? ".fill" : "")") .resizable().renderingMode(.template)
+                    .frame(width: 25, height: 25).foregroundColor(.accentColor)
+            }.padding(.vertical,10).padding(.horizontal)
         }
         
 

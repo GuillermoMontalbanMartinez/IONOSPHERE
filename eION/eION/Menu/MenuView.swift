@@ -34,15 +34,15 @@ struct MenuView: View {
                 HStack(spacing: 0) {
                     TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house", selected: $seleccion, logout: $logout)
                     Spacer(minLength: 0)
-                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet", selected: $seleccion, logout: $logout)
+                    TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet.rectangle", selected: $seleccion, logout: $logout)
         
                     if ( vm.usuarioLogeado?.tipoUsuario != 0 ) {
                         Spacer(minLength: 0)
-                        TabButton(title: "EditarPerfil", image: "person.fill", selected: $seleccion, logout: $logout)
+                        TabButton(title: "EditarPerfil", image: "person", selected: $seleccion, logout: $logout)
                     }
 
                     Spacer(minLength: 0)
-                    TabButton(title: "Cerrar sesión", image: "arrow.forward.square.fill", selected: $seleccion, logout: $logout)
+                    TabButton(title: "Cerrar sesión", image: "arrow.forward.square", selected: $seleccion, logout: $logout)
                     
                 }.alert(isPresented: $logout) {
                     Alert(
@@ -60,7 +60,8 @@ struct MenuView: View {
                     
                 }.ignoresSafeArea().padding(.vertical, 20)
                     .padding(.horizontal, 20)
-                    .background(.regularMaterial)
+                    .background(Capsule().fill(.ultraThinMaterial))
+                    .zIndex(100000)
                     .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
             }.ignoresSafeArea()
         
