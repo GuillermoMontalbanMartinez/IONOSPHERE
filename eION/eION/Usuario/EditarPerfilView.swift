@@ -51,17 +51,6 @@ struct PulsosCreados: View {
                             PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
                                 .background(.ultraThinMaterial)
                         }.onDelete(perform: vm.deletePulsoIndex)
-                        
-                            
-                            /*.swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                                Button {
-                                    vm.deletePulso(pulso: pulso)
-                                    pulsosUsuario = vm.getPulsosUsuario(usuario: vm.usuarioLogeado!)
-                                } label: {
-                                    Image(systemName: "trash.fill").foregroundColor(.white)
-                                }
-                                .tint(.red)
-                            }*/
                     }.frame(width: 350, height: 400, alignment: .center)
                         .onAppear {
                             UITableView.appearance().backgroundColor = .clear
@@ -167,7 +156,7 @@ struct EditarPerfilFormulario : View {
                     .cornerRadius(8)
             }.buttonStyle(CustomButton())
             
-        }.padding()
+        }.background(Color.white).padding().cornerRadius(30)
         
     }
 }

@@ -90,11 +90,11 @@ struct Usuarios: View {
             }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
-                    ForEach(0..<vm.usuarios.count) { index in
+                    ForEach(vm.usuarios) { usuario in
                         VStack(spacing: 0) {
-                            Text(vm.usuarios[index].nombre ?? "").font(.custom("Poppins-Regular", size: 18))
-                            if vm.usuarios[index].foto != nil {
-                                Image(uiImage: UIImage(data: vm.usuarios[index].foto ?? Data()) ?? UIImage())
+                            Text(usuario.nombre ?? "").font(.custom("Poppins-Regular", size: 18))
+                            if usuario.foto != nil {
+                                Image(uiImage: UIImage(data: usuario.foto ?? Data()) ?? UIImage())
                                     .resizable()
                                     .scaledToFit()
                                     .cornerRadius(20)
@@ -102,7 +102,7 @@ struct Usuarios: View {
                                     .padding(.vertical).onTapGesture(perform: {
                                         isSheetPerfilUsuario.toggle()
                                     }).sheet(isPresented: $isSheetPerfilUsuario){
-                                        PerfilUsuarioView(usuario:vm.usuarios[index])
+                                        PerfilUsuarioView(usuario:usuario)
                                     }
                             } else {
                                 Image("unknown")
@@ -113,7 +113,7 @@ struct Usuarios: View {
                                     .padding(.vertical).onTapGesture(perform: {
                                         isSheetPerfilUsuario.toggle()
                                     }).sheet(isPresented: $isSheetPerfilUsuario){
-                                        PerfilUsuarioView(usuario:vm.usuarios[index])
+                                        PerfilUsuarioView(usuario:usuario)
                                     }
                             }
                         }.padding().cornerRadius(100)
