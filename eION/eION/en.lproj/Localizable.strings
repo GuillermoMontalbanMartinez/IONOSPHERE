@@ -41,3 +41,11 @@
 "form-no-creados-pulsos-todavia-key" = "You dont´t have created pulses yet";
 "form-pulsos-guardados-key" = "Your saved pulses";
 "form-pulsos-guardados-todavia-key" = "I have no saved pulses yet";
+
+// HomeView (en)
+"form-title-novedades-key" = "News";
+"form-hoy-key" = "Today";
+"form-observa-pulsos-creados-key" = "Observe the pulses created in the last days and share them with your friends";
+"form-otros-usuarios-key" = "Other users";
+"form-otros-usuaarios-comparten-key" = "Other users who are also sharing their pulses";
+"form-homeview-compartir" = "Share";

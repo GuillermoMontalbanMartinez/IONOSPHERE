@@ -41,3 +41,11 @@
 "form-no-creados-pulsos-todavia-key" = "No has creado pulsos todavía";
 "form-pulsos-guardados-key" = "Tus pulsos guardados";
 "form-pulsos-guardados-todavia-key" = "No tienes pulsos guardados todavía";
+
+// HomeView (es)
+"form-title-novedades-key" = "Novedades";
+"form-hoy-key" = "Hoy";
+"form-observa-pulsos-creados-key" = "Observa los pulsos creados en los últimos días y compártelos con tus amigos";
+"form-otros-usuarios-key" = "Otros usuarios";
+"form-otros-usuaarios-comparten-key" = "Otros usuarios que también están compartiendo sus pulsos";
+"form-homeview-compartir" = "Compartir";
