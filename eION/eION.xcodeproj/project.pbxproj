@@ -78,8 +78,6 @@
 		B3C3A663277F587500E62AE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3C3A666277F587500E62AE8 /* Localizable.strings */; };
 		B3C3A664277F587500E62AE8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B3C3A666277F587500E62AE8 /* Localizable.strings */; };
 		B3C3A668277F5BEB00E62AE8 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B343CCCA274DB11200F4A61E /* LoginView.swift */; };
-		B3C9B120277A0A53005441EF /* CerrarSesionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C9B11F277A0A53005441EF /* CerrarSesionView.swift */; };
-		B3C9B121277A0A53005441EF /* CerrarSesionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3C9B11F277A0A53005441EF /* CerrarSesionView.swift */; };
 		F87DC2152757DF6F009B2F32 /* ListadoPulsosView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */; };
 		F8AB18BF2760C0D700A5CAA4 /* CustomNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */; };
 /* End PBXBuildFile section */
@@ -145,7 +143,6 @@
 		B3C1BF422746D61D006BD338 /* GestioneION.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GestioneION.xcdatamodel; sourceTree = "<group>"; };
 		B3C3A665277F587500E62AE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B3C3A667277F588600E62AE8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
-		B3C9B11F277A0A53005441EF /* CerrarSesionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CerrarSesionView.swift; sourceTree = "<group>"; };
 		F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListadoPulsosView.swift; sourceTree = "<group>"; };
 		F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +191,8 @@
 		783E97742769FF3B005BFD15 /* CustomComponents */ = {
 			isa = PBXGroup;
 			children = (
+				2936664E274FE06800482D47 /* BusquedaView.swift */,
+				F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */,
 				783E97722769FC3F005BFD15 /* CustomButtonView.swift */,
 				78BBF631274D30280006CBD6 /* FilaTablaView.swift */,
 				78BBF62F274D2C250006CBD6 /* BuscadorView.swift */,
@@ -254,6 +253,35 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		7891813D2780C4870032E296 /* Sesion */ = {
+			isa = PBXGroup;
+			children = (
+				B343CCCA274DB11200F4A61E /* LoginView.swift */,
+				B343CCCC274E3EE100F4A61E /* RegistroView.swift */,
+			);
+			path = Sesion;
+			sourceTree = "<group>";
+		};
+		7891813E2780C4A50032E296 /* Pulso */ = {
+			isa = PBXGroup;
+			children = (
+				708059A82750EDC6008F3004 /* MicrofonoView.swift */,
+				78BBF62D274D29610006CBD6 /* PulsoView.swift */,
+				F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */,
+				707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */,
+			);
+			path = Pulso;
+			sourceTree = "<group>";
+		};
+		7891813F2780C4CA0032E296 /* Usuario */ = {
+			isa = PBXGroup;
+			children = (
+				701A63D6277223FD00F8A4B2 /* PerfilUsuarioView.swift */,
+				78CF2F1A276D408800D7490B /* EditarPerfilView.swift */,
+			);
+			path = Usuario;
+			sourceTree = "<group>";
+		};
 		B3C1BF272746D5DA006BD338 = {
 			isa = PBXGroup;
 			children = (
@@ -287,27 +315,19 @@
 			isa = PBXGroup;
 			children = (
 				78831B7127724C9400D43EE1 /* Info.plist */,
+				B3C1BF372746D5DB006BD338 /* Assets.xcassets */,
+				7891813F2780C4CA0032E296 /* Usuario */,
+				7891813E2780C4A50032E296 /* Pulso */,
+				7891813D2780C4870032E296 /* Sesion */,
 				783E97742769FF3B005BFD15 /* CustomComponents */,
 				786E2048275031A000C5901E /* Menu */,
-				B3C1BF332746D5DA006BD338 /* eIONApp.swift */,
-				B3C1BF372746D5DB006BD338 /* Assets.xcassets */,
 				B3C1BF392746D5DB006BD338 /* Preview Content */,
 				B3C3A666277F587500E62AE8 /* Localizable.strings */,
 				780F3838274D25A300DC10D0 /* HomeView.swift */,
-				78BBF62D274D29610006CBD6 /* PulsoView.swift */,
-				B343CCCA274DB11200F4A61E /* LoginView.swift */,
-				B3C9B11F277A0A53005441EF /* CerrarSesionView.swift */,
 				2936664C274FDE7500482D47 /* ListadoUbicacionesView.swift */,
-				F87DC2142757DF6F009B2F32 /* ListadoPulsosView.swift */,
-				F8AB18BE2760C0D700A5CAA4 /* CustomNavigationView.swift */,
-				2936664E274FE06800482D47 /* BusquedaView.swift */,
 				9CA2702C27500AE100C10236 /* ListaUsuariosAdmin.swift */,
 				786E2043275028BE00C5901E /* HomeAdminView.swift */,
-				707CA98F2750619600CA2FE9 /* CrearPulsoView.swift */,
-				708059A82750EDC6008F3004 /* MicrofonoView.swift */,
-				B343CCCC274E3EE100F4A61E /* RegistroView.swift */,
-				701A63D6277223FD00F8A4B2 /* PerfilUsuarioView.swift */,
-				78CF2F1A276D408800D7490B /* EditarPerfilView.swift */,
+				B3C1BF332746D5DA006BD338 /* eIONApp.swift */,
 			);
 			path = eION;
 			sourceTree = "<group>";
@@ -521,7 +541,6 @@
 				78831B7B27724EAE00D43EE1 /* BackgroundView.swift in Sources */,
 				788AFE73276C04CC00857042 /* GestioneION.xcdatamodeld in Sources */,
 				788AFE74276C04CC00857042 /* MenuView.swift in Sources */,
-				B3C9B121277A0A53005441EF /* CerrarSesionView.swift in Sources */,
 				78CF2F1C276D408800D7490B /* EditarPerfilView.swift in Sources */,
 				788AFE75276C04CC00857042 /* ListadoPulsosView.swift in Sources */,
 				788AFE76276C04CC00857042 /* HomeView.swift in Sources */,
@@ -560,7 +579,6 @@
 				B3C1BF432746D61D006BD338 /* GestioneION.xcdatamodeld in Sources */,
 				786E204727502A0F00C5901E /* MenuView.swift in Sources */,
 				F87DC2152757DF6F009B2F32 /* ListadoPulsosView.swift in Sources */,
-				B3C9B120277A0A53005441EF /* CerrarSesionView.swift in Sources */,
 				780F3839274D25A400DC10D0 /* HomeView.swift in Sources */,
 				786E204A275031AE00C5901E /* TabButton.swift in Sources */,
 				2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */,
