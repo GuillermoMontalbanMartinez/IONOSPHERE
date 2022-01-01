@@ -27,13 +27,11 @@ struct CrearPulsoView: View {
     var body: some View {
         ZStack {
             GeometryReader {geo in
-                
                 BackgroundView(height: 40).padding(.top, -300)
-                
-                
+                     
                 VStack(alignment: .center) {
                     Spacer()
-                    Text("Crear un pulso").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.black)
+                    Text(NSLocalizedString("form-title-principal-crearpulso-key", comment: "")).font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.black)
 
                     if emptyPulso {
                         Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
@@ -57,14 +55,22 @@ struct CrearPulsoView: View {
                 
                     
                     VStack {
-                        CustomTextFieldView(localizedStringKey: "form-name-login-key", text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
+                        CustomTextFieldView(localizedStringKey:"form-name-login-key", text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
                         
-                        Text( "Valor para A05: \((round(100000 * valorSlider) / 100000))")
-                            .font(.custom("Poppins-Regular", size: 18)).padding(.top)
+                        HStack {
+                            Text(NSLocalizedString("form-a05-text-key", comment: "\((round(100000 * valorSlider) / 100000))")).font(.custom("Poppins-Regular", size: 18)).padding(.top)
+                            Text("\((round(100000 * valorSlider) / 100000))")
+                                .font(.custom("Poppins-Regular", size: 18)).padding(.top)
+                        }
+                        
                         Slider(value: $valorSlider, in: -1...1).frame(width:300).accentColor(.accentColor)
                         
                         HStack{
-                            Text("Valor para A27: \(valorPorVoz.removeWhitespace()) ").font(.custom("Poppins-Regular", size: 18))
+                            HStack {
+                                Text(NSLocalizedString("form-a27-text-key", comment: "")).font(.custom("Poppins-Regular", size: 18))
+                                Text("\(valorPorVoz.removeWhitespace()) ").font(.custom("Poppins-Regular", size: 18))
+                            }
+                            //Text("form-a27-text-key \(valorPorVoz.removeWhitespace()) ").font(.custom("Poppins-Regular", size: 18))
                             Spacer()
                             Image(systemName: "mic.fill").resizable().frame(width:25, height: 32).onTapGesture {
                                 modoGrabacion.toggle()
@@ -76,7 +82,7 @@ struct CrearPulsoView: View {
                     
 #if eIONB
                     HStack {
-                        Text("Clase").font(.custom("Poppins-Regular", size: 18))
+                        Text(NSLocalizedString("form-class-key", comment: "")).font(.custom("Poppins-Regular", size: 18))
                         Picker("Elija su clase", selection: $indexClase) {
                             ForEach(0 ..< listaClases.count) {
                                 Text (self.listaClases[$0]).font(.custom("Poppins-Regular", size: 18))
@@ -95,15 +101,11 @@ struct CrearPulsoView: View {
                         comprobacion = false
                         
                         if nombrePulso.isEmpty {
-                            
                             emptyPulso = true
-
-                        }else if(valorPorVoz.isEmpty){
+                        } else if(valorPorVoz.isEmpty){
                             emptyA27 = true
-                        
-                        
-                        }else{
-                          
+ 
+                        } else{
                             let valorSliderRedondeado  = String(String(valorSlider).prefix(7))
                             valorSlider = Double(valorSliderRedondeado) ?? 0.0
                             
@@ -145,7 +147,7 @@ struct CrearPulsoView: View {
                         
                         
                     } label: {
-                        Text("Crear pulso")
+                        Text(NSLocalizedString("form-title-crearpulso-key", comment: ""))
                             .font(.custom("Poppins-Regular", size: 18))
                             .foregroundColor(.accentColor)
                             .padding([.top, .bottom], 15)

@@ -19,3 +19,16 @@
 "form-title-signup-key" = "Registrarse";
 "form-name-registro-key" = "Nombre";
 "form-repeat-password-sigup-key" = "Repite la contraseña";
+
+
+// Cerrar sesion (es)
+
+
+// Crear pulso (en)
+"form-title-principal-crearpulso-key" = "Crear un pulso";
+"form-a05-text-key" = "Valor para a05:  ";
+"form-a27-text-key" = "Value for a27: ";
+"form-title-crearpulso-key" = "Crear pulso";
+"form-class-key" = "Clase";
+
+
