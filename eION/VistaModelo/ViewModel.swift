@@ -60,7 +60,7 @@ class ViewModel: ObservableObject {
         let newUser = Usuario(context: gestorCoreData.contexto)
         newUser.nombre = nombre
         newUser.password = password
-        newUser.tipoUsuario = 1
+        newUser.tipoUsuario = 2
         var errorEncontrado: Bool = false
         
         for u in usuarios {
@@ -189,20 +189,18 @@ class ViewModel: ObservableObject {
         self.loading = true
         let usuario = usuarios.first(where: {$0.nombre == nombre})
         
-        /*
         if (usuario!.tipoUsuario == 1){
             usuario!.tipoUsuario = 2
         }else{
             usuario!.tipoUsuario = 1
         }
-         refactoring de código old versión */
-        
+        /*
         usuario!.tipoUsuario = 2
        
         if (!(usuario!.tipoUsuario == 1)) {
             usuario!.tipoUsuario = 1
         }
-        
+        */
         print("cambiando")
         saveData()
         self.loading = false
