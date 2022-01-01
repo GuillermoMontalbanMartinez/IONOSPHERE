@@ -38,7 +38,7 @@ class ViewModel: ObservableObject {
     
     /**
      Funcion que cargar los datos en memoria.
-     Los usuario los ordena por el nombre y los pulsos por fecha de creación
+     Los usuario los ordena por el nombre y los pulsos pora fecha de creación
      */
     func loadData() {
         usuarios.removeAll()
@@ -115,17 +115,9 @@ class ViewModel: ObservableObject {
     func guardarPulsoUsuario(usuario: Usuario, pulso: Pulso){
         self.loading = true
         
-        /*
         if ( usuario.guardaPulsoRelation?.contains(pulso) ?? false ) {
             pulso.pulsoGuardado = nil
         } else {
-            pulso.pulsoGuardado = usuario
-        }
-         refactoring de código old versión */
-        
-        pulso.pulsoGuardado = nil
-        
-        if (!(usuario.guardaPulsoRelation?.contains(pulso) ?? false)) {
             pulso.pulsoGuardado = usuario
         }
         
