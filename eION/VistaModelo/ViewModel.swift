@@ -23,9 +23,17 @@ class ViewModel: ObservableObject {
     @Published var loading = false
     @Published var logeado: Bool = false
     @AppStorage("loginActive") var loginActive: Bool?
+    @AppStorage("nombreUsuario") var nombreUsuarioActivo: String?
     
     init(){
         loadData()
+        let nombreAppStg = nombreUsuarioActivo!
+        
+        /* Para el caso en el que el usuario acceda a la app sin iniciar sesion porque sus datos estan en el app storage */
+        if usuarioLogeado == nil && (!nombreAppStg.isEmpty) {
+            usuarioLogeado = usuarios.filter({$0.nombre == nombreUsuarioActivo})[0]
+        }
+
     }
     
     /**
@@ -98,13 +106,7 @@ class ViewModel: ObservableObject {
         newPulso.ubicacion = ubicacion
         newPulso.a03 = a03
         newPulso.a27 = a27
-        
         newPulso.usuarioRelation = usuarios.filter({$0.nombre == nombreUsuario}).first
-        
-        print("USUARIO RELACION")
-        print(usuarios.filter({$0.nombre == nombreUsuario}).first ?? "ninguno")
-        
-        print("Creando pulso")
         
         saveData()
         self.loading = false
@@ -126,7 +128,6 @@ class ViewModel: ObservableObject {
         if (!(usuario.guardaPulsoRelation?.contains(pulso) ?? false)) {
             pulso.pulsoGuardado = usuario
         }
-        
         
         saveData()
         self.loading = false
@@ -161,6 +162,7 @@ class ViewModel: ObservableObject {
         if !user.isEmpty {
             usuarioLogeado = user[0]
             loginActive = true
+            nombreUsuarioActivo = usuarioLogeado?.nombre
             return true
         }
         
@@ -281,21 +283,15 @@ class ViewModel: ObservableObject {
     
     func updateUserData(nombre: String, imagen: UIImage) -> Bool {
         self.loading = true
-        let user:[Usuario] = usuarios.filter({$0.nombre == nombre})
-        let pngImageData  = imagen.pngData()
-        
-        /*
-        if !user.isEmpty {
-            user[0].foto = pngImageData
-            print( "USUARIO: \(user)")
-            saveData()
-            self.loading = false
-            return true
+        var user: [Usuario]
+        if  nombre.isEmpty {
+            user = usuarios.filter({$0.nombre == nombreUsuarioActivo})
+            print ( user )
         } else {
-            self.loading = false
-            return false
+            user = usuarios.filter({$0.nombre == nombre})
         }
-         refactoring de código old version */
+        
+        let pngImageData  = imagen.pngData()
         
         if !user.isEmpty {
             user[0].foto = pngImageData
