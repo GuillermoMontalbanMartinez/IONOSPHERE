@@ -37,7 +37,7 @@ struct MicrofonoView: View {
                     if(valorPorVoz.count == 0){
                         Text("Hable para introducir el valor A27").padding()
                     }else{
-                        Text("Valor de A27: \(valorPorVoz)").padding()
+                        Text("Valor de A27: \(valorPorVoz.removeWhitespace())").padding()
                     }
                     
                     Button(){
