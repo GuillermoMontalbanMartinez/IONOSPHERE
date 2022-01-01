@@ -71,11 +71,11 @@ private struct LoginForm: View {
                 VStack(spacing: 30) {
                     Text("form-title-login-key").font(.custom("Poppins-SemiBold", size: 28)).fontWeight(.bold).foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
                     HStack(alignment: .bottom) {
-                        CustomTextFieldView(localizedStringKey: "form-name-login-key", text: $username, name:"form-name-login-key")
+                        CustomTextFieldView(text: $username, name:NSLocalizedString("form-name-login-key", comment: ""))
                     }
                 
                     HStack(alignment: .bottom) {
-                        CustomSecureFieldView(text: $password, name:"form-password-login-key", localizedStringKey: "form-password-login-key")
+                        CustomSecureFieldView(text: $password, name: NSLocalizedString("form-password-login-key", comment: ""))
                     }
                 }.padding([.leading, .trailing], 20)
                  .padding([.top, .bottom], 30)

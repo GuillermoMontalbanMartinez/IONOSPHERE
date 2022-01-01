@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CustomTextFieldView: View {
 
-    var localizedStringKey: LocalizedStringKey
+    //var localizedStringKey: String
     @Binding var text: String
     var name: String
     @State var isTapped = false
@@ -17,7 +17,7 @@ struct CustomTextFieldView: View {
     var body: some View {
 
         VStack(alignment: .leading,  spacing: 0) {
-            TextField(localizedStringKey, text: $text) { (status) in
+            TextField("", text: $text) { (status) in
                 // Se ejecuta cuando se hace click en el textfield
                 if status {
                     withAnimation(.easeIn) {
@@ -40,11 +40,6 @@ struct CustomTextFieldView: View {
                     .offset(x: isTapped ? -7 : 0, y: isTapped ? -15 : 0)
                     .foregroundColor(isTapped ? Color.accentColor : Color.gray)
                 , alignment: .leading)
-
-            Rectangle().fill(isTapped ? Color.accentColor : Color.gray)
-                .opacity(isTapped ? 1 : 0.5)
-                .frame(height: 1)
-                .padding(.top, 10)
 
         }.padding(.vertical, 12)
             .padding(.horizontal)

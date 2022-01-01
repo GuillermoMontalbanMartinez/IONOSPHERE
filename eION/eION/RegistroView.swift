@@ -53,15 +53,15 @@ private struct RegistroForm: View {
         VStack {
             VStack(spacing: 30) {
                 HStack(alignment: .bottom) {
-                    CustomTextFieldView(localizedStringKey: "form-name-registro-key", text: $username, name: "Nombre de usuario")
+                    CustomTextFieldView(text: $username, name:  NSLocalizedString("form-name-login-key", comment:""))
                 }
                             
                 HStack(alignment: .bottom) {
-                    CustomSecureFieldView(text: $password, name: "Contraseña", localizedStringKey: "form-password-login-key")
+                    CustomSecureFieldView(text: $password, name: NSLocalizedString("form-password-login-key", comment: ""))
                 }
                             
                  HStack(alignment: .bottom) {
-                     CustomSecureFieldView(text: $repeatPassword, name: "Repetir contraseña", localizedStringKey:"form-repeat-password-sigup-key")
+                     CustomSecureFieldView(text: $repeatPassword, name: NSLocalizedString("form-repeat-password-sigup-key", comment:""))
                 }
                 
                 Button {

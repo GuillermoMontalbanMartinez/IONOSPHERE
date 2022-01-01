@@ -55,7 +55,7 @@ struct CrearPulsoView: View {
                 
                     
                     VStack {
-                        CustomTextFieldView(localizedStringKey:"form-name-login-key", text: $nombrePulso, name: "Nombre del pulso").foregroundColor(.black)
+                        CustomTextFieldView(text: $nombrePulso, name: "form-name-login-key").foregroundColor(.black)
                         
                         HStack {
                             Text(NSLocalizedString("form-a05-text-key", comment: "\((round(100000 * valorSlider) / 100000))")).font(.custom("Poppins-Regular", size: 18)).padding(.top)
