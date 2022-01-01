@@ -7,7 +7,9 @@
 import SwiftUI
 import AVFoundation
 
+
 struct CrearPulsoView: View {
+
    @EnvironmentObject var vm: ViewModel
     var ubicacion :String
     @State var valorPorVoz : String = ""
@@ -177,6 +179,16 @@ struct CrearPulsoView: View {
     }
 }
 
+extension String {
+ 
+    func replace(string:String, replacement:String) -> String {
+        return self.replacingOccurrences(of: string, with: replacement, options: NSString.CompareOptions.literal, range: nil)
+    }
+
+    func removeWhitespace() -> String {
+        return String(self.replace(string: ",", replacement: ".").prefix(9))
+    }
+  }
 
 
 /*struct CrearPulsoView_Previews: PreviewProvider {

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct MicrofonoView: View {
     @State var speechRecognizer = SpeechRecognizer()
     @Binding var valorPorVoz :String
@@ -65,3 +66,4 @@ struct MicrofonoView_Previews: PreviewProvider {
         MicrofonoView(valorPorVoz: .constant(""),modoGrabacion: .constant(true))
     }
 }
+
