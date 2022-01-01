@@ -17,43 +17,63 @@ struct EditarPerfilView: View {
     var body: some View {
         ZStack {
             BackgroundView(height: 40)
-            RoundedRectangle(cornerRadius: 40).background(.thinMaterial)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height).blur(radius: 100)
             if ( vm.loading ) {
                 ProgressView().foregroundColor(.black)
             } else {
-                ScrollView(showsIndicators: false) {
-                    VStack {
-                        EditarPerfilFormulario(nombre: $nombre, mostrarImagePicker: $mostrarImagePicker, imageGeneral: $imageGeneral, datosActualizados: $datosActualizados)
-                            .environmentObject(vm)
-                        PulsosGuardados().environmentObject(vm)
-                        PulsosCreados().environmentObject(vm)
-                        
-                    }.frame(maxWidth: .infinity).padding(.top, 150).padding(.bottom, 50)
+                GeometryReader{ geo in
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            EditarPerfilFormulario(nombre: $nombre, mostrarImagePicker: $mostrarImagePicker, imageGeneral: $imageGeneral, datosActualizados: $datosActualizados)
+                                .environmentObject(vm)
+                            PulsosGuardados().environmentObject(vm)
+                            PulsosCreados().environmentObject(vm)
+                            
+                        }.frame(maxWidth: .infinity).padding(.top, 150).padding(.bottom, 50)
+                    }
                 }
-                
             }
         }.ignoresSafeArea()
-        
-        
     }
 }
 
 struct PulsosCreados: View {
     @EnvironmentObject var vm : ViewModel
+    @State var pulsosUsuario: [Pulso] = []
+    
     var body: some View {
-        if let pulsos = vm.usuarioLogeado?.pulsoRelation?.allObjects as? [Pulso] {
-            if pulsos.count != 0 {
+        VStack {
+            if pulsosUsuario.count != 0 {
                 VStack(alignment: .leading) {
                     Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
-                    
-                    ForEach(pulsos) { pulso in
-                        PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
-                    }
+                    Text("COUNT: \(pulsosUsuario.count)")
+                    List() {
+                        ForEach (pulsosUsuario) { pulso in
+                            PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
+                                .background(.ultraThinMaterial)
+                        }.onDelete(perform: vm.deletePulsoIndex)
+                        
+                            
+                            /*.swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                                Button {
+                                    vm.deletePulso(pulso: pulso)
+                                    pulsosUsuario = vm.getPulsosUsuario(usuario: vm.usuarioLogeado!)
+                                } label: {
+                                    Image(systemName: "trash.fill").foregroundColor(.white)
+                                }
+                                .tint(.red)
+                            }*/
+                    }.frame(width: 350, height: 400, alignment: .center)
+                        .onAppear {
+                            UITableView.appearance().backgroundColor = .clear
+                        }
+                        
                 }.padding()
+                
             } else {
                 Text(NSLocalizedString("form-no-creados-pulsos-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
             }
+        }.onAppear {
+            pulsosUsuario = vm.getPulsosUsuario(usuario: vm.usuarioLogeado!)
         }
     }
 }
@@ -95,7 +115,6 @@ struct PulsoInfo : View {
 }
 
 struct EditarPerfilFormulario : View {
-    
     @Binding var nombre: String
     @Binding var mostrarImagePicker: Bool
     @Binding var imageGeneral: UIImage

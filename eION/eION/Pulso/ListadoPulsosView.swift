@@ -79,25 +79,13 @@ struct ListadoPulsosView: View {
                         }
                         
                         List(){
-                            
                             ForEach(vm.pulsos) { pulso in
                                 if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
                                     NavigationLink(destination: PulsoView(pulso: pulso).environmentObject(vm)) {
                                         FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
                                     }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
-                                        .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                                            Button {
-                                                vm.deletePulso(pulso: pulso)
-                                                vm.getPulsosUbicacion(ubicacion: provincia)
-                                            } label: {
-                                                Image(systemName: "trash.fill").foregroundColor(.white)
-                                            }
-                                            .tint(.red)
-                                        }
                                 }
                             }
-                            
-                            
                         }
                         .scaledToFit()
                         .onAppear() {

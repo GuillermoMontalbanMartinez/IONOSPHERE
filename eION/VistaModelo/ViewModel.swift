@@ -132,6 +132,13 @@ class ViewModel: ObservableObject {
         self.loading = false
     }
     
+    func deletePulsoIndex(indexSet: IndexSet) {
+        for index in indexSet {
+            gestorCoreData.contexto.delete(pulsos[index])
+        }
+        saveData()
+    }
+    
     func iniciarSesion(nombre:String, contraseña:String) -> Bool {
         self.loading = true
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})
