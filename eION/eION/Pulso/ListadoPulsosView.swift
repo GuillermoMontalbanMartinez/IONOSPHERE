@@ -50,7 +50,7 @@ struct ListadoPulsosView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    CustomNavigationView(title: "Tus Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 120)
+                    CustomNavigationView(title: "Tus Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 150)
                     Map(coordinateRegion: $region)
                         .onAppear(){
                             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
@@ -124,4 +124,5 @@ struct ListadoPulsosView: View {
  ListadoPulsosView(provincia: "Almería")
  .environmentObject(ViewModel())
  }
- }*/
+ }
+*/
