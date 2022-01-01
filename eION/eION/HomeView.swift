@@ -21,11 +21,15 @@ struct HomeView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 30) {
                         Image("AppLogo").resizable().frame(width: 200, height: 200, alignment: .center)
-                        VStack(alignment: .center, spacing: 20) {
-                            Novedades(pulsos: pulsos)
-                            Spacer()
-                        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
-                            Usuarios().environmentObject(vm)
+                        if pulsos.count > 0 {
+                            
+                            VStack(alignment: .center, spacing: 20) {
+                                Novedades(pulsos: pulsos)
+                                Spacer()
+                            }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
+                        }
+                        Usuarios().environmentObject(vm)
+                        
                         Spacer()
                     }
                 }.frame(maxWidth: .infinity)
@@ -48,7 +52,7 @@ struct ShareSheet: UIViewControllerRepresentable {
 
 
 struct Novedades: View {
-
+    
     var pulsos: [Pulso]
     var body: some View{
         VStack(alignment: .leading, spacing: 30) {
@@ -151,7 +155,7 @@ struct FilaPulso: View
             }
         }.sheet(isPresented: $showingSheet) {
             ShareSheet(items: [pulso.nombrePulso ?? "", pulso.a03, pulso.a27])
-
+            
         }.padding().frame(width: 150, height: 150)
             .background(.ultraThinMaterial)
             .cornerRadius(20)

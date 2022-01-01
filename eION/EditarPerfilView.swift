@@ -42,36 +42,37 @@ struct EditarPerfilView: View {
 struct PulsosCreados: View {
     @EnvironmentObject var vm : ViewModel
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
-            if let pulsos = vm.usuarioLogeado?.pulsoRelation?.allObjects as? [Pulso] {
-                if pulsos.count != 0 {
+        if let pulsos = vm.usuarioLogeado?.pulsoRelation?.allObjects as? [Pulso] {
+            if pulsos.count != 0 {
+                VStack(alignment: .leading) {
+                    Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
+                    
                     ForEach(pulsos) { pulso in
                         PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
                     }
-                } else {
-                    Text(NSLocalizedString("form-no-creados-pulsos-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
-                }
+                }.padding()
+            } else {
+                Text(NSLocalizedString("form-no-creados-pulsos-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
             }
-        }.padding()
+        }
     }
 }
 
 struct PulsosGuardados: View {
     @EnvironmentObject var vm : ViewModel
     var body: some View {
-        VStack(alignment: .leading) {
-            Text(NSLocalizedString("form-pulsos-guardados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
-            if let pulsos = vm.usuarioLogeado?.guardaPulsoRelation?.allObjects as? [Pulso] {
-                if pulsos.count != 0 {
+        if let pulsos = vm.usuarioLogeado?.guardaPulsoRelation?.allObjects as? [Pulso] {
+            if pulsos.count != 0 {
+                VStack(alignment: .leading) {
+                    Text(NSLocalizedString("form-pulsos-guardados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
                     ForEach(pulsos) { pulso in
                         PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
                     }
-                } else {
-                    Text(NSLocalizedString("form-pulsos-guardados-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
-                }
+                }.padding()
+            }else {
+                Text(NSLocalizedString("form-pulsos-guardados-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
             }
-        }.padding()
+        }
     }
 }
 
@@ -121,8 +122,6 @@ struct EditarPerfilFormulario : View {
                             .overlay(RoundedRectangle(cornerRadius: 100).stroke(Color.white, lineWidth: 5))
                             .padding(.vertical)
                     }
-                    
-                    
                 }
                 .sheet(isPresented: $mostrarImagePicker){
                     ImagePicker(sourceType: .photoLibrary, selectedImage: $imageGeneral )
