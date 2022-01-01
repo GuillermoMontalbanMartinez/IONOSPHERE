@@ -13,18 +13,18 @@ struct CustomSecureFieldView: View {
     var name: String
     @State var isTapped = false
     @State var passOculta = true
+    var localizedStringKey: LocalizedStringKey
     
     var body: some View {
         HStack(alignment: .center,  spacing: 0) {
             if passOculta  {
                 HStack {
-                    SecureField("", text: $text).background(
+                    SecureField(localizedStringKey, text: $text).background(
                         Text(name)
                             .font(.custom("Poppins-Regular", size: 18))
                             .scaleEffect(isTapped ? 0.8 : 1)
                             .offset(x: isTapped ? -7 : 0, y: isTapped ? -20 : 0)
                             .foregroundColor(isTapped ? Color.accentColor : Color.gray)
-                        
                         , alignment: .leading)
                         .padding(.top, isTapped ? 15 : 0)
                         .onTapGesture {
@@ -40,9 +40,6 @@ struct CustomSecureFieldView: View {
                 CustomTextFieldView(localizedStringKey: "form-name-registro-key", text: $text, name: name)
                 
             }
-            
-            
-
             
             Button {
                 passOculta.toggle()

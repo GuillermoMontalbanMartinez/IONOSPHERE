@@ -26,7 +26,7 @@ struct RegistroView: View {
                 VStack(spacing: 0) {
                     Spacer()
 
-                    Text("Regístrate").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.white)
+                    Text("form-title-signup-key").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.white)
                     
                     RegistroForm().environmentObject(model)
                 }.offset(y:-50).background(wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7))
@@ -47,6 +47,7 @@ private struct RegistroForm: View {
     @State var emptyPassword: Bool = false
     @State var emptyRepeatPassword: Bool = false
     @EnvironmentObject var model: ViewModel
+    var formPassword: LocalizedStringKey = "form-title-signup-key"
     
     var body: some View {
         VStack {
@@ -56,11 +57,11 @@ private struct RegistroForm: View {
                 }
                             
                 HStack(alignment: .bottom) {
-                    CustomSecureFieldView(text: $password, name: "Contraseña")
+                    CustomSecureFieldView(text: $password, name: "Contraseña", localizedStringKey: "form-password-login-key")
                 }
                             
                  HStack(alignment: .bottom) {
-                     CustomSecureFieldView(text: $repeatPassword, name: "Repetir contraseña")
+                     CustomSecureFieldView(text: $repeatPassword, name: "Repetir contraseña", localizedStringKey:"form-repeat-password-sigup-key")
                 }
                 
                 Button {
@@ -120,7 +121,7 @@ private struct RegistroForm: View {
                     }
 
                 } label: {
-                    Text("Registrarse", tableName: "Login")
+                    Text("form-title-signup-key")
                         .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.accentColor)
                         .padding([.top, .bottom], 15)

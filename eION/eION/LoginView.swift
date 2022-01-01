@@ -35,7 +35,7 @@ struct LoginView: View {
                                  Button {
                                      showView = true
                                  } label: {
-                                     Text("Registrate", tableName: "Login")
+                                     Text("form-title-signup-key")
                                          .font(.custom("Poppins-Regular", size: 18))
                                          .foregroundColor(.black)
                                         .underline()
@@ -75,7 +75,7 @@ private struct LoginForm: View {
                     }
                 
                     HStack(alignment: .bottom) {
-                        CustomSecureFieldView(text: $password, name:"form-password-login-key")
+                        CustomSecureFieldView(text: $password, name:"form-password-login-key", localizedStringKey: "form-password-login-key")
                     }
                 }.padding([.leading, .trailing], 20)
                  .padding([.top, .bottom], 30)

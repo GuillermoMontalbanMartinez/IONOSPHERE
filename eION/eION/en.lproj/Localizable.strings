@@ -16,4 +16,8 @@
 
 // Registro (en)
 
+"form-title-signup-key" = "Sign up";
 "form-name-registro-key" = "Name";
+"form-repeat-password-sigup-key" = "Repeat password";
+
+
