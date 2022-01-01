@@ -27,7 +27,7 @@ class ViewModel: ObservableObject {
     
     init(){
         loadData()
-        let nombreAppStg = nombreUsuarioActivo!
+        let nombreAppStg = nombreUsuarioActivo ?? ""
         
         /* Para el caso en el que el usuario acceda a la app sin iniciar sesion porque sus datos estan en el app storage */
         if usuarioLogeado == nil && (!nombreAppStg.isEmpty) {
@@ -295,5 +295,9 @@ class ViewModel: ObservableObject {
         
         self.loading = false
         return false
+    }
+    
+    func getPulsosUsuario( usuario: Usuario ) -> [Pulso] {
+        return usuario.pulsoRelation?.allObjects as? [Pulso] ?? []
     }
 }
