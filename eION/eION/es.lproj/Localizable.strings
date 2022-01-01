@@ -27,7 +27,7 @@
 // Crear pulso (es)
 "form-title-principal-crearpulso-key" = "Crear un pulso";
 "form-a05-text-key" = "Valor para a05:  ";
-"form-a27-text-key" = "Value for a27: ";
+"form-a27-text-key" = "Valor para a27: ";
 "form-title-crearpulso-key" = "Crear pulso";
 "form-class-key" = "Clase";
 
@@ -54,3 +54,10 @@
 "Form-fecha-registro-key" = "Fecha de registro";
 "Form-clase-pulsoview-key" = "Clase";
 "Form-name-usuario-pulsoview-key" = "Nombre usuario";
+
+// MicrofonoView (en)
+"form-pulsa-grabar-key" = "Pulsa para grabar";
+"form-cancelar-microno-key" = "Cancelar";
+"form-hable-para-key" = "Hable para introducir el valor A27";
+"form-valor-a27-microfono-key" = "Valor de a27";
+"form-hecho-microfono-key" = "Hecho";

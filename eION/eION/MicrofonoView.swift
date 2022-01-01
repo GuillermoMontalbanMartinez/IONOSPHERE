@@ -23,28 +23,32 @@ struct MicrofonoView: View {
                         isRecording.toggle()
                         speechRecognizer.record(to: $valorPorVoz)
                     }
-                    Text("Pulsa para grabar").padding().font(.footnote)
+                    Text(NSLocalizedString("form-pulsa-grabar-key", comment: "")).padding().font(.footnote)
                     
                     Button() {
                         modoGrabacion.toggle()
                     } label: {
-                        Text("Cancelar")
+                        Text(NSLocalizedString("form-cancelar-microno-key", comment: ""))
                     }.padding().background(Color.accentColor).foregroundColor(.white).clipShape(Capsule())
                 }
             } else{
                 VStack{
                     Image(systemName: "waveform.and.mic").resizable().frame(width: 150, height: 150, alignment: .center).foregroundColor(Color.accentColor)
                     if(valorPorVoz.count == 0){
-                        Text("Hable para introducir el valor A27").padding()
+                        Text(NSLocalizedString("form-hable-para-key", comment:"")).padding()
                     }else{
-                        Text("Valor de A27: \(valorPorVoz.removeWhitespace())").padding()
+                        HStack {
+                            Text(NSLocalizedString("form-valor-a27-microfono-key", comment: ""))
+                            Text("\(valorPorVoz.removeWhitespace())")
+                        }.padding()
+                        //Text("Valor de A27: \(valorPorVoz.removeWhitespace())").padding()
                     }
                     
                     Button(){
                         isRecording.toggle()
                         speechRecognizer.stopRecording()
                     } label : {
-                        Text("Hecho")
+                        Text(NSLocalizedString("form-hecho-microfono-key", comment: ""))
                     }.padding().background(Color.green).foregroundColor(.white).clipShape(Capsule())
                 }.onAppear{
                     
