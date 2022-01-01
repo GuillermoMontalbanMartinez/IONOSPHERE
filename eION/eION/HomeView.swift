@@ -14,6 +14,7 @@ struct HomeView: View {
     @EnvironmentObject var vm : ViewModel
     @State private var isShareSheetShowing = false
     @State var pulsos: [Pulso] = []
+    
     var body: some View {
         ZStack {
             GeometryReader { geo in
@@ -81,7 +82,6 @@ struct Novedades: View {
 }
 
 struct Usuarios: View {
-    @State private var isSheetPerfilUsuario = false
     @EnvironmentObject var vm: ViewModel
     var body: some View{
         VStack(alignment: .leading, spacing: 30) {
@@ -91,32 +91,7 @@ struct Usuarios: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
                     ForEach(vm.usuarios) { usuario in
-                        VStack(spacing: 0) {
-                            Text(usuario.nombre ?? "").font(.custom("Poppins-Regular", size: 18))
-                            if usuario.foto != nil {
-                                Image(uiImage: UIImage(data: usuario.foto ?? Data()) ?? UIImage())
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(20)
-                                    .frame(width: 150, height:150)
-                                    .padding(.vertical).onTapGesture(perform: {
-                                        isSheetPerfilUsuario.toggle()
-                                    }).sheet(isPresented: $isSheetPerfilUsuario){
-                                        PerfilUsuarioView(usuario:usuario)
-                                    }
-                            } else {
-                                Image("unknown")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(20)
-                                    .frame(width: 150, height:150)
-                                    .padding(.vertical).onTapGesture(perform: {
-                                        isSheetPerfilUsuario.toggle()
-                                    }).sheet(isPresented: $isSheetPerfilUsuario){
-                                        PerfilUsuarioView(usuario:usuario)
-                                    }
-                            }
-                        }.padding().cornerRadius(100)
+                      FilaUsuario(usuario: usuario)
                     }
                 }
             }.frame(maxWidth: .infinity)
@@ -124,6 +99,40 @@ struct Usuarios: View {
                 .foregroundColor(.black)
         }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
     }
+}
+
+struct FilaUsuario : View{
+    var usuario : Usuario
+    @State var isSheetPerfilUsuario : Bool = false
+    var body: some View{
+        VStack(spacing: 0) {
+            Text(usuario.nombre ?? "").font(.custom("Poppins-Regular", size: 18))
+            if usuario.foto != nil {
+                Image(uiImage: UIImage(data: usuario.foto ?? Data()) ?? UIImage())
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(20)
+                    .frame(width: 150, height:150)
+                    .padding(.vertical).onTapGesture(perform: {
+                        isSheetPerfilUsuario.toggle()
+                    }).sheet(isPresented: $isSheetPerfilUsuario){
+                        PerfilUsuarioView(usuario:usuario)
+                    }
+            } else {
+                Image("unknown")
+                    .resizable()
+                    .scaledToFit()
+                    .cornerRadius(20)
+                    .frame(width: 150, height:150)
+                    .padding(.vertical).onTapGesture(perform: {
+                        isSheetPerfilUsuario.toggle()
+                    }).sheet(isPresented: $isSheetPerfilUsuario){
+                        PerfilUsuarioView(usuario:usuario)
+                    }
+            }
+        }.padding().cornerRadius(100)
+    }
+    
 }
 
 struct FilaPulso: View
