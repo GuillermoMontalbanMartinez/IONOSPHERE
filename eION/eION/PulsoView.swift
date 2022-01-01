@@ -17,7 +17,7 @@ struct PulsoView: View {
             BackgroundView(height: 40)//.padding(.top, 300)
             GeometryReader { geometry in
                 VStack(alignment: .leading, spacing: 10) {
-                    
+
                     HStack {
                         Text(pulso.nombrePulso ?? "").font(.custom("Poppins-Regular", size: 22)).fontWeight(.bold)
                         Image(systemName: (vm.usuarioLogeado?.guardaPulsoRelation?.contains(pulso) ?? false) ? "bookmark.fill" :  "bookmark").foregroundColor(Color.accentColor).frame(width: 100, height: 100).scaledToFit().onTapGesture {
@@ -36,18 +36,18 @@ struct PulsoView: View {
                     }
                     
                     HStack(alignment: .center, spacing: 15.0) {
-                        Text("Clase").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                        Text(NSLocalizedString("Form-clase-pulsoview-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
                         Text(pulso.clase ? "Good" : "Bad").font(.custom("Poppins-Regular", size: 14))
                     }
                     
                     HStack(alignment: .center, spacing: 10.0) {
-                        Text("Fecha de registro").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                        Text(NSLocalizedString("Form-fecha-registro-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
                         Text(formatearFecha(pulso: pulso.fechaCreacion ?? Date())).font(.custom("Poppins-Regular", size: 14))
                     }
                     
                     if pulso.usuarioRelation?.nombre != nil  {
                         HStack {
-                            Text("Nombre usuario").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                            Text(NSLocalizedString("Form-name-usuario-pulsoview-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
                             Text(pulso.usuarioRelation?.nombre  ?? "").font(.custom("Poppins-Regular", size: 14))
                         }
                     }

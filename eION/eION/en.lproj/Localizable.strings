@@ -49,3 +49,8 @@
 "form-otros-usuarios-key" = "Other users";
 "form-otros-usuaarios-comparten-key" = "Other users who are also sharing their pulses";
 "form-homeview-compartir" = "Share";
+
+// PulsoView (en)
+"Form-fecha-registro-key" = "Registration date";
+"Form-clase-pulsoview-key" = "Class";
+"Form-name-usuario-pulsoview-key" = "Username";
