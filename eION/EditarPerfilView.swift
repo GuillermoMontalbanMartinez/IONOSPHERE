@@ -16,12 +16,9 @@ struct EditarPerfilView: View {
     
     var body: some View {
         ZStack {
-            
             BackgroundView(height: 40)
-            
             RoundedRectangle(cornerRadius: 40).background(.thinMaterial)
                 .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height).blur(radius: 100)
-            
             if ( vm.loading ) {
                 ProgressView().foregroundColor(.black)
             } else {
@@ -46,14 +43,14 @@ struct PulsosCreados: View {
     @EnvironmentObject var vm : ViewModel
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Tus pulsos creados").font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
+            Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
             if let pulsos = vm.usuarioLogeado?.pulsoRelation?.allObjects as? [Pulso] {
                 if pulsos.count != 0 {
                     ForEach(pulsos) { pulso in
                         PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
                     }
                 } else {
-                    Text("No has creado pulsos todavía").font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
+                    Text(NSLocalizedString("form-no-creados-pulsos-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
                 }
             }
         }.padding()
@@ -64,14 +61,14 @@ struct PulsosGuardados: View {
     @EnvironmentObject var vm : ViewModel
     var body: some View {
         VStack(alignment: .leading) {
-            Text("Tus pulsos guardados").font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
+            Text(NSLocalizedString("form-pulsos-guardados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
             if let pulsos = vm.usuarioLogeado?.guardaPulsoRelation?.allObjects as? [Pulso] {
                 if pulsos.count != 0 {
                     ForEach(pulsos) { pulso in
                         PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
                     }
                 } else {
-                    Text("No tiene pulsos guardados todavía").font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
+                    Text(NSLocalizedString("form-pulsos-guardados-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
                 }
             }
         }.padding()
@@ -84,7 +81,6 @@ struct PulsoInfo : View {
     @EnvironmentObject var vm : ViewModel
     
     var body: some View {
-        
         HStack {
             Text(pulso.nombrePulso ?? "" ).font(.custom("Poppins-Regular", size: 18)).fontWeight(.bold).foregroundColor(.accentColor)
             Spacer()
@@ -108,7 +104,7 @@ struct EditarPerfilFormulario : View {
     var body: some View {
         
         VStack {
-            Text("Edita tu perfil").font(.custom("Poppins-Regular", size: 28)).foregroundColor(.black)
+            Text(NSLocalizedString("form-title-edit-key", comment: "")).font(.custom("Poppins-Regular", size: 28)).foregroundColor(.black)
             Button {
                 mostrarImagePicker.toggle() }label:{
                     if vm.usuarioLogeado?.foto != nil {
@@ -133,9 +129,9 @@ struct EditarPerfilFormulario : View {
                 }
             
             if ( datosActualizados == 1 ) {
-                Text("Datos actualizados correctamente").font(.custom("Poppins-Regular", size: 18)).foregroundColor(.green)
+                Text(NSLocalizedString("form-alert-datos-correctamente-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.green)
             } else if (datosActualizados == 2) {
-                Text("Ha ocurrido un error actualizando sus datos").font(.custom("Poppins-Regular", size: 18))
+                Text("form-alert-eror-datos-key").font(.custom("Poppins-Regular", size: 18))
             }
             
             Button {
@@ -145,7 +141,7 @@ struct EditarPerfilFormulario : View {
                     datosActualizados = 2
                 }
             } label: {
-                Text("Guardar")
+                Text(NSLocalizedString("form-button-save-key", comment: ""))
                     .font(.custom("Poppins-Regular", size: 18))
                     .foregroundColor(.accentColor)
                     .padding([.top, .bottom], 15)

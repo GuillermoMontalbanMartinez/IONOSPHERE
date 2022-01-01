@@ -24,9 +24,20 @@
 // Cerrar sesión (en)
 
 
-// Crear pulso (es)
+// Crear pulso (en)
 "form-title-principal-crearpulso-key" = "Create a pulse";
 "form-a05-text-key" = "Value for a05: ";
 "form-a27-text-key" = "Valor para a27: ";
 "form-title-crearpulso-key" = "Create pulse";
 "form-class-key" = "Class";
+
+
+// Editar perfil (en)
+"form-title-edit-key" = "Edit your profile";
+"form-alert-datos-correctamente-key" = "Data updated correctly";
+"form-alert-eror-datos-key" = "An error has occurred updating your data";
+"form-button-save-key" = "Save";
+"form-tus-pulsos-creados-key" = "Your created pulses";
+"form-no-creados-pulsos-todavia-key" = "You dont´t have created pulses yet";
+"form-pulsos-guardados-key" = "Your saved pulses";
+"form-pulsos-guardados-todavia-key" = "I have no saved pulses yet";
