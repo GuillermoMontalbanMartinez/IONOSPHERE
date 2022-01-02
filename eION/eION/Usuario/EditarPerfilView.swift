@@ -63,7 +63,7 @@ struct PulsosCreados: View {
             }
         }.onAppear {
             vm.getPulsosUsuario(nombreUsuario: (vm.usuarioLogeado?.nombre) ?? "")
-        }
+        }.onDisappear(perform: vm.loadData)
     }
 }
 

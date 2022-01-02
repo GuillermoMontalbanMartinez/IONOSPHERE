@@ -17,10 +17,12 @@ struct ListadoPulsosView: View {
     var latitud: Double = 0.0
     var longitud: Double = 0.0
     var provincia: String
+    var usuario: String
     
     @State private var region = MKCoordinateRegion()
-    init(provincia : String){
+    init(provincia : String, usuario: String){
         self.provincia = provincia
+        self.usuario = usuario
         switch(provincia){
         case "Almería":
             latitud = 36.8402
@@ -50,7 +52,7 @@ struct ListadoPulsosView: View {
         GeometryReader { geometry in
             ScrollView {
                 VStack {
-                    CustomNavigationView(title: "Tus Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 150)
+                    CustomNavigationView(title: "Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 150)
                     Map(coordinateRegion: $region)
                         .onAppear(){
                             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
@@ -79,7 +81,7 @@ struct ListadoPulsosView: View {
                         }
                         
                         List(){
-                            ForEach(vm.pulsos) { pulso in
+                            ForEach(vm.pulsos.filter({$0.ubicacion == provincia})) { pulso in
                                 if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
                                     NavigationLink(destination: PulsoView(pulso: pulso).environmentObject(vm)) {
                                         FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
@@ -111,8 +113,11 @@ struct ListadoPulsosView: View {
                             vm.ordenarPulsos(propiedad: "fecha", ubicacion: provincia)
                         }
                     }
-                    .navigationBarHidden(true).onAppear {
-                        vm.getPulsosUbicacion(ubicacion: provincia)
+                    .navigationBarHidden(true)
+                    .onAppear{
+                        if(!usuario.isEmpty){
+                            vm.getPulsosUsuario(nombreUsuario: usuario)
+                        }
                     }
             }
         }

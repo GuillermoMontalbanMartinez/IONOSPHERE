@@ -32,7 +32,7 @@ struct ListaUsuariosAdmin: View {
                         ForEach(vm.usuarios){ usuario in
                             if(usuario.tipoUsuario != 0){
                                 if(text.isEmpty || usuario.nombre!.hasPrefix(text)){
-                                    NavigationLink(destination: ListadoUbicacionesView(destino: true)){
+                                    NavigationLink(destination: ListadoUbicacionesView(destino: true, usuario: usuario.nombre ?? "")){
                                         
                                         FilaTablaview(tituloIzq: usuario.nombre!, botonAdmin: true, tipoUsuario: usuario.tipoUsuario == 1 ? true : false, nombre: usuario.nombre ?? "")
                                     }

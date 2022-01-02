@@ -11,15 +11,15 @@ struct ListadoUbicacionesView: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var destino : Bool = false
     @State var text: String = ""
-    
+    var usuario: String = ""
     
     var body: some View {
         
         if(destino) {
-            Content(destino: destino, text: $text)
+            Content(destino: destino, text: $text, usuario: usuario)
         } else {
             NavigationView{
-                Content(destino: destino, text: $text)
+                Content(destino: destino, text: $text, usuario: usuario)
             }
             .navigationBarTitleDisplayMode(.inline)
             .ignoresSafeArea()
@@ -38,7 +38,8 @@ struct Content: View {
     var destino : Bool = false
     @Binding var text: String
     var provincias: [String] = ["Almería", "Ávila", "Barcelona", "Zaragoza"]
-    
+    var usuario: String = ""
+    @EnvironmentObject var vm : ViewModel
     var columns: [GridItem] {
         Array(repeating: .init(.adaptive(minimum: 120)), count: 2)
     }
@@ -55,7 +56,7 @@ struct Content: View {
                             LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(0..<provincias.count ) { index in
                                     if(text.isEmpty || provincias[index].hasPrefix(text)){
-                                        NavigationLink(destination: ListadoPulsosView(provincia: provincias[index])){
+                                        NavigationLink(destination: ListadoPulsosView(provincia: provincias[index], usuario: usuario )){
                                             //FilaTablaview(tituloIzq: provincia, tipoUsuario: true)
                                             VStack(alignment: .leading) {
                                                 Text(provincias[index]).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.black).fontWeight(.bold)
