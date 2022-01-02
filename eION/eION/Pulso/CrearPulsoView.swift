@@ -12,7 +12,7 @@ struct CrearPulsoView: View {
 
    @EnvironmentObject var vm: ViewModel
     var ubicacion :String
-    @State var valorPorVoz : String = "0.1"
+    @State var valorPorVoz : String = "0.0"
     @State var valorPorVozRedondeado : Double = 0
     @State var valorSlider : Double = 0
     @State var comprobacion : Bool = false
@@ -29,8 +29,7 @@ struct CrearPulsoView: View {
     var body: some View {
         ZStack {
             GeometryReader {geo in
-                BackgroundView(height: 40).padding(.top, -300)
-                     
+                    
                 VStack(alignment: .center) {
                     Spacer()
                     Text(NSLocalizedString("form-title-principal-crearpulso-key", comment: "")).font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.black)
@@ -54,19 +53,22 @@ struct CrearPulsoView: View {
                             .foregroundColor(.red)
                     }
                     
-                
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         CustomTextFieldView(text: $nombrePulso, name: NSLocalizedString("form-name-login-key", comment: "")).foregroundColor(.black)
                         
-                        HStack {
-                            Text(NSLocalizedString("form-a05-text-key", comment: "\((round(100000 * valorSlider) / 100000))")).font(.custom("Poppins-Regular", size: 18)).padding(.top)
-                            Text("\((round(100000 * valorSlider) / 100000))")
-                                .font(.custom("Poppins-Regular", size: 18)).padding(.top)
+                        
+                        VStack(alignment: .leading) {
+                            HStack {
+                                Text(NSLocalizedString("form-a05-text-key", comment: "\((round(100000 * valorSlider) / 100000))")).font(.custom("Poppins-Regular", size: 18)).padding(.top)
+                                Text("\((round(100000 * valorSlider) / 100000))")
+                                    .font(.custom("Poppins-Regular", size: 18)).padding(.top)
+                            }
+                            
+                            Slider(value: $valorSlider, in: -1...1).frame(width:350).accentColor(.accentColor)
+                            
                         }
-                        
-                        Slider(value: $valorSlider, in: -1...1).frame(width:300).accentColor(.accentColor)
-                        
+
                         HStack{
                             HStack {
                                 Text(NSLocalizedString("form-a27-text-key", comment: "")).font(.custom("Poppins-Regular", size: 18))
@@ -151,7 +153,7 @@ struct CrearPulsoView: View {
                     } label: {
                         Text(NSLocalizedString("form-title-crearpulso-key", comment: ""))
                             .font(.custom("Poppins-Regular", size: 18))
-                            .foregroundColor(.accentColor)
+                            .foregroundColor(.white)
                             .padding([.top, .bottom], 15)
                             .padding([.leading, .trailing], 25)
                     }.buttonStyle(CustomButton())
@@ -160,7 +162,7 @@ struct CrearPulsoView: View {
                       
                         Text("Pulso creado")
                             .font(.custom("Poppins-Regular", size: 18))
-                            .foregroundColor(.green)
+                            .foregroundColor(Color("GoodClass"))
                             .offset(y: -50)
                         
                         

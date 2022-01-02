@@ -15,58 +15,47 @@ struct PerfilUsuarioView: View {
     var body: some View {
         ZStack {
             GeometryReader { geo in
-                BackgroundView(height: 40)//.blur(radius: 20)
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 30) {
                         VStack(alignment: .center, spacing: 20) {
                             VStack(alignment: .center, spacing: 30) {
                                 VStack(alignment: .center) {
-                                    Text(usuario.nombre ?? "Nombre usuario").font(.custom("Poppins-Regular", size: 28))
-                                }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
+                                    Text(usuario.nombre ?? "Nombre usuario").font(.custom("Poppins-Regular", size: 28)).foregroundColor(.black)
+                                }
                                 if usuario.foto != nil {
                                     Image(uiImage: UIImage(data: usuario.foto ?? Data()) ?? UIImage())
                                         .resizable()
                                         .scaledToFit()
-                                        .cornerRadius(200)
+                                        .cornerRadius(20)
                                         .frame(width: 250, height:250)
                                         .padding(.vertical)
                                 } else {
                                     Image("unknown")
                                         .resizable()
                                         .scaledToFit()
-                                        .cornerRadius(200)
+                                        .cornerRadius(20)
                                         .frame(width: 250, height:250)
                                         .padding(.vertical)
                                 }
                             }
-                        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15)//.background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)
-                        
-                        pulsosUsuario(pulsos: pulsos)
-                                                
-                       /* VStack(alignment: .leading, spacing: 30) {
-                            VStack(alignment: .leading) {
-                                Text("Sus pulsos").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold)
-                            }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
-                                                    
-                        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).background(.thinMaterial, in: RoundedRectangle(cornerRadius: 20, style: .continuous)).ignoresSafeArea().foregroundColor(.black)*/
-                        
+                        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15)
+                        PulsosUsuario(pulsos: pulsos)
                     }.offset(y: 100)
                 }.frame(maxWidth: .infinity).onAppear{
                     self.pulsos = vm.getPulsosUsuario(usuario: usuario)
                 }
             }
-        }.ignoresSafeArea().background(Color("Background"))
+        }.ignoresSafeArea()
     }
 }
 
-struct pulsosUsuario: View {
-    
+struct PulsosUsuario: View {
     var pulsos: [Pulso]
     var body: some View{
         VStack(alignment: .leading, spacing: 30) {
             VStack(alignment: .leading) {
-                Text(NSLocalizedString("Sus pulsos", comment: "")).font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold)
-            }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
+                Text(NSLocalizedString("Sus pulsos", comment: "")).font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.black)
+            }
 
             }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
             if ( pulsos.count > 0 ) {
@@ -77,6 +66,9 @@ struct pulsosUsuario: View {
                         }
                     }
                 }.frame(maxWidth: .infinity)
+            } else {
+                Text("Todavía no tiene pulsos").font(.custom("Poppins-Regular", size: 20)).fontWeight(.bold).foregroundColor(.black)
+
             }
         }
     }

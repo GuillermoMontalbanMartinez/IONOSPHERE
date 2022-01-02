@@ -15,6 +15,8 @@
 		708059A92750EDC6008F3004 /* MicrofonoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 708059A82750EDC6008F3004 /* MicrofonoView.swift */; };
 		780F3839274D25A400DC10D0 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 780F3838274D25A300DC10D0 /* HomeView.swift */; };
 		783E97732769FC3F005BFD15 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 783E97722769FC3F005BFD15 /* CustomButtonView.swift */; };
+		78415C9F27821C7B00BE8C20 /* Provincia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78415C9E27821C7B00BE8C20 /* Provincia.swift */; };
+		78415CA027821C7B00BE8C20 /* Provincia.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78415C9E27821C7B00BE8C20 /* Provincia.swift */; };
 		7851550F277DDCE60022029E /* eIONUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851550E277DDCE60022029E /* eIONUITests.swift */; };
 		7851551E277DDD610022029E /* eIONUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7851551D277DDD610022029E /* eIONUnitTests.swift */; };
 		785BB97A276CE2D400C8ADE1 /* Wave.swift in Sources */ = {isa = PBXBuildFile; fileRef = 785BB979276CE2D400C8ADE1 /* Wave.swift */; };
@@ -107,6 +109,7 @@
 		708059A82750EDC6008F3004 /* MicrofonoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MicrofonoView.swift; sourceTree = "<group>"; };
 		780F3838274D25A300DC10D0 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		783E97722769FC3F005BFD15 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		78415C9E27821C7B00BE8C20 /* Provincia.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provincia.swift; sourceTree = "<group>"; };
 		78515504277DBE790022029E /* eION-copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "eION-copy-Info.plist"; sourceTree = "<group>"; };
 		7851550C277DDCE60022029E /* eIONUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = eIONUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7851550E277DDCE60022029E /* eIONUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = eIONUITests.swift; sourceTree = "<group>"; };
@@ -342,6 +345,7 @@
 			children = (
 				B32A33CE2747EE8F002BA977 /* CoreDataManager.swift */,
 				B32A33D02747F241002BA977 /* ViewModel.swift */,
+				78415C9E27821C7B00BE8C20 /* Provincia.swift */,
 			);
 			path = VistaModelo;
 			sourceTree = "<group>";
@@ -543,6 +547,7 @@
 				788AFE76276C04CC00857042 /* HomeView.swift in Sources */,
 				788AFE77276C04CC00857042 /* TabButton.swift in Sources */,
 				788AFE78276C04CC00857042 /* ListadoUbicacionesView.swift in Sources */,
+				78415CA027821C7B00BE8C20 /* Provincia.swift in Sources */,
 				788AFE79276C04CC00857042 /* CustomSecureFieldView.swift in Sources */,
 				788AFE7A276C04CC00857042 /* ListaUsuariosAdmin.swift in Sources */,
 				788AFE7B276C04CC00857042 /* FilaTablaView.swift in Sources */,
@@ -580,6 +585,7 @@
 				2936664D274FDE7500482D47 /* ListadoUbicacionesView.swift in Sources */,
 				788AFE67276BF7CB00857042 /* CustomSecureFieldView.swift in Sources */,
 				9CA2702D27500AE100C10236 /* ListaUsuariosAdmin.swift in Sources */,
+				78415C9F27821C7B00BE8C20 /* Provincia.swift in Sources */,
 				78CF2F18276D405300D7490B /* ImagePicker.swift in Sources */,
 				78BBF632274D30280006CBD6 /* FilaTablaView.swift in Sources */,
 				786E2044275028BE00C5901E /* HomeAdminView.swift in Sources */,

@@ -35,7 +35,7 @@ struct FilaTablaview: View {
         .padding(.leading, 20)
         .padding(.trailing, 20)
         .frame(width: 280)
-        .background(Color("FilaTabla"))
+        .background(Color("Secondary"))
         .cornerRadius(10)
         
         

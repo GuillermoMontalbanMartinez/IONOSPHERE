@@ -28,11 +28,10 @@ struct BusquedaView: View {
             .padding(.trailing)
             .opacity(text.isEmpty ? 0.0 : 0.8)
                     
-            }.frame(width: 250.0, height: 40.0, alignment: .leading)
+            }
              .background(Color(UIColor.systemGray6))
             .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
-            .padding(.leading,-60)
-            .padding(.top, -50)
+            
 
     }
 }

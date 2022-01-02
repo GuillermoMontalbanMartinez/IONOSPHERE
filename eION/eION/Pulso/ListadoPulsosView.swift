@@ -16,16 +16,16 @@ struct ListadoPulsosView: View {
     @State var anadir : Bool = false
     var latitud: Double = 0.0
     var longitud: Double = 0.0
-    var provincia: String
+    var provincia: Provincia
     var usuario: String
     @State var filtroNombre: Bool = false
     @State var filtroFecha: Bool = false
     
     @State private var region = MKCoordinateRegion()
-    init(provincia : String, usuario: String){
+    init(provincia : Provincia, usuario: String){
         self.provincia = provincia
         self.usuario = usuario
-        switch(provincia){
+        switch(provincia.nombre){
         case "Almería":
             latitud = 36.8402
             longitud = -2.46792
@@ -53,23 +53,21 @@ struct ListadoPulsosView: View {
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
-                VStack {
-                    CustomNavigationView(title: "Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 150)
+                VStack(spacing: 0) {
+                    CustomNavigationView(title: "Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 100)
                     Map(coordinateRegion: $region)
                         .onAppear(){
                             region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
                                                                                        longitude: longitud),
                                                         span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
                             )
-                        }
-                        .frame(width: 400, height: 300)
-                        .ignoresSafeArea()
-                    
-                    
-                    VStack(alignment: .center, spacing:5) {
+                        }.ignoresSafeArea()
+                        .frame(width: 400, height: 250)
+                        
+                                        
+                    VStack(alignment: .center, spacing:0) {
                         HStack{
-                            BusquedaView(text: $text)
-                                .padding(.leading, 60)
+                            BusquedaView(text: $text).frame(width: 250)
                             Button(){
                                 mostrarFiltro.toggle()
                             }label:{
@@ -79,11 +77,10 @@ struct ListadoPulsosView: View {
                                     .foregroundColor(.white)
                                     .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
                             }
-                            .padding(.bottom, 63)
                         }
                         
                         List(){
-                            ForEach(vm.pulsos.filter({($0.ubicacion == provincia && usuario.isEmpty) || ($0.ubicacion == provincia && $0.usuarioRelation?.nombre == usuario)}).sorted() {
+                            ForEach(vm.pulsos.filter({($0.ubicacion == provincia.nombre && usuario.isEmpty) || ($0.ubicacion == provincia.nombre && $0.usuarioRelation?.nombre == usuario)}).sorted() {
                                     if(filtroNombre){
                                         return $0.nombrePulso! < $1.nombrePulso!
                                     }else if (filtroFecha){
@@ -106,31 +103,22 @@ struct ListadoPulsosView: View {
                     }
                     .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
                     .background(Color.white)
-                    .cornerRadius(30)
-                    .shadow(radius: 10)
                     
                     Spacer()
                 }.frame(height: geometry.size.height)
                     .background(
-                        NavigationLink("", destination: CrearPulsoView(ubicacion: provincia), isActive: $anadir)
+                        NavigationLink("", destination: CrearPulsoView(ubicacion: provincia.nombre), isActive: $anadir)
                     )
                     .confirmationDialog("Seleccione un filtro", isPresented: $mostrarFiltro, titleVisibility: .visible) {
                         Button("Ordenar por nombre") {
                             filtroNombre.toggle()
-                            //vm.ordenarPulsos(propiedad: "nombre", ubicacion: provincia)
                         }
                         
                         Button("Ordenar por fecha") {
                             filtroFecha.toggle()
-                            //vm.ordenarPulsos(propiedad: "fecha", ubicacion: provincia)
                         }
                     }
                     .navigationBarHidden(true)
-                    /*.onAppear{
-                        if(!usuario.isEmpty){
-                           // vm.getPulsosUsuario(nombreUsuario: usuario)
-                        }
-                    }*/
             }
         }
     }

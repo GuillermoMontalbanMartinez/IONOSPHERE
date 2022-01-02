@@ -13,43 +13,53 @@ struct LoginView: View {
     
     var body: some View {
         ZStack {
-            NavigationView {
-                VStack {
-                    Spacer()
+            GeometryReader { geo in
+                NavigationView {
                     VStack {
-                        Image("AppLogo")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200)
-                            .clipShape(Circle())
-                            .frame( alignment: .top)
-                    }.padding(40)
-                    
-                    GeometryReader { geo in
-                        VStack(spacing: 0) {
-                            Spacer()
-                            LoginForm(logeado: $logeado)
-                            HStack() {
-                                Text("form-account-login-key").foregroundColor(.black)
-                                    .font(.custom("Poppins-Regular", size: 18))
-                                 Button {
-                                     showView = true
-                                 } label: {
-                                     Text("form-title-signup-key")
-                                         .font(.custom("Poppins-Regular", size: 18))
-                                         .foregroundColor(.black)
-                                        .underline()
-                                        .bold()
-                                }
-                                NavigationLink(destination: RegistroView(), isActive: $showView) {
+                        VStack {
+                            wave(waveHeight: 40, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 100) * -1 * 0.9)).fill(Color.accentColor)
+                                .rotationEffect(Angle(degrees:180))
+                                .frame(height: 300)
+                        }.ignoresSafeArea().frame(width: 400, height: 350)
+                            .background(
+                                wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7)).fill(Color("Secondary"))
+                                    .rotationEffect(Angle(degrees:180))
+                                    .frame(height: 350)
+                            )
+                        //Spacer()
+
+                        GeometryReader { geo in
+                            VStack(spacing: 0) {
+                                Spacer()
+                                LoginForm(logeado: $logeado)
+                                
+                                HStack() {
+                                    Text("form-account-login-key").foregroundColor(.black)
+                                        .font(.custom("Poppins-Regular", size: 18))
+                                    Button {
+                                        showView = true
+                                    } label: {
+                                        Text("form-title-signup-key")
+                                            .font(.custom("Poppins-Regular", size: 18))
+                                            .foregroundColor(.black)
+                                            .underline()
+                                            .bold()
+                                    }
+                                    NavigationLink(destination: RegistroView(), isActive: $showView) {
                                         EmptyView()
+                                    }
                                 }
-                            }
-                        }.offset(y:-100)
-                    }
-                }.ignoresSafeArea().background(BackgroundView(height: 0))
+                            }.offset(y:-50)
+                        }
+                    }.ignoresSafeArea()
+                }
             }
+        }.ignoresSafeArea().onAppear {
+            UINavigationBar.appearance().tintColor = .white
+        }.onDisappear {
+            UINavigationBar.appearance().tintColor = UIColor(named: "AccentColor")
         }
+        
     }
 }
 
@@ -61,7 +71,6 @@ private struct LoginForm: View {
     @State var failLogin: Bool = false
     @EnvironmentObject var vm : ViewModel
     @Binding var logeado: Bool
-    @State var isTapped = false
     
     var body: some View {
         if ( vm.loading ) {
@@ -69,16 +78,17 @@ private struct LoginForm: View {
         } else {
             VStack {
                 VStack(spacing: 30) {
-                    Text("form-title-login-key").font(.custom("Poppins-SemiBold", size: 28)).fontWeight(.bold).foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
+                    Text("form-title-login-key").font(.custom("Poppins-Regular", size: 38)).fontWeight(.bold)
+                    
                     HStack(alignment: .bottom) {
                         CustomTextFieldView(text: $username, name:NSLocalizedString("form-name-login-key", comment: ""))
                     }
-                
+                    
                     HStack(alignment: .bottom) {
                         CustomSecureFieldView(text: $password, name: NSLocalizedString("form-password-login-key", comment: ""))
                     }
                 }.padding([.leading, .trailing], 20)
-                 .padding([.top, .bottom], 30)
+                    .padding([.top, .bottom], 30)
                 
                 Button {
                     emptyUsername = false
@@ -100,16 +110,16 @@ private struct LoginForm: View {
                             print("Error")
                         }
                     }
-     
+                    
                 } label: {
                     Text("form-button-signin-login-key")
                         .font(.custom("Poppins-Regular", size: 18))
+                        .foregroundColor(.white)
                         .padding()
                 }.buttonStyle(CustomButton())
-            }.background(.ultraThinMaterial)
-             .cornerRadius(20)
-             .padding([.leading, .trailing])
-             
+            }
+            .padding([.leading, .trailing])
+            
             
             if emptyUsername && emptyPassword {
                 Label("Introduzca el usuario y la contraseña", systemImage: "xmark.octagon")
@@ -127,7 +137,7 @@ private struct LoginForm: View {
                     .foregroundColor(.red)
                     .offset(x: 10, y:-130)
             }
-
+            
             if failLogin {
                 Label("Datos incorrectos", systemImage: "xmark.octagon")
                     .font(.custom("Poppins-Regular", size: 14))
@@ -139,8 +149,8 @@ private struct LoginForm: View {
 }
 
 /*struct LoginView_swift_Previews: PreviewProvider {
-    static var previews: some View {
-        LoginView(logeado: .constant(false))
-.previewInterfaceOrientation(.portrait)
-    }
-}*/
+ static var previews: some View {
+ LoginView(logeado: .constant(false))
+ .previewInterfaceOrientation(.portrait)
+ }
+ }*/

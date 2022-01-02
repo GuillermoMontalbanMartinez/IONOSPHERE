@@ -16,7 +16,6 @@ struct EditarPerfilView: View {
     
     var body: some View {
         ZStack {
-            BackgroundView(height: 40)
             if ( vm.loading ) {
                 ProgressView().foregroundColor(.black)
             } else {
@@ -33,6 +32,9 @@ struct EditarPerfilView: View {
                 }
             }
         }.ignoresSafeArea()
+            .onAppear{
+                datosActualizados = 0
+            }
     }
 }
 
@@ -45,11 +47,10 @@ struct PulsosCreados: View {
             if vm.pulsos.filter({$0.usuarioRelation?.nombre == vm.usuarioLogeado?.nombre}).count != 0 {
                 VStack(alignment: .leading) {
                     Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
-                    Text("COUNT: \(vm.pulsos.filter({$0.usuarioRelation?.nombre == vm.usuarioLogeado?.nombre}).count)")
                     List() {
                         ForEach (vm.pulsos.filter({$0.usuarioRelation?.nombre == vm.usuarioLogeado?.nombre})) { pulso in
                             PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
-                                .background(.ultraThinMaterial)
+                                .background(.white)
                         }.onDelete(perform: vm.deletePulsoIndex)
                     }.frame(width: 350, height: 400, alignment: .center)
                         .onAppear {
@@ -79,7 +80,10 @@ struct PulsosGuardados: View {
                     }
                 }.padding()
             }else {
-                Text(NSLocalizedString("form-pulsos-guardados-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
+                VStack(alignment: .center) {
+                    Text(NSLocalizedString("form-pulsos-guardados-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
+
+                }
             }
         }
     }
@@ -92,11 +96,11 @@ struct PulsoInfo : View {
     
     var body: some View {
         HStack {
-            Text(pulso.nombrePulso ?? "" ).font(.custom("Poppins-Regular", size: 18)).fontWeight(.bold).foregroundColor(.accentColor)
+            Text(pulso.nombrePulso ?? "" ).font(.custom("Poppins-Regular", size: 18)).fontWeight(.bold).foregroundColor(.white)
             Spacer()
         }.sheet(isPresented: $mostrarPulso) {
             PulsoView(pulso: pulso).environmentObject(vm)
-        }.padding().background(.ultraThinMaterial).cornerRadius(10)
+        }.padding().background(Color.accentColor).cornerRadius(10)
             .onTapGesture {
                 mostrarPulso = true
             }
@@ -150,7 +154,7 @@ struct EditarPerfilFormulario : View {
             } label: {
                 Text(NSLocalizedString("form-button-save-key", comment: ""))
                     .font(.custom("Poppins-Regular", size: 18))
-                    .foregroundColor(.accentColor)
+                    .foregroundColor(.white)
                     .padding([.top, .bottom], 15)
                     .padding([.leading, .trailing], 25)
                     .cornerRadius(8)

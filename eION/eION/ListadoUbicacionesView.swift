@@ -29,15 +29,12 @@ struct ListadoUbicacionesView: View {
         
         
     }
-    
-    
 }
 
 struct Content: View {
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     var destino : Bool = false
     @Binding var text: String
-    var provincias: [String] = ["Almería", "Ávila", "Barcelona", "Zaragoza"]
     var usuario: String = ""
     @EnvironmentObject var vm : ViewModel
     var columns: [GridItem] {
@@ -46,41 +43,45 @@ struct Content: View {
     var body: some View {
         ZStack {
             GeometryReader { geometry in
-                BackgroundView(height: 50)
+                //BackgroundView(height: 50)
                 ScrollView {
                     VStack{
                         CustomNavigationView(title:"Ubicación", botones: false, destino: destino, anadir: .constant(false))
-
-                        VStack(alignment: .center, spacing:10) {
-                            BusquedaView(text: $text).frame(width: 300, height: 100, alignment: .center)
-                            LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(0..<provincias.count ) { index in
-                                    if(text.isEmpty || provincias[index].hasPrefix(text)){
-                                        NavigationLink(destination: ListadoPulsosView(provincia: provincias[index], usuario: usuario )){
-                                            //FilaTablaview(tituloIzq: provincia, tipoUsuario: true)
-                                            VStack(alignment: .leading) {
-                                                Text(provincias[index]).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.black).fontWeight(.bold)
-                                                Image("barcelona").resizable().frame(width: 100, height: 100)
-                                            }.padding().frame(width: 150, height: 150).background(.white).cornerRadius(30)
+                        
+                        VStack(alignment: .center, spacing:0) {
+                            BusquedaView(text: $text).frame(width: 350, height: 100, alignment: .center)
+                            LazyVGrid(columns: columns, spacing: 5) {
+                                ForEach(0..<vm.provincias.count ) { index in
+                                    if(text.isEmpty || vm.provincias[index].nombre.hasPrefix(text)){
+                                        NavigationLink(destination: ListadoPulsosView(provincia: vm.provincias[index], usuario: usuario )){
+                                            VStack(alignment: .center, spacing: 0) {
+                                                Spacer()
+                                                Text(vm.provincias[index].nombre).font(.custom("Poppins-Regular", size: 14)).foregroundColor(.black).fontWeight(.bold).offset(y:50)
+                                                Image("\(vm.provincias[index].imagen)").resizable().frame(width: 200, height: 200)
+                                                Spacer()
+                                            }.padding().frame(width: 170, height: 170).background(Color("Secondary")).cornerRadius(30)
                                         }
                                     }
                                 }
-                            }.padding().background(.thinMaterial).cornerRadius(20)
+                            }.padding().frame(width: 400).background(Color.white).cornerRadius(20)
                                 .onAppear(){
                                     UITableView.appearance().backgroundColor = .clear
                                     UITableViewCell.appearance().backgroundColor = .blue
                                 }
-                            
                             Spacer()
-
+                            
                         }
+
                         .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center).padding(.top, 50)
                         .cornerRadius(30)
                     }.navigationBarHidden(true).frame(height: geometry.size.height)
                 }
             }
-        }.ignoresSafeArea()
-          
+        }.ignoresSafeArea().onAppear {
+            //["Almería":"aa", "Ávila":"aa", "Barcelona":"aa", "Zaragoza":"aa"]
+
+        }
+        
     }
 }
 /*struct ListadoUbicacionesView_Previews: PreviewProvider {

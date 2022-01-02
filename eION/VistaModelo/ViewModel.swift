@@ -25,6 +25,15 @@ class ViewModel: ObservableObject {
     @AppStorage("loginActive") var loginActive: Bool?
     @AppStorage("nombreUsuario") var nombreUsuarioActivo: String?
     
+    
+    @Published var provincias = [
+        Provincia(nombre: "Almería", imagen: "Almeria"),
+        Provincia(nombre: "Barcelona", imagen: "Barcelona"),
+        Provincia(nombre: "Zaragoza", imagen: "Zaragoza"),
+        Provincia(nombre: "Ávila", imagen: "Avila"),
+    ]
+
+    
     init(){
         loadData()
         let nombreAppStg = nombreUsuarioActivo ?? ""

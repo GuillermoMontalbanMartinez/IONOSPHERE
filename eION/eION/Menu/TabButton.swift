@@ -34,7 +34,7 @@ struct CustomShape: Shape {
 }
 
 struct TabButton: View {
-    var title: String
+    @State var title: String
     @State var image: String
     @Binding var selected: String
     @Binding var logout: Bool
@@ -46,11 +46,13 @@ struct TabButton: View {
                 if ( selected == "Cerrar sesión" ) {
                     logout = true
                 }
+                
             }
         }) {
             VStack(spacing: 6) {
                 Image(systemName: "\(image)\(title == selected ? ".fill" : "")") .resizable().renderingMode(.template)
-                    .frame(width: 25, height: 25).foregroundColor(.accentColor)
+                    .frame(width: 25, height: 25).foregroundColor(Color.accentColor)
+                Text(title == "EditarPerfil" ?  "Editar perfil" : title).font(.custom("Poppins-Regular", size: 10))
             }.padding(.vertical,10).padding(.horizontal)
         }
         

@@ -50,7 +50,7 @@ struct MicrofonoView: View {
                         speechRecognizer.stopRecording()
                     } label : {
                         Text(NSLocalizedString("form-hecho-microfono-key", comment: ""))
-                    }.padding().background(Color.green).foregroundColor(.white).clipShape(Capsule())
+                    }.padding().background(Color("GoodClass")).foregroundColor(.white).clipShape(Capsule())
                 }.onAppear{
                     
                 }

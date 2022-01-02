@@ -17,8 +17,8 @@ struct CustomSecureFieldView: View {
     
     var body: some View {
         HStack(alignment: .center,  spacing: 0) {
-            if passOculta  {
-                HStack {
+            HStack {
+                if passOculta  {
                     SecureField("", text: $text).background(
                         Text(name)
                             .font(.custom("Poppins-Regular", size: 18))
@@ -31,34 +31,23 @@ struct CustomSecureFieldView: View {
                             withAnimation(.easeIn) {
                                 isTapped = true
                             }
-                        }
-                }.padding(.vertical, 12)
-                    .padding(.horizontal)
-                    .background(Color.white)
-                    .cornerRadius(5)
-            } else {
-                CustomTextFieldView(text: $text, name: name)
-                
-            }
-            
-            Button {
-                passOculta.toggle()
-            } label: {
-                if passOculta {
-                    Image(systemName: "eye.fill")
-
-                } else {
-                    Image(systemName: "eye.slash.fill")
+                        }.padding(.vertical, 12)
+                        .padding(.horizontal)
                 }
-            }.padding(20)
-            
-            /*Rectangle().fill(isTapped && !text.isEmpty ? Color.accentColor : Color.gray)
-                .opacity(isTapped && !text.isEmpty ? 1 : 0.5)
-                .frame(height: 1)
-                .padding(.top, 10)*/
- 
-            
-        }.background(Color.white).cornerRadius(5)
+                else {
+                    CustomTextFieldView(text: $text, name: name)
+                }
+                
+                Spacer()
+                PasswordEyeView(passOculta: $passOculta)
+
+                
+            }.overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(lineWidth: 1).fill(Color.gray.opacity( passOculta ? 0.5 : 0 ))
+            )
+        
+        }
     }
 }
 
@@ -67,3 +56,19 @@ struct CustomSecureFieldView: View {
  CustomSecureFieldView()
  }
  }*/
+
+struct PasswordEyeView: View {
+    @Binding var passOculta: Bool
+    var body: some View {
+        Button {
+            passOculta.toggle()
+        } label: {
+            if passOculta {
+                Image(systemName: "eye.fill")
+                
+            } else {
+                Image(systemName: "eye.slash.fill")
+            }
+        }.padding(20)
+    }
+}

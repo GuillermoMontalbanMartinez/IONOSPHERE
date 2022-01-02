@@ -11,29 +11,38 @@ struct RegistroView: View {
     @State var showView: Bool = false
     @EnvironmentObject var model: ViewModel
     var body: some View {
-        VStack() {
-            VStack {
-                Image("AppLogo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 200)
-                    .clipShape(Circle())
-                    .frame( alignment: .top)
-            }.padding(40)
-            
-
-            GeometryReader { geo in
-                VStack(spacing: 0) {
-                    Spacer()
-
-                    Text("form-title-signup-key").font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.white)
+        GeometryReader { geo in
+            VStack() {
+                VStack {
+                    wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7)).fill(Color.accentColor)
+                        .rotationEffect(Angle(degrees:180))
+                        .frame(height: 200)
                     
-                    RegistroForm().environmentObject(model)
-                }.offset(y:-50).background(wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7))
-                 .foregroundColor(.accentColor).opacity(1))
-            }
+                }.ignoresSafeArea().frame(width: 400, height: 250)
+                    .background(
+                        wave(waveHeight: 30, phase: Angle(degrees: (Double(geo.frame(in: .global).minY) + 45) * -1 * 0.7)).fill(Color("Secondary"))
+                            .rotationEffect(Angle(degrees:180))
+                            .frame(height: 250)
+                        )
+                
+                Spacer()
+                GeometryReader { geo in
+                    VStack(spacing: 0) {
+                        Spacer()
 
-        }.ignoresSafeArea()
+                        Text("form-title-signup-key").font(.custom("Poppins-Regular", size: 38)).fontWeight(.bold).foregroundColor(.black)
+                        
+                        RegistroForm().environmentObject(model)
+                    }.offset(y:-50)
+                }
+
+            }.ignoresSafeArea()
+                .onAppear {
+                    UINavigationBar.appearance().tintColor = .white
+                }.onDisappear {
+                    UINavigationBar.appearance().tintColor = UIColor(named: "AccentColor")
+                }
+        }
     }
 }
 
@@ -123,7 +132,7 @@ private struct RegistroForm: View {
                 } label: {
                     Text("form-title-signup-key")
                         .font(.custom("Poppins-Regular", size: 18))
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(.white)
                         .padding([.top, .bottom], 15)
                         .padding([.leading, .trailing], 25)
                         .cornerRadius(8)
@@ -177,7 +186,6 @@ private struct RegistroForm: View {
             }.padding([.leading, .trailing], 20)
              .padding([.top, .bottom], 30)
         }.cornerRadius(20)
-         .shadow(color: .black.opacity(0.4), radius: 4)
          .padding([.leading, .trailing])
     }
 }

@@ -12,7 +12,7 @@ struct CustomButton: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration
             .label
-            .background(Color.white)
+            .background(Color("Tertiary"))
             .cornerRadius(10)
         // .foregroundColor(configuration.isPressed ? .gray : .white)
             .padding()

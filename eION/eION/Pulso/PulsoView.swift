@@ -14,8 +14,10 @@ struct PulsoView: View {
     var body: some View {
         
         ZStack {
-            BackgroundView(height: 40)//.padding(.top, 300)
-            GeometryReader { geometry in
+                Circle().fill(Color.accentColor).frame(width: 200, height: 200).offset(x: 100, y: 100)
+                Circle().fill(Color.accentColor).frame(width: 80, height: 80).offset(x: 160, y: 250)
+
+                GeometryReader { geometry in
                 VStack(alignment: .leading, spacing: 10) {
 
                     HStack {
@@ -24,7 +26,7 @@ struct PulsoView: View {
                             vm.guardarPulsoUsuario(usuario: vm.usuarioLogeado!, pulso: pulso)
                         }
                     }
-                    
+                                        
                     HStack(alignment: .center, spacing: 10.0) {
                         Text("A03").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
                         Text("\(pulso.a03)").font(.custom("Poppins-Regular", size: 14))
