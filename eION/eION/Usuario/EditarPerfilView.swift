@@ -42,12 +42,12 @@ struct PulsosCreados: View {
     
     var body: some View {
         VStack {
-            if vm.pulsos.count != 0 {
+            if vm.pulsos.filter({$0.usuarioRelation?.nombre == vm.usuarioLogeado?.nombre}).count != 0 {
                 VStack(alignment: .leading) {
                     Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
-                    Text("COUNT: \(vm.pulsos.count)")
+                    Text("COUNT: \(vm.pulsos.filter({$0.usuarioRelation?.nombre == vm.usuarioLogeado?.nombre}).count)")
                     List() {
-                        ForEach (vm.pulsos) { pulso in
+                        ForEach (vm.pulsos.filter({$0.usuarioRelation?.nombre == vm.usuarioLogeado?.nombre})) { pulso in
                             PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
                                 .background(.ultraThinMaterial)
                         }.onDelete(perform: vm.deletePulsoIndex)
@@ -61,9 +61,9 @@ struct PulsosCreados: View {
             } else {
                 Text(NSLocalizedString("form-no-creados-pulsos-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
             }
-        }.onAppear {
+        }/*.onAppear {
             vm.getPulsosUsuario(nombreUsuario: (vm.usuarioLogeado?.nombre) ?? "")
-        }.onDisappear(perform: vm.loadData)
+        }.onDisappear(perform: vm.loadData)*/
     }
 }
 

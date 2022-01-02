@@ -18,6 +18,8 @@ struct ListadoPulsosView: View {
     var longitud: Double = 0.0
     var provincia: String
     var usuario: String
+    @State var filtroNombre: Bool = false
+    @State var filtroFecha: Bool = false
     
     @State private var region = MKCoordinateRegion()
     init(provincia : String, usuario: String){
@@ -81,7 +83,15 @@ struct ListadoPulsosView: View {
                         }
                         
                         List(){
-                            ForEach(vm.pulsos.filter({$0.ubicacion == provincia})) { pulso in
+                            ForEach(vm.pulsos.filter({($0.ubicacion == provincia && usuario.isEmpty) || ($0.ubicacion == provincia && $0.usuarioRelation?.nombre == usuario)}).sorted() {
+                                    if(filtroNombre){
+                                        return $0.nombrePulso! < $1.nombrePulso!
+                                    }else if (filtroFecha){
+                                        return $0.fechaCreacion! < $1.fechaCreacion!
+                                    } else{
+                                        return $0.nombrePulso! < $1.nombrePulso!
+                                    }
+                                } ) { pulso in
                                 if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
                                     NavigationLink(destination: PulsoView(pulso: pulso).environmentObject(vm)) {
                                         FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
@@ -106,19 +116,21 @@ struct ListadoPulsosView: View {
                     )
                     .confirmationDialog("Seleccione un filtro", isPresented: $mostrarFiltro, titleVisibility: .visible) {
                         Button("Ordenar por nombre") {
-                            vm.ordenarPulsos(propiedad: "nombre", ubicacion: provincia)
+                            filtroNombre.toggle()
+                            //vm.ordenarPulsos(propiedad: "nombre", ubicacion: provincia)
                         }
                         
                         Button("Ordenar por fecha") {
-                            vm.ordenarPulsos(propiedad: "fecha", ubicacion: provincia)
+                            filtroFecha.toggle()
+                            //vm.ordenarPulsos(propiedad: "fecha", ubicacion: provincia)
                         }
                     }
                     .navigationBarHidden(true)
-                    .onAppear{
+                    /*.onAppear{
                         if(!usuario.isEmpty){
-                            vm.getPulsosUsuario(nombreUsuario: usuario)
+                           // vm.getPulsosUsuario(nombreUsuario: usuario)
                         }
-                    }
+                    }*/
             }
         }
     }
