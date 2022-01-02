@@ -12,7 +12,7 @@ struct CrearPulsoView: View {
 
    @EnvironmentObject var vm: ViewModel
     var ubicacion :String
-    @State var valorPorVoz : String = ""
+    @State var valorPorVoz : String = "0.1"
     @State var valorPorVozRedondeado : Double = 0
     @State var valorSlider : Double = 0
     @State var comprobacion : Bool = false

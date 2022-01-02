@@ -42,12 +42,12 @@ struct PulsosCreados: View {
     
     var body: some View {
         VStack {
-            if pulsosUsuario.count != 0 {
+            if vm.pulsos.count != 0 {
                 VStack(alignment: .leading) {
                     Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
-                    Text("COUNT: \(pulsosUsuario.count)")
+                    Text("COUNT: \(vm.pulsos.count)")
                     List() {
-                        ForEach (pulsosUsuario) { pulso in
+                        ForEach (vm.pulsos) { pulso in
                             PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
                                 .background(.ultraThinMaterial)
                         }.onDelete(perform: vm.deletePulsoIndex)
@@ -62,7 +62,7 @@ struct PulsosCreados: View {
                 Text(NSLocalizedString("form-no-creados-pulsos-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
             }
         }.onAppear {
-            pulsosUsuario = vm.getPulsosUsuario(usuario: vm.usuarioLogeado!)
+            vm.getPulsosUsuario(nombreUsuario: (vm.usuarioLogeado?.nombre) ?? "")
         }
     }
 }

@@ -133,10 +133,17 @@ class ViewModel: ObservableObject {
     }
     
     func deletePulsoIndex(indexSet: IndexSet) {
+        self.loading = true
         for index in indexSet {
             gestorCoreData.contexto.delete(pulsos[index])
         }
-        saveData()
+        saveEliminar()
+        self.loading = false
+    }
+    
+    func saveEliminar() {
+        gestorCoreData.save()
+        getPulsosUsuario(nombreUsuario: (usuarioLogeado?.nombre) ?? "")
     }
     
     func iniciarSesion(nombre:String, contraseña:String) -> Bool {
@@ -306,5 +313,15 @@ class ViewModel: ObservableObject {
     
     func getPulsosUsuario( usuario: Usuario ) -> [Pulso] {
         return usuario.pulsoRelation?.allObjects as? [Pulso] ?? []
+    }
+    
+    func getPulsosUsuario( nombreUsuario: String ) {
+        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
+        
+        do {
+            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter( {$0.usuarioRelation!.nombre == nombreUsuario})
+        } catch let error {
+            print("ERROR AL OBTENER PULSOS : \(error)")
+        }
     }
 }
