@@ -13,7 +13,6 @@ import MessageUI
 struct HomeView: View {
     @EnvironmentObject var vm : ViewModel
     @State private var isShareSheetShowing = false
-    @State var pulsos: [Pulso] = []
     
     var body: some View {
         GeometryReader { geo in
@@ -23,8 +22,9 @@ struct HomeView: View {
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 10) {
                         Spacer()
-                        if pulsos.count > 0 {
-                            Novedades(pulsos: pulsos).padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).ignoresSafeArea().foregroundColor(.black)
+                        if vm.pulsos.count > 0 {
+                            Novedades().padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).ignoresSafeArea().foregroundColor(.black)
+                                .environmentObject(vm)
                             
                         }
                         if ( vm.usuarios.count > 1 ) {
@@ -33,9 +33,6 @@ struct HomeView: View {
                         Spacer()
                     }
                 }.frame(maxWidth: .infinity)
-                    .onAppear {
-                        self.pulsos = vm.obtenerPulsos()
-                    }
             }
         }.ignoresSafeArea()
     }
@@ -52,7 +49,7 @@ struct ShareSheet: UIViewControllerRepresentable {
 
 
 struct Novedades: View {
-    var pulsos: [Pulso]
+    @EnvironmentObject var vm : ViewModel
     var body: some View{
         VStack(alignment: .leading, spacing: 30) {
             VStack(alignment: .leading) {
@@ -63,11 +60,11 @@ struct Novedades: View {
                 }
                 
             }
-            if ( pulsos.count > 0 ) {
+            if ( vm.pulsos.count > 0 ) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
-                        ForEach(0 ..< pulsos.count) { index in
-                            FilaPulso(pulso: pulsos[index])
+                        ForEach(vm.pulsos) { pulso in
+                            FilaPulso(pulso: pulso)
                         }
                     }
                 }.frame(maxWidth: .infinity)

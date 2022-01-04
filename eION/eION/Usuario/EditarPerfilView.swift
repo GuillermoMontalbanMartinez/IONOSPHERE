@@ -62,9 +62,8 @@ struct PulsosCreados: View {
             } else {
                 Text(NSLocalizedString("form-no-creados-pulsos-todavia-key", comment: "")).font(.custom("Poppins-Regular", size: 18)).foregroundColor(.red).fontWeight(.bold)
             }
-        }/*.onAppear {
-            vm.getPulsosUsuario(nombreUsuario: (vm.usuarioLogeado?.nombre) ?? "")
-        }.onDisappear(perform: vm.loadData)*/
+        }
+        
     }
 }
 

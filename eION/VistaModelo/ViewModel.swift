@@ -146,13 +146,8 @@ class ViewModel: ObservableObject {
         for index in indexSet {
             gestorCoreData.contexto.delete(pulsos[index])
         }
-        saveEliminar()
+        saveData()
         self.loading = false
-    }
-    
-    func saveEliminar() {
-        gestorCoreData.save()
-        getPulsosUsuario(nombreUsuario: (usuarioLogeado?.nombre) ?? "")
     }
     
     func iniciarSesion(nombre:String, contraseña:String) -> Bool {
@@ -258,44 +253,6 @@ class ViewModel: ObservableObject {
         return isClassB > isClassG ? false : true
     }
     
-    func getPulsosUbicacion(ubicacion: String) {
-        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
-
-        do{
-            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter( {$0.ubicacion == ubicacion} )
-        } catch let error {
-            print ( "Error al cargar los pulsos por ubicacion : \(error)" )
-        }
-    }
-    
-    func obtenerPulsos() -> [Pulso] {
-        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
-        
-        do {
-            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos)
-        } catch let error {
-            print("ERROR AL OBTENER PULSOS : \(error)")
-        }
-        
-        return self.pulsos
-    }
-    
-    func ordenarPulsos(propiedad: String, ubicacion: String) {
-        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
-        
-        do {
-            if propiedad == "nombre" {
-                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter({$0.ubicacion == ubicacion}).sorted(){$0.nombrePulso! < $1.nombrePulso!}
-            } else if propiedad == "fecha" {
-                self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter({$0.ubicacion == ubicacion}).sorted(){$0.fechaCreacion! < $1.fechaCreacion!}
-            }
-        } catch let error {
-            print("Error al cargar los datos :\(error)")
-        }
-        
-    }
-    
-    
     func updateUserData(nombre: String, imagen: UIImage) -> Bool {
         self.loading = true
         var user: [Usuario]
@@ -318,19 +275,5 @@ class ViewModel: ObservableObject {
         
         self.loading = false
         return false
-    }
-    
-    func getPulsosUsuario( usuario: Usuario ) -> [Pulso] {
-        return usuario.pulsoRelation?.allObjects as? [Pulso] ?? []
-    }
-    
-    func getPulsosUsuario( nombreUsuario: String ) {
-        let fetchPulsos = NSFetchRequest<Pulso>(entityName: "Pulso")
-        
-        do {
-            self.pulsos = try gestorCoreData.contexto.fetch(fetchPulsos).filter( {$0.usuarioRelation!.nombre == nombreUsuario})
-        } catch let error {
-            print("ERROR AL OBTENER PULSOS : \(error)")
-        }
     }
 }

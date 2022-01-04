@@ -11,7 +11,6 @@ import MessageUI
 struct PerfilUsuarioView: View {
     @EnvironmentObject var vm : ViewModel
     var usuario : Usuario
-    @State var pulsos: [Pulso] = []
     var body: some View {
         ZStack {
             GeometryReader { geo in
@@ -39,18 +38,17 @@ struct PerfilUsuarioView: View {
                                 }
                             }
                         }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15)
-                        PulsosUsuario(pulsos: pulsos)
+                        PulsosUsuario(usuario: usuario).environmentObject(vm)
                     }.offset(y: 100)
-                }.frame(maxWidth: .infinity).onAppear{
-                    self.pulsos = vm.getPulsosUsuario(usuario: usuario)
-                }
+                }.frame(maxWidth: .infinity)
             }
         }.ignoresSafeArea()
     }
 }
 
 struct PulsosUsuario: View {
-    var pulsos: [Pulso]
+    var usuario : Usuario
+    @EnvironmentObject var vm : ViewModel
     var body: some View{
         VStack(alignment: .leading, spacing: 30) {
             VStack(alignment: .leading) {
@@ -58,11 +56,11 @@ struct PulsosUsuario: View {
             }
 
             }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
-            if ( pulsos.count > 0 ) {
+            if ( vm.pulsos.filter({$0.usuarioRelation?.nombre == usuario.nombre}).count > 0 ) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
-                        ForEach(0 ..< pulsos.count) { index in
-                            FilaPulsoUsuario(pulso: pulsos[index])
+                        ForEach(vm.pulsos.filter({$0.usuarioRelation?.nombre == usuario.nombre})) { pulso in
+                            FilaPulsoUsuario(pulso: pulso)
                         }
                     }
                 }.frame(maxWidth: .infinity)
