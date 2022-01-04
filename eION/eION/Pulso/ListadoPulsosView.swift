@@ -51,74 +51,76 @@ struct ListadoPulsosView: View {
     @State var selection = ""
     
     var body: some View {
-        GeometryReader { geometry in
-            ScrollView {
-                VStack(spacing: 0) {
-                    CustomNavigationView(title: "Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 100)
-                    Map(coordinateRegion: $region)
-                        .onAppear(){
-                            region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
-                                                                                       longitude: longitud),
-                                                        span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
-                            )
-                        }.ignoresSafeArea()
-                        .frame(width: 400, height: 250)
-                        
-                                        
-                    VStack(alignment: .center, spacing:0) {
-                        HStack{
-                            BusquedaView(text: $text).frame(width: 250)
-                            Button(){
-                                mostrarFiltro.toggle()
-                            }label:{
-                                Image(systemName: "chevron.up.chevron.down")
-                                    .frame(width: 70, height: 40)
-                                    .background(Color.accentColor)
-                                    .foregroundColor(.white)
-                                    .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
-                            }
-                        }
-                        
-                        List(){
-                            ForEach(vm.pulsos.filter({($0.ubicacion == provincia.nombre && usuario.isEmpty) || ($0.ubicacion == provincia.nombre && $0.usuarioRelation?.nombre == usuario)}).sorted() {
-                                    if(filtroNombre){
-                                        return $0.nombrePulso! < $1.nombrePulso!
-                                    }else if (filtroFecha){
-                                        return $0.fechaCreacion! < $1.fechaCreacion!
-                                    } else{
-                                        return $0.nombrePulso! < $1.nombrePulso!
-                                    }
-                                } ) { pulso in
-                                if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
-                                    NavigationLink(destination: PulsoView(pulso: pulso).environmentObject(vm)) {
-                                        FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
-                                    }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
+        ZStack {
+            Color("Background")
+            GeometryReader { geometry in
+                ScrollView {
+                    VStack(spacing: 0) {
+                        CustomNavigationView(title: "Pulsos", botones: vm.usuarioLogeado?.tipoUsuario == 1, destino: true, anadir: $anadir).zIndex(1).offset(y: 100)
+                        Map(coordinateRegion: $region)
+                            .onAppear(){
+                                region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: latitud,
+                                                                                           longitude: longitud),
+                                                            span: MKCoordinateSpan(latitudeDelta: 0.2, longitudeDelta: 0.2)
+                                )
+                            }.ignoresSafeArea()
+                            .frame(width: 400, height: 250)
+                            
+                                            
+                        VStack(alignment: .center, spacing:0) {
+                            HStack{
+                                BusquedaView(text: $text).frame(width: 250)
+                                Button(){
+                                    mostrarFiltro.toggle()
+                                }label:{
+                                    Image(systemName: "chevron.up.chevron.down")
+                                        .frame(width: 70, height: 40)
+                                        .background(Color.accentColor)
+                                        .foregroundColor(.white)
+                                        .clipShape(RoundedRectangle(cornerRadius: 20,style: .continuous))
                                 }
                             }
+                            
+                            List(){
+                                ForEach(vm.pulsos.filter({($0.ubicacion == provincia.nombre && usuario.isEmpty) || ($0.ubicacion == provincia.nombre && $0.usuarioRelation?.nombre == usuario)}).sorted() {
+                                        if(filtroNombre){
+                                            return $0.nombrePulso! < $1.nombrePulso!
+                                        }else if (filtroFecha){
+                                            return $0.fechaCreacion! < $1.fechaCreacion!
+                                        } else{
+                                            return $0.nombrePulso! < $1.nombrePulso!
+                                        }
+                                    } ) { pulso in
+                                    if(text.isEmpty || pulso.nombrePulso!.hasPrefix(text)){
+                                        NavigationLink(destination: PulsoView(pulso: pulso).environmentObject(vm)) {
+                                            FilaTablaview(tituloIzq: pulso.nombrePulso!, tituloDer: formatearFecha(pulso: pulso.fechaCreacion ?? Date()), tipoUsuario: true)
+                                        }.listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden)
+                                    }
+                                }
+                            }.font(.custom("Poppins-Regular", size: 16))
+                            .scaledToFit()
+                            .onAppear() {
+                                UITableView.appearance().backgroundColor = .clear
+                            }
                         }
-                        .scaledToFit()
-                        .onAppear() {
-                            UITableView.appearance().backgroundColor = .clear
-                        }
-                    }
-                    .frame(width: UIScreen.main.bounds.width/1.1, height: UIScreen.main.bounds.height*0.70, alignment: .center)
-                    .background(Color.white)
-                    
-                    Spacer()
-                }.frame(height: geometry.size.height)
-                    .background(
-                        NavigationLink("", destination: CrearPulsoView(ubicacion: provincia.nombre), isActive: $anadir)
-                    )
-                    .confirmationDialog("Seleccione un filtro", isPresented: $mostrarFiltro, titleVisibility: .visible) {
-                        Button("Ordenar por nombre") {
-                            filtroNombre.toggle()
-                        }
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height*0.70, alignment: .center)
                         
-                        Button("Ordenar por fecha") {
-                            filtroFecha.toggle()
+                        Spacer()
+                    }.frame(height: geometry.size.height)
+                        .background(
+                            NavigationLink("", destination: CrearPulsoView(ubicacion: provincia.nombre), isActive: $anadir)
+                        )
+                        .confirmationDialog("Seleccione un filtro", isPresented: $mostrarFiltro, titleVisibility: .visible) {
+                            Button("Ordenar por nombre") {
+                                filtroNombre.toggle()
+                            }
+                            
+                            Button("Ordenar por fecha") {
+                                filtroFecha.toggle()
+                            }
                         }
-                    }
-                    .navigationBarHidden(true)
+                        .navigationBarHidden(true)
+                }
             }
         }
     }

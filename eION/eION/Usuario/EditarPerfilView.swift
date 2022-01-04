@@ -17,7 +17,7 @@ struct EditarPerfilView: View {
     var body: some View {
         ZStack {
             if ( vm.loading ) {
-                ProgressView().foregroundColor(.black)
+                ProgressView().foregroundColor(Color("Color"))
             } else {
                 GeometryReader{ geo in
                     ScrollView(showsIndicators: false) {
@@ -31,7 +31,7 @@ struct EditarPerfilView: View {
                     }
                 }
             }
-        }.ignoresSafeArea()
+        }.ignoresSafeArea().background(Color("Background"))
             .onAppear{
                 datosActualizados = 0
             }
@@ -46,11 +46,11 @@ struct PulsosCreados: View {
         VStack {
             if vm.pulsos.filter({$0.usuarioRelation?.nombre == vm.usuarioLogeado?.nombre}).count != 0 {
                 VStack(alignment: .leading) {
-                    Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
+                    Text(NSLocalizedString("form-tus-pulsos-creados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).fontWeight(.bold)
                     List() {
                         ForEach (vm.pulsos.filter({$0.usuarioRelation?.nombre == vm.usuarioLogeado?.nombre})) { pulso in
                             PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
-                                .background(.white)
+                                .background(Color("Background"))
                         }.onDelete(perform: vm.deletePulsoIndex)
                     }.frame(width: 350, height: 400, alignment: .center)
                         .onAppear {
@@ -73,7 +73,7 @@ struct PulsosGuardados: View {
         if let pulsos = vm.usuarioLogeado?.guardaPulsoRelation?.allObjects as? [Pulso] {
             if pulsos.count != 0 {
                 VStack(alignment: .leading) {
-                    Text(NSLocalizedString("form-pulsos-guardados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).foregroundColor(.black).fontWeight(.bold)
+                    Text(NSLocalizedString("form-pulsos-guardados-key", comment: "")).font(.custom("Poppins-Regular", size: 26)).fontWeight(.bold)
                     ForEach(pulsos) { pulso in
                         PulsoInfo(pulso: pulso).listRowInsets(EdgeInsets()).padding().listRowSeparator(.hidden).environmentObject(vm)
                     }
@@ -95,7 +95,7 @@ struct PulsoInfo : View {
     
     var body: some View {
         HStack {
-            Text(pulso.nombrePulso ?? "" ).font(.custom("Poppins-Regular", size: 18)).fontWeight(.bold).foregroundColor(.white)
+            Text(pulso.nombrePulso ?? "" ).font(.custom("Poppins-Regular", size: 18)).fontWeight(.bold)
             Spacer()
         }.sheet(isPresented: $mostrarPulso) {
             PulsoView(pulso: pulso).environmentObject(vm)
@@ -116,7 +116,7 @@ struct EditarPerfilFormulario : View {
     var body: some View {
         
         VStack {
-            Text(NSLocalizedString("form-title-edit-key", comment: "")).font(.custom("Poppins-Regular", size: 28)).foregroundColor(.black)
+            Text(NSLocalizedString("form-title-edit-key", comment: "")).font(.custom("Poppins-Regular", size: 28))
             Button {
                 mostrarImagePicker.toggle() }label:{
                     if vm.usuarioLogeado?.foto != nil {
@@ -153,13 +153,12 @@ struct EditarPerfilFormulario : View {
             } label: {
                 Text(NSLocalizedString("form-button-save-key", comment: ""))
                     .font(.custom("Poppins-Regular", size: 18))
-                    .foregroundColor(.white)
                     .padding([.top, .bottom], 15)
                     .padding([.leading, .trailing], 25)
                     .cornerRadius(8)
             }.buttonStyle(CustomButton())
             
-        }.background(Color.white).padding().cornerRadius(30)
+        }.padding().foregroundColor(Color("Color"))
         
     }
 }

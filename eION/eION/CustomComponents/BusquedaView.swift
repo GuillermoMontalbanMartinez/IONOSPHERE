@@ -13,17 +13,17 @@ struct BusquedaView: View {
         HStack{
             Image(systemName: "magnifyingglass")
                 .foregroundColor(text.isEmpty
-                    ? Color(UIColor.gray).opacity(0.4)
-                    : Color(UIColor.gray).opacity(1))
+                    ? Color("Color").opacity(0.4)
+                    : Color("Color").opacity(1))
                         .padding()
                         .cornerRadius(100)
             
-            TextField("Buscar…", text:$text)
+            TextField("Buscar…", text:$text).font(.custom("Poppins-Regular", size: 18))
         
             Button(){
                 text = ""
             }label:{
-                Image(systemName: "x.circle.fill")
+                Image(systemName: "x.circle.fill").foregroundColor(Color("Color"))
             }
             .padding(.trailing)
             .opacity(text.isEmpty ? 0.0 : 0.8)
@@ -36,8 +36,8 @@ struct BusquedaView: View {
     }
 }
 
-struct BusquedaView_Previews: PreviewProvider {
+/*struct BusquedaView_Previews: PreviewProvider {
     static var previews: some View {
         BusquedaView(text: .constant("Prueba"))
     }
-}
+}*/

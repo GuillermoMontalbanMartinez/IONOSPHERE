@@ -56,14 +56,14 @@ struct Content: View {
                                         NavigationLink(destination: ListadoPulsosView(provincia: vm.provincias[index], usuario: usuario )){
                                             VStack(alignment: .center, spacing: 0) {
                                                 Spacer()
-                                                Text(vm.provincias[index].nombre).font(.custom("Poppins-Regular", size: 14)).foregroundColor(.black).fontWeight(.bold).offset(y:50)
+                                                Text(vm.provincias[index].nombre).font(.custom("Poppins-Regular", size: 14)).fontWeight(.bold).offset(y:50)
                                                 Image("\(vm.provincias[index].imagen)").resizable().frame(width: 200, height: 200)
                                                 Spacer()
                                             }.padding().frame(width: 170, height: 170).background(Color("Secondary")).cornerRadius(30)
                                         }
                                     }
                                 }
-                            }.padding().frame(width: 400).background(Color.white).cornerRadius(20)
+                            }.padding().frame(width: 400).background(Color("Background")).cornerRadius(20).foregroundColor(Color("Color"))
                                 .onAppear(){
                                     UITableView.appearance().backgroundColor = .clear
                                     UITableViewCell.appearance().backgroundColor = .blue
@@ -77,10 +77,7 @@ struct Content: View {
                     }.navigationBarHidden(true).frame(height: geometry.size.height)
                 }
             }
-        }.ignoresSafeArea().onAppear {
-            //["Almería":"aa", "Ávila":"aa", "Barcelona":"aa", "Zaragoza":"aa"]
-
-        }
+        }.ignoresSafeArea().background(Color("Background"))
         
     }
 }

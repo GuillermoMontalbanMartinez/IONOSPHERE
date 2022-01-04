@@ -14,6 +14,7 @@ struct PulsoView: View {
     var body: some View {
         
         ZStack {
+                Color("Background")
                 Circle().fill(Color.accentColor).frame(width: 200, height: 200).offset(x: 100, y: 100)
                 Circle().fill(Color.accentColor).frame(width: 80, height: 80).offset(x: 160, y: 250)
 
@@ -22,7 +23,7 @@ struct PulsoView: View {
 
                     HStack {
                         Text(pulso.nombrePulso ?? "").font(.custom("Poppins-Regular", size: 22)).fontWeight(.bold)
-                        Image(systemName: (vm.usuarioLogeado?.guardaPulsoRelation?.contains(pulso) ?? false) ? "bookmark.fill" :  "bookmark").foregroundColor(Color.accentColor).frame(width: 100, height: 100).scaledToFit().onTapGesture {
+                        Image(systemName: (vm.usuarioLogeado?.guardaPulsoRelation?.contains(pulso) ?? false) ? "bookmark.fill" :  "bookmark").frame(width: 100, height: 100).scaledToFit().onTapGesture {
                             vm.guardarPulsoUsuario(usuario: vm.usuarioLogeado!, pulso: pulso)
                         }
                     }
@@ -57,7 +58,12 @@ struct PulsoView: View {
                     
                 }.frame(width: geometry.size.width/1.1, height: geometry.size.height/2, alignment: .center)
                     .position(x: geometry.frame(in: .local).midX, y: geometry.frame(in: .local).midY)
+                    .foregroundColor(Color("Color"))
             }
+        }.background(Color("Background")).onAppear {
+            UINavigationBar.appearance().tintColor = .white
+        }.onDisappear {
+            UINavigationBar.appearance().tintColor = UIColor(named: "AccentColor")
         }
     }
 }

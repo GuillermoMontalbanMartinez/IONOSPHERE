@@ -28,11 +28,12 @@ struct CrearPulsoView: View {
     
     var body: some View {
         ZStack {
+            Color("Background")
             GeometryReader {geo in
                     
                 VStack(alignment: .center) {
                     Spacer()
-                    Text(NSLocalizedString("form-title-principal-crearpulso-key", comment: "")).font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.black)
+                    Text(NSLocalizedString("form-title-principal-crearpulso-key", comment: "")).font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold)
 
                     if emptyPulso {
                         Label("Introduzca nombre del pulso", systemImage: "xmark.octagon")
@@ -55,7 +56,7 @@ struct CrearPulsoView: View {
                     
                     
                     VStack(alignment: .leading) {
-                        CustomTextFieldView(text: $nombrePulso, name: NSLocalizedString("form-name-login-key", comment: "")).foregroundColor(.black)
+                        CustomTextFieldView(text: $nombrePulso, name: NSLocalizedString("form-name-login-key", comment: ""))
                         
                         
                         VStack(alignment: .leading) {
@@ -153,7 +154,6 @@ struct CrearPulsoView: View {
                     } label: {
                         Text(NSLocalizedString("form-title-crearpulso-key", comment: ""))
                             .font(.custom("Poppins-Regular", size: 18))
-                            .foregroundColor(.white)
                             .padding([.top, .bottom], 15)
                             .padding([.leading, .trailing], 25)
                     }.buttonStyle(CustomButton())
@@ -170,13 +170,11 @@ struct CrearPulsoView: View {
                 } .padding(.init(top: 40, leading:  30, bottom: 40, trailing: 30)).onDisappear(){
                     pulsoCreado = false
               
-                }.foregroundColor(.black)
-                
-              
+                }
                 
             }
             
-        }
+        }.background(Color("Background"))
         
     }
 }

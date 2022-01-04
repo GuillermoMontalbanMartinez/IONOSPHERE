@@ -24,7 +24,7 @@ struct CustomNavigationView: View {
                         self.presentationMode.wrappedValue.dismiss()
                     } label: {
                         Image(systemName: "chevron.left")
-                            .foregroundColor(.black)
+                            .foregroundColor(Color("Color"))
                             .frame(width: 30, height: 30)
                     }
 

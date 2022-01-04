@@ -33,7 +33,7 @@ struct HomeView: View {
                         Spacer()
                     }
                 }.frame(maxWidth: .infinity)
-            }
+            }.background(Color("Background"))
         }.ignoresSafeArea()
     }
 }
@@ -59,7 +59,7 @@ struct Novedades: View {
                     Text("\(Date().formatted())").font(.custom("Poppins-Regular", size: 18))
                 }
                 
-            }
+            }.foregroundColor(Color("Color"))
             if ( vm.pulsos.count > 0 ) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
@@ -71,7 +71,7 @@ struct Novedades: View {
             }
             Text(NSLocalizedString("form-observa-pulsos-creados-key", comment: ""))
                 .font(.custom("Poppins-Regular", size: 14))
-                .foregroundColor(.black)
+                .foregroundColor(Color("Color"))
         }
     }
 }
@@ -91,8 +91,8 @@ struct Usuarios: View {
                 }
             }.frame(maxWidth: .infinity)
             Text(NSLocalizedString("form-otros-usuaarios-comparten-key", comment: "")).font(.custom("Poppins-Regular", size: 14))
-                .foregroundColor(.black)
-        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).ignoresSafeArea().foregroundColor(.black)
+                
+        }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).ignoresSafeArea().foregroundColor(Color("Color"))
     }
 }
 
@@ -141,9 +141,9 @@ struct FilaPulso: View
         VStack {
             VStack {
                 Image(systemName: "waveform").resizable().scaledToFit().foregroundColor(.white)
-                Text(pulso.nombrePulso ?? "").foregroundColor(Color.white).font(.system(size: 18, weight: .regular, design: .rounded))
-                Text(pulso.ubicacion ?? "").foregroundColor(Color.white).font(.system(size: 14, weight: .regular, design: .rounded))
-                Text(pulso.usuarioRelation?.nombre  ?? "").font(.caption).foregroundColor(.white)
+                Text(pulso.nombrePulso ?? "").foregroundColor(Color("Color")).font(.system(size: 18, weight: .regular, design: .rounded))
+                Text(pulso.ubicacion ?? "").foregroundColor(Color("Color")).font(.system(size: 14, weight: .regular, design: .rounded))
+                Text(pulso.usuarioRelation?.nombre  ?? "").font(.caption).foregroundColor(Color("Color"))
             }.onTapGesture {
                 showPulsoView = true
             }.contextMenu {

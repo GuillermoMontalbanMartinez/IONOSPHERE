@@ -26,22 +26,20 @@ struct LoginView: View {
                                     .rotationEffect(Angle(degrees:180))
                                     .frame(height: 350)
                             )
-                        //Spacer()
-
                         GeometryReader { geo in
                             VStack(spacing: 0) {
                                 Spacer()
                                 LoginForm(logeado: $logeado)
                                 
                                 HStack() {
-                                    Text("form-account-login-key").foregroundColor(.black)
+                                    Text("form-account-login-key")
                                         .font(.custom("Poppins-Regular", size: 18))
                                     Button {
                                         showView = true
                                     } label: {
                                         Text("form-title-signup-key")
                                             .font(.custom("Poppins-Regular", size: 18))
-                                            .foregroundColor(.black)
+                                            .foregroundColor(Color("Color"))
                                             .underline()
                                             .bold()
                                     }
@@ -51,7 +49,7 @@ struct LoginView: View {
                                 }
                             }.offset(y:-50)
                         }
-                    }.ignoresSafeArea()
+                    }.ignoresSafeArea().background(Color("Background"))
                 }
             }
         }.ignoresSafeArea().onAppear {

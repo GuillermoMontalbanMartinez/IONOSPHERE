@@ -16,8 +16,8 @@ struct BuscadorView: View {
             HStack {
                 Image(systemName: "magnifyingglass")
                     .foregroundColor(busqueda.isEmpty
-                                     ? Color(UIColor.gray).opacity(0.4)
-                                     : Color(UIColor.gray).opacity(0.9))
+                                     ? Color("Color").opacity(0.4)
+                                     : Color("Color").opacity(0.9))
 
                 TextField(self.mensajeBuscador, text: $busqueda)
                     .font(.custom("Poppins-Regular", size: 18))
@@ -26,7 +26,8 @@ struct BuscadorView: View {
                     }
             }.padding(7)
                 .padding(.horizontal, 25)
-                .background(Color(.systemGray6))
+                //.background(Color(.systemGray6))
+                .background(Color.red)
                 .cornerRadius(8)
                 .padding(.horizontal, 10)
             

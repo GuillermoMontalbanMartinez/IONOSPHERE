@@ -30,13 +30,13 @@ struct RegistroView: View {
                     VStack(spacing: 0) {
                         Spacer()
 
-                        Text("form-title-signup-key").font(.custom("Poppins-Regular", size: 38)).fontWeight(.bold).foregroundColor(.black)
+                        Text("form-title-signup-key").font(.custom("Poppins-Regular", size: 38)).fontWeight(.bold)
                         
                         RegistroForm().environmentObject(model)
                     }.offset(y:-50)
                 }
 
-            }.ignoresSafeArea()
+            }.ignoresSafeArea().background(Color("Background"))
                 .onAppear {
                     UINavigationBar.appearance().tintColor = .white
                 }.onDisappear {

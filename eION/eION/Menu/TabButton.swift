@@ -51,9 +51,9 @@ struct TabButton: View {
         }) {
             VStack(spacing: 6) {
                 Image(systemName: "\(image)\(title == selected ? ".fill" : "")") .resizable().renderingMode(.template)
-                    .frame(width: 25, height: 25).foregroundColor(Color.accentColor)
+                    .frame(width: 25, height: 25)
                 Text(title == "EditarPerfil" ?  "Editar perfil" : title).font(.custom("Poppins-Regular", size: 10))
-            }.padding(.vertical,10).padding(.horizontal)
+            }.padding(.vertical,10).padding(.horizontal).foregroundColor(Color("Color"))
         }
         
 

@@ -13,13 +13,14 @@ struct PerfilUsuarioView: View {
     var usuario : Usuario
     var body: some View {
         ZStack {
+            Color("Background")
             GeometryReader { geo in
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 30) {
                         VStack(alignment: .center, spacing: 20) {
                             VStack(alignment: .center, spacing: 30) {
                                 VStack(alignment: .center) {
-                                    Text(usuario.nombre ?? "Nombre usuario").font(.custom("Poppins-Regular", size: 28)).foregroundColor(.black)
+                                    Text(usuario.nombre ?? "Nombre usuario").font(.custom("Poppins-Regular", size: 28)).foregroundColor(Color("Color"))
                                 }
                                 if usuario.foto != nil {
                                     Image(uiImage: UIImage(data: usuario.foto ?? Data()) ?? UIImage())
@@ -52,10 +53,10 @@ struct PulsosUsuario: View {
     var body: some View{
         VStack(alignment: .leading, spacing: 30) {
             VStack(alignment: .leading) {
-                Text(NSLocalizedString("Sus pulsos", comment: "")).font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(.black)
+                Text(NSLocalizedString("Sus pulsos", comment: "")).font(.custom("Poppins-Regular", size: 28)).fontWeight(.bold).foregroundColor(Color("Color"))
             }
 
-            }.foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
+            }
             if ( vm.pulsos.filter({$0.usuarioRelation?.nombre == usuario.nombre}).count > 0 ) {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
@@ -65,7 +66,7 @@ struct PulsosUsuario: View {
                     }
                 }.frame(maxWidth: .infinity)
             } else {
-                Text("Todavía no tiene pulsos").font(.custom("Poppins-Regular", size: 20)).fontWeight(.bold).foregroundColor(.black)
+                Text("Todavía no tiene pulsos").font(.custom("Poppins-Regular", size: 20)).fontWeight(.bold).foregroundColor(Color("Color"))
 
             }
         }
@@ -83,9 +84,8 @@ struct FilaPulsoUsuario: View
             
             VStack {
                 Image(systemName: "waveform").resizable().scaledToFit()
-                    .foregroundStyle(LinearGradient(colors: [.accentColor, .gray], startPoint: .top, endPoint: .bottom))
-                Text(pulso.nombrePulso ?? "").foregroundColor(Color.accentColor).font(.system(size: 18, weight: .regular, design: .rounded))
-                Text(pulso.ubicacion ?? "").foregroundColor(Color.accentColor).font(.system(size: 14, weight: .regular, design: .rounded))
+                Text(pulso.nombrePulso ?? "").foregroundColor(Color("Color")).font(.system(size: 18, weight: .regular, design: .rounded))
+                Text(pulso.ubicacion ?? "").foregroundColor(Color("Color")).font(.system(size: 14, weight: .regular, design: .rounded))
                 Text(pulso.usuarioRelation?.nombre  ?? "").font(.caption)
             }.onTapGesture {
                 showPulsoView = true
@@ -95,7 +95,7 @@ struct FilaPulsoUsuario: View
                         showingSheet.toggle()
                     } label: {
                         Text(NSLocalizedString("form-homeview-compartir", comment: ""))
-                        Image(systemName: "square.and.arrow.up").foregroundColor(Color.black)
+                        Image(systemName: "square.and.arrow.up").foregroundColor(Color("Color"))
                     }
                 }
             }
@@ -103,7 +103,7 @@ struct FilaPulsoUsuario: View
             ShareSheetUsuario(items: [pulso.nombrePulso ?? "", pulso.a03, pulso.a27])
             
         }.padding().frame(width: 150, height: 150)
-            .background(.ultraThinMaterial)
+            .background(Color.accentColor)
             .cornerRadius(20)
             .sheet(isPresented: $showPulsoView) {
                 PulsoView(pulso: pulso)

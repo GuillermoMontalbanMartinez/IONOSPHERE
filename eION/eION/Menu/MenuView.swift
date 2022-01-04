@@ -61,7 +61,7 @@ struct MenuView: View {
             }.ignoresSafeArea().padding(.vertical, 20)
                 .padding(.horizontal, 20)
                 //.background(Capsule().fill(Color.white))
-                .background(Color.white)
+                .background(Color("Background"))
                 .zIndex(100000)
                 .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
         }.ignoresSafeArea()
