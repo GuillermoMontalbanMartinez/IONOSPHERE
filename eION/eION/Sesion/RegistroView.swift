@@ -55,6 +55,7 @@ private struct RegistroForm: View {
     @State var emptyUsername: Bool = false
     @State var emptyPassword: Bool = false
     @State var emptyRepeatPassword: Bool = false
+    @State var registroCreado : Bool = false
     @EnvironmentObject var model: ViewModel
     var formPassword: LocalizedStringKey = "form-title-signup-key"
     
@@ -105,6 +106,10 @@ private struct RegistroForm: View {
                         #if eIONB
                         do {
                             try model.addUsuario(nombre: username, password: password)
+                            registroCreado = true
+                            username = ""
+                            password = ""
+                            repeatPassword = ""
                         } catch eION.ViewModel.error.datoRepetido {
                             print("Usuario existente en la base de datos")
                             registeredUser = true
@@ -118,6 +123,10 @@ private struct RegistroForm: View {
                         #if eIONML
                         do {
                             try model.addUsuario(nombre: username, password: password)
+                            registroCreado = true
+                            username = ""
+                            password = ""
+                            repeatPassword = ""
                         } catch eION_copy.ViewModel.error.datoRepetido {
                             print("Usuario existente en la base de datos")
                             registeredUser = true
@@ -181,6 +190,11 @@ private struct RegistroForm: View {
                     Label("Contraseñas distintas", systemImage: "xmark.octagon")
                         .font(.custom("Poppins-Regular", size: 18))
                         .foregroundColor(.red)
+                        .offset(x: 10, y:-40)
+                }else if registroCreado {
+                    Label("Usuario registrado con éxito", systemImage: "person.fill.checkmark")
+                        .font(.custom("Poppins-Regular", size: 18))
+                        .foregroundColor(.green)
                         .offset(x: 10, y:-40)
                 }
             }.padding([.leading, .trailing], 20)
