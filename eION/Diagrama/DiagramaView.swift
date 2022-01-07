@@ -80,14 +80,14 @@ struct DiagramaView: View {
                     VStack  {
                         if currentIndex != -1{
                             Text("\(chartDataSet[currentIndex].value)")
-                                .font(.caption)
+                                .font(.custom("Poppins-Regular", size: 12))
                                 .bold()
                                 .foregroundColor(.black)
                                 .padding(5)
                                 .background(RoundedRectangle(cornerRadius: 5).foregroundColor(.white).shadow(radius: 3))
                             
                             Text("\(chartDataSet[currentIndex].label)")
-                                .font(.caption)
+                                .font(.custom("Poppins-Regular", size: 12))
                                 .bold()
                                 .foregroundColor(.black)
                                 .padding(5)
@@ -104,7 +104,7 @@ struct DiagramaView: View {
                                 .aspectRatio(contentMode: .fit)
                                 .padding(10).frame(width: 50, height: 50)
                             Text(chartDataSet[i].label)
-                                .font(.caption)
+                                .font(.custom("Poppins-Regular", size: 12))
                                 .bold()
                         }
                     }

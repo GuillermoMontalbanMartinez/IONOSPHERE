@@ -18,10 +18,10 @@ struct FilaTablaview: View {
     var body: some View {
         
         HStack {
-            Text(tituloIzq)
+            Text(tituloIzq).font(.custom("Poppins-Regular", size: 16))
             Spacer()
             if ( tituloDer != nil) {
-                Text(tituloDer!).font(.caption).foregroundColor(.gray)
+                Text(tituloDer!).font(.custom("Poppins-Regular", size: 14)).foregroundColor(.gray)
             }
             if(botonAdmin == true){
                 Toggle("", isOn: $tipoUsuario)
