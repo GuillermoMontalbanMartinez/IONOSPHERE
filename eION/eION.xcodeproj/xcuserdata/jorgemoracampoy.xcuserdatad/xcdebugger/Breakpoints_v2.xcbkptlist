@@ -20,12 +20,12 @@
             landmarkType = "3">
             <Locations>
                <Location
-                  uuid = "FC500628-32A3-4A93-A27A-035BA44AC2F6 - 12a5cd53e7f4a958"
+                  uuid = "FC500628-32A3-4A93-A27A-035BA44AC2F6 - 2795cb9f4183bc69"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "eION_copy.ViewModel.deinit"
-                  moduleName = "eION copy"
+                  symbolName = "eION.ViewModel.deinit"
+                  moduleName = "eION"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jorgemoracampoy/Documents/Git/IONOSPHERE/eION/VistaModelo/ViewModel.swift"
                   startingColumnNumber = "9223372036854775807"
@@ -35,12 +35,12 @@
                   offsetFromSymbolStart = "22">
                </Location>
                <Location
-                  uuid = "FC500628-32A3-4A93-A27A-035BA44AC2F6 - 79dc4aba1687954b"
+                  uuid = "FC500628-32A3-4A93-A27A-035BA44AC2F6 - 1cf52751f46d7cf4"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "eION_copy.ViewModel.__deallocating_deinit"
-                  moduleName = "eION copy"
+                  symbolName = "eION.ViewModel.__deallocating_deinit"
+                  moduleName = "eION"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/jorgemoracampoy/Documents/Git/IONOSPHERE/eION/VistaModelo/ViewModel.swift"
                   startingColumnNumber = "9223372036854775807"

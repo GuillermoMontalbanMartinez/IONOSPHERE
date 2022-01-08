@@ -61,7 +61,9 @@ struct PulsosUsuario: View {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 30) {
                         ForEach(vm.pulsos.filter({$0.usuarioRelation?.nombre == usuario.nombre})) { pulso in
+                            
                             FilaPulsoUsuario(pulso: pulso)
+                            
                         }
                     }
                 }.frame(maxWidth: .infinity)

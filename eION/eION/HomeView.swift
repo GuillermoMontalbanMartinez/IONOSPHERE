@@ -86,7 +86,9 @@ struct Usuarios: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 30) {
                     ForEach(vm.usuarios) { usuario in
+                        if((usuario.tipoUsuario != 0) && (vm.usuarioLogeado?.nombre != usuario.nombre)){
                         FilaUsuario(usuario: usuario)
+                        }
                     }
                 }
             }.frame(maxWidth: .infinity)
