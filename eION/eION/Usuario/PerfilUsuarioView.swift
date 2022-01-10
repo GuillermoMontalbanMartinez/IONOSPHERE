@@ -39,7 +39,7 @@ struct PerfilUsuarioView: View {
                                 }
                             }
                         }.padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15)
-                        PulsosUsuario(usuario: usuario).environmentObject(vm)
+                        PulsosUsuario(usuario: usuario).environmentObject(vm).padding(.leading,20)
                     }.offset(y: 100)
                 }.frame(maxWidth: .infinity)
             }
