@@ -30,9 +30,9 @@ struct ListadoPulsosView: View {
             latitud = 36.8402
             longitud = -2.46792
             break
-        case "Ávila":
-            latitud = 40.6564
-            longitud = -4.70032
+        case "Madrid":
+            latitud = 40.4169
+            longitud = -3.7037
             break
         case "Barcelona":
             latitud = 41.3879

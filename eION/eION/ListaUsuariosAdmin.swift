@@ -18,9 +18,11 @@ struct ListaUsuariosAdmin: View {
             ZStack {
                 Color("Background")
                 VStack(alignment: .center, spacing:20) {
-                    Spacer()
+                    //Spacer()
                     ScrollView {
                         VStack(spacing: 30) {
+                            CustomNavigationView(title:"Usuarios", botones: false, destino: false, anadir: .constant(false))
+
                             HStack {
                                 BusquedaView(text: $text).frame(width: UIScreen.main.bounds.width-50)
                             }
@@ -53,6 +55,7 @@ struct ListaUsuariosAdmin: View {
                 .cornerRadius(30)
                 //.shadow(radius: 10)
             }.ignoresSafeArea().frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height, alignment: .center).padding()
+                //.navigationTitle(Text("Usuarios").font(.custom("Poppins-Regular", size: 32)))
 
         }
     }

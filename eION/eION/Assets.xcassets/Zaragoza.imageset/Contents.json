@@ -3,6 +3,15 @@
     {
       "filename" : "Zaragoza.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "contrast",
+          "value" : "high"
+        }
+      ],
+      "idiom" : "universal"
     }
   ],
   "info" : {

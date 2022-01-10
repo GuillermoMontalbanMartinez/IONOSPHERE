@@ -25,22 +25,27 @@ class ViewModel: ObservableObject {
     @AppStorage("loginActive") var loginActive: Bool?
     @AppStorage("nombreUsuario") var nombreUsuarioActivo: String?
     
-    
     @Published var provincias = [
         Provincia(nombre: "Almería", imagen: "Almeria"),
         Provincia(nombre: "Barcelona", imagen: "Barcelona"),
         Provincia(nombre: "Zaragoza", imagen: "Zaragoza"),
-        Provincia(nombre: "Ávila", imagen: "Avila"),
+        Provincia(nombre: "Madrid", imagen: "Madrid"),
     ]
+    
+    @Published var seleccion = ""
 
     
     init(){
         loadData()
         let nombreAppStg = nombreUsuarioActivo ?? ""
         
+        print("NOMBRE APP STG \(nombreAppStg)")
+        
         /* Para el caso en el que el usuario acceda a la app sin iniciar sesion porque sus datos estan en el app storage */
         if usuarioLogeado == nil && (!nombreAppStg.isEmpty) {
             usuarioLogeado = usuarios.filter({$0.nombre == nombreUsuarioActivo})[0]
+            self.seleccion = ( usuarioLogeado?.tipoUsuario == 0 ) ? "HomeAdmin" : "Home"
+
         }
 
     }
@@ -153,24 +158,11 @@ class ViewModel: ObservableObject {
     func iniciarSesion(nombre:String, contraseña:String) -> Bool {
         self.loading = true
         let user:[Usuario] = usuarios.filter({$0.nombre == nombre && $0.password == contraseña})
-        
-        print( "USUARIO: \(user)")
-        /*
-        if !user.isEmpty {
-            self.loading = false
-            usuarioLogeado = user[0]
-            loginActive = true
-            return true
-        } else {
-            self.loading = false
-            return false
-        }
-         refactoring de código old version*/
-        
         self.loading = false
         
         if !user.isEmpty {
             usuarioLogeado = user[0]
+            self.seleccion = ( usuarioLogeado?.tipoUsuario == 0 ) ? "HomeAdmin" : "Home"
             loginActive = true
             nombreUsuarioActivo = usuarioLogeado?.nombre
             return true
@@ -224,16 +216,21 @@ class ViewModel: ObservableObject {
         var isClassG: Double
         
         /*
-        if a05 <= 0.0409 {
+        if a05 <= 0.0409 { // COMPROBADO con 0.03 // BAAD
             isClassB = 1.07 + a05*(-0.7)
             isClassG = -1.07 + a05*(0.7)
-        } else {
+        } else { --
             if a27 <= 0.99989 {
-                isClassB = -0.36 + a05*(-0.95) + a27*(0.12)
-                isClassG = -0.36 + a05*(0.95) + a27*(-0.12)
+         // a05 = 0.05
+         // a27 = 0.8
+                isClassB = -0.36 + a05*(-0.95) + a27*(0.12) // -0.3115
+                isClassG = 0.36 + a05*(0.95) + a27*(-0.12) // 0.3115
             } else {
-                isClassB = -0.44 + a05*(0.29) + a27*(0.69)
-                isClassG = 0.44 + a05*(-0.29) + a27*(-0.69)
+         
+         // a05 = 0.05
+         // a27 = 1
+                isClassB = -0.44 + a05*(0.29) + a27*(0.69) // 0.26  --  0.54
+                isClassG = 0.44 + a05*(-0.29) + a27*(-0.69) // -0.26 -- -0.54
             }
         }
          refactoring de código old version*/
@@ -244,7 +241,7 @@ class ViewModel: ObservableObject {
             isClassG = 0.44 + a05*(-0.29) + a27*(-0.69)
          } else if !(a05 <= 0.0409) && a27 <= 0.99989 {
             isClassB = -0.36 + a05*(-0.95) + a27*(0.12)
-            isClassG = -0.36 + a05*(0.95) + a27*(-0.12)
+            isClassG = 0.36 + a05*(0.95) + a27*(-0.12)
          } else {
             isClassB = 1.07 + a05*(-0.7)
             isClassG = -1.07 + a05*(0.7)

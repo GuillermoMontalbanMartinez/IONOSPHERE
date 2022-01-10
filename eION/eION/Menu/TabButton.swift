@@ -38,6 +38,7 @@ struct TabButton: View {
     @State var image: String
     @Binding var selected: String
     @Binding var logout: Bool
+    @EnvironmentObject var vm : ViewModel
     
     var body: some View {
         Button( action: {
@@ -54,10 +55,6 @@ struct TabButton: View {
                     .frame(width: 25, height: 25)
                 Text(title == "EditarPerfil" ?  "Editar perfil" : title).font(.custom("Poppins-Regular", size: 10))
             }.padding(.vertical,10).padding(.horizontal).foregroundColor(Color("Color"))
-        }.onAppear {
-            if ( title == "HomeAdmin" ) {
-                title = "Home"
-            }
         }
         
 

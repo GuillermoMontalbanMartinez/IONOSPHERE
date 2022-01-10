@@ -29,7 +29,7 @@ struct PulsoView: View {
                     }
                                         
                     HStack(alignment: .center, spacing: 10.0) {
-                        Text("A03").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
+                        Text("A05").font(.custom("Poppins-Regular", size: 18)).frame(width: 100, alignment: .leading)
                         Text("\(pulso.a03)").font(.custom("Poppins-Regular", size: 14))
                     }
                     
@@ -61,7 +61,7 @@ struct PulsoView: View {
                     .foregroundColor(Color("Color"))
             }
         }.background(Color("Background")).onAppear {
-            UINavigationBar.appearance().tintColor = .white
+            UINavigationBar.appearance().tintColor = UIColor(named: "Color")
         }.onDisappear {
             UINavigationBar.appearance().tintColor = UIColor(named: "AccentColor")
         }

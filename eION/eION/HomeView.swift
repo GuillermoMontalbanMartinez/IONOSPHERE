@@ -21,6 +21,8 @@ struct HomeView: View {
                 Circle().fill(Color("Secondary")).frame(width: 300, height: 300).offset(x: 200, y: 0)
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 10) {
+                        Text(vm.usuarioLogeado?.nombre ?? "NADA")
+
                         Spacer()
                         if vm.pulsos.count > 0 {
                             Novedades().padding(.trailing, 40).padding(.leading, 40).padding(.bottom, 40).padding(.top, 40).frame(width: UIScreen.main.bounds.width-15).ignoresSafeArea().foregroundColor(.black)

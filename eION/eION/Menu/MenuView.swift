@@ -7,7 +7,6 @@
 import SwiftUI
 
 struct MenuView: View {
-    @State var seleccion: String = ""
     @EnvironmentObject var vm : ViewModel
     @State var logout = false
     
@@ -17,32 +16,33 @@ struct MenuView: View {
     
     var body: some View {
         ZStack(alignment: Alignment(horizontal: .center, vertical: .bottom)) {
-            TabView(selection: $seleccion) {
+            TabView(selection: $vm.seleccion) {
                 HomeView().tag("Home").transition(.opacity.animation(.default))
                 ListadoUbicacionesView().tag("Ubicaciones").transition(.opacity.animation(.default))
                 ListaUsuariosAdmin().tag("Usuarios").transition(.opacity.animation(.default))
                 HomeAdminView().tag("HomeAdmin").transition(.opacity.animation(.default))
-                // LoginView().tag("CerrarSesion")
-                
                 if ( vm.usuarioLogeado?.tipoUsuario != 0 ) {
                     EditarPerfilView().tag("EditarPerfil").transition(.opacity.animation(.default))
-                    
                 }
-            }
+            }.environmentObject(vm)
             
             
             HStack(spacing: 0) {
-                TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home", image: "house", selected: $seleccion, logout: $logout)
-                Spacer(minLength: 0)
-                TabButton(title: vm.usuarioLogeado?.tipoUsuario == 0 ? "Usuarios" : "Ubicaciones", image: "list.bullet.rectangle", selected: $seleccion, logout: $logout)
-                
-                if ( vm.usuarioLogeado?.tipoUsuario != 0 ) {
+                if ( vm.usuarioLogeado?.tipoUsuario == 0 ) {
+                    TabButton(title: "HomeAdmin", image: "house", selected: $vm.seleccion, logout: $logout)
                     Spacer(minLength: 0)
-                    TabButton(title: "EditarPerfil", image: "person", selected: $seleccion, logout: $logout)
+                    TabButton(title: "Usuarios", image: "list.bullet.rectangle", selected: $vm.seleccion, logout: $logout)
+                } else {
+                    TabButton(title: "Home", image: "house", selected: $vm.seleccion, logout: $logout)
+                    Spacer(minLength: 0)
+                    TabButton(title: "Ubicaciones", image: "list.bullet.rectangle", selected: $vm.seleccion, logout: $logout)
+                    Spacer(minLength: 0)
+                    TabButton(title: "EditarPerfil", image: "person", selected: $vm.seleccion, logout: $logout)
+
                 }
                 
                 Spacer(minLength: 0)
-                TabButton(title: "Cerrar sesión", image: "arrow.forward.square", selected: $seleccion, logout: $logout)
+                TabButton(title: "Cerrar sesión", image: "arrow.forward.square", selected: $vm.seleccion, logout: $logout)
                 
             }.alert(isPresented: $logout) {
                 Alert(
@@ -53,6 +53,8 @@ struct MenuView: View {
                         vm.logeado = false
                         vm.usuarioLogeado = nil
                         vm.loginActive = false
+                        vm.nombreUsuarioActivo = nil
+                        // print("PRUEBA: \(vm.usuarioLogeado)")
                     },
                     secondaryButton: .cancel()
                 )
@@ -63,18 +65,14 @@ struct MenuView: View {
                 //.background(Capsule().fill(Color.white))
                 .background(Color("Background"))
                 .zIndex(100000)
-                .onAppear{seleccion = vm.usuarioLogeado?.tipoUsuario == 0 ? "HomeAdmin" : "Home"}
         }.ignoresSafeArea()
-        
-        
-        
     }
 }
 
-struct MenuView_Previews: PreviewProvider {
+/*struct MenuView_Previews: PreviewProvider {
     static var previews: some View {
         MenuView().environmentObject(ViewModel())
     }
-}
+}*/
 
 
